@@ -1,0 +1,39 @@
+.beneficios-container {
+  padding: 3rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #212121;
+}
+
+.beneficios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.beneficio-card {
+  width: 280px;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.beneficio-icon {
+  margin-bottom: 0.5rem;
+  font-size: 50px;
+  width: 50px;
+    height: 50px;
+}
+
+.mat-mdc-card-title, .mat-mdc-card-subtitle {
+    margin-bottom: 1rem;
+}

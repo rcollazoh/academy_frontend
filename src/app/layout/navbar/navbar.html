@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Menú lateral para móvil -->
+  <mat-sidenav #drawer mode="over" class="mobile-menu">
+    <mat-nav-list >
+      <a routerLink="/home">
+        <mat-icon>home</mat-icon> Inicio
+      </a>
+    </mat-nav-list>
+    <mat-nav-list >
+      <mat-icon matListIcon>school</mat-icon> Cursos
+      <a matLine routerLink="/cursos">
+      </a>
+    </mat-nav-list>
+    <mat-nav-list >
+      <a routerLink="/contacto">
+        <mat-icon>person</mat-icon> Contacto
+      </a>
+    </mat-nav-list>
+    <mat-nav-list >
+      <a routerLink="/login">
+        <mat-icon>login</mat-icon> Login
+      </a>
+    </mat-nav-list>
+    <mat-nav-list >
+      <a routerLink="/registro">
+        <mat-icon>person_add</mat-icon> Registro
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Barra superior -->
+  <mat-toolbar color="primary" class="navbar">
+    <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo">PRAD Academy</span>
+    <span class="spacer"></span>
+
+    <!-- Enlaces visibles solo en escritorio -->
+    <div class="nav-links">
+      <button mat-button (click)="actionHome()">Inicio</button>
+      <button mat-button routerLink="/cursos">Cursos</button>
+      <button mat-button routerLink="/contacto">Contacto</button>
+      <button mat-stroked-button color="accent" routerLink="/login">
+        <mat-icon>login</mat-icon> Login
+      </button>
+      <button mat-raised-button color="accent" (click)="actionRegister()">
+        <mat-icon>person_add</mat-icon> Registro
+      </button>
+    </div>
+  </mat-toolbar>
+</mat-sidenav-container>

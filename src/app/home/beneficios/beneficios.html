@@ -1,0 +1,17 @@
+<div class="beneficios-container">
+    <h2 class="section-title">Beneficios del Programa</h2>
+
+    <div class="beneficios-grid">
+        @for (benef of beneficios(); track $index) {
+        <mat-card class="beneficio-card">
+            <div>
+                <mat-icon class="beneficio-icon">{{ benef.icono }}</mat-icon>
+            </div>
+            <mat-card-title>{{ benef.titulo }}</mat-card-title>
+            <mat-card-content>
+                <p>{{ benef.texto }}</p>
+            </mat-card-content>
+        </mat-card>
+        }
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<mat-card class="registro-card">
+  <h2>Crear una cuenta</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput formControlName="nombre" required>
+      @if (form.get('nombre')?.invalid) {
+        <mat-error>Campo obligatorio</mat-error>
+      }      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      @if (form.get('email')?.invalid) {
+        <mat-error>Correo inválido</mat-error>
+      }      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" required>
+      @if (form.get('password')?.invalid) {
+        <mat-error>Mínimo 6 caracteres</mat-error>
+      }      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input matInput formControlName="confirm" type="password" required>
+      @if (form.get('confirm')?.invalid) {
+        <mat-error>Las contraseñas no coinciden</mat-error>
+      }       
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      Registrarse
+    </button>
+  </form>
+</mat-card>

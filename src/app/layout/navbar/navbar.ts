@@ -1,0 +1,30 @@
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatNavList } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
+import { Routes } from '../../shared/consts/routes';
+
+@Component({
+  selector: 'app-navbar',
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatNavList],
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.scss'
+})
+export class Navbar {
+
+  public routes: typeof Routes = Routes;
+
+  constructor(protected router: Router) { }
+
+  actionRegister() {
+    this.router.navigate([this.routes.REGISTER]);
+  }
+
+  actionHome() {
+    this.router.navigate([this.routes.HOME]);
+  }
+
+}

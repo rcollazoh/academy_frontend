@@ -1,0 +1,21 @@
+<div class="cursos-container">
+    <h2 class="section-title">Cursos Destacados</h2>
+
+    <div class="card-grid">
+        @for (curso of cursos(); track $index) {
+        <mat-card class="curso-card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ curso.titulo }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="curso.imagen"
+                [alt]="curso.titulo">
+            <mat-card-content>
+                <p>{{ curso.descripcion }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button matButton>Ver más</button>
+            </mat-card-actions>
+        </mat-card>
+        }
+    </div>
+</div>
