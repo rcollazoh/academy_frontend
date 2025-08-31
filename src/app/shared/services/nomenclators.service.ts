@@ -1,17 +1,16 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, httpResource, HttpResourceRef } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.prod';
-import { NomAreaDto, NomPracticeDto } from '../../shared/models/nomenclator-model';
-import { ApiCodeMessage } from '../../shared/consts/api-code-message.constant';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { Register } from '../../shared/models/register-model';
+import { environment } from '../../../environments/environment';
+import { ApiCodeMessage } from '../consts/api-code-message.constant';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class Nomenclators {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+  }
 
   handleServiceError(error: HttpErrorResponse) {
     let mensajeError = undefined;
@@ -44,18 +43,32 @@ export class AuthService {
     return throwError(() => mensajeError);
   }
 
-  /** Registrar nueva persona */
-  registerPerson(register: Register): Observable<any> {
+  /** Se obtienen todas las areas*/
+  getAllAreas(): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
-    const options = {
-      headers: headers,
-    };
-    return this._http.post<any>(environment.serviceRegister, register, options).pipe(
-      map((res) => res),
-      catchError(this.handleServiceError)
-    );
+
+    return this._http
+      .get<any>(environment.serviceArea, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  /** Obtener practicas por area */
+  getPracticeByArea(areaId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .get<any>(environment.servicePractice + `/area` + `/${areaId}` , {headers})
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
   }
 
 }

@@ -1,6 +1,6 @@
 .ilustracion {
   background: url('/assets/images/register1.png') center center no-repeat;
-  background-size: 80%; // reduce el tamaño visual
+  background-size: 60%; // reduce el tamaño visual
   background-position: center center;
   min-height: 400px; // opcional: reduce altura mínima
   display: flex;
@@ -8,15 +8,11 @@
   justify-content: center;
 }
 
-
 h2 {
   color: #1a237e;
   font-weight: 700;
 }
 
-
-
-.full-width {
-  width: 100%;
-  margin-bottom: 1rem;
+button {
+  margin-top: 1rem;
 }

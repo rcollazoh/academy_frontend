@@ -1,19 +1,17 @@
-const BASE_URL = "http://147.182.204.223:7000"
-const LOCAL_URL = "http://192.168.2.10:7000"
+const BASE_URL = "http://localhost:7000"
 
 export const environment = {
   production: true,
 
   /**URL Origin Service */
   urlOrigin: BASE_URL,
-  localUrl: LOCAL_URL,
 
-  serviceLogin: '/academy/login',
-  serviceLogout: '/academy/logout',
-  serviceRegister:'/academy/persons/register',
+  serviceLogin: BASE_URL + '/academy/login',
+  serviceLogout: BASE_URL + '/academy/logout',
+  serviceRegister: BASE_URL + '/academy/person/register',
 
-  serviceArea: '/academy/area',
-  servicePractice: '/academy/practice',
+  serviceArea: BASE_URL + '/academy/area',
+  servicePractice: BASE_URL + '/academy/practice',
 
 };
 

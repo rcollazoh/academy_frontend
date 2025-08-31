@@ -41,7 +41,7 @@
       <button mat-button (click)="actionHome()">Inicio</button>
       <button mat-button routerLink="/cursos">Cursos</button>
       <button mat-button routerLink="/contacto">Contacto</button>
-      <button mat-stroked-button color="accent" routerLink="/login">
+      <button mat-stroked-button color="accent" (click)="actionLogin()">
         <mat-icon>login</mat-icon> Login
       </button>
       <button mat-raised-button color="accent" (click)="actionRegister()">

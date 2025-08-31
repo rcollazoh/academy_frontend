@@ -1,0 +1,42 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6 d-none d-md-block ilustracion">
+      <!-- Aquí puedes insertar el logo de PRAD Academy o una imagen SVG -->
+    </div>
+
+    <div class="col-md-6">
+      <h2 class="mb-3">Iniciar sesión</h2>
+      <p class="mb-4 text-muted">Accede a tu cuenta de PRAD Academy.</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="mail@example.com" />
+          @if (form.get('email')?.invalid) {
+            <mat-error>Correo inválido</mat-error>
+          }         
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="mostrarPassword ? 'text' : 'password'" formControlName="password" />
+          <button mat-icon-button matSuffix type="button" (click)="mostrarPassword = !mostrarPassword">
+            <mat-icon>{{ mostrarPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          @if (form.get('password')?.invalid) {
+            <mat-error>Campo obligatorio</mat-error>
+          }  
+        </mat-form-field>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <mat-checkbox>Recordarme</mat-checkbox>
+          <a href="#" class="text-primary small">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="form.invalid">
+          Iniciar sesión
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

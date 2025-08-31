@@ -19,6 +19,10 @@ export class Navbar {
 
   constructor(protected router: Router) { }
 
+  actionLogin() {
+    this.router.navigate([this.routes.LOGIN]);
+  }
+
   actionRegister() {
     this.router.navigate([this.routes.REGISTER]);
   }

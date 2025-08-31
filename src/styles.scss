@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use '@ngneat/hot-toast/src/styles/styles.scss';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.parrafo_small {
+  padding-top: 10px;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0 0 0px !important;
+}
+
+.parrafo-oscuro {
+  font-size: 14px;
+  line-height: 18px;
+}
