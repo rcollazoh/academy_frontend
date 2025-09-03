@@ -1,12 +1,17 @@
 import { Component, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { register } from 'swiper/element/bundle';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+
+register(); // Registra los Web Components de Swiper
 
 @Component({
   selector: 'app-beneficios',
   imports: [MatCardModule, MatIconModule],
   templateUrl: './beneficios.html',
-  styleUrl: './beneficios.scss'
+  styleUrl: './beneficios.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Beneficios {
   beneficios = signal([
@@ -47,13 +52,13 @@ export class Beneficios {
     },
     {
       icono: 'work',
-      titulo: 'Enfoque profesional orientado al entorno laboral',
-      texto: 'Te ofrece una formación integral y actualizada. Se prioriza la aplicación directa de los principios de protección radiológica en escenarios cotidianos.'
+      titulo: 'Enfoque profesional',
+      texto: 'Formación integral y actualizada. Se prioriza la aplicación directa de los principios de protección radiológica en escenarios cotidianos.'
     },
     {
       icono: 'model_training',
-      titulo: 'Contenido integral e inteligente de aprendizaje',
-      texto: 'Diseñado mediante IA, revisado y actualizado por un profesional con varios años de experiencia.'
+      titulo: 'Aprendizaje inteligente',
+      texto: 'Diseñado mediante IA, revisado y actualizado por un profesional con años de experiencia.'
     },
     {
       icono: 'verified',

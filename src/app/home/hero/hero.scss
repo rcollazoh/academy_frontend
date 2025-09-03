@@ -10,4 +10,9 @@ img {
   max-width: 80%;
   height: auto;
   border-radius: 10px;
+
+  @media (max-width: 767px) {
+    margin-top: 1.5rem;
+  }
 }
+

@@ -1,17 +1,30 @@
 <div class="beneficios-container">
-    <h2 class="section-title">Beneficios del Programa</h2>
+  <h2 class="section-title">Beneficios del Programa</h2>
 
-    <div class="beneficios-grid">
-        @for (benef of beneficios(); track $index) {
-        <mat-card class="beneficio-card">
-            <div>
-                <mat-icon class="beneficio-icon">{{ benef.icono }}</mat-icon>
-            </div>
-            <mat-card-title>{{ benef.titulo }}</mat-card-title>
-            <mat-card-content>
-                <p>{{ benef.texto }}</p>
-            </mat-card-content>
+  <swiper-container
+    slides-per-view="4"
+    space-between="0"
+    navigation="false"
+    pagination="true"
+    autoplay-delay="4000"
+    autoplay-disable-on-interaction="false"
+    breakpoints='{
+      "0": { "slidesPerView": 1 },
+      "768": { "slidesPerView": 2 },
+      "1024": { "slidesPerView": 3 },
+      "1300": { "slidesPerView": 4 }
+    }'
+  >
+    @for (benef of beneficios(); track $index) {
+      <swiper-slide>
+        <mat-card class="beneficio-card" appearance="outlined">
+          <mat-icon class="beneficio-icon">{{ benef.icono }}</mat-icon>
+          <mat-card-title>{{ benef.titulo }}</mat-card-title>
+          <mat-card-content>
+            <p>{{ benef.texto }}</p>
+          </mat-card-content>
         </mat-card>
-        }
-    </div>
+      </swiper-slide>
+    }
+  </swiper-container>
 </div>
