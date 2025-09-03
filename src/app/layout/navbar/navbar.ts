@@ -9,7 +9,7 @@ import { Routes } from '../../shared/consts/routes';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatNavList],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })

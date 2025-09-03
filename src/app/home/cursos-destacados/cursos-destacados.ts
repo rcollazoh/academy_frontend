@@ -11,22 +11,40 @@ import { MatCardModule } from '@angular/material/card';
 export class CursosDestacadosComponent {
   cursos = signal([
     {
-      titulo: 'Radiología Clínica',
-      descripcion: 'Aprende a interpretar imágenes médicas con precisión.',
-      imagen: 'assets/images/radiologia-clinica.png',
-      link: '/cursos/radiologia'
+      titulo: 'Industrial-Investigación',
+      descripcion: 'Aplicar medidas de seguridad para controlar la exposición a radiaciones ionizantes durante el uso de fuentes radiactivas y equipos emisores.',
+      imagen: 'assets/images/investigacion.svg',
+      link: ''
     },
     {
-      titulo: 'Tecnología Médica',
-      descripcion: 'Aumenta el dominio de herramientas digitales aplicadas a la salud.',
-      imagen: 'assets/images/tecnologia-medica.png',
-      link: '/cursos/tecnologia'
+      titulo: 'Medicina nuclear',
+      descripcion: 'Controlar la exposición a radionúclidos mediante medidas específicas de seguridad en los procedimientos diagnósticos y terapéuticos.',
+      imagen: 'assets/images/medicina_nuclear.svg',
+      link: ''
     },
     {
-      titulo: 'Anatomía Funcional',
-      descripcion: 'Explora el cuerpo humano desde una perspectiva clínica.',
-      imagen: 'assets/images/anatomia-funcional.png',
-      link: '/cursos/anatomia'
+      titulo: 'Odontología',
+      descripcion: 'Limitar la exposición a radiación del paciente y del personal, mediante el uso seguro y justificado de procedimientos radiológicos.',
+      imagen: 'assets/images/odontologia.svg',
+      link: ''
+    },
+    {
+      titulo: 'Radiología',
+      descripcion: 'Aplicar los principios fundamentales de seguridad para minimizar la exposición a radiaciones ionizantes en pacientes, operadores y público en general.',
+      imagen: 'assets/images/radiologia.svg',
+      link: ''
+    },
+    {
+      titulo: 'Radioterapia',
+      descripcion: 'Garantizar la seguridad del paciente, del personal y del público, minimizando la exposición innecesaria durante el uso terapéutico con radiaciones ionizantes.',
+      imagen: 'assets/images/radioterapia.svg',
+      link: ''
+    },
+    {
+      titulo: 'Veterinaria',
+      descripcion: 'Aplicar principios de seguridad para reducir la exposición del personal y optimizar el uso seguro de radiaciones ionizantes en las mascotas.',
+      imagen: 'assets/images/veterinaria.svg',
+      link: ''
     }
   ]);
 }

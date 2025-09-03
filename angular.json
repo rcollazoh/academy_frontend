@@ -34,6 +34,8 @@
               "src/favicon.ico", "src/assets"],
             "styles": [
               "src/custom-theme.scss",
+              "node_modules/material-icons/iconfont/filled.css",
+              "node_modules/material-icons/iconfont/outlined.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ]

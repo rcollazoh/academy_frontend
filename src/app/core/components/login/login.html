@@ -18,15 +18,18 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100 mb-3">
-          <mat-label>Contraseña</mat-label>
-          <input matInput [type]="mostrarPassword ? 'text' : 'password'" formControlName="password" />
-          <button mat-icon-button matSuffix type="button" (click)="mostrarPassword = !mostrarPassword">
-            <mat-icon>{{ mostrarPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
-          </button>
-          @if (form.get('password')?.invalid) {
-            <mat-error>Campo obligatorio</mat-error>
-          }  
-        </mat-form-field>
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="password" [type]="mostrarPassword ? 'text' : 'password'" required>
+              @if (!mostrarPassword) {
+                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
+              }
+              @if (mostrarPassword) {
+                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
+              }
+              @if (form.get('password')?.invalid) {
+              <mat-error>Campo obligatorio</mat-error>
+              }
+          </mat-form-field>
 
         <div class="d-flex justify-content-between align-items-center mb-3">
           <mat-checkbox>Recordarme</mat-checkbox>

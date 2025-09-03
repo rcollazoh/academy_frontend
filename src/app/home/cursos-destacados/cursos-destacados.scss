@@ -25,4 +25,10 @@
 img {
   max-width: 100%;
   height: auto;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.mat-mdc-card-content>:last-child:not(.mat-mdc-card-footer) {
+    font-size: 14px;
 }
