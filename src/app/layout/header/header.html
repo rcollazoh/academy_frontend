@@ -1,0 +1,17 @@
+<!-- Barra superior -->
+  <mat-toolbar color="primary" class="navbar">
+    <button class="title-button" mat-mini-fab (click)="openMenu()">
+        @if (!isMenuOpened) {
+            <mat-icon class="title-button-icon">menu</mat-icon>
+        }
+        @if (isMenuOpened) {
+            <mat-icon class="title-button-icon">list</mat-icon>
+        }      
+    </button> 
+    <span class="logo">PRAD Academy</span>
+    <span class="spacer"></span>
+
+    <div class="nav-links">
+      <app-app-user></app-app-user>
+    </div>
+  </mat-toolbar>

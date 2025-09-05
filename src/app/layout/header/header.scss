@@ -11,6 +11,7 @@
 .logo {
   font-weight: 700;
   font-size: 1.2rem;
+  margin-left: 20px;
 }
 
 .spacer {
@@ -20,41 +21,6 @@
 .menu-button {
   display: none;
   color: white;
-}
-
-.nav-links button {
-  margin-left: 0.5rem;
-  font-weight: 500;
-}
-
-.nav-button {
-    display: none;
-}
-
-/* Responsive: mostrar menú hamburguesa en móvil */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .nav-button {
-    display: flex;
-}
-}
-
-.example-button-row {
-  max-width: 600px;
-}
-
-.example-button-row .mat-mdc-button-base {
-  border-radius: 50%;
-  width: 35px;
-    height: 35px;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 button {
@@ -84,3 +50,32 @@ mat-icon {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.title-button {
+    background-color: #1a237e;
+    box-shadow: none;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #00000014;
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: #00000014;
+      box-shadow: none;
+    }
+
+    &:focus {
+      background-color: #00000014;
+      box-shadow: none;
+    }
+
+    @media (max-width: 576px) {
+      margin-top: 0;
+    }
+  }
+
+  .title-button-icon {
+    color: white;
+  }

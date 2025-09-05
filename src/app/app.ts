@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./layout/navbar/navbar";
 import { Footer } from "./layout/footer/footer";
-import { NgxUiLoaderComponent, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, NgxUiLoaderModule],
+  imports: [RouterOutlet, NgxUiLoaderModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

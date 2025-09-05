@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Navbar } from "../../../layout/navbar/navbar";
+import { Footer } from "../../../layout/footer/footer";
+import { Router } from '@angular/router';
+import { Routes } from '../../../shared/consts/routes';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../../shared/services/notification.service';
+import { LoginRequest } from '../../../shared/models/login-request';
 
 @Component({
   selector: 'app-login',
@@ -14,25 +22,67 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    Navbar,
+    Footer
+],
   standalone: true,
   templateUrl: './login.html',
   styleUrl: './login.scss'  
 })
 export class Login {
   mostrarPassword = false;
+  public routes: typeof Routes = Routes;
+  loginForm!: FormGroup;
 
-  form = new FormBuilder().group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
-  });
+  constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService, 
+    private authService: AuthService, private notificacionService: NotificationService) { }
 
-  onSubmit() {
-    if (this.form.valid) {
-      // Aquí puedes conectar con tu servicio de autenticación
-      console.log('Login exitoso:', this.form.value);
-    }
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      user: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
+
+  ngOnDestroy() {
+    
+  }
+
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  login() {
+    
+    const loginRequest: LoginRequest = {
+      username: this.f['user'].value,
+      password: this.f['password'].value
+    };
+
+    this.ngxLoaderService.start();
+    this.authService.login(loginRequest).subscribe({
+      next: (res) => {
+        setTimeout(() => {
+          this.ngxLoaderService.stop();
+          this.router.navigate([this.routes.INICIO]);
+        }, 1000);
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+         
+          if(err && err.name=='HttpErrorResponse'){
+            this.notificacionService.notificationError('Por favor, revise su conexión');
+          } else if (err && err.error)
+            this.notificacionService.notificationError(err.error);
+          else {
+            this.notificacionService.notificationError('Error al iniciar sesión');
+          }
+        
+      },
+    });
+  }
+
+  
 }
 

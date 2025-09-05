@@ -1,0 +1,40 @@
+<mat-nav-list class="side-navnar sidebar-icons">
+    @for (menu of menuList(); track $index) {
+    <ng-container>
+        <ng-container [ngTemplateOutlet]="menu.children ? childMenu : parentMenu"
+            [ngTemplateOutletContext]="{ menu: menu }">
+        </ng-container>
+    </ng-container>
+    }
+
+</mat-nav-list>
+
+<ng-template #parentMenu let-menu="menu" class="sidebar-icons">
+    @if (menu.routerLink) {
+    <mat-list-item class="top-level-item" [routerLink]="menu.routerLink" routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }" (click)="onMenuClick(menu.text)" style="cursor: pointer;">
+        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
+    </mat-list-item>
+    }
+    @if (!menu.routerLink) {
+    <mat-list-item [routerLink]="menu.routerLink" (click)="onMenuClick(menu.text)">
+        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
+    </mat-list-item>
+    }
+</ng-template>
+
+<ng-template #childMenu let-menu="menu" class="sidebar-icons">
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+            <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>{{ menu.text }}
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            @for (submenu of menu.children; track $index) {
+            <mat-list-item class="child-level-item" [routerLink]="submenu.routerLink" routerLinkActive="is-active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <mat-icon>{{ submenu.icon }}</mat-icon> {{ submenu.text }}
+            </mat-list-item>
+            }
+        </mat-nav-list>
+    </mat-expansion-panel>
+</ng-template>

@@ -1,45 +1,60 @@
-<div class="container py-5">
-  <div class="row">
-    <div class="col-md-6 d-none d-md-block ilustracion">
-      <!-- Aquí puedes insertar el logo de PRAD Academy o una imagen SVG -->
-    </div>
-
-    <div class="col-md-6">
-      <h2 class="mb-3">Iniciar sesión</h2>
-      <p class="mb-4 text-muted">Accede a tu cuenta de PRAD Academy.</p>
-
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="w-100 mb-3">
-          <mat-label>Correo electrónico</mat-label>
-          <input matInput formControlName="email" type="email" placeholder="mail@example.com" />
-          @if (form.get('email')?.invalid) {
-            <mat-error>Correo inválido</mat-error>
-          }         
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="w-100 mb-3">
-              <mat-label>Contraseña</mat-label>
-              <input matInput formControlName="password" [type]="mostrarPassword ? 'text' : 'password'" required>
-              @if (!mostrarPassword) {
-                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
-              }
-              @if (mostrarPassword) {
-                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
-              }
-              @if (form.get('password')?.invalid) {
-              <mat-error>Campo obligatorio</mat-error>
-              }
-          </mat-form-field>
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <mat-checkbox>Recordarme</mat-checkbox>
-          <a href="#" class="text-primary small">¿Olvidaste tu contraseña?</a>
+<app-navbar></app-navbar>
+<div class="page-holder align-items-center bg-gray-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <div class="text-center text-primary">
+          <img class="img-fluid" width="50%" src="assets/images/logo.png" alt="logo" />
+          <p class="mb-4 mt-4 text-muted">Accede a tu cuenta de PRAD Academy.</p>
         </div>
+        <div class="card text-center">
+          <div class="card-header px-lg-5">
+            <div class="card-heading text-center">Iniciar sesión</div>
+          </div>
+          <div class="card-body p-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+            <form [formGroup]="loginForm">
+              <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput formControlName="user" type="email" placeholder="mail@example.com" />
+                @if (loginForm.get('user')?.hasError('email')) {
+                  <mat-error>Correo inválido</mat-error>
+                }
+                @if (loginForm.get('user')?.hasError('required')) {
+                  <mat-error>Campo obligatorio</mat-error>
+                }                
+              </mat-form-field>
 
-        <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="form.invalid">
-          Iniciar sesión
-        </button>
-      </form>
+              <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" [type]="mostrarPassword ? 'text' : 'password'" required>
+                @if (!mostrarPassword) {
+                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
+                }
+                @if (mostrarPassword) {
+                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
+                }
+                @if (loginForm.get('password')?.invalid) {
+                <mat-error>Campo obligatorio</mat-error>
+                }
+              </mat-form-field>
+              <div class="d-flex align-items-center mb-3" style="justify-content: end;">              
+                <a href="#" class="text-primary small">¿Olvidaste tu contraseña?</a>
+              </div>
+              <button class="form-field-width" mat-flat-button color="primary" type="submit" (click)="login()"
+                [disabled]="!loginForm.valid">
+                Ingresar
+              </button>
+            </form>
+          </div>
+          <div class="card-footer px-lg-5">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4"></div>
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

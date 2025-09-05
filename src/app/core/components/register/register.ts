@@ -15,6 +15,8 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Router } from '@angular/router';
 import { Routes } from '../../../shared/consts/routes';
+import { Navbar } from "../../../layout/navbar/navbar";
+import { Footer } from "../../../layout/footer/footer";
 
 @Component({
   selector: 'app-register',
@@ -25,7 +27,7 @@ import { Routes } from '../../../shared/consts/routes';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule,],
+    MatCheckboxModule, Navbar, Footer],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
