@@ -10,6 +10,7 @@ export const environment = {
   serviceLogin: '/academy/login',
   serviceLogout: '/academy/logout',
   serviceRegister:'/academy/person/register',
+  serviceRefreshToken: '/academy/refresh_token',
 
   serviceArea: '/academy/area',
   servicePractice: '/academy/practice',

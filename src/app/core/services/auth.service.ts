@@ -2,11 +2,15 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, httpResource, H
 import { Injectable, signal } from '@angular/core';
 import { NomAreaDto, NomPracticeDto } from '../../shared/models/nomenclator-model';
 import { ApiCodeMessage } from '../../shared/consts/api-code-message.constant';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Register } from '../../shared/models/register-model';
-import { LoginRequest } from '../../shared/models/login-request';
+import { LoginRequest, LogoutRequest } from '../../shared/models/login-request';
 import { environment } from '../../../environments/environment';
 import { UserLogin } from '../../shared/models/user-model';
+import { Router } from '@angular/router';
+import { Routes } from '../../shared/consts/routes';
+
+const USER_KEY = 'currentUser';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +22,9 @@ export class AuthService {
   refreshToken!: string | null;
   isLoginSource = signal<boolean>(false);
 
-  constructor(private _http: HttpClient) { }
+  public routes: typeof Routes = Routes;
+
+  constructor(private _http: HttpClient, private router: Router) { }
 
   handleServiceError(error: HttpErrorResponse) {
     let mensajeError = undefined;
@@ -74,6 +80,17 @@ export class AuthService {
     }
   }
 
+  public getUser(): Observable<any> {
+    const userEncoded = localStorage.getItem('currentUser');
+    if (userEncoded) {
+      const user = JSON.parse(userEncoded).user;
+      return of(JSON.parse(atob(user)));
+    } else {
+      this.router.navigate([this.routes.LOGIN]);
+      return of(null);
+    }
+  }
+
   /** Registrar nueva persona */
   registerPerson(register: Register): Observable<any> {
     const headers = new HttpHeaders({
@@ -102,11 +119,6 @@ export class AuthService {
       ? (queryParams = queryParams.append('password', loginRequest.password))
       : null;
 
-    const options = {
-      headers: headers,
-      params: queryParams,
-    };
-
     return this._http.get<any>(environment.serviceLogin + '?' + queryParams, {headers, observe: 'response'}).pipe(
       map((data) => {
         if (data.body.result) {
@@ -124,6 +136,66 @@ export class AuthService {
       }),
       catchError(this.handleServiceError)
     );
+  }
+
+  refreshLogin(): Observable<any> {
+    const refreshToken = localStorage.getItem('refreshToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${refreshToken}`
+    });
+
+    const options = {
+      headers: headers,
+      observe: 'response' as const
+    };
+
+    return this._http.get<any>(environment.serviceRefreshToken, options).pipe(
+      map((data) => {
+        if (data.headers){
+          let headers = data.headers;
+          this.accessToken = headers.get("access_token");
+          this.refreshToken = headers.get("refresh_token");
+          this.saveSecurityTokens();
+          return this.accessToken;
+        } else {
+          return false;
+        }
+      }),
+      catchError(this.handleServiceError)
+    );
+  }
+
+  public isLoggedIn(): boolean {
+    const user = window.localStorage.getItem(USER_KEY);
+    if (user) {
+      return true;
+    }
+    return false;
+  }
+
+  logout(data: LogoutRequest): Observable<any> {
+    const HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this._http
+      .post<any>(environment.serviceLogout, data, HttpOptions)
+      .pipe(
+        map((res) => {
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+          /** esta comentado para que no se limpien los codificafdores  que se guardaron ahi */
+          // localStorage.clear();
+          //this.roleService.flushRolesAndPermissions();
+          this.isLoginSource.set(false);
+          return of(true);
+        }),
+        catchError(this.handleServiceError)
+      );
   }
 
 }

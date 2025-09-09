@@ -1,1 +1,22 @@
-<p>app-user works!</p>
+<button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu">
+  <mat-icon class="user-button__icon">person</mat-icon>
+</button>
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <div class="user-menu-title">    
+    <h4 class="user-menu-title__name">{{user?.surnames}}</h4>
+    <div class="user-description">
+      <mat-icon>email</mat-icon>
+      <h5 class="user-menu-title__link" >{{user?.email}}</h5>
+    </div>
+    <div class="user-description">
+      <mat-icon>phone</mat-icon>
+      <h5 class="user-menu-title__link" >{{user?.mobilePhone}}</h5>
+    </div>    
+  </div>
+  <div class="sign-button-wrapper">
+    <button class="sign-button" matButton="outlined">Editar perfil</button>
+  </div>
+  <div class="sign-button-wrapper">
+    <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>
+  </div>
+</mat-menu>

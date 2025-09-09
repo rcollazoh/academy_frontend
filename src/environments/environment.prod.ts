@@ -9,6 +9,7 @@ export const environment = {
   serviceLogin: BASE_URL + '/academy/login',
   serviceLogout: BASE_URL + '/academy/logout',
   serviceRegister: BASE_URL + '/academy/person/register',
+  serviceRefreshToken: BASE_URL + '/academy/refresh_token',
 
   serviceArea: BASE_URL + '/academy/area',
   servicePractice: BASE_URL + '/academy/practice',

@@ -12,6 +12,6 @@
     <span class="spacer"></span>
 
     <div class="nav-links">
-      <app-app-user></app-app-user>
+      <app-app-user [user]="user$ | async" (signOut)="signOut()"></app-app-user>
     </div>
   </mat-toolbar>

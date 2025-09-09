@@ -2,10 +2,13 @@ import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListen
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, POSITION, SPINNER } from 'ngx-ui-loader';
 import { environment } from '../environments/environment';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 /** Configuraciones del spinner */
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -38,7 +41,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
     provideHotToastConfig(),
     importProvidersFrom(
       NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
@@ -51,6 +54,9 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: "PROD_MODE", useValue: environment.production,
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true }
   ]
 };
