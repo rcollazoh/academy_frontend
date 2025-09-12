@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Aplicar al curso</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="outline" class="full-width" style="margin-top: 1rem;">
+        <mat-label>Forma de pago</mat-label>
+        <mat-select formControlName="metodo">
+            @for (item of metodos; track $index) {
+            <mat-option [value]="item.value">
+                {{ item.label }}
+            </mat-option>
+            }
+        </mat-select>
+        @if (form.get('metodo')?.hasError('required')) {
+        <mat-error>
+            Seleccione una forma de pago
+        </mat-error>
+        }
+
+    </mat-form-field>
+
+    <div class="file-upload">
+        <button mat-stroked-button color="accent" (click)="fileInput.click()">
+            <mat-icon class="upload-icon">upload</mat-icon>
+            {{ selectedFileName ? 'Cambiar imagen' : 'Seleccionar imagen' }}
+        </button>
+        <span class="file-name">{{ selectedFileName }}</span>
+        <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
+    </div>
+
+
+    <!-- Previsualización -->
+    @if (previewUrl) {
+    <div class="preview-container">
+        <img [src]="previewUrl" alt="Vista previa" class="preview-img">
+    </div>
+    }
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
+        Aceptar
+    </button>
+</mat-dialog-actions>

@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     private isRefreshing = false;
     private refreshTokenSubject = new BehaviorSubject<any>(null);
-    public user$: Observable<UserLogin>;
+    //public user$: Observable<UserLogin>;
 
     userData!: UserLogin;
 
@@ -23,19 +23,21 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private authService: AuthService,
         private router: Router, private notificacionService: NotificationService, private dialog: MatDialog) {
-        this.user$ = this.authService.getUser();
+        //this.user$ = this.authService.getUser();
     }
 
     // @ts-ignore
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         /** urls que no llevan token*/
-        if (req.url.includes('login') || req.url.includes('register') || req.url.includes('practice') || req.url.includes('area')) {
+        if ((req.url.includes('login') || req.url.includes('register') || req.url.includes('practice') || req.url.includes('area')) && !req.url.includes('student_course')) {
 
-            return next.handle(req).pipe(catchError(error => {
-                return throwError(() => error);
-            }));
+            return next.handle(req).pipe(
+                catchError(error => {
+                    return throwError(() => error);
+                }
+            ));
 
-        } else if (req.url.includes('/academy/imagenes')) {//Servicios que no llevan 'Content-Type': 'application/json',
+        } else if (req.url.includes('/academy/student_course/apply')) {//Servicios que no llevan 'Content-Type': 'application/json',
 
             const accessToken = localStorage.getItem('accessToken');
 

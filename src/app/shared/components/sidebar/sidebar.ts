@@ -35,18 +35,18 @@ export class Sidebar implements OnInit {
           routerLink: '/app/inicio'
         },
         {
+          text: 'Curso actual',
+          icon: 'school',
+          routerLink: '/app/courses'
+        },
+        {
           text: 'Mis cursos',
           icon: 'book',
           routerLink: '/app/courses'
         },
         {
-          text: 'Curso actual',
-          icon: 'local_taxi',
-          routerLink: '/app/courses'
-        },
-        {
           text: 'Cerrar sesión',
-          icon: 'group',
+          icon: 'exit_to_app',
           routerLink: '/app/courses'
         },
       ]

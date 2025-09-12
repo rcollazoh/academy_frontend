@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { RouteService } from '../../services/route.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-error-dialog',
-  imports: [],
+  imports: [MatDialogModule, MatButtonModule],
   templateUrl: './error-dialog.html',
   styleUrl: './error-dialog.scss'
 })

@@ -9,7 +9,7 @@ import { Footer } from "../../layout/footer/footer";
 
 @Component({
   selector: 'app-principal',
-  imports: [Hero, CursosDestacadosComponent, VideoDestacado, Beneficios, Certificaciones, Navbar, Footer],
+  imports: [Hero, CursosDestacadosComponent, Beneficios, Certificaciones, Navbar, Footer],
   templateUrl: './principal.html',
   styleUrl: './principal.scss'
 })

@@ -147,3 +147,9 @@
 ::ng-deep .sidebar-icons .mdc-list-item__primary-text {
     letter-spacing: normal;
 }
+
+::ng-deep .mat-drawer-opened {
+    transform: none;
+    border-radius: 0px;
+    border-right: 1px solid #0000001f;
+}

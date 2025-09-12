@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { Routes } from '../../../shared/consts/routes';
 import { Navbar } from "../../../layout/navbar/navbar";
 import { Footer } from "../../../layout/footer/footer";
+import { LoginRequest } from '../../../shared/models/login-request';
 
 @Component({
   selector: 'app-register',
@@ -56,7 +57,7 @@ export class Register implements OnInit {
       isUser: [false],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirm: ['', Validators.required],
-      id_number: ['', Validators.required],
+      idNumber: ['', Validators.required],
       areaId: [{ value: null, disabled: false }, Validators.required],
       practiceId: [{ value: null, disabled: false }, Validators.required],
     },
@@ -130,10 +131,10 @@ export class Register implements OnInit {
         .subscribe({
           next: (res) => {
             this.ngxLoaderService.stop();
+            this.login();
             this.notificacionService.notificationSuccess(
-              'Registro exitoso, inicie sesión con las credenciales creadas'
+              'Registro exitoso'
             );
-            this.router.navigate([this.routes.HOME]);
           },
           error: (err) => {
             this.ngxLoaderService.stop();
@@ -145,6 +146,27 @@ export class Register implements OnInit {
     } else {
       this.form.get('confirm')?.setErrors({ mismatch: true });
     }
+  }
+
+  login() {
+    const loginRequest: LoginRequest = {
+      username: this.form.controls['email'].value,
+      password: this.form.controls['password'].value
+    };
+
+    this.ngxLoaderService.start();
+    this.authService.login(loginRequest).subscribe({
+      next: (res) => {
+        setTimeout(() => {
+          this.ngxLoaderService.stop();
+          this.router.navigate([this.routes.INICIO]);
+        }, 1000);
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+        this.router.navigate([this.routes.HOME]);
+      },
+    });
   }
 
 }

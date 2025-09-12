@@ -1,0 +1,38 @@
+.full-width {
+  width: 100%;
+}
+
+.file-upload {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+}
+
+.preview-container {
+  margin-top: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.upload-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  font-size: 20px;
+}
+
+.file-name {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}

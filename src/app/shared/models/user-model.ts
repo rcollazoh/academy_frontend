@@ -3,4 +3,6 @@ export interface UserLogin {
   surnames: string;
   email: string; 
   mobilePhone: string;
+  areaId: number;
+  practiceId: number;
 }

@@ -14,4 +14,10 @@ export const environment = {
 
   serviceArea: '/academy/area',
   servicePractice: '/academy/practice',
+
+  serviceEstudentCourse: '/academy/student_course',
+
+  servicePerson: '/academy/person',
+
+  serviceApplyCourse: '/academy/student_course/apply'
 };

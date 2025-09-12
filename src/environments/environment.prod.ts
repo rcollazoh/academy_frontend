@@ -14,6 +14,12 @@ export const environment = {
   serviceArea: BASE_URL + '/academy/area',
   servicePractice: BASE_URL + '/academy/practice',
 
+  serviceEstudentCourse: BASE_URL + '/academy/student_course',
+
+  servicePerson: BASE_URL + '/academy/person',
+
+  serviceApplyCourse: BASE_URL + '/academy/student_course/apply'
+
 };
 
 

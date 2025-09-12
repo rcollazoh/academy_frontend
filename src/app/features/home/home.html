@@ -1,1 +1,44 @@
-<p>home works!</p>
+<div class="modal-header">
+    <mat-card class="field-full-width">
+        <h2 class="modal-title cursor-arrow">Información del curso</h2>
+    </mat-card>
+</div>
+
+<div class="container-fluid">
+    <mat-card class="course-card" @fadeIn>
+      <mat-card-header>
+        <div class="header-content">
+          <span class="course-title">{{ course().course?.name }}</span>
+          @if (buttonLabel()) {
+            <button class="sign-button" mat-flat-button (click)="onAction()" matTooltip="Aplique para comenzar un nuevo curso">{{ buttonLabel() }}</button>
+          }          
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <fieldset style="border-radius: 0.3em">
+            <legend>Estado</legend>
+            <p>{{ estadoMensaje() }}</p>
+        </fieldset> 
+
+        <fieldset style="border-radius: 0.3em; max-width: 8rem; display: flex; justify-content: center;">
+            <legend>Precio</legend>
+            <p>{{ course().course?.price }} USD </p>
+        </fieldset> 
+
+        <fieldset style="border-radius: 0.3em">
+            <legend>Duración</legend>
+            <p>Para la realización del curso cuenta con {{ course().course?.durationDays }} días luego de que este sea aprobado por el profesor.</p>
+        </fieldset>   
+
+        <fieldset style="border-radius: 0.3em">
+            <legend>Descripción</legend>
+            <p>{{ course().course?.description }}</p>
+        </fieldset>    
+        
+      </mat-card-content>
+    </mat-card>
+</div>
+
+
