@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>  
+    {{title}} 
+</h2>
+
+<div mat-dialog-content style="text-align: center;">
+  <p>{{message}}</p>
+</div>
+
+<div mat-dialog-actions align="end">
+    @if (confirmBottom) {
+        <button mat-raised-button color="primary" (click)="onConfirm()">{{confirmLabelBottom}}</button>
+    }
+  @if (dismissBottom) {
+    <button mat-button (click)="onDismiss()">{{dismissLabelBottom}}</button>
+  }  
+</div>

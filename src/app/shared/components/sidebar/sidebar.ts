@@ -6,7 +6,17 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { Menu } from '../../models/menu-model';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LogoutRequest } from '../../models/login-request';
+import { Observable, take } from 'rxjs';
+import { UserLogin } from '../../models/user-model';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AuthService } from '../../../core/services/auth.service';
+import { NotificationService } from '../../services/notification.service';
+import { Routes } from '../../consts/routes';
+import { ErrorDialog, ErrorDialogModel } from '../error-dialog/error-dialog';
+import { ConfirmDialog, ConfirmDialogModel } from '../confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,11 +28,25 @@ import { RouterLink } from '@angular/router';
 })
 export class Sidebar implements OnInit {
 
+  public user$: Observable<UserLogin>;
+
   menuList!: Signal<Menu[]>;
+
+  public routes: typeof Routes = Routes;
+
+  constructor(private authService: AuthService, private dialog: MatDialog, protected ngxLoaderService: NgxUiLoaderService,
+              private notificacionService: NotificationService,
+              private router: Router) {
+    this.user$ = this.authService.getUser();
+  }
 
   ngOnInit(): void {
     this.menuList = this.getList();
   }
+
+  isActive(route: string): boolean {
+  return this.router.isActive(route, {paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'});
+}
 
   //Json del menu
   getList(): Signal<Menu[]> {
@@ -37,7 +61,7 @@ export class Sidebar implements OnInit {
         {
           text: 'Curso actual',
           icon: 'school',
-          routerLink: '/app/courses'
+          routerLink: '/app/course'
         },
         {
           text: 'Mis cursos',
@@ -46,8 +70,7 @@ export class Sidebar implements OnInit {
         },
         {
           text: 'Cerrar sesión',
-          icon: 'exit_to_app',
-          routerLink: '/app/courses'
+          icon: 'exit_to_app'
         },
       ]
     
@@ -57,8 +80,75 @@ export class Sidebar implements OnInit {
 
   onMenuClick(menu: string): void {
     if (menu === 'Cerrar sesión') {
-      //this.openDialog();
+      this.openDialog();
     }
+  }
+
+  openDialog(): void {
+    let msg = 'Seguro desea cerrar la sesión';
+    const dialogData = new ConfirmDialogModel('Advertencia', msg, true, 'Aceptar', true, 'Cancelar');
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      maxWidth: '400px',
+      data: dialogData,
+    });
+
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        this.signOut();
+      }
+    });
+  }
+
+  public signOut(): void {
+    this.ngxLoaderService.start();
+
+    this.authService.logout(this.getUserDataToLogout()).subscribe({
+      next: (res) => {
+        this.ngxLoaderService.stop();
+        this.router.navigate([this.routes.HOME]);
+      },
+        error: (err) => {
+      this.ngxLoaderService.stop();
+      if(err.name=='HttpErrorResponse'){
+        let msg = 'Por favor, revise su conexión.';
+        const dialogData = new ErrorDialogModel('Error', msg);
+        const dialogRef = this.dialog.open(ErrorDialog, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
+      }
+      else {
+        const dialogData = new ErrorDialogModel('Error', err);
+        const dialogRef = this.dialog.open(ErrorDialog, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
+      }
+
+    },
+    }
+    );
+  }
+
+  getLogedUserName(): any {
+    let userData = undefined;
+    const sub = this.user$
+      .pipe(take(1))
+      .subscribe((user: UserLogin) => (userData = user));
+    sub.unsubscribe();
+    return userData;
+  }
+
+  getUserDataToLogout(): LogoutRequest {
+    let userData: any;
+    const sub = this.user$
+      .pipe(take(1))
+      .subscribe((user: UserLogin) => (userData = user));
+    sub.unsubscribe();
+    const logoutData = {
+      personId: userData.id,
+    };
+    return logoutData;
   }
   
 

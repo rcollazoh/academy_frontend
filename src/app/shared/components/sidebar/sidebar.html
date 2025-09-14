@@ -11,8 +11,7 @@
 
 <ng-template #parentMenu let-menu="menu" class="sidebar-icons">
     @if (menu.routerLink) {
-    <mat-list-item class="top-level-item" [routerLink]="menu.routerLink" routerLinkActive="is-active"
-        [routerLinkActiveOptions]="{ exact: true }" (click)="onMenuClick(menu.text)" style="cursor: pointer;">
+    <mat-list-item class="top-level-item" [routerLink]="menu.routerLink" [ngClass]="{ 'is-active': isActive(menu.routerLink) }" (click)="onMenuClick(menu.text)" style="cursor: pointer;">
         <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
     </mat-list-item>
     }
