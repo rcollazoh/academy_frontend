@@ -4,6 +4,7 @@ import { ApiCodeMessage } from '../../shared/consts/api-code-message.constant';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PersonEntity } from '../../shared/models/person-model';
 
 @Injectable({
   providedIn: 'root'
@@ -79,6 +80,22 @@ export class FeaturesService {
       .post<any>(environment.serviceApplyCourse, formData, { headers: headers, responseType: "blob" as "json" })
       .pipe(
         map(data => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data))),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  /** Editar perfil */
+  editPerson(reqUser: PersonEntity, personId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .put<any>(environment.servicePerson + `/${personId}`, reqUser, {
+        headers,
+      })
+      .pipe(
+        map((res) => res),
         catchError(this.handleServiceError)
       );
   }

@@ -3,5 +3,6 @@ export enum Routes {
   LOGIN = '/login',
   REGISTER = '/register',
   INFORMATION = '/information',
-  INICIO = '/app/inicio'
+  INICIO = '/app/inicio',
+  EDIT_USER = '/app/perfil',
 }
