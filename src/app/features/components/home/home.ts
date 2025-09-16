@@ -5,15 +5,15 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Router } from '@angular/router';
-import { FeaturesService } from '../services/features.service';
-import { AuthService } from '../../core/services/auth.service';
-import { ErrorDialog, ErrorDialogModel } from '../../shared/components/error-dialog/error-dialog';
+import { FeaturesService } from '../../services/features.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { UserLogin } from '../../shared/models/user-model';
+import { UserLogin } from '../../../shared/models/user-model';
 import { Observable, take } from 'rxjs';
-import { Course } from '../../shared/models/course-model';
-import { EstadoCurso } from '../../shared/consts/estado-curso';
-import { ApplyCourseDialog, ApplyDialogModel } from '../../shared/components/apply-course-dialog/apply-course-dialog';
+import { Course } from '../../../shared/models/course-model';
+import { EstadoCurso } from '../../../shared/consts/estado-curso';
+import { ApplyCourseDialog, ApplyDialogModel } from '../../../shared/components/apply-course-dialog/apply-course-dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({

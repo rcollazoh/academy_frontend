@@ -1,18 +1,18 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { OnExit } from '../../core/guards/exit-guard';
+import { OnExit } from '../../../core/guards/exit-guard';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Routes } from '../../shared/consts/routes';
+import { Routes } from '../../../shared/consts/routes';
 import { Observable, Subscription, take } from 'rxjs';
-import { UserLogin } from '../../shared/models/user-model';
+import { UserLogin } from '../../../shared/models/user-model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { NotificationService } from '../../shared/services/notification.service';
-import { RouteService } from '../../shared/services/route.service';
+import { NotificationService } from '../../../shared/services/notification.service';
+import { RouteService } from '../../../shared/services/route.service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '../../core/services/auth.service';
-import { FeaturesService } from '../services/features.service';
-import { ConfirmDialog, ConfirmDialogModel } from '../../shared/components/confirm-dialog/confirm-dialog';
+import { AuthService } from '../../../core/services/auth.service';
+import { FeaturesService } from '../../services/features.service';
+import { ConfirmDialog, ConfirmDialogModel } from '../../../shared/components/confirm-dialog/confirm-dialog';
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,10 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { PersonEntity } from '../../shared/models/person-model';
-import { ErrorDialog, ErrorDialogModel } from '../../shared/components/error-dialog/error-dialog';
-import { Nomenclators } from '../../shared/services/nomenclators.service';
-import { NomAreaDto, NomPracticeDto } from '../../shared/models/nomenclator-model';
+import { PersonEntity } from '../../../shared/models/person-model';
+import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
+import { Nomenclators } from '../../../shared/services/nomenclators.service';
+import { NomAreaDto, NomPracticeDto } from '../../../shared/models/nomenclator-model';
 
 @Component({
   selector: 'app-update-person',
