@@ -56,29 +56,37 @@ export class Sidebar implements OnInit {
         {
           text: 'Información',
           icon: 'dashboard',
-          routerLink: '/app/inicio'
+          routerLink: '/app/inicio',
+          role: ['student', 'teacher', 'admin']
         },
         {
           text: 'Curso actual',
           icon: 'school',
-          routerLink: '/app/course-active'
+          routerLink: '/app/course-active',
+          role: ['student']
         },
         {
           text: 'Mis cursos',
           icon: 'book',
-          routerLink: '/app/student-courses'
+          routerLink: '/app/student-courses',
+          role: ['student']
         },
         {
           text: 'Cursos',
           icon: 'book',
-          routerLink: '/app/courses'
+          routerLink: '/app/courses',
+          role: ['student','teacher', 'admin']
         },
         {
           text: 'Cerrar sesión',
-          icon: 'exit_to_app'
+          icon: 'exit_to_app',
+          role: ['student', 'teacher', 'admin']
         },
       ]
-    
+
+    if(this.getLogedUserName().rol){
+      menuList = menuList.filter(v => v.role.includes(this.getLogedUserName().rol));
+    }    
   
     return signal(menuList);
   }

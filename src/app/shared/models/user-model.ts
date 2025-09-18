@@ -5,4 +5,5 @@ export interface UserLogin {
   mobilePhone: string;
   areaId: number;
   practiceId: number;
+  rol: string;
 }

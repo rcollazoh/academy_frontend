@@ -123,6 +123,7 @@ export class AuthService {
       map((data) => {
         if (data.body.result) {
           this.user = data.body.result;
+          this.user.rol = data.body.result.authorities[0].authority;
           let headers = data.headers;
           this.accessToken = headers.get("access_token");
           this.refreshToken = headers.get("refresh_token");

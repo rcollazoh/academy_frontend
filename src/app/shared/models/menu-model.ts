@@ -2,7 +2,8 @@ export interface Menu {
   text: string,
   icon: string,
   routerLink?: string,
-  children?: MenuItem[]
+  children?: MenuItem[],
+  role: string[]
 }
 export interface MenuItem {
   text: string,
