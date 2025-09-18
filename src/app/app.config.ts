@@ -10,6 +10,9 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getSpanishPaginatorIntl } from './shared/material/spanish-paginator-intl';
 
 /** Configuraciones del spinner */
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -59,6 +62,11 @@ export const appConfig: ApplicationConfig = {
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true },
-    provideAnimations()
+    provideAnimations(),
+    DatePipe,
+    {
+      provide: MatPaginatorIntl,
+      useValue: getSpanishPaginatorIntl(),
+    },
   ]
 };

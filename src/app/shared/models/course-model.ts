@@ -7,4 +7,8 @@ export interface Course {
   startDate: string;
   endDate: string;
   status: string;
+  paymentMethod?: string;
+  personName?:string;
+  personLastName?: string;
+  personEmail?: string;
 }

@@ -47,8 +47,6 @@ export class Home implements OnInit {
   buttonLabel = computed(() => {
     switch (this.course()?.status) {
       case 'NEW': return 'Aplicar';
-      case 'PENDING': return '';
-      case 'ACTIVATED': return 'Iniciar';
       case 'REJECTED': return 'Aplicar';
       default: return '';
     }
@@ -58,7 +56,7 @@ export class Home implements OnInit {
     switch (this.course()?.status) {
       case 'NEW': return 'Debe seleccionar la opción aplicar para iniciar un nuevo curso.';
       case 'PENDING': return 'Pendiente a confirmar por el profesor.';
-      case 'ACTIVATED': return 'Inicie el curso para comenzar sus clases.';
+      case 'ACTIVATED': return 'El curso fue activado, puede comenzar las clases.';
       case 'REJECTED': return 'El curso fue rechazado por el profesor, debe aplicar al curso nuevamente.';
       default: return '';
     }

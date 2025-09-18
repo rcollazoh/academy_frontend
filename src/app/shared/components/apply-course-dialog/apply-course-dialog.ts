@@ -112,7 +112,7 @@ export class ApplyCourseDialog implements OnInit {
     formData.append('paymentMethod', this.form.value.metodo!);
     formData.append('payment', this.compressedFile);
 
-    this.featuresService.addPhoto(formData).subscribe({
+    this.featuresService.applyCourse(formData).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
         this.dialogRef.close({ success: true });

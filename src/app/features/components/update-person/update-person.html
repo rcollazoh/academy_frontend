@@ -27,7 +27,7 @@
                                         <input matInput type="text" formControlName="name" [required]="true"
                                             selectOnFocus />
                                         @if (userForm.get('name')?.hasError('required')) {
-                                        <mat-error *ngIf="">Campo obligatorio.
+                                        <mat-error>Campo obligatorio.
                                         </mat-error>
                                         }
                                     </mat-form-field>
@@ -40,7 +40,7 @@
                                         <input matInput type="text" formControlName="lastName" [required]="false"
                                             selectOnFocus />
                                         @if (userForm.get('lastname')?.hasError('required')) {
-                                        <mat-error *ngIf="">Campo obligatorio.
+                                        <mat-error>Campo obligatorio.
                                         </mat-error>
                                         }
                                     </mat-form-field>
