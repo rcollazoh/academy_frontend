@@ -24,7 +24,7 @@ export const routes: Routes = [
         component: ActiveCourse,
         data: {
           permissions: {
-            only: ['student', 'teacher', 'admin'],
+            only: ['STUDENT', 'TEACHER', 'ADMIN'],
           }
         },
       },
@@ -34,7 +34,7 @@ export const routes: Routes = [
         component: MyCourses,
         data: {
           permissions: {
-            only: ['student', 'teacher', 'admin'],
+            only: ['STUDENT', 'TEACHER', 'ADMIN'],
           }
         },
       },
@@ -44,7 +44,7 @@ export const routes: Routes = [
         component: Courses,
         data: {
           permissions: {
-            only: ['student','teacher', 'admin'],
+            only: ['STUDENT', 'TEACHER', 'ADMIN'],
           }
         },
       },
