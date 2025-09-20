@@ -75,7 +75,7 @@ export class Sidebar implements OnInit {
           text: 'Cursos',
           icon: 'book',
           routerLink: '/app/courses',
-          role: ['STUDENT', 'TEACHER', 'ADMIN']
+          role: ['TEACHER', 'ADMIN']
         },
         {
           text: 'Cerrar sesión',

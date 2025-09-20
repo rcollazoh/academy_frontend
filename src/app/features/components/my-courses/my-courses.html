@@ -27,10 +27,10 @@
 					</ng-container>
 					<ng-container matColumnDef="status">
 						<mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-						<mat-cell *matCellDef="let row" data-label="status">{{ row.status }}</mat-cell>
+						<mat-cell *matCellDef="let row" data-label="status">{{ row.status | statePipe }}</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="requiresInvoice">
-						<mat-header-cell *matHeaderCellDef>Requiere factura</mat-header-cell>
+						<mat-header-cell *matHeaderCellDef>Factura enviada</mat-header-cell>
 						<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' : 'No' }}</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="receiptUrl">

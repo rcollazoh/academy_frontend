@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { PaymentWayPipe } from '../../../shared/pipes/payment-way-pipe';
+import { StatePipe } from '../../../shared/pipes/state-pipe';
 
 @Component({
   selector: 'app-my-courses',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe, StatePipe],
   templateUrl: './my-courses.html',
   styleUrl: './my-courses.scss'
 })

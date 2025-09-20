@@ -1,21 +1,21 @@
-@import "colors";
-@import "variables";
-@import "font";
+@use "colors";
+@use "variables";
+@use "font";
 
 .user-button {
-  background-color: $blue;
+  background-color: colors.$blue;
   box-shadow: none;
   margin-left: 16px;
 
   &__icon {
-    color: $white;
+  color: colors.$white;
   }
 
   &:hover {
-    background-color: $black-08;
+  background-color: colors.$black-08;
   }
 
-  @media (max-width: $small) {
+  @media (max-width: variables.$small) {
     margin-top: 0;
   }
 }
@@ -26,22 +26,22 @@
 
   &__name {
     margin-bottom: 4px;
-    font-weight: $fw-lighter;
-    font-size: $fs-large;
-    color: $dark-grey;
+  font-weight: variables.$fw-lighter;
+  font-size: variables.$fs-large;
+  color: colors.$dark-grey;
   }
 
   &__link {
-    color: $blue;
-    font-weight: $fw-lighter;
-    font-size: $fs-small;
+  color: colors.$blue;
+  font-weight: variables.$fw-lighter;
+  font-size: variables.$fs-small;
     text-decoration: none;
     margin-top: 2px;
   }
 }
 
 .user-menu-icon {
-  color: $light-grey;
+  color: colors.$light-grey;
   margin-right: 16px;
   opacity: 0.8;
 }
@@ -54,27 +54,27 @@
 
 .sign-button {
   border: 1px solid;
-  color: $white;
+  color: colors.$white;
   width: 80%;
 }
 
 .edit-button {
   border: 1px solid;
-  color: $blue;
+  color: colors.$blue;
   width: 80%;
 }
 
 .user-menu {
   &__item-title {
-    color: $dark-grey;
+  color: colors.$dark-grey;
 
     & .user-menu-icon {
       color: #536dfe;
     }
 
     &:hover {
-      color: $dark-grey;
-      background-color: $blue-white;
+      color: colors.$dark-grey;
+      background-color: colors.$blue-white;
     }
   }
 }

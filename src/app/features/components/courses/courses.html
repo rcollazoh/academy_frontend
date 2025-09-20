@@ -88,7 +88,7 @@
               Estado
             </mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="status">
-              {{ row.status | emptyField  }}
+              {{ row.status | statePipe  }}
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="paymentMethod">
