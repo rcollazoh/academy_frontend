@@ -1,1 +1,58 @@
-<p>my-courses works!</p>
+<div class="modal-header">
+    <mat-card class="field-full-width">
+        <div class="row">
+            <div class="col-md-11">
+                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Mis cursos</h2>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="container-fluid">
+	<div class="row" style="margin-bottom: 15px">
+		<div class="col-sm-12">
+			<div class="mat-elevation-z8">
+				<table mat-table [dataSource]="courses()" multiTemplateDataRows class="curso-table">
+					<ng-container matColumnDef="configCourseName">
+						<mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="configCourseName">{{ row.configCourseName }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="startDate">
+						<mat-header-cell *matHeaderCellDef>Fecha inicio</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="startDate">{{ row.startDate }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="endDate">
+						<mat-header-cell *matHeaderCellDef>Fecha fin</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="endDate">{{ row.endDate }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="status">
+						<mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="status">{{ row.status }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="requiresInvoice">
+						<mat-header-cell *matHeaderCellDef>Requiere factura</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' : 'No' }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="receiptUrl">
+						<mat-header-cell *matHeaderCellDef>Recibo</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="receiptUrl">
+							<a *ngIf="row.receiptUrl" [href]="row.receiptUrl" target="_blank">Ver recibo</a>
+						</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="paymentMethod">
+						<mat-header-cell *matHeaderCellDef>Método de pago</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="paymentMethod">{{ row.paymentMethod | paymentWay }}</mat-cell>
+					</ng-container>
+
+					<ng-container matColumnDef="noRecord">
+						<mat-footer-cell [attr.colspan]="7" *matFooterCellDef>No existen datos para mostrar.</mat-footer-cell>
+					</ng-container>
+
+					<mat-header-row *matHeaderRowDef="['configCourseName', 'startDate', 'endDate', 'status', 'requiresInvoice', 'receiptUrl', 'paymentMethod']"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: ['configCourseName', 'startDate', 'endDate', 'status', 'requiresInvoice', 'receiptUrl', 'paymentMethod']"></mat-row>
+					<mat-footer-row [hidden]="courses().length > 0" *matFooterRowDef="['noRecord']"></mat-footer-row>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

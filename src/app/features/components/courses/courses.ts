@@ -29,7 +29,7 @@ import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
 
 @Component({
   selector: 'app-courses',
-  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule, EmptyFieldPipe, CommonModule, MatButtonModule, RouterLink, MatIconModule, MatTooltipModule, StatePipe, PaymentWayPipe],
+  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule, EmptyFieldPipe, CommonModule, MatButtonModule, RouterLink, MatIconModule, MatTooltipModule, PaymentWayPipe],
   templateUrl: './courses.html',
   styleUrl: './courses.scss'
 })

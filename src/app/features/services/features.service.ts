@@ -12,6 +12,19 @@ import { CourseRequest } from '../../shared/models/course-request-model';
 })
 export class FeaturesService {
 
+  /** Obtener cursos por persona */
+  getStudentCoursesByPerson(personId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceEstudentCourse + `/by-person/${personId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
   constructor(private _http: HttpClient, private domSanitizer: DomSanitizer) { }
 
   handleServiceError(error: HttpErrorResponse) {

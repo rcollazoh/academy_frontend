@@ -50,10 +50,10 @@
   <div class="row" style="margin-bottom: 15px">
     <div class="col-sm-12">
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="courseList" multiTemplateDataRows class="curso-table">
+  <table mat-table [dataSource]="courseList" multiTemplateDataRows class="curso-table bordered-table">
           <ng-container matColumnDef="personName">
             <mat-header-cell *matHeaderCellDef>
-              Nombre
+              Nombres
             </mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="personName">
               {{ row.personName | emptyField}}
@@ -88,7 +88,7 @@
               Estado
             </mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="status">
-              {{ row.status | statePipe }}
+              {{ row.status | emptyField  }}
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="paymentMethod">
