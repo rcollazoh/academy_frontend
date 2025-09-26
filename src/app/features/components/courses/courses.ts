@@ -90,27 +90,27 @@ export class Courses implements OnInit {
         description: 'Nuevo'
       },
       {
-        id: 0,
+        id: 1,
         name: 'PENDING',
         description: 'Pendiente'
       },
       {
-        id: 0,
+        id: 2,
         name: 'ACTIVATED',
         description: 'Activado'
       },
       {
-        id: 0,
+        id: 3,
         name: 'REJECTED',
         description: 'Rechazado'
       },
       {
-        id: 0,
+        id: 4,
         name: 'APPROVED',
         description: 'Aprobado'
       },
       {
-        id: 0,
+        id: 5,
         name: 'NOT_APPROVED',
         description: 'No aprobado'
       }

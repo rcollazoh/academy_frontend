@@ -14,11 +14,19 @@ export const environment = {
   serviceArea: BASE_URL + '/academy/area',
   servicePractice: BASE_URL + '/academy/practice',
 
-  serviceEstudentCourse: BASE_URL + '/academy/student_course',
+  serviceStudentCourse: BASE_URL + '/academy/student_course',
 
   servicePerson: BASE_URL + '/academy/person',
 
-  serviceApplyCourse: BASE_URL + '/academy/student_course/apply'
+  serviceApplyCourse: BASE_URL + '/academy/student_course/apply',
+
+  serviceStudentModule: BASE_URL + '/academy/student_module',
+
+  serviceConfigClassImage: BASE_URL + '/academy/config_class_image',
+
+  serviceStudentClass: BASE_URL + '/academy/student_class',
+
+  serviceImagenes: BASE_URL + '/academy/image',
 
 };
 

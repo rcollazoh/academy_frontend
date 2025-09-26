@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiCodeMessage } from '../../shared/consts/api-code-message.constant';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PersonEntity } from '../../shared/models/person-model';
@@ -11,19 +11,6 @@ import { CourseRequest } from '../../shared/models/course-request-model';
   providedIn: 'root'
 })
 export class FeaturesService {
-
-  /** Obtener cursos por persona */
-  getStudentCoursesByPerson(personId: number): Observable<any> {
-    const headers = new HttpHeaders({
-      accept: 'application/json',
-    });
-    return this._http
-      .get<any>(environment.serviceEstudentCourse + `/by-person/${personId}`, { headers })
-      .pipe(
-        map((data) => data),
-        catchError(this.handleServiceError)
-      );
-  }
 
   constructor(private _http: HttpClient, private domSanitizer: DomSanitizer) { }
 
@@ -59,13 +46,26 @@ export class FeaturesService {
     return throwError(() => mensajeError);
   }
 
+  /** Obtener cursos por persona */
+  getStudentCoursesByPerson(personId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceStudentCourse + `/by-person/${personId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
   getStudentCourseByPersonByAreaAndPractice(personId: number, areaId: number, practiceId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
 
     return this._http
-      .get<any>(environment.serviceEstudentCourse + `/by-person` + `/${personId}` + `/by-area` + `/${areaId}` + `/by-practice` + `/${practiceId}`, { headers })
+      .get<any>(environment.serviceStudentCourse + `/by-person` + `/${personId}` + `/by-area` + `/${areaId}` + `/by-practice` + `/${practiceId}`, { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
@@ -114,7 +114,7 @@ export class FeaturesService {
     : null;
 
     return this._http
-      .post<any>(environment.serviceEstudentCourse + '/active' + '?' + queryParams, { headers: headers })
+      .post<any>(environment.serviceStudentCourse + '/active' + '?' + queryParams, { headers: headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
@@ -137,7 +137,7 @@ export class FeaturesService {
     : null;
 
     return this._http
-      .post<any>(environment.serviceEstudentCourse + '/reject' + '?' + queryParams, { headers: headers })
+      .post<any>(environment.serviceStudentCourse + '/reject' + '?' + queryParams, { headers: headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
@@ -189,11 +189,81 @@ export class FeaturesService {
     };
 
     return this._http
-      .get<any>(environment.serviceEstudentCourse, options)
+      .get<any>(environment.serviceStudentCourse, options)
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
       );
+  }
+
+  /** Obtener modulos de un curso */
+  getCourseModulesByCourseId(courseId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceStudentModule + `/by-course/${courseId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  getClassWithNavigation(classId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceConfigClassImage + `/class_navegation/${classId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  getImageWithNavigation(classId: number, imageId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceConfigClassImage + `/image_navegation/${classId}/${imageId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  updateClassStatus(classId: number, status: boolean): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .put<any>(environment.serviceStudentClass + `/${classId}/${status}`, {
+        headers,
+      })
+      .pipe(
+        map((res) => res),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  getPhoto(filename: string): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: '*/*',
+    });
+
+    //const formData = new FormData();
+    //formData.append('filename', filename);
+
+    return this._http
+      .get<Blob>(environment.serviceImagenes + '?filename=' + `${filename}`, { headers: headers, responseType: "blob" as "json" })
+      //.post<any>(environment.serviceImagenes, formData, { headers: headers, responseType: "blob" as "json" })
+      .pipe(
+        map(data => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data))),
+        catchError(this.handleServiceError)
+      );
+
   }
 
 }

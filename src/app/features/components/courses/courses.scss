@@ -100,3 +100,11 @@ tbody, td, tfoot, th, thead, tr {
     border-width: 0;
     border-bottom-width: 1px;
 }
+
+mat-row.mat-mdc-row, mat-header-row.mat-mdc-header-row, mat-footer-row.mat-mdc-footer-row {
+    border-bottom: none;
+    border-color: #0000001f;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+}

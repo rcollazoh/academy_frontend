@@ -1,1 +1,78 @@
-<p>active-course works!</p>
+<div class="modal-header">
+    <mat-card class="field-full-width">
+        <div class="row">
+            <div class="col-md-11">
+                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Curso actual</h2>
+            </div>
+            <div class="col-md-1">
+                <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
+                    aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon style="color: blue">arrow_back</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="container-fluid">
+    <mat-card class="course-card" @fadeIn [style]="!course ? 'display: flex !important; flex-direction: column; justify-content: center; align-items: center;' : ''">
+        <mat-card-header>
+            <div class="header-content">
+                @if (modules.length) {
+                    <span class="course-title">{{ course?.course?.name }}</span>
+                }                
+                @if (!modules.length) {
+                    <span class="course-title">No tiene un curso activo en estos momentos, inicie un nuevo curso en el menú Información.</span>
+                }                
+            </div>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-accordion multi>
+                @for (section of modules; track $index) {
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="module-row">
+                                <div class="module-title">{{ section.moduleName }}</div>
+
+                                <div class="lesson-meta">
+                                    {{ section.classes.length }} clases
+                                </div>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-list>
+                        @for (lesson of section.classes; track $index) {
+                        <mat-list-item disableRipple>
+                            <div class="lesson-row">
+                                @if (lesson.viewed) {
+                                    <mat-icon style="color: #4caf50;" matTooltip="Clase vista">visibility</mat-icon>
+                                }
+                                @if (!lesson.viewed) {
+                                    <mat-icon matTooltip="Clase no vista">visibility_off</mat-icon>
+                                }                                
+                                <div class="lesson-title">{{ lesson.title }}</div>
+
+                                <!--<div class="lesson-meta">
+                                    @if (lesson.viewed) {
+                                    <span class="preview">View</span>
+                                    }                                    
+                                </div>-->
+
+                                <button mat-icon-button color="primary" aria-label="Reproducir clase" matTooltip="Ver clase" (click)="actionPlayClass(lesson.id, lesson.configClassId)">
+                                    <mat-icon>play_circle</mat-icon>
+                                </button>
+                            </div>
+                        </mat-list-item>
+                        }
+                    </mat-list>
+
+                </mat-expansion-panel>
+                }
+            </mat-accordion>
+
+        </mat-card-content>
+    </mat-card>
+</div>

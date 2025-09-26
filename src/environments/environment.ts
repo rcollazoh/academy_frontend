@@ -15,9 +15,17 @@ export const environment = {
   serviceArea: '/academy/area',
   servicePractice: '/academy/practice',
 
-  serviceEstudentCourse: '/academy/student_course',
+  serviceStudentCourse: '/academy/student_course',
 
   servicePerson: '/academy/person',
 
-  serviceApplyCourse: '/academy/student_course/apply'
+  serviceApplyCourse: '/academy/student_course/apply',
+
+  serviceStudentModule: '/academy/student_module',
+
+  serviceConfigClassImage: '/academy/config_class_image',
+
+  serviceStudentClass: '/academy/student_class',
+
+  serviceImagenes: '/academy/image',
 };
