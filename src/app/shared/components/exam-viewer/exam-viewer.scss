@@ -1,0 +1,53 @@
+.exam-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3f51b5;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f44336;
+  }
+}
+
+.exam-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+
+  .question-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .finished-message {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #f44336;
+  }
+}
+
+.exam-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

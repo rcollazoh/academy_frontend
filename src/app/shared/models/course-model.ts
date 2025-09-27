@@ -22,9 +22,23 @@ export interface Lesson {
 }
 
 export interface Exam {
+  id: number;
   configExamId: number;
   status: string;
   title: string;
+}
+
+export interface Question {
+  id: number;
+  text: string;
+  orderNum: number;
+  configOptions: QuestionOption[];
+}
+
+export interface QuestionOption {
+  id: number;
+  text: string;
+  isCorrect: boolean;
 }
 
 export interface Module {
@@ -34,6 +48,7 @@ export interface Module {
   orderNum: number;
   classes: Lesson[];
   exam: Exam;
+  status: string;
 }
 
 export interface ClassImageNavigationDto {

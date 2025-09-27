@@ -65,7 +65,11 @@ export class Login {
       next: (res) => {
         setTimeout(() => {
           this.ngxLoaderService.stop();
-          this.router.navigate([this.routes.INICIO]);
+          if(this.authService.user && this.authService.user.rol == 'STUDENT')
+            this.router.navigate([this.routes.INICIO]);
+          else
+            this.router.navigate([this.routes.COURSES]);
+          
         }, 1000);
       },
       error: (err) => {

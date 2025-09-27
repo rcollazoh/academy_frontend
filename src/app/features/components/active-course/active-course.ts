@@ -14,11 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { Course, Module } from '../../../shared/models/course-model';
+import { Course, Module, Question } from '../../../shared/models/course-model';
 import { UserLogin } from '../../../shared/models/user-model';
 import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ClassViewer } from '../../../shared/components/class-viewer/class-viewer';
+import { ExamViewer } from '../../../shared/components/exam-viewer/exam-viewer';
 
 @Component({
   selector: 'app-active-course',
@@ -86,7 +87,7 @@ export class ActiveCourse implements OnInit {
     this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
-        if(res && res.status == 'ACTIVATED'){
+        if (res && res.status == 'ACTIVATED') {
           this.course = res;
           this.getCourseModulesByCourseId(res.id);
         }
@@ -132,20 +133,32 @@ export class ActiveCourse implements OnInit {
   }
 
   updateStatusClass(classId: number): void {
-      this.ngxLoaderService.startBackground();
-  
-      this.featuresService
-        .updateClassStatus(classId, true)
-        .subscribe({
-          next: (res) => {
-            this.ngxLoaderService.stopBackground();
-            this.getCourseModulesByCourseId(this.course!.id);  
-          },
-          error: (err) => {
-            this.ngxLoaderService.stopBackground();
-          },
-        });
-  
-    }
+    this.ngxLoaderService.startBackground();
+
+    this.featuresService
+      .updateClassStatus(classId, true)
+      .subscribe({
+        next: (res) => {
+          this.ngxLoaderService.stopBackground();
+          this.getCourseModulesByCourseId(this.course!.id);
+        },
+        error: (err) => {
+          this.ngxLoaderService.stopBackground();
+        },
+      });
+
+  }
+
+  actionViewExam(examId: number) {
+    this.dialog.open(ExamViewer, {
+      data: { examId: examId },
+      width: '90vw', 
+      height: '90vh', 
+      maxWidth: '100vw', 
+      panelClass: 'full-dialog',
+      autoFocus: false,
+      disableClose: true
+    });
+  }
 
 }

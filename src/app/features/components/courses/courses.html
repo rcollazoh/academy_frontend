@@ -4,12 +4,14 @@
             <div class="col-md-11">
                 <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Listado de cursos</h2>
             </div>
-            <div class="col-md-1">
+            @if (getUserData().rol == 'STUDENT') {
+              <div class="col-md-1">
                 <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
                     aria-label="Example icon button with a vertical three dot icon">
                     <mat-icon style="color: blue">arrow_back</mat-icon>
                 </button>
             </div>
+            }            
         </div>
     </mat-card>
 </div>

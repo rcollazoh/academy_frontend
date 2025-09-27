@@ -1,19 +1,22 @@
-<div class="dialog-container">
+<div class="dialog-container" (contextmenu)="$event.preventDefault()">
   <div class="dialog-header">
     <span class="title">{{ imageData?.title }}</span>
     <button mat-icon-button (click)="close()" matTooltip="Cerrar">
       <mat-icon>close</mat-icon>
     </button>
   </div>
-  
+
   @if (!loading && safeResourcePhoto!=='') {
-    <div class="dialog-body">
-      <img [src]="safeResourcePhoto" alt="Clase" class="image" />
-    </div>
+  <div class="dialog-body">
+    <img [src]="safeResourcePhoto" alt="Clase" class="image" draggable="false" (contextmenu)="$event.preventDefault()"
+      (click)="$event.preventDefault()" (mousedown)="$event.preventDefault()" (mouseup)="$event.preventDefault()"
+      (dblclick)="$event.preventDefault()" (contextmenu)="$event.preventDefault()"
+      (mousedown)="$event.preventDefault()" />
+  </div>
   }
-  
+
   @if (!loading) {
-    <div class="dialog-footer">
+  <div class="dialog-footer">
     <button mat-button (click)="previous()" [disabled]="!imageData?.previousId">
       <mat-icon>navigate_before</mat-icon> Anterior
     </button>
@@ -22,5 +25,5 @@
     </button>
   </div>
   }
-  
+
 </div>

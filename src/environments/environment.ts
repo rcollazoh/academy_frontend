@@ -28,4 +28,6 @@ export const environment = {
   serviceStudentClass: '/academy/student_class',
 
   serviceImagenes: '/academy/image',
+
+  serviceConfigExamQuestion: '/academy/config_exam_question',
 };

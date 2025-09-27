@@ -28,6 +28,8 @@ export const environment = {
 
   serviceImagenes: BASE_URL + '/academy/image',
 
+  serviceConfigExamQuestion: BASE_URL + '/academy/config_exam_question',
+
 };
 
 

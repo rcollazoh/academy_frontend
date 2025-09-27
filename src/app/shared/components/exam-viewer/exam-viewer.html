@@ -1,0 +1,50 @@
+<div class="exam-container">
+  <div class="exam-header">
+    <span class="title">Examen</span>
+    <span class="timer">{{ timeLeft() * 1000 | date:'mm:ss':'UTC' }}</span>
+    <button mat-icon-button (click)="close()" matTooltip="Cerrar">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  @if (!examFinished) {
+    <div class="exam-body">
+      @if (questions.length) {
+      <div class="question-block">
+        <div class="question-text">{{ questions[currentIndex].text }}</div>
+        
+          <mat-radio-group [(ngModel)]="selectedOptions[questions[currentIndex].id]" style="display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start;">
+    
+          @for (opt of questions[currentIndex].configOptions; track $index) {
+          <mat-radio-button [value]="opt.id">
+            {{ opt.text }}
+          </mat-radio-button>
+          }
+    
+        </mat-radio-group>
+        
+      </div>
+      }
+    
+    </div>
+  }
+
+  
+  @if (examFinished) {
+    <div class="exam-body">
+      <div class="finished-message">🕒 El examen ha concluido.</div>
+    </div>
+  }
+  
+
+  <div class="exam-footer">
+    <button mat-button (click)="previous()" [disabled]="currentIndex === 0">
+      <mat-icon>navigate_before</mat-icon> Anterior
+    </button>
+    <button mat-button (click)="next()" [disabled]="currentIndex === questions.length - 1">
+      Siguiente <mat-icon>navigate_next</mat-icon>
+    </button>
+    
+    <button mat-raised-button color="primary">Finalizar</button>
+  </div>
+</div>

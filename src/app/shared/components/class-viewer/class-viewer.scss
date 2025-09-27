@@ -13,8 +13,9 @@
 }
 
 ::ng-deep .mat-mdc-dialog-surface {
-    height: 100%;
-    @media (max-width: 576px) {
+  height: 100%;
+
+  @media (max-width: 576px) {
     height: 50%;
   }
 }
@@ -47,6 +48,8 @@
     object-fit: contain;
     margin: auto;
     transition: opacity 300ms ease-in-out;
+    pointer-events: none;
+    user-select: none;
   }
 }
 

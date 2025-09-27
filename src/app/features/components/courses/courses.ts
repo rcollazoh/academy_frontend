@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Routes } from '../../../shared/consts/routes';
 import { Course } from '../../../shared/models/course-model';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { CourseRequest } from '../../../shared/models/course-request-model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../../shared/services/notification.service';
@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { StatePipe } from "../../../shared/pipes/state-pipe";
 import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
+import { UserLogin } from '../../../shared/models/user-model';
 
 @Component({
   selector: 'app-courses',
@@ -34,6 +35,8 @@ import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
   styleUrl: './courses.scss'
 })
 export class Courses implements OnInit {
+
+  public user$: Observable<UserLogin>;
 
   displayedColumns: string[] = [];
 
@@ -72,6 +75,7 @@ export class Courses implements OnInit {
                public dialog: MatDialog,
                private routeService: RouteService,
                private authService: AuthService) {
+                this.user$ = this.authService.getUser();
     this.lastRouteSubscription = this.routeService.lastRoute$.subscribe(lastRoute => {
       if (lastRoute) {
         this.lastRoute = lastRoute;
@@ -118,6 +122,18 @@ export class Courses implements OnInit {
 
     this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
   }
+
+  /**
+     * Metodo para obtener los datos del usuario logueado y pasarlo en el formulario de creacion
+     */
+    getUserData(): any {
+      let userData: any = undefined;
+      const sub = this.user$
+        .pipe(take(1))
+        .subscribe((user: UserLogin) => (userData = user));
+      sub.unsubscribe();
+      return userData;
+    }
 
   getDataColumnsTable() {
     return ['personName','personLastName','personEmail','courseName', 'status', 'paymentMethod'];

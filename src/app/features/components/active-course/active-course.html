@@ -37,6 +37,12 @@
                                 <div class="module-title">{{ section.moduleName }}</div>
 
                                 <div class="lesson-meta">
+                                    @if (section.status !== 'NEW') {
+                                    <span class="preview">{{section.status}}</span>
+                                    }                                    
+                                </div>
+
+                                <div class="lesson-meta">
                                     {{ section.classes.length }} clases
                                 </div>
                             </div>
@@ -67,6 +73,20 @@
                             </div>
                         </mat-list-item>
                         }
+                    </mat-list>
+
+                    <mat-list>                        
+                        <mat-list-item disableRipple>
+                            <div class="lesson-row">
+                                <mat-icon>assignment</mat-icon>                                                             
+                                <div class="lesson-title">{{ section.exam.title }}</div>
+
+                                <button mat-icon-button color="primary" aria-label="Realizar examen" matTooltip="Realizar examen" (click)="actionViewExam(section.exam.configExamId)" [disabled]="section.exam.status !== 'NEW'">
+                                    <mat-icon>preview</mat-icon>
+                                </button>
+                            </div>
+                        </mat-list-item>
+                        
                     </mat-list>
 
                 </mat-expansion-panel>

@@ -17,6 +17,11 @@ export const routes: Routes = [
       {
         path: 'inicio',
         component: Home,
+        data: {
+          permissions: {
+            only: ['STUDENT'],
+          }
+        },
       },
       {
         path: 'course-active',
@@ -24,7 +29,7 @@ export const routes: Routes = [
         component: ActiveCourse,
         data: {
           permissions: {
-            only: ['STUDENT', 'TEACHER', 'ADMIN'],
+            only: ['STUDENT'],
           }
         },
       },
@@ -34,7 +39,7 @@ export const routes: Routes = [
         component: MyCourses,
         data: {
           permissions: {
-            only: ['STUDENT', 'TEACHER', 'ADMIN'],
+            only: ['STUDENT'],
           }
         },
       },
@@ -44,7 +49,7 @@ export const routes: Routes = [
         component: Courses,
         data: {
           permissions: {
-            only: ['STUDENT', 'TEACHER', 'ADMIN'],
+            only: ['TEACHER', 'ADMIN'],
           }
         },
       },

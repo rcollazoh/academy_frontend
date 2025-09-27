@@ -253,17 +253,25 @@ export class FeaturesService {
       accept: '*/*',
     });
 
-    //const formData = new FormData();
-    //formData.append('filename', filename);
-
     return this._http
       .get<Blob>(environment.serviceImagenes + '?filename=' + `${filename}`, { headers: headers, responseType: "blob" as "json" })
-      //.post<any>(environment.serviceImagenes, formData, { headers: headers, responseType: "blob" as "json" })
       .pipe(
         map(data => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data))),
         catchError(this.handleServiceError)
       );
 
+  }
+
+  getExamWithQuestionAndOptions(examId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceConfigExamQuestion + `/${examId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
   }
 
 }
