@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PersonEntity } from '../../shared/models/person-model';
 import { CourseRequest } from '../../shared/models/course-request-model';
+import { ExamResult } from '../../shared/models/course-model';
 
 @Injectable({
   providedIn: 'root'
@@ -268,6 +269,19 @@ export class FeaturesService {
     });
     return this._http
       .get<any>(environment.serviceConfigExamQuestion + `/${examId}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  submitExamAnswers(examId: number, answers: ExamResult[]): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .put<any>(environment.serviceStudentExam + `/${examId}`, answers, { headers: headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)

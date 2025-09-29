@@ -27,6 +27,8 @@ export const environment = {
 
   serviceStudentClass: '/academy/student_class',
 
+  serviceStudentExam: '/academy/student_exam',
+
   serviceImagenes: '/academy/image',
 
   serviceConfigExamQuestion: '/academy/config_exam_question',

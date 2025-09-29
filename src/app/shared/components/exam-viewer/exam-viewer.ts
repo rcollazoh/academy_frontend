@@ -1,5 +1,5 @@
 import { Component, effect, Inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { Question } from '../../models/course-model';
+import { ExamResult, Question, QuestionOption } from '../../models/course-model';
 import { FeaturesService } from '../../../features/services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../services/notification.service';
@@ -7,44 +7,55 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatRadioButton } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { PaymentWayPipe } from '../../pipes/payment-way-pipe';
 
 @Component({
   selector: 'app-exam-viewer',
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatRadioButton],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatTooltipModule, MatRadioModule],
   templateUrl: './exam-viewer.html',
   styleUrl: './exam-viewer.scss'
 })
-export class ExamViewer implements OnInit, OnDestroy{
+export class ExamViewer implements OnInit, OnDestroy {
 
   examId!: number;
+  examConfigId!: number;
+  time!: number;
 
   questions: Question[] = [];
   currentIndex = 0;
   selectedOptions: Record<number, number> = {}; // questionId -> optionId
-  readonly timeLeft = signal(15 * 60); // 15 minutos en segundos
-  
+  readonly timeLeft = signal(5 * 60); // 15 minutos en segundos
+
   timer!: ReturnType<typeof setInterval>;
-  examFinished = false;
+
+  examResult: ExamResult[] = [];
+
+  radioButtonDisable: boolean = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { examId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { examId: number, time: number, examConfigId: number },
     private featuresService: FeaturesService,
     protected ngxLoaderService: NgxUiLoaderService,
     private notificacionService: NotificationService,
     private dialogRef: MatDialogRef<ExamViewer>) {
     this.examId = this.data.examId;
+    this.examConfigId = this.data.examConfigId;
+    this.time = this.data.time;
+    this.timeLeft.set(this.time * 60);
     effect(() => {
-    if (this.timeLeft() === 0) {
-      this.examFinished = true;
-    }
-  });
+      if (this.timeLeft() === 0) {
+        this.finishExam();
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.getExamWithQuestionAndOptions(this.examId);
-    this.startTimer();    
+    this.getExamWithQuestionAndOptions(this.examConfigId);
+    this.startTimer();
   }
 
   ngOnDestroy(): void {
@@ -52,16 +63,15 @@ export class ExamViewer implements OnInit, OnDestroy{
   }
 
   startTimer(): void {
-  const interval = setInterval(() => {
-    const current = this.timeLeft();
-    if (current > 0) {
-      this.timeLeft.set(current - 1);
-    } else {
-      clearInterval(interval);
-      this.examFinished = true;
-    }
-  }, 1000);
-}
+    this.timer = setInterval(() => {
+      const current = this.timeLeft();
+      if (current > 0) {
+        this.timeLeft.set(current - 1);
+      } else {
+        clearInterval(this.timer);
+      }
+    }, 1000);
+  }
 
 
   selectOption(questionId: number, optionId: number): void {
@@ -76,19 +86,77 @@ export class ExamViewer implements OnInit, OnDestroy{
     if (this.currentIndex > 0) this.currentIndex--;
   }
 
-  /*finishExam(): void {
+  finishExam(): void {
     clearInterval(this.timer);
-    const payload = Object.entries(this.selectedOptions).map(([questionId, optionId]) => ({
+    let payload = Object.entries(this.selectedOptions).map(([questionId, optionId]) => ({
       questionId: +questionId,
-      selectedOptionId: optionId
+      optionId: optionId
     }));
-    this.featuresService.submitExamAnswers(this.data.examId, payload).subscribe(() => {
-      this.examFinished = true;
+
+    payload.forEach(element => {
+      let question = this.questions.find(q => q.id == element.questionId);
+      let option = question?.configOptions.find(o => o.id == element.optionId);
+      let exam: ExamResult = {
+        questionId: element.questionId,
+        optionId: element.optionId,
+        isCorrect: option?.isCorrect
+      }
+      this.examResult.push(exam);
     });
-  }*/
+
+    this.ngxLoaderService.start();
+
+    this.featuresService.submitExamAnswers(this.data.examId, this.examResult).subscribe({
+      next: (res) => {
+        this.ngxLoaderService.stop();
+        this.radioButtonDisable = true;
+
+        if (res.courseStatus == 'APPROVED' || res.courseStatus == 'NOT_APPROVED') {
+          Swal.fire({
+            title: '¡Información!',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'El curso ha concluido' + '</strong></div><div style="font-size: 1.4rem;text-align: center;"><strong>Resultado: ' + (res.courseStatus == 'APPROVED' ? 'APROBADO' : 'NO APROBADO') + '</strong><div>',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+            allowEscapeKey: false,
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              return;
+            }
+          })
+        } else {
+
+          Swal.fire({
+            title: '¡Información!',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'El examen del módulo ha terminado' + '</strong></div><div style="font-size: 1.4rem;text-align: center;"><strong>Resultado: ' + (res.examStatus == 'APPROVED' ? 'APROBADO' : 'NO APROBADO') + '</strong><div>',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+            allowEscapeKey: false,
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              return;
+            }
+          })
+
+        }
+
+      },
+      error: (err) => {
+        this.examResult = [];
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Lo sentimos, ocurrió un error al finalizar el examen, reintentelo'
+        );
+      },
+
+    });
+  }
 
   close(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   getExamWithQuestionAndOptions(examId: number): void {
@@ -105,6 +173,15 @@ export class ExamViewer implements OnInit, OnDestroy{
         );
       },
     });
+  }
+
+  isSelected(question: Question, option: QuestionOption): boolean {
+    if (!this.examResult.length)
+      return false;
+    let examQuestion = this.examResult.find(exam => exam.questionId == question.id);
+    if (examQuestion && examQuestion?.optionId == option.id)
+      return true;
+    return false;
   }
 
 }

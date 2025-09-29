@@ -7,44 +7,43 @@
     </button>
   </div>
 
-  @if (!examFinished) {
     <div class="exam-body">
       @if (questions.length) {
       <div class="question-block">
         <div class="question-text">{{ questions[currentIndex].text }}</div>
-        
-          <mat-radio-group [(ngModel)]="selectedOptions[questions[currentIndex].id]" style="display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start;">
-    
+
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="selectedOptions[questions[currentIndex].id]">
           @for (opt of questions[currentIndex].configOptions; track $index) {
-          <mat-radio-button [value]="opt.id">
-            {{ opt.text }}
-          </mat-radio-button>
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px;">
+              <mat-radio-button class="example-radio-button" [value]="opt.id" [disabled]="radioButtonDisable">
+                {{ opt.text }}
+              </mat-radio-button>
+              @if (isSelected(questions[currentIndex], opt) && opt.isCorrect) {
+                <mat-icon style="color: #4caf50;">check</mat-icon>
+              }              
+              @if (isSelected(questions[currentIndex], opt) && !opt.isCorrect) {
+                <mat-icon style="color: #d91a1a;">clear</mat-icon>
+              }
+              
+            </div>            
           }
-    
         </mat-radio-group>
         
       </div>
       }
     
     </div>
-  }
-
   
-  @if (examFinished) {
-    <div class="exam-body">
-      <div class="finished-message">🕒 El examen ha concluido.</div>
-    </div>
-  }
   
 
   <div class="exam-footer">
-    <button mat-button (click)="previous()" [disabled]="currentIndex === 0">
+    <button mat-button (click)="previous()" [disabled]="currentIndex === 0" matTooltip="Pregunta anterior">
       <mat-icon>navigate_before</mat-icon> Anterior
     </button>
-    <button mat-button (click)="next()" [disabled]="currentIndex === questions.length - 1">
+    <button mat-button (click)="next()" [disabled]="currentIndex === questions.length - 1" matTooltip="Pregunta siguiente">
       Siguiente <mat-icon>navigate_next</mat-icon>
     </button>
     
-    <button mat-raised-button color="primary">Finalizar</button>
+    <button mat-raised-button color="primary" matTooltip="Finalizar el examen" (click)="finishExam()" [disabled]="radioButtonDisable">Finalizar</button>
   </div>
 </div>

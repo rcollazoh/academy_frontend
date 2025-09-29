@@ -37,6 +37,7 @@
     "material-icons": "^1.13.14",
     "ngx-ui-loader": "^19.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.23.0",
     "swiper": "^11.2.10",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

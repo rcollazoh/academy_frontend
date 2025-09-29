@@ -26,6 +26,7 @@ export interface Exam {
   configExamId: number;
   status: string;
   title: string;
+  durationMinutes: number;
 }
 
 export interface Question {
@@ -58,4 +59,10 @@ export interface ClassImageNavigationDto {
   orderNum: number;
   previousId: number;
   nextId: number;
+}
+
+export interface ExamResult {
+  questionId: number;
+  optionId: number;
+  isCorrect?: boolean;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { Router, RouterLink } from '@angular/router';
@@ -20,12 +20,14 @@ import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-
 import { MatTooltip } from '@angular/material/tooltip';
 import { ClassViewer } from '../../../shared/components/class-viewer/class-viewer';
 import { ExamViewer } from '../../../shared/components/exam-viewer/exam-viewer';
+import { StateModulePipe } from "../../../shared/pipes/state-module-pipe";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-active-course',
-  imports: [MatCardModule, MatIconModule, RouterLink, MatButtonModule,
+  imports: [MatCardModule, MatIconModule, MatButtonModule,
     MatExpansionModule,
-    MatListModule, MatTooltip],
+    MatListModule, MatTooltip, StateModulePipe],
   templateUrl: './active-course.html',
   styleUrl: './active-course.scss',
   animations: [
@@ -43,9 +45,15 @@ export class ActiveCourse implements OnInit {
   lastRouteSubscription: Subscription;
   lastRoute = '';
 
-  modules: Module[] = [];
+  modules = signal<Module[]>([]);
 
-  course: Course | undefined;
+  course= signal<Course>({
+    id: 0,
+    personId: 0,
+    startDate: '',
+    endDate: '',
+    status: ''
+  });
 
   public user$: Observable<UserLogin>;
 
@@ -87,10 +95,18 @@ export class ActiveCourse implements OnInit {
     this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
-        if (res && res.status == 'ACTIVATED') {
-          this.course = res;
+        if (res.status == 'ACTIVATED') {
+          this.course.set(res);
           this.getCourseModulesByCourseId(res.id);
-        }
+        } else
+          this.course.set({
+            id: 0,
+            personId: 0,
+            startDate: '',
+            endDate: '',
+            status: ''
+          });
+          this.modules.set([]);
       },
       error: (err) => {
         this.ngxLoaderService.stop();
@@ -108,7 +124,7 @@ export class ActiveCourse implements OnInit {
     this.ngxLoaderService.start();
     this.featuresService.getCourseModulesByCourseId(courseId).subscribe({
       next: (res) => {
-        this.modules = res;
+        this.modules.set(res);
         this.ngxLoaderService.stop();
       },
       error: (err) => {
@@ -128,7 +144,8 @@ export class ActiveCourse implements OnInit {
       height: '90vh',          // 90% del alto de la ventana
       maxWidth: '100vw',       // evita que se limite por defecto
       panelClass: 'full-dialog', // clase personalizada opcional
-      autoFocus: false
+      autoFocus: false,
+      disableClose: true
     });
   }
 
@@ -140,7 +157,7 @@ export class ActiveCourse implements OnInit {
       .subscribe({
         next: (res) => {
           this.ngxLoaderService.stopBackground();
-          this.getCourseModulesByCourseId(this.course!.id);
+          this.getCourseModulesByCourseId(this.course().id);
         },
         error: (err) => {
           this.ngxLoaderService.stopBackground();
@@ -149,15 +166,20 @@ export class ActiveCourse implements OnInit {
 
   }
 
-  actionViewExam(examId: number) {
-    this.dialog.open(ExamViewer, {
-      data: { examId: examId },
+  actionViewExam(examConfigId: number, examId:number, durationMinutes: number) {
+    const dialogRef = this.dialog.open(ExamViewer, {
+      data: { examId: examId, time: durationMinutes, examConfigId: examConfigId },
       width: '90vw', 
       height: '90vh', 
       maxWidth: '100vw', 
       panelClass: 'full-dialog',
       autoFocus: false,
       disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        this.getStudentCourseByPersonByAreaAndPractice();
+      }
     });
   }
 

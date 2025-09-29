@@ -26,6 +26,8 @@ export const environment = {
 
   serviceStudentClass: BASE_URL + '/academy/student_class',
 
+  serviceStudentExam: BASE_URL + '/academy/student_exam',
+
   serviceImagenes: BASE_URL + '/academy/image',
 
   serviceConfigExamQuestion: BASE_URL + '/academy/config_exam_question',
