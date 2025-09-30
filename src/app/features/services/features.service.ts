@@ -263,12 +263,12 @@ export class FeaturesService {
 
   }
 
-  getExamWithQuestionAndOptions(examId: number): Observable<any> {
+  getExamWithQuestionAndOptions(examId: number, totalQuestions: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
     return this._http
-      .get<any>(environment.serviceConfigExamQuestion + `/${examId}`, { headers })
+      .get<any>(environment.serviceConfigExamQuestion + `/${examId}` + `/${totalQuestions}`, { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)

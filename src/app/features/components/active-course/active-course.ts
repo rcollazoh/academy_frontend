@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { Course, Module, Question } from '../../../shared/models/course-model';
+import { Course, Exam, Module, Question } from '../../../shared/models/course-model';
 import { UserLogin } from '../../../shared/models/user-model';
 import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -166,9 +166,9 @@ export class ActiveCourse implements OnInit {
 
   }
 
-  actionViewExam(examConfigId: number, examId:number, durationMinutes: number) {
+  actionViewExam(exam: Exam) {
     const dialogRef = this.dialog.open(ExamViewer, {
-      data: { examId: examId, time: durationMinutes, examConfigId: examConfigId },
+      data: { exam: exam },
       width: '90vw', 
       height: '90vh', 
       maxWidth: '100vw', 

@@ -93,7 +93,7 @@
 
                                 <button mat-icon-button color="primary" aria-label="Realizar examen"
                                     matTooltip="Realizar examen"
-                                    (click)="actionViewExam(section.exam.configExamId, section.exam.id, section.exam.durationMinutes)"
+                                    (click)="actionViewExam(section.exam)"
                                     [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED'">
                                     <mat-icon>preview</mat-icon>
                                 </button>

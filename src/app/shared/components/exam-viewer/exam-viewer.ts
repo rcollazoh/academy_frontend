@@ -1,5 +1,5 @@
 import { Component, effect, Inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ExamResult, Question, QuestionOption } from '../../models/course-model';
+import { Exam, ExamResult, Question, QuestionOption } from '../../models/course-model';
 import { FeaturesService } from '../../../features/services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../services/notification.service';
@@ -11,7 +11,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { PaymentWayPipe } from '../../pipes/payment-way-pipe';
 
 @Component({
   selector: 'app-exam-viewer',
@@ -37,14 +36,14 @@ export class ExamViewer implements OnInit, OnDestroy {
   radioButtonDisable: boolean = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { examId: number, time: number, examConfigId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { exam: Exam },
     private featuresService: FeaturesService,
     protected ngxLoaderService: NgxUiLoaderService,
     private notificacionService: NotificationService,
     private dialogRef: MatDialogRef<ExamViewer>) {
-    this.examId = this.data.examId;
-    this.examConfigId = this.data.examConfigId;
-    this.time = this.data.time;
+    this.examId = this.data.exam.id;
+    this.examConfigId = this.data.exam.configExamId;
+    this.time = this.data.exam.durationMinutes;
     this.timeLeft.set(this.time * 60);
     effect(() => {
       if (this.timeLeft() === 0) {
@@ -54,7 +53,7 @@ export class ExamViewer implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getExamWithQuestionAndOptions(this.examConfigId);
+    this.getExamWithQuestionAndOptions(this.examConfigId, this.data.exam.questions);
     this.startTimer();
   }
 
@@ -79,11 +78,15 @@ export class ExamViewer implements OnInit, OnDestroy {
   }
 
   next(): void {
+    this.ngxLoaderService.start();
     if (this.currentIndex < this.questions.length - 1) this.currentIndex++;
+    this.ngxLoaderService.stop();
   }
 
   previous(): void {
+    this.ngxLoaderService.start();
     if (this.currentIndex > 0) this.currentIndex--;
+    this.ngxLoaderService.stop();
   }
 
   finishExam(): void {
@@ -106,7 +109,7 @@ export class ExamViewer implements OnInit, OnDestroy {
 
     this.ngxLoaderService.start();
 
-    this.featuresService.submitExamAnswers(this.data.examId, this.examResult).subscribe({
+    this.featuresService.submitExamAnswers(this.data.exam.id, this.examResult).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
         this.radioButtonDisable = true;
@@ -159,9 +162,9 @@ export class ExamViewer implements OnInit, OnDestroy {
     this.dialogRef.close(true);
   }
 
-  getExamWithQuestionAndOptions(examId: number): void {
+  getExamWithQuestionAndOptions(examId: number, totalQuestions: number): void {
     this.ngxLoaderService.start();
-    this.featuresService.getExamWithQuestionAndOptions(examId).subscribe({
+    this.featuresService.getExamWithQuestionAndOptions(examId, totalQuestions).subscribe({
       next: (res) => {
         this.questions = res;
         this.ngxLoaderService.stop();

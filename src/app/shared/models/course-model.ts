@@ -27,6 +27,8 @@ export interface Exam {
   status: string;
   title: string;
   durationMinutes: number;
+  minQuestions: number;
+  questions: number;
 }
 
 export interface Question {
