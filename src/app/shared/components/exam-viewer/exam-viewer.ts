@@ -187,4 +187,15 @@ export class ExamViewer implements OnInit, OnDestroy {
     return false;
   }
 
+  buttonFinishDisable(): boolean{
+    let payload = Object.entries(this.selectedOptions).map(([questionId, optionId]) => ({
+      questionId: +questionId,
+      optionId: optionId
+    }));
+    if(payload.length && payload.length == this.data.exam.questions){
+      return false;
+    }
+    return true;
+  }
+
 }

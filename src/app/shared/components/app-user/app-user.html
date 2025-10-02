@@ -8,10 +8,12 @@
       <mat-icon>email</mat-icon>
       <h5 class="user-menu-title__link" >{{user?.email}}</h5>
     </div>
-    <div class="user-description">
+    @if (user?.mobilePhone) {
+      <div class="user-description">
       <mat-icon>phone</mat-icon>
       <h5 class="user-menu-title__link" >{{user?.mobilePhone}}</h5>
-    </div>    
+    </div>  
+    }      
   </div>
   <div class="sign-button-wrapper">
     <button class="edit-button" matButton="outlined" (click)="editPerson()">Editar perfil</button>

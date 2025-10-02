@@ -154,8 +154,9 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
 
         this.userForm.patchValue(res);
 
-        this.userForm.markAllAsTouched();
+        this.getPracticeByArea(res.areaId);
 
+        this.userForm.markAllAsTouched();
 
         this.userForm.controls['password'].clearValidators();
         this.userForm.controls['password'].setErrors(null);

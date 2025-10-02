@@ -86,7 +86,7 @@ export class Courses implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = this.getDataColumnsTable()
+    this.displayedColumns = this.getDataColumnsTable();
     this.statusList = [
       {
         id: 0,

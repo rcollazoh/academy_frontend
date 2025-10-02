@@ -22,9 +22,12 @@ export class MyCourses implements OnInit {
   routes = { INICIO: '/inicio' };
   courses = signal<any[]>([]);
 
+  displayedColumns: string[] = [];
+
   constructor(private featuresService: FeaturesService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.displayedColumns = this.getDataColumnsTable();
     const userEncoded = localStorage.getItem('currentUser');
     if (userEncoded) {
       const user = JSON.parse(userEncoded).user;
@@ -32,6 +35,10 @@ export class MyCourses implements OnInit {
       const personId = userData.id;
       this.getStudentCoursesByPerson(personId);
     }
+  }
+
+  getDataColumnsTable() {
+    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', 'paymentMethod'];
   }
 
   getStudentCoursesByPerson(personId: number): void {

@@ -48,8 +48,8 @@
 						<mat-footer-cell [attr.colspan]="7" *matFooterCellDef>No existen datos para mostrar.</mat-footer-cell>
 					</ng-container>
 
-					<mat-header-row *matHeaderRowDef="['configCourseName', 'startDate', 'endDate', 'status', 'requiresInvoice', 'receiptUrl', 'paymentMethod']"></mat-header-row>
-					<mat-row *matRowDef="let row; columns: ['configCourseName', 'startDate', 'endDate', 'status', 'requiresInvoice', 'receiptUrl', 'paymentMethod']"></mat-row>
+					<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 					<mat-footer-row [hidden]="courses().length > 0" *matFooterRowDef="['noRecord']"></mat-footer-row>
 				</table>
 			</div>

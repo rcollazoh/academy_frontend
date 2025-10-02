@@ -44,6 +44,6 @@
       Siguiente <mat-icon>navigate_next</mat-icon>
     </button>
     
-    <button mat-raised-button color="primary" matTooltip="Finalizar el examen" (click)="finishExam()" [disabled]="radioButtonDisable">Finalizar</button>
+    <button mat-raised-button color="primary" matTooltip="Finalizar el examen" (click)="finishExam()" [disabled]="radioButtonDisable || buttonFinishDisable()">Finalizar</button>
   </div>
 </div>

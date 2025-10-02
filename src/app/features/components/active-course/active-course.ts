@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Routes } from '../../../shared/consts/routes';
 import { Observable, Subscription, take } from 'rxjs';
 import { FeaturesService } from '../../services/features.service';
@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { Course, Exam, Module, Question } from '../../../shared/models/course-model';
+import { Course, Exam, Module } from '../../../shared/models/course-model';
 import { UserLogin } from '../../../shared/models/user-model';
 import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { MatTooltip } from '@angular/material/tooltip';
