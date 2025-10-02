@@ -68,8 +68,13 @@ mat-expansion-panel {
   font-size: 0.85em;
   color: gray;
 
-  .preview {
+  .preview_success {
     color: #4caf50;
+    font-weight: bold;
+  }
+
+  .preview_unsuccess {
+    color: #be0808;
     font-weight: bold;
   }
 }

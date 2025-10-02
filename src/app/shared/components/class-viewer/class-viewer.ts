@@ -40,7 +40,7 @@ export class ClassViewer implements OnInit{
     this.loading = true;
     this.featuresService.getClassWithNavigation(id).subscribe({
       next: (res) => {
-        this.ngxLoaderService.stop();
+        //this.ngxLoaderService.stop();
         this.imageData = res;
         this.loadPhoto(this.imageData!.recourseUrl);
       },
@@ -56,7 +56,7 @@ export class ClassViewer implements OnInit{
     this.ngxLoaderService.start();
     this.featuresService.getImageWithNavigation(id, imageId).subscribe({
       next: (res) => {
-        this.ngxLoaderService.stop();
+        //this.ngxLoaderService.stop();
         this.imageData = res;
         this.loadPhoto(this.imageData!.recourseUrl);
       },
@@ -94,6 +94,7 @@ export class ClassViewer implements OnInit{
         },
         error: (err) => {
           this.loading = false;
+          this.ngxLoaderService.stop();
            this.notificacionService.notificationError(
              'Ocurrió un error al obtener la imagen, no fue encontrada en el sistema'
            );

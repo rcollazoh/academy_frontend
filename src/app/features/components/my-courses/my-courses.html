@@ -36,7 +36,7 @@
 					<ng-container matColumnDef="receiptUrl">
 						<mat-header-cell *matHeaderCellDef>Recibo</mat-header-cell>
 						<mat-cell *matCellDef="let row" data-label="receiptUrl">
-							<a *ngIf="row.receiptUrl" [href]="row.receiptUrl" target="_blank">Ver recibo</a>
+							<span class="link" (click)="openReceipt(row.receiptUrl)">Ver recibo</span>
 						</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="paymentMethod">

@@ -100,7 +100,7 @@ export class Home implements OnInit {
   }
 
   /**
-   * Metodo para obtener los datos del usuario logueado y pasarlo en el formulario de creacion
+   * Metodo para obtener los datos del usuario logueado
    */
   getUserData(): any {
     let userData: any = undefined;

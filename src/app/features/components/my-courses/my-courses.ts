@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { PaymentWayPipe } from '../../../shared/pipes/payment-way-pipe';
 import { StatePipe } from '../../../shared/pipes/state-pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { ShowImage } from '../../../shared/components/show-image/show-image';
 
 @Component({
   selector: 'app-my-courses',
@@ -20,7 +22,7 @@ export class MyCourses implements OnInit {
   routes = { INICIO: '/inicio' };
   courses = signal<any[]>([]);
 
-  constructor(private featuresService: FeaturesService) {}
+  constructor(private featuresService: FeaturesService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     const userEncoded = localStorage.getItem('currentUser');
@@ -43,4 +45,11 @@ export class MyCourses implements OnInit {
         }
       });
   }
+
+  openReceipt(filename: string): void {
+  this.dialog.open(ShowImage, {
+    data: { filename },
+    width: '600px'
+  });
+}
 }

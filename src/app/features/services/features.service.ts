@@ -260,7 +260,6 @@ export class FeaturesService {
         map(data => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data))),
         catchError(this.handleServiceError)
       );
-
   }
 
   getExamWithQuestionAndOptions(examId: number, totalQuestions: number): Observable<any> {

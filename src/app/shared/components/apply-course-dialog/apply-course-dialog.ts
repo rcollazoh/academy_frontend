@@ -120,7 +120,7 @@ export class ApplyCourseDialog implements OnInit {
       },
       error: (err) => {
         this.ngxLoaderService.stop();
-        this.notificacionService.notificationError('Error al aplicar al curso.');   
+        this.notificacionService.notificationError('Error al aplicar al curso');   
       },
     });
   }

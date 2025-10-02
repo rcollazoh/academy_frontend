@@ -21,7 +21,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ClassViewer } from '../../../shared/components/class-viewer/class-viewer';
 import { ExamViewer } from '../../../shared/components/exam-viewer/exam-viewer';
 import { StateModulePipe } from "../../../shared/pipes/state-module-pipe";
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-active-course',
@@ -46,6 +45,8 @@ export class ActiveCourse implements OnInit {
   lastRoute = '';
 
   modules = signal<Module[]>([]);
+
+  showNoActive = false;
 
   course= signal<Course>({
     id: 0,
@@ -97,8 +98,9 @@ export class ActiveCourse implements OnInit {
         this.ngxLoaderService.stop();
         if (res.status == 'ACTIVATED') {
           this.course.set(res);
+          this.showNoActive = false;
           this.getCourseModulesByCourseId(res.id);
-        } else
+        } else {
           this.course.set({
             id: 0,
             personId: 0,
@@ -107,6 +109,9 @@ export class ActiveCourse implements OnInit {
             status: ''
           });
           this.modules.set([]);
+          this.showNoActive = true;
+        }
+          
       },
       error: (err) => {
         this.ngxLoaderService.stop();
