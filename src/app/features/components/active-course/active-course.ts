@@ -2,25 +2,26 @@ import { Component, OnInit, signal } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { Router } from '@angular/router';
-import { Routes } from '../../../shared/consts/routes';
 import { Observable, Subscription, take } from 'rxjs';
-import { FeaturesService } from '../../services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { NotificationService } from '../../../shared/services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
-import { RouteService } from '../../../shared/services/route.service';
-import { AuthService } from '../../../core/services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { Course, Exam, Module } from '../../../shared/models/course-model';
-import { UserLogin } from '../../../shared/models/user-model';
-import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { MatTooltip } from '@angular/material/tooltip';
-import { ClassViewer } from '../../../shared/components/class-viewer/class-viewer';
-import { ExamViewer } from '../../../shared/components/exam-viewer/exam-viewer';
-import { StateModulePipe } from "../../../shared/pipes/state-module-pipe";
+import { StateModulePipe } from '@/app/shared/pipes/state-module-pipe';
+import { Routes } from '@/app/shared/consts/routes';
+import { Course, Exam, Module } from '@/app/shared/models/course-model';
+import { UserLogin } from '@/app/shared/models/user-model';
+import { NotificationService } from '@/app/shared/services/notification.service';
+import { RouteService } from '@/app/shared/services/route.service';
+import { AuthService } from '@/app/core/services/auth.service';
+import { ErrorDialog, ErrorDialogModel } from '@/app/shared/components/error-dialog/error-dialog';
+import { ExamViewer } from '@/app/shared/components/exam-viewer/exam-viewer';
+import { ClassViewer } from '@/app/shared/components/class-viewer/class-viewer';
+import { FeaturesService } from '@/app/features/services/features.service';
+
 
 @Component({
   selector: 'app-active-course',

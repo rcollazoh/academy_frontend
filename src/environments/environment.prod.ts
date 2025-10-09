@@ -1,4 +1,5 @@
 const BASE_URL = "http://164.92.71.78:7000"
+const LOCAL_URL = "http://localhost:7000"
 
 
 export const environment = {
@@ -6,6 +7,7 @@ export const environment = {
 
   /**URL Origin Service */
   urlOrigin: BASE_URL,
+  localUrl: LOCAL_URL,
 
   serviceLogin: BASE_URL + '/academy/login',
   serviceLogout: BASE_URL + '/academy/logout',

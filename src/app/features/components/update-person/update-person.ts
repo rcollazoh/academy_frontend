@@ -8,7 +8,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { RouteService } from '../../../shared/services/route.service';
-import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../core/services/auth.service';
 import { FeaturesService } from '../../services/features.service';
@@ -24,6 +23,7 @@ import { PersonEntity } from '../../../shared/models/person-model';
 import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-dialog/error-dialog';
 import { Nomenclators } from '../../../shared/services/nomenclators.service';
 import { NomAreaDto, NomPracticeDto } from '../../../shared/models/nomenclator-model';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-update-person',
@@ -34,7 +34,7 @@ import { NomAreaDto, NomPracticeDto } from '../../../shared/models/nomenclator-m
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule, RouterLink],
+    MatCheckboxModule, RouterLink, MatTooltipModule],
   templateUrl: './update-person.html',
   styleUrl: './update-person.scss'
 })

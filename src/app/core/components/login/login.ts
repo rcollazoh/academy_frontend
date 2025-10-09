@@ -5,14 +5,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Navbar } from "../../../layout/navbar/navbar";
-import { Footer } from "../../../layout/footer/footer";
 import { Router } from '@angular/router';
-import { Routes } from '../../../shared/consts/routes';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { AuthService } from '../../services/auth.service';
-import { NotificationService } from '../../../shared/services/notification.service';
-import { LoginRequest } from '../../../shared/models/login-request';
+import { Footer } from '@/app/layout/footer/footer';
+import { Navbar } from '@/app/layout/navbar/navbar';
+import { Routes } from '@/app/shared/consts/routes';
+import { LoginRequest } from '@/app/shared/models/login-request';
+import { NotificationService } from '@/app/shared/services/notification.service';
+import { AuthService } from '@/app/core/services/auth.service';
+
 
 @Component({
   selector: 'app-login',

@@ -1,12 +1,13 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiCodeMessage } from '../../shared/consts/api-code-message.constant';
 import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
-import { PersonEntity } from '../../shared/models/person-model';
-import { CourseRequest } from '../../shared/models/course-request-model';
-import { ExamResult } from '../../shared/models/course-model';
+import { environment } from '@/environments/environment';
+import { PersonEntity } from '@/app/shared/models/person-model';
+import { ExamResult } from '@/app/shared/models/course-model';
+import { CourseRequest } from '@/app/shared/models/course-request-model';
+import { ApiCodeMessage } from '@/app/shared/consts/api-code-message.constant';
+
 
 @Injectable({
   providedIn: 'root'
