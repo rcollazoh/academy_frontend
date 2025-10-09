@@ -10,14 +10,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { passwordMatchValidator } from '../../../shared/validators/validators';
 import { NomAreaDto, NomPracticeDto } from '../../../shared/models/nomenclator-model';
-import { Nomenclators } from '../../../shared/services/nomenclators.service';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Router } from '@angular/router';
-import { Routes } from '../../../shared/consts/routes';
-import { Navbar } from "../../../layout/navbar/navbar";
-import { Footer } from "../../../layout/footer/footer";
-import { LoginRequest } from '../../../shared/models/login-request';
+import { Footer } from '@/app/layout/footer/footer';
+import { Navbar } from '@/app/layout/navbar/navbar';
+import { Routes } from '@/app/shared/consts/routes';
+import { LoginRequest } from '@/app/shared/models/login-request';
+import { Nomenclators } from '@/app/shared/services/nomenclators.service';
 
 @Component({
   selector: 'app-register',

@@ -4,8 +4,8 @@ export const environment = {
   production: false,
 
   /**URL Origin Service */
-  urlOrigin: BASE_URL,
-  localUrl: BASE_URL,
+  urlOrigin: "http://localhost:7000",
+  localUrl: "http://localhost:7000",
 
   serviceLogin: '/academy/login',
   serviceLogout: '/academy/logout',
