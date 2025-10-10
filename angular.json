@@ -25,6 +25,9 @@
             "polyfills": [
               "zone.js"
             ],
+            "allowedCommonJsDependencies": [
+              "sweetalert2"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
