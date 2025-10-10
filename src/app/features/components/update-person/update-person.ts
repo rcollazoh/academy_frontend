@@ -113,11 +113,11 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
       email: new FormControl({ value: null, disabled: false}, Validators.compose([Validators.required, Validators.email])),
       phone: new FormControl({ value: null, disabled: false }),
       isUser: new FormControl({ value: false, disabled: false}),
-      password: new FormControl({ value: '', disabled: false}, Validators.required),
-      confirm: new FormControl({ value: '', disabled: false}, Validators.required),
+      password: new FormControl({ value: null, disabled: false}, Validators.required),
+      confirm: new FormControl({ value: null, disabled: false}, Validators.required),
       idNumber: new FormControl({ value: '', disabled: false}, Validators.required),
-      areaId: new FormControl({ value: null, disabled: false}, Validators.required),
-      practiceId: new FormControl({ value: null, disabled: false}, Validators.required),
+      areaId: new FormControl({ value: null, disabled: true}, Validators.required),
+      practiceId: new FormControl({ value: null, disabled: true}, Validators.required),
     });
 
     var paramId = Number(this.route.snapshot.paramMap.get('id'));
