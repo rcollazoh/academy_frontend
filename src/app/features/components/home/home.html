@@ -24,12 +24,14 @@
 
         <fieldset style="border-radius: 0.3em; max-width: 8rem; display: flex; justify-content: center;">
             <legend>Precio</legend>
-            <p>{{ course().course?.price }} USD </p>
+            <p>{{ course().course?.price }} CRC </p>
+            <p>{{ course().course?.price | number:'1.0-0' }} CRC </p>
+            
         </fieldset> 
 
         <fieldset style="border-radius: 0.3em">
             <legend>Duración</legend>
-            <p>Para la realización del curso cuenta con {{ course().course?.durationDays }} días luego de que este sea aprobado por el profesor.</p>
+            <p>Para la realización del curso cuenta con {{ course().course?.durationDays }} días naturales luego de que este sea aprobado por el profesor.</p>
         </fieldset>   
 
         <fieldset style="border-radius: 0.3em">

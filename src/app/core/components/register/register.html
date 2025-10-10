@@ -57,7 +57,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100 mb-3">
-          <mat-label>Area</mat-label>
+          <mat-label>Área</mat-label>
           <mat-select formControlName="areaId" (valueChange)="onSelectArea($event)">
             @for (area of listAreas; track $index) {
             <mat-option [value]="area.id">{{ area.name }}</mat-option>
