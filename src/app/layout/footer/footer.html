@@ -2,16 +2,18 @@
   <div class="footer-content">
     <div class="footer-brand">
       <span class="logo">PRAD Academy</span>
+      <div class="footer-bottom">
+        <small>Plataforma de aprendizaje en línea  para<br> el desarrollo profesional en Costa Rica.</small>
     </div>
-
+    </div>
     <nav class="footer-links">
-      <a routerLink="/home">Inicio</a>
+      <a (click)="goToHome()">Inicio</a>
     </nav>
 
-    <div class="footer-social" style="gap: 5px;">
+    <div class="footer-social" style="gap: 1px;">
       <a href="#"><mat-icon>facebook</mat-icon></a>
-      <a href="#">
-        <mat-icon svgIcon="whatsapp" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 1.5em;"></mat-icon>
+      <a [href]="'https://wa.me/50672195203?text=Prod%20Academy,%20necesito%20ayuda.'" target="_blank">
+        <mat-icon svgIcon="whatsapp" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 3.5em;"></mat-icon>
       </a>
       <a href="#">
         <mat-icon svgIcon="instragram" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 1.5em;"></mat-icon>
