@@ -1,7 +1,8 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 const WHATSAPP_ICON =
   `
@@ -17,9 +18,17 @@ const InstragramIcon = `<svg height="200px" width="200px" version="1.1" id="Laye
 })
 export class Footer {
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {   
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private viewportScroller: ViewportScroller) {   
     iconRegistry.addSvgIconLiteral('whatsapp', sanitizer.bypassSecurityTrustHtml(WHATSAPP_ICON));
     iconRegistry.addSvgIconLiteral('instragram', sanitizer.bypassSecurityTrustHtml(InstragramIcon));
   }
-
+ goToHome() {
+  if (this.router.url === '/home') {
+    // Ya estás en home → scroll al top
+    this.viewportScroller.scrollToPosition([0, 0]);
+  } else {
+    // Navega a home
+    this.router.navigate(['/home']);
+  }
+}
 }
