@@ -34,9 +34,9 @@
 						<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' : 'No' }}</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="receiptUrl">
-						<mat-header-cell *matHeaderCellDef>Recibo</mat-header-cell>
-						<mat-cell *matCellDef="let row" data-label="receiptUrl">
-							<span class="link" (click)="openReceipt(row.receiptUrl)">Ver recibo</span>
+						<mat-header-cell *matHeaderCellDef style="justify-content: center;">Comprobante de pago</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="receiptUrl" style="justify-content: center;">
+							<mat-icon (click)="openReceipt(row.receiptUrl)" matTooltip="Ver comprobante">image_search</mat-icon>
 						</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="paymentMethod">

@@ -78,6 +78,11 @@ export class Sidebar implements OnInit {
           role: ['TEACHER', 'ADMIN']
         },
         {
+          text: 'Ayuda',
+          icon: 'help',
+          role: ['STUDENT']
+        },
+        {
           text: 'Cerrar sesión',
           icon: 'exit_to_app',
           role: ['STUDENT', 'TEACHER', 'ADMIN']
@@ -94,6 +99,8 @@ export class Sidebar implements OnInit {
   onMenuClick(menu: string): void {
     if (menu === 'Cerrar sesión') {
       this.openDialog();
+    } else if (menu === 'Ayuda'){
+      this.abrirWhatsApp('50672195203', 'Prad Academy, necesito ayuda');
     }
   }
 
@@ -163,6 +170,12 @@ export class Sidebar implements OnInit {
     };
     return logoutData;
   }
+
+  abrirWhatsApp(numero: string, mensaje: string = ''): void {
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
   
 
 }

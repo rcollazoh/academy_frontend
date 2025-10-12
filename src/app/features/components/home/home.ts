@@ -33,16 +33,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class Home implements OnInit {
 
+
   public user$: Observable<UserLogin>;
-  
+
   course = signal<Course>({
-  id: 0,
-  personId: 0,
-  course: undefined,
-  startDate: '',
-  endDate: '',
-  status: ''
-});
+    id: 0,
+    personId: 0,
+    course: undefined,
+    startDate: '',
+    endDate: '',
+    status: ''
+  });
 
   buttonLabel = computed(() => {
     switch (this.course()?.status) {
@@ -73,8 +74,8 @@ export class Home implements OnInit {
   });
 
   constructor(private featuresService: FeaturesService, protected router: Router,
-              protected ngxLoaderService: NgxUiLoaderService, private authService: AuthService,
-            public dialog: MatDialog) {
+    protected ngxLoaderService: NgxUiLoaderService, private authService: AuthService,
+    public dialog: MatDialog) {
     this.user$ = this.authService.getUser();
   }
 
@@ -121,11 +122,11 @@ export class Home implements OnInit {
       error: (err) => {
         this.ngxLoaderService.stop();
         let msg = 'Lo sentimos, ocurrió un error al obtener los datos del curso.';
-          const dialogData = new ErrorDialogModel('Error', msg);
-          this.dialog.open(ErrorDialog, {
-            maxWidth: '400px',
-            data: dialogData,
-          });
+        const dialogData = new ErrorDialogModel('Error', msg);
+        this.dialog.open(ErrorDialog, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
       },
     });
   }

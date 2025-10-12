@@ -1,4 +1,5 @@
-const BASE_URL = "http://164.92.71.78:7000"
+//const BASE_URL = "http://164.92.71.78:7000"
+const BASE_URL = "https://pradacademy.com"
 const LOCAL_URL = "http://localhost:7000"
 
 

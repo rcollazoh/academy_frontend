@@ -1,45 +1,136 @@
 <div class="modal-header">
-    <mat-card class="field-full-width">
-        <h2 class="modal-title cursor-arrow">Información del curso</h2>
-    </mat-card>
+  <mat-card class="field-full-width">
+    <h2 class="modal-title cursor-arrow">Información del curso</h2>
+  </mat-card>
 </div>
 
 <div class="container-fluid">
-    <mat-card class="course-card" @fadeIn>
-      <mat-card-header>
-        <div class="header-content">
-          <span class="course-title">{{ course().course?.name }}</span>
-          @if (buttonLabel()) {
-            <button class="sign-button" mat-flat-button (click)="onAction()" matTooltip="Aplique para comenzar un nuevo curso">{{ buttonLabel() }}</button>
-          }          
-        </div>
-      </mat-card-header>
+  <mat-card class="course-card" @fadeIn>
+    @if (course().course) {
 
-      <mat-card-content>
+    }
+    <mat-card-header>
+      <div class="header-content">
+        @if(course().course){
+        <span class="course-title">{{ course().course?.name }}</span>
+        @if (buttonLabel()) {
+        <button class="sign-button" mat-flat-button (click)="onAction()"
+          matTooltip="Aplique para comenzar un nuevo curso">{{ buttonLabel() }}</button>
+        }
+        }
+      </div>
+    </mat-card-header>
 
-        <fieldset style="border-radius: 0.3em">
-            <legend>Estado</legend>
-            <p>{{ estadoMensaje() }}</p>
-        </fieldset> 
+    <mat-card-content>
 
-        <fieldset style="border-radius: 0.3em; max-width: 8rem; display: flex; justify-content: center;">
-            <legend>Precio</legend>
-            <p>{{ course().course?.price }} CRC </p>
-            
-        </fieldset> 
+      @if(course().course){
 
-        <fieldset style="border-radius: 0.3em">
-            <legend>Duración</legend>
-            <p>Para la realización del curso cuenta con {{ course().course?.durationDays }} días naturales luego de que este sea aprobado por el profesor.</p>
-        </fieldset>   
+      <fieldset style="border-radius: 0.3em">
+        <legend>Estado</legend>
+        <p>{{ estadoMensaje() }}</p>
+      </fieldset>
 
-        <fieldset style="border-radius: 0.3em">
+      <fieldset style="border-radius: 0.3em; max-width: 8rem; display: flex; justify-content: center;">
+        <legend>Precio</legend>
+        <p>{{ course().course?.price }} CRC </p>
+      </fieldset>
+
+      <fieldset style="border-radius: 0.3em">
+        <legend>Duración</legend>
+        <p>Para la realización del curso cuenta con {{ course().course?.durationDays }} días naturales luego de que este
+          sea aprobado por el profesor.</p>
+      </fieldset>
+
+      <!--<fieldset style="border-radius: 0.3em">
             <legend>Descripción</legend>
             <p>{{ course().course?.description }}</p>
-        </fieldset>    
-        
-      </mat-card-content>
-    </mat-card>
+        </fieldset>-->
+
+      <fieldset style="border-radius: 0.3em;">
+        <legend>Modos de pago</legend>
+        <div class="row" style="margin-bottom: 10px;">
+          <div class="col-md-6">
+            <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
+              <mat-card-header>
+                <mat-card-title>Sinpe móvil</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="account-info">            
+                  <p><strong>Número</strong></p>                  
+                  <p>7219 5203</p>
+                  <p><strong>A nombre de:</strong></p>
+                  <p>dagoberto eloy gonzález lópez</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-md-6">
+            <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
+              <mat-card-header>
+                <mat-card-title>Transferencia o Depósito Bancario</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="account-info">            
+                  <p><strong>A nombre de:</strong></p>                  
+                  <p>Dagoberto Eloy González López</p>
+                  <p><strong>Cédula</strong></p>
+                  <p>8-0148-0648</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+          <div class="col-md-4">
+            <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
+              <mat-card-header>
+                <mat-card-title>BAC Credomatic</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="account-info">
+                  <p><strong>Cuenta Corriente</strong></p>                 
+                  <p>9040493083</p>
+                  <p><strong>Cuenta IBAN</strong></p>
+                  <p>CR03010200009680980611</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-md-4">
+            <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
+              <mat-card-header>
+                <mat-card-title>Banco BCR</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="account-info">
+                  <p><strong>Cuenta Corriente</strong></p>                 
+                  <p>001-1915618- 9</p>
+                  <p><strong>Cuenta IBAN</strong></p>
+                  <p>CR26015202001191561891</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-md-4">
+            <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
+              <mat-card-header>
+                <mat-card-title>Banco Nacional</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="account-info">
+                  <p><strong>Cuenta Cliente</strong></p>                 
+                  <p>15108020011139401</p>
+                  <p><strong>Cuenta IBAN</strong></p>
+                  <p>CR77015108020011139401</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>         
+      </fieldset>
+
+      }
+
+    </mat-card-content>
+  </mat-card>
 </div>
-
-
