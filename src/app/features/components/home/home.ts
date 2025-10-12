@@ -33,24 +33,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class Home implements OnInit {
 
-  bancos = [
-    {
-      nombre: 'BAC Credomatic',
-      cuenta: '9040493083',
-      iban: 'CR03010200009680980611'
-    },
-    {
-      nombre: 'Banco BCR',
-      cuenta: '001-1915618- 9',
-      iban: 'CR26015202001191561891'
-    },
-    {
-      nombre: 'Banco Nacional',
-      cuenta: '15108020011139401',
-      iban: 'CR77015108020011139401'
-    },
-  ];
-
 
   public user$: Observable<UserLogin>;
 
