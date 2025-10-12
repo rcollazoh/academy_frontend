@@ -9,11 +9,12 @@ import { PaymentWayPipe } from '../../../shared/pipes/payment-way-pipe';
 import { StatePipe } from '../../../shared/pipes/state-pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowImage } from '../../../shared/components/show-image/show-image';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-my-courses',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe, StatePipe],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe, StatePipe, MatTooltipModule],
   templateUrl: './my-courses.html',
   styleUrl: './my-courses.scss'
 })
@@ -38,7 +39,7 @@ export class MyCourses implements OnInit {
   }
 
   getDataColumnsTable() {
-    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', 'paymentMethod'];
+    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', /*'paymentMethod'*/];
   }
 
   getStudentCoursesByPerson(personId: number): void {

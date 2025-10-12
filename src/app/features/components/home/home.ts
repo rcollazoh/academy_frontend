@@ -33,16 +33,35 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class Home implements OnInit {
 
+  bancos = [
+    {
+      nombre: 'BAC Credomatic',
+      cuenta: '9040493083',
+      iban: 'CR03010200009680980611'
+    },
+    {
+      nombre: 'Banco BCR',
+      cuenta: '001-1915618- 9',
+      iban: 'CR26015202001191561891'
+    },
+    {
+      nombre: 'Banco Nacional',
+      cuenta: '15108020011139401',
+      iban: 'CR77015108020011139401'
+    },
+  ];
+
+
   public user$: Observable<UserLogin>;
-  
+
   course = signal<Course>({
-  id: 0,
-  personId: 0,
-  course: undefined,
-  startDate: '',
-  endDate: '',
-  status: ''
-});
+    id: 0,
+    personId: 0,
+    course: undefined,
+    startDate: '',
+    endDate: '',
+    status: ''
+  });
 
   buttonLabel = computed(() => {
     switch (this.course()?.status) {
@@ -73,8 +92,8 @@ export class Home implements OnInit {
   });
 
   constructor(private featuresService: FeaturesService, protected router: Router,
-              protected ngxLoaderService: NgxUiLoaderService, private authService: AuthService,
-            public dialog: MatDialog) {
+    protected ngxLoaderService: NgxUiLoaderService, private authService: AuthService,
+    public dialog: MatDialog) {
     this.user$ = this.authService.getUser();
   }
 
@@ -121,11 +140,11 @@ export class Home implements OnInit {
       error: (err) => {
         this.ngxLoaderService.stop();
         let msg = 'Lo sentimos, ocurrió un error al obtener los datos del curso.';
-          const dialogData = new ErrorDialogModel('Error', msg);
-          this.dialog.open(ErrorDialog, {
-            maxWidth: '400px',
-            data: dialogData,
-          });
+        const dialogData = new ErrorDialogModel('Error', msg);
+        this.dialog.open(ErrorDialog, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
       },
     });
   }

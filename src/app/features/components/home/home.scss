@@ -84,3 +84,18 @@ p {
   border: 1px solid;
   color: white;
 }
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bank-card {
+  padding: 0.5rem;
+}
+
+.account-info p {
+  margin: 0.2rem 0;
+}
