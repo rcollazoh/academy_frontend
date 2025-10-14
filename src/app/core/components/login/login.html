@@ -39,7 +39,7 @@
                 }
               </mat-form-field>
               <div class="d-flex align-items-center mb-3" style="justify-content: end;">              
-                <a href="#" class="text-primary small">¿Olvidaste tu contraseña?</a>
+                <mat-label class="text-primary small" style="text-decoration: underline; cursor: pointer;" (click)="onAction()">¿Olvidaste tu contraseña?</mat-label>
               </div>
               <button class="form-field-width" mat-flat-button color="primary" type="submit" (click)="login()"
                 [disabled]="!loginForm.valid">
