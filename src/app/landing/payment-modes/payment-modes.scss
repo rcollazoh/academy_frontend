@@ -1,0 +1,71 @@
+.payment-modern {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212121;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .payment-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+
+    .payment-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      justify-content: space-between;
+
+      .img-sinpe {
+        width: 60px;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+
+      .img-bac{
+        width: 130px;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .img-bcr {
+        width: 130px;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .img-nacional {
+        width: 130px;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .img-tranfer {
+        width: 130px;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        font-size: 1rem;
+        color: #333;
+        white-space: nowrap;
+      }
+    }
+  }
+}

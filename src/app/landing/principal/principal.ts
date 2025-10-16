@@ -6,10 +6,11 @@ import { Beneficios } from "../beneficios/beneficios";
 import { Certificaciones } from "../certificaciones/certificaciones";
 import { Navbar } from "../../layout/navbar/navbar";
 import { Footer } from "../../layout/footer/footer";
+import { PaymentModes } from "../payment-modes/payment-modes";
 
 @Component({
   selector: 'app-principal',
-  imports: [Hero, CursosDestacadosComponent, Beneficios, Certificaciones, Navbar, Footer],
+  imports: [Hero, CursosDestacadosComponent, Beneficios, Certificaciones, Navbar, Footer, PaymentModes],
   templateUrl: './principal.html',
   styleUrl: './principal.scss'
 })
