@@ -19,12 +19,13 @@ export class ClassViewer implements OnInit {
   classConfigId!: number;
   classId!: number;
   currentImageId!: number;
+  viewed!: boolean;
   imageData?: ClassImageNavigationDto;
   loading = true;
   safeResourcePhoto: SafeResourceUrl | String = '';
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { classConfigId: number, classId: number, currentImageId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { classConfigId: number, classId: number, currentImageId: number, viewed: boolean },
     private featuresService: FeaturesService,
     protected ngxLoaderService: NgxUiLoaderService,
     private notificacionService: NotificationService,
@@ -33,6 +34,7 @@ export class ClassViewer implements OnInit {
     this.classConfigId = this.data.classConfigId;
     this.classId = this.data.classId;
     this.currentImageId = this.data.currentImageId;
+    this.viewed = this.data.viewed;
   }
 
   ngOnInit(): void {
@@ -46,6 +48,10 @@ export class ClassViewer implements OnInit {
       next: (res) => {
         //this.ngxLoaderService.stop();
         this.imageData = res;
+        if(!currentImageId)
+          this.updateStatusClass(this.classId, this.viewed ? true : false, 1);
+        else
+          this.updateStatusClass(this.classId, this.viewed ? true : false, currentImageId);
         this.loadPhoto(this.imageData!.recourseUrl);
       },
       error: () => {
@@ -63,9 +69,9 @@ export class ClassViewer implements OnInit {
         this.imageData = res;
         if(this.imageData){
           if(this.imageData.nextId){
-            this.updateStatusClass(this.classId, false, imageId);
+            this.updateStatusClass(this.classId, this.viewed ? true : false, imageId);
           } else {
-            this.updateStatusClass(this.classId, true, imageId);
+            this.updateStatusClass(this.classId, true, 0);
           }
         } 
         this.loadPhoto(this.imageData!.recourseUrl);

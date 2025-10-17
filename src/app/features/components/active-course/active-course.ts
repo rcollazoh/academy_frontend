@@ -143,9 +143,9 @@ export class ActiveCourse implements OnInit {
     });
   }
 
-  actionPlayClass(classId: number, classConfigId: number, currentImageId: number) {
+  actionPlayClass(classId: number, classConfigId: number, currentImageId: number, viewed: boolean) {
     const dialogRef = this.dialog.open(ClassViewer, {
-      data: { classConfigId: classConfigId, classId: classId, currentImageId: currentImageId },
+      data: { classConfigId: classConfigId, classId: classId, currentImageId: currentImageId, viewed: viewed },
       width: '90vw',           // 90% del ancho de la ventana
       height: '90vh',          // 90% del alto de la ventana
       maxWidth: '100vw',       // evita que se limite por defecto

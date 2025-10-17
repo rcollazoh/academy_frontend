@@ -65,7 +65,7 @@
                                 <mat-icon style="color: #4caf50;" matTooltip="Clase vista">visibility</mat-icon>
                                 }
                                 @if (!lesson.viewed && lesson.currentImageId !== 0) {
-                                <mat-icon style="color: #be0808;" matTooltip="Clase vista">visibility</mat-icon>
+                                <mat-icon style="color: #be0808;" matTooltip="Clase en proceso">visibility</mat-icon>
                                 }
                                 <div class="lesson-title">{{ lesson.title }}</div>
 
@@ -76,7 +76,7 @@
                                 </div>-->
 
                                 <button mat-icon-button color="primary" aria-label="Reproducir clase"
-                                    matTooltip="Ver clase" (click)="actionPlayClass(lesson.id, lesson.configClassId, lesson.currentImageId)">
+                                    matTooltip="Ver clase" (click)="actionPlayClass(lesson.id, lesson.configClassId, lesson.currentImageId, lesson.viewed)">
                                     <mat-icon>play_circle</mat-icon>
                                 </button>
                             </div>
