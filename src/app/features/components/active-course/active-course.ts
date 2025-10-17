@@ -143,10 +143,9 @@ export class ActiveCourse implements OnInit {
     });
   }
 
-  actionPlayClass(classId: number, classConfigId: number) {
-    this.updateStatusClass(classId);
-    this.dialog.open(ClassViewer, {
-      data: { classId: classConfigId },
+  actionPlayClass(classId: number, classConfigId: number, currentImageId: number) {
+    const dialogRef = this.dialog.open(ClassViewer, {
+      data: { classConfigId: classConfigId, classId: classId, currentImageId: currentImageId },
       width: '90vw',           // 90% del ancho de la ventana
       height: '90vh',          // 90% del alto de la ventana
       maxWidth: '100vw',       // evita que se limite por defecto
@@ -154,23 +153,9 @@ export class ActiveCourse implements OnInit {
       autoFocus: false,
       disableClose: true
     });
-  }
-
-  updateStatusClass(classId: number): void {
-    this.ngxLoaderService.startBackground();
-
-    this.featuresService
-      .updateClassStatus(classId, true)
-      .subscribe({
-        next: (res) => {
-          this.ngxLoaderService.stopBackground();
-          this.getCourseModulesByCourseId(this.course().id);
-        },
-        error: (err) => {
-          this.ngxLoaderService.stopBackground();
-        },
-      });
-
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      this.getCourseModulesByCourseId(this.course().id);
+    });
   }
 
   actionViewExam(exam: Exam) {

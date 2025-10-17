@@ -19,6 +19,7 @@ export interface Lesson {
   configClassId: number;
   title: string;
   type: string;
+  currentImageId: number;
 }
 
 export interface Exam {

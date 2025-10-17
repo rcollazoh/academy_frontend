@@ -15,30 +15,34 @@ import { NotificationService } from '../../services/notification.service';
   templateUrl: './class-viewer.html',
   styleUrl: './class-viewer.scss'
 })
-export class ClassViewer implements OnInit{
+export class ClassViewer implements OnInit {
+  classConfigId!: number;
   classId!: number;
+  currentImageId!: number;
   imageData?: ClassImageNavigationDto;
   loading = true;
   safeResourcePhoto: SafeResourceUrl | String = '';
 
   constructor(
-  @Inject(MAT_DIALOG_DATA) public data: { classId: number },
-  private featuresService: FeaturesService,
-  protected ngxLoaderService: NgxUiLoaderService,
-  private notificacionService: NotificationService,
-  private dialogRef: MatDialogRef<ClassViewer>
-) {
-  this.classId = this.data.classId;
-}
-
-  ngOnInit(): void {
-    this.loadClass(this.classId);
+    @Inject(MAT_DIALOG_DATA) public data: { classConfigId: number, classId: number, currentImageId: number },
+    private featuresService: FeaturesService,
+    protected ngxLoaderService: NgxUiLoaderService,
+    private notificacionService: NotificationService,
+    private dialogRef: MatDialogRef<ClassViewer>
+  ) {
+    this.classConfigId = this.data.classConfigId;
+    this.classId = this.data.classId;
+    this.currentImageId = this.data.currentImageId;
   }
 
-  loadClass(id: number): void {
+  ngOnInit(): void {
+    this.loadClass(this.classConfigId, this.currentImageId);
+  }
+
+  loadClass(id: number, currentImageId: number): void {
     this.ngxLoaderService.start();
     this.loading = true;
-    this.featuresService.getClassWithNavigation(id).subscribe({
+    this.featuresService.getClassWithNavigation(id, currentImageId).subscribe({
       next: (res) => {
         //this.ngxLoaderService.stop();
         this.imageData = res;
@@ -51,12 +55,33 @@ export class ClassViewer implements OnInit{
     });
   }
 
-  loadImage(id: number, imageId:number): void {
+  loadImageNext(id: number, imageId: number): void {
     this.loading = true;
     this.ngxLoaderService.start();
     this.featuresService.getImageWithNavigation(id, imageId).subscribe({
       next: (res) => {
-        //this.ngxLoaderService.stop();
+        this.imageData = res;
+        if(this.imageData){
+          if(this.imageData.nextId){
+            this.updateStatusClass(this.classId, false, imageId);
+          } else {
+            this.updateStatusClass(this.classId, true, imageId);
+          }
+        } 
+        this.loadPhoto(this.imageData!.recourseUrl);
+      },
+      error: () => {
+        this.ngxLoaderService.stop();
+        this.loading = false;
+      },
+    });
+  }
+
+  loadImagePrevious(id: number, imageId: number): void {
+    this.loading = true;
+    this.ngxLoaderService.start();
+    this.featuresService.getImageWithNavigation(id, imageId).subscribe({
+      next: (res) => {
         this.imageData = res;
         this.loadPhoto(this.imageData!.recourseUrl);
       },
@@ -69,13 +94,13 @@ export class ClassViewer implements OnInit{
 
   next(): void {
     if (this.imageData?.nextId) {
-      this.loadImage(this.classId,this.imageData.nextId);
+      this.loadImageNext(this.classConfigId, this.imageData.nextId);
     }
   }
 
   previous(): void {
     if (this.imageData?.previousId) {
-      this.loadImage(this.classId,this.imageData.previousId);
+      this.loadImagePrevious(this.classConfigId, this.imageData.previousId);
     }
   }
 
@@ -95,11 +120,27 @@ export class ClassViewer implements OnInit{
         error: (err) => {
           this.loading = false;
           this.ngxLoaderService.stop();
-           this.notificacionService.notificationError(
-             'Ocurrió un error al obtener la imagen, no fue encontrada en el sistema'
-           );
+          this.notificacionService.notificationError(
+            'Ocurrió un error al obtener la imagen, no fue encontrada en el sistema'
+          );
         },
       });
     }
   }
+
+  updateStatusClass(classId: number, status: boolean, currentImageId: number): void {
+      this.ngxLoaderService.startBackground();
+  
+      this.featuresService
+        .updateClassStatus(classId, status, currentImageId)
+        .subscribe({
+          next: (res) => {
+            this.ngxLoaderService.stopBackground();
+          },
+          error: (err) => {
+            this.ngxLoaderService.stopBackground();
+          },
+        });  
+    }
+
 }

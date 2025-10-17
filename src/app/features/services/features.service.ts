@@ -211,12 +211,12 @@ export class FeaturesService {
       );
   }
 
-  getClassWithNavigation(classId: number): Observable<any> {
+  getClassWithNavigation(classId: number, currentImageId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
     return this._http
-      .get<any>(environment.serviceConfigClassImage + `/class_navegation/${classId}`, { headers })
+      .get<any>(environment.serviceConfigClassImage + `/class_navegation/${classId}/${currentImageId}`, { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
@@ -235,13 +235,13 @@ export class FeaturesService {
       );
   }
 
-  updateClassStatus(classId: number, status: boolean): Observable<any> {
+  updateClassStatus(classId: number, status: boolean, currentImageId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
 
     return this._http
-      .put<any>(environment.serviceStudentClass + `/${classId}/${status}`, {
+      .put<any>(environment.serviceStudentClass + `/${classId}/${status}/${currentImageId}`, {
         headers,
       })
       .pipe(
