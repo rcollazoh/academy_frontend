@@ -87,13 +87,21 @@
                         <mat-list>
                         <mat-list-item disableRipple>
                             <div class="lesson-row">
-                                <mat-icon matTooltip="Examen del módulo">assignment</mat-icon>
+                                @if (section.exam.status == 'NEW') {
+                                   <mat-icon matTooltip="Examen del módulo">description</mat-icon> 
+                                }
+                                @if (section.exam.status == 'APPROVED') {
+                                    <mat-icon matTooltip="Examen del módulo aprobado" style="color: #4caf50;">task</mat-icon> 
+                                }
+                                @if (section.exam.status == 'NOT_APPROVED') {
+                                    <mat-icon matTooltip="Examen del módulo no aprobado" style="color: #be0808;">task</mat-icon> 
+                                }
                                 <div class="lesson-title">{{ section.exam.title }}</div>
 
                                 <button mat-icon-button color="primary" aria-label="Realizar examen"
                                     matTooltip="Realizar examen"
                                     (click)="actionViewExam(section.exam)"
-                                    [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED'">
+                                    [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED' || isAnyClassNotViewed(section.classes)">
                                     <mat-icon>preview</mat-icon>
                                 </button>
                             </div>

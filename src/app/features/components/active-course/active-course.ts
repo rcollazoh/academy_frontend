@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltip } from '@angular/material/tooltip';
 import { StateModulePipe } from '@/app/shared/pipes/state-module-pipe';
 import { Routes } from '@/app/shared/consts/routes';
-import { Course, Exam, Module } from '@/app/shared/models/course-model';
+import { Course, Exam, Lesson, Module } from '@/app/shared/models/course-model';
 import { UserLogin } from '@/app/shared/models/user-model';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { RouteService } from '@/app/shared/services/route.service';
@@ -40,6 +40,7 @@ import { FeaturesService } from '@/app/features/services/features.service';
   ]
 })
 export class ActiveCourse implements OnInit {
+
 
   public routes: typeof Routes = Routes;
   lastRouteSubscription: Subscription;
@@ -187,6 +188,13 @@ export class ActiveCourse implements OnInit {
         this.getStudentCourseByPersonByAreaAndPractice();
       }
     });
+  }
+
+  isAnyClassNotViewed(classes: Lesson[]): boolean {
+    let anyClassNotViewed = classes.find(c => c.viewed == false);
+    if(anyClassNotViewed)
+      return true;
+    return false;
   }
 
 }
