@@ -4,7 +4,7 @@ import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from '@/environments/environment';
 import { PersonEntity } from '@/app/shared/models/person-model';
-import { ExamResult } from '@/app/shared/models/course-model';
+import { Course, ExamResult } from '@/app/shared/models/course-model';
 import { CourseRequest } from '@/app/shared/models/course-request-model';
 import { ApiCodeMessage } from '@/app/shared/consts/api-code-message.constant';
 
@@ -86,6 +86,24 @@ export class FeaturesService {
         catchError(this.handleServiceError)
       );
   }
+
+  uploadCertify(personId: number, courseId: number, file: File): Observable<Course> {
+    const formData = new FormData();
+    formData.append('personId', personId.toString());
+    formData.append('courseId', courseId.toString());
+    formData.append('certify', file);
+
+    return this._http.post<Course>(environment.serviceStudentCourse + '/upload_certify', formData);
+  }
+
+  downloadCertify(filename: string): Observable<Blob> {
+    const options = {
+      responseType: 'blob' as const,
+      params: { filename }
+    };
+    return this._http.get(environment.serviceImagenes + '/pdf', options);
+  }
+
 
   applyCourse(formData: FormData): Observable<any> {
     const headers = new HttpHeaders({
@@ -211,12 +229,12 @@ export class FeaturesService {
       );
   }
 
-  getClassWithNavigation(classId: number): Observable<any> {
+  getClassWithNavigation(classId: number, currentImageId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
     return this._http
-      .get<any>(environment.serviceConfigClassImage + `/class_navegation/${classId}`, { headers })
+      .get<any>(environment.serviceConfigClassImage + `/class_navegation/${classId}/${currentImageId}`, { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
@@ -235,13 +253,13 @@ export class FeaturesService {
       );
   }
 
-  updateClassStatus(classId: number, status: boolean): Observable<any> {
+  updateClassStatus(classId: number, status: boolean, currentImageId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
 
     return this._http
-      .put<any>(environment.serviceStudentClass + `/${classId}/${status}`, {
+      .put<any>(environment.serviceStudentClass + `/${classId}/${status}/${currentImageId}`, {
         headers,
       })
       .pipe(

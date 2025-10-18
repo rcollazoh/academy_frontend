@@ -58,11 +58,14 @@
                         @for (lesson of section.classes; track $index) {
                         <mat-list-item disableRipple>
                             <div class="lesson-row">
+                                @if (!lesson.viewed && lesson.currentImageId == 0) {
+                                <mat-icon matTooltip="Clase no vista">visibility_off</mat-icon>
+                                }
                                 @if (lesson.viewed) {
                                 <mat-icon style="color: #4caf50;" matTooltip="Clase vista">visibility</mat-icon>
                                 }
-                                @if (!lesson.viewed) {
-                                <mat-icon matTooltip="Clase no vista">visibility_off</mat-icon>
+                                @if (!lesson.viewed && lesson.currentImageId !== 0) {
+                                <mat-icon style="color: #be0808;" matTooltip="Clase en proceso">visibility</mat-icon>
                                 }
                                 <div class="lesson-title">{{ lesson.title }}</div>
 
@@ -73,7 +76,7 @@
                                 </div>-->
 
                                 <button mat-icon-button color="primary" aria-label="Reproducir clase"
-                                    matTooltip="Ver clase" (click)="actionPlayClass(lesson.id, lesson.configClassId)">
+                                    matTooltip="Ver clase" (click)="actionPlayClass(lesson.id, lesson.configClassId, lesson.currentImageId, lesson.viewed)">
                                     <mat-icon>play_circle</mat-icon>
                                 </button>
                             </div>
@@ -87,13 +90,21 @@
                         <mat-list>
                         <mat-list-item disableRipple>
                             <div class="lesson-row">
-                                <mat-icon matTooltip="Examen del módulo">assignment</mat-icon>
+                                @if (section.exam.status == 'NEW') {
+                                   <mat-icon matTooltip="Examen del módulo">description</mat-icon> 
+                                }
+                                @if (section.exam.status == 'APPROVED') {
+                                    <mat-icon matTooltip="Examen del módulo aprobado" style="color: #4caf50;">task</mat-icon> 
+                                }
+                                @if (section.exam.status == 'NOT_APPROVED') {
+                                    <mat-icon matTooltip="Examen del módulo no aprobado" style="color: #be0808;">task</mat-icon> 
+                                }
                                 <div class="lesson-title">{{ section.exam.title }}</div>
 
                                 <button mat-icon-button color="primary" aria-label="Realizar examen"
                                     matTooltip="Realizar examen"
                                     (click)="actionViewExam(section.exam)"
-                                    [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED'">
+                                    [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED' || isAnyClassNotViewed(section.classes)">
                                     <mat-icon>preview</mat-icon>
                                 </button>
                             </div>

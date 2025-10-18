@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Recuperar clave</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput formControlName="email" type="email" />
+        @if (form.get('email')?.hasError('email')) {
+        <mat-error>Correo inválido</mat-error>
+        }
+        @if (form.get('email')?.hasError('required')) {
+        <mat-error>Campo obligatorio</mat-error>
+        }
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
+        Aceptar
+    </button>
+</mat-dialog-actions>

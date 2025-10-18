@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltip } from '@angular/material/tooltip';
 import { StateModulePipe } from '@/app/shared/pipes/state-module-pipe';
 import { Routes } from '@/app/shared/consts/routes';
-import { Course, Exam, Module } from '@/app/shared/models/course-model';
+import { Course, Exam, Lesson, Module } from '@/app/shared/models/course-model';
 import { UserLogin } from '@/app/shared/models/user-model';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { RouteService } from '@/app/shared/services/route.service';
@@ -40,6 +40,7 @@ import { FeaturesService } from '@/app/features/services/features.service';
   ]
 })
 export class ActiveCourse implements OnInit {
+
 
   public routes: typeof Routes = Routes;
   lastRouteSubscription: Subscription;
@@ -142,10 +143,9 @@ export class ActiveCourse implements OnInit {
     });
   }
 
-  actionPlayClass(classId: number, classConfigId: number) {
-    this.updateStatusClass(classId);
-    this.dialog.open(ClassViewer, {
-      data: { classId: classConfigId },
+  actionPlayClass(classId: number, classConfigId: number, currentImageId: number, viewed: boolean) {
+    const dialogRef = this.dialog.open(ClassViewer, {
+      data: { classConfigId: classConfigId, classId: classId, currentImageId: currentImageId, viewed: viewed },
       width: '90vw',           // 90% del ancho de la ventana
       height: '90vh',          // 90% del alto de la ventana
       maxWidth: '100vw',       // evita que se limite por defecto
@@ -153,23 +153,9 @@ export class ActiveCourse implements OnInit {
       autoFocus: false,
       disableClose: true
     });
-  }
-
-  updateStatusClass(classId: number): void {
-    this.ngxLoaderService.startBackground();
-
-    this.featuresService
-      .updateClassStatus(classId, true)
-      .subscribe({
-        next: (res) => {
-          this.ngxLoaderService.stopBackground();
-          this.getCourseModulesByCourseId(this.course().id);
-        },
-        error: (err) => {
-          this.ngxLoaderService.stopBackground();
-        },
-      });
-
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      this.getCourseModulesByCourseId(this.course().id);
+    });
   }
 
   actionViewExam(exam: Exam) {
@@ -187,6 +173,13 @@ export class ActiveCourse implements OnInit {
         this.getStudentCourseByPersonByAreaAndPractice();
       }
     });
+  }
+
+  isAnyClassNotViewed(classes: Lesson[]): boolean {
+    let anyClassNotViewed = classes.find(c => c.viewed == false);
+    if(anyClassNotViewed)
+      return true;
+    return false;
   }
 
 }

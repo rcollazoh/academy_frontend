@@ -129,22 +129,13 @@ export class Sidebar implements OnInit {
       },
         error: (err) => {
       this.ngxLoaderService.stop();
-      if(err.name=='HttpErrorResponse'){
-        let msg = 'Por favor, revise su conexión.';
-        const dialogData = new ErrorDialogModel('Error', msg);
-        const dialogRef = this.dialog.open(ErrorDialog, {
-          maxWidth: '400px',
-          data: dialogData,
-        });
-      }
-      else {
-        const dialogData = new ErrorDialogModel('Error', err);
-        const dialogRef = this.dialog.open(ErrorDialog, {
-          maxWidth: '400px',
-          data: dialogData,
-        });
-      }
-
+      if(err && err.name=='HttpErrorResponse'){
+            this.notificacionService.notificationError('Por favor, revise su conexión');
+          } else if (err && err.error)
+            this.notificacionService.notificationError(err.error);
+          else {
+            this.notificacionService.notificationError('Error al cerrar sesión');
+          }
     },
     }
     );

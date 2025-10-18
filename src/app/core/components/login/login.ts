@@ -13,6 +13,8 @@ import { Routes } from '@/app/shared/consts/routes';
 import { LoginRequest } from '@/app/shared/models/login-request';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { AuthService } from '@/app/core/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RecoverKey } from '../recover-key/recover-key';
 
 
 @Component({
@@ -37,7 +39,7 @@ export class Login {
   loginForm!: FormGroup;
 
   constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService, 
-    private authService: AuthService, private notificacionService: NotificationService) { }
+    private authService: AuthService, private notificacionService: NotificationService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -87,6 +89,21 @@ export class Login {
       },
     });
   }
+
+  onAction() {
+      
+        const dialogRef = this.dialog.open(RecoverKey, {
+          width: '420px',
+          disableClose: true
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          if (result?.success) {
+            this.notificacionService.notificationSuccess('Se ha enviado una nueva clave a su correo electrónico');
+          }
+        });
+      
+    }
 
   
 }
