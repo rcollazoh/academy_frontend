@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // @ts-ignore
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         /** urls que no llevan token*/
-        if ((req.url.includes('login') || req.url.includes('register') || req.url.includes('practice') || req.url.includes('area')) && !req.url.includes('student_course')) {
+        if ((req.url.includes('login') || req.url.includes('recover_key') || req.url.includes('register') || req.url.includes('practice') || req.url.includes('area')) && !req.url.includes('student_course')) {
 
             return next.handle(req).pipe(
                 catchError(error => {
