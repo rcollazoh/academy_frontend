@@ -17,13 +17,13 @@ h2 {
 }
 
 .action-button-container {
-  padding-top: 8px;
+  //padding-top: 8px;
   display: flex;
   gap: 10px;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  align-items: baseline;
+  align-items: center;
 }
 
 .action-button {  
@@ -107,4 +107,8 @@ mat-row.mat-mdc-row, mat-header-row.mat-mdc-header-row, mat-footer-row.mat-mdc-f
     border-style: solid;
     border-width: 0;
     border-bottom-width: 1px;
+}
+
+.mat-mdc-form-field {
+  flex-direction: row;
 }

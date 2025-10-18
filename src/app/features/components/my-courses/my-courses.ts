@@ -10,6 +10,8 @@ import { StatePipe } from '../../../shared/pipes/state-pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowImage } from '../../../shared/components/show-image/show-image';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { NotificationService } from '@/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-my-courses',
@@ -25,7 +27,7 @@ export class MyCourses implements OnInit {
 
   displayedColumns: string[] = [];
 
-  constructor(private featuresService: FeaturesService, private dialog: MatDialog) {}
+  constructor(private featuresService: FeaturesService, private dialog: MatDialog, protected ngxLoaderService: NgxUiLoaderService, private notificacionService: NotificationService,) { }
 
   ngOnInit(): void {
     this.displayedColumns = this.getDataColumnsTable();
@@ -39,7 +41,7 @@ export class MyCourses implements OnInit {
   }
 
   getDataColumnsTable() {
-    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', /*'paymentMethod'*/];
+    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getStudentCoursesByPerson(personId: number): void {
@@ -55,9 +57,30 @@ export class MyCourses implements OnInit {
   }
 
   openReceipt(filename: string): void {
-  this.dialog.open(ShowImage, {
-    data: { filename },
-    width: '600px'
-  });
-}
+    this.dialog.open(ShowImage, {
+      data: { filename },
+      width: '600px'
+    });
+  }
+
+  downloadCertify(filename: string): void {
+    this.ngxLoaderService.start();
+    this.featuresService.downloadCertify(filename).subscribe({
+      next: (blob) => {
+        this.ngxLoaderService.stop();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: () => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Error al descargar el certificado'
+        );
+      }
+    });
+  }
 }

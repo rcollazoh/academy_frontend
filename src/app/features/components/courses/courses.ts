@@ -27,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { StatePipe } from "../../../shared/pipes/state-pipe";
 import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
 import { UserLogin } from '../../../shared/models/user-model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-courses',
@@ -65,7 +66,9 @@ export class Courses implements OnInit {
 
   /** Sort State */
   active: string = 'id';
-  direction: string = 'asc';
+  direction: string = 'desc';
+
+  selectedFileName: string = '';
 
   constructor( private featuresService: FeaturesService,
                protected ngxLoaderService: NgxUiLoaderService,
@@ -136,7 +139,7 @@ export class Courses implements OnInit {
     }
 
   getDataColumnsTable() {
-    return ['personName','personLastName','personEmail','courseName', 'status', /*'paymentMethod'*/];
+    return ['personName','personLastName','personEmail','courseName', 'status', 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getCourses(request: CourseRequest, pageNumber: number, pageSize: number): void {
@@ -239,6 +242,63 @@ export class Courses implements OnInit {
     this.pageIndex = 0;
     this.pageSize = 15;
     this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
+  }
+
+  downloadCertify(filename: string): void {
+    this.ngxLoaderService.start();
+    this.featuresService.downloadCertify(filename).subscribe({
+      next: (blob) => {
+        this.ngxLoaderService.stop();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: () => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Error al descargar el certificado'
+        );
+      }
+    });
+  }
+
+
+  onFileSelected(event: Event): void {
+    this.ngxLoaderService.start();
+    const input = event.target as HTMLInputElement;
+    
+    if (!input.files?.length) {
+      this.ngxLoaderService.stop();
+      return;
+    }      
+
+    const file = input.files[0];
+    if (file.type !== 'application/pdf') {
+      this.ngxLoaderService.stop();
+      this.notificacionService.notificationError(
+          'Solo se permiten archivos PDF.'
+        );
+      return;
+    }
+
+    this.featuresService.uploadCertify(this.courseSelected?.personId!, this.courseSelected?.id!, file).subscribe({
+      next: (res) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationSuccess(
+          'Certificado importado exitosamente.'
+        );
+        this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Error al importar el certificado.'
+        );
+      },
+    });
   }
 
 }
