@@ -45,6 +45,7 @@ export class RecoverKey implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      idNumber: ['', Validators.required],
     });
   }
 
@@ -55,7 +56,7 @@ export class RecoverKey implements OnInit {
 
   aceptar(): void {
     this.ngxLoaderService.start();
-    this.authService.recoverKey(this.form.get('email')?.value).subscribe({
+    this.authService.recoverKey(this.form.get('email')?.value, this.form.get('idNumber')?.value).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
         if(res && res.result){

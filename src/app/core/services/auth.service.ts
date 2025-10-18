@@ -199,13 +199,13 @@ export class AuthService {
       );
   }
 
-  recoverKey(email: string): Observable<any> {
+  recoverKey(email: string, idNumber: string): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
 
     return this._http
-      .get<any>(environment.servicePerson + `/recover_key?email=${email}`, { headers })
+      .get<any>(environment.servicePerson + `/recover_key?email=${email}&idNumber=${idNumber}`, { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)
