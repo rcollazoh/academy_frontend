@@ -22,8 +22,8 @@
 						<mat-cell *matCellDef="let row" data-label="startDate">{{ row.startDate }}</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="endDate">
-						<mat-header-cell *matHeaderCellDef>Fecha fin</mat-header-cell>
-						<mat-cell *matCellDef="let row" data-label="endDate">{{ row.endDate }}</mat-cell>
+						<mat-header-cell *matHeaderCellDef>Fecha vencimiento</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="endDate" class="red-text">{{ row.endDate }}</mat-cell>
 					</ng-container>
 					<ng-container matColumnDef="status">
 						<mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
