@@ -41,7 +41,7 @@ export class MyCourses implements OnInit {
   }
 
   getDataColumnsTable() {
-    return ['configCourseName', 'startDate', 'endDate', 'status', 'receiptUrl', 'certifyUrl' /*'paymentMethod'*/];
+    return ['configCourseName', 'area','practice','startDate', 'endDate', 'status', 'receiptUrl', 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getStudentCoursesByPerson(personId: number): void {

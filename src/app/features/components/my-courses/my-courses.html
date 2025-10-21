@@ -17,6 +17,14 @@
 						<mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
 						<mat-cell *matCellDef="let row" data-label="configCourseName">{{ row.configCourseName }}</mat-cell>
 					</ng-container>
+					<ng-container matColumnDef="area">
+						<mat-header-cell *matHeaderCellDef>Área</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="area">{{ row.area }}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="practice">
+						<mat-header-cell *matHeaderCellDef>Práctica</mat-header-cell>
+						<mat-cell *matCellDef="let row" data-label="practice">{{ row.practice }}</mat-cell>
+					</ng-container>
 					<ng-container matColumnDef="startDate">
 						<mat-header-cell *matHeaderCellDef>Fecha inicio</mat-header-cell>
 						<mat-cell *matCellDef="let row" data-label="startDate">{{ row.startDate }}</mat-cell>
