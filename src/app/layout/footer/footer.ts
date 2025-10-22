@@ -1,5 +1,8 @@
+import { Feedback } from '@/app/shared/components/feedback/feedback';
+import { NotificationService } from '@/app/shared/services/notification.service';
 import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
@@ -18,7 +21,7 @@ const InstragramIcon = `<svg height="200px" width="200px" version="1.1" id="Laye
 })
 export class Footer {
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private viewportScroller: ViewportScroller) {   
+  constructor(private notificacionService: NotificationService, public dialog: MatDialog, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private viewportScroller: ViewportScroller) {   
     iconRegistry.addSvgIconLiteral('whatsapp', sanitizer.bypassSecurityTrustHtml(WHATSAPP_ICON));
     iconRegistry.addSvgIconLiteral('instragram', sanitizer.bypassSecurityTrustHtml(InstragramIcon));
   }
@@ -31,4 +34,18 @@ export class Footer {
     this.router.navigate(['/home']);
   }
 }
+
+actionFeedback() {
+    const dialogRef = this.dialog.open(Feedback, {
+      width: '420px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.success) {
+        this.notificacionService.notificationSuccess('Se ha enviado su comentario');
+      }
+    });
+  }
+
 }
