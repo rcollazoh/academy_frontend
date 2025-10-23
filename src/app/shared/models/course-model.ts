@@ -11,6 +11,7 @@ export interface Course {
   personName?:string;
   personLastName?: string;
   personEmail?: string;
+  configCourseName?: string;
 }
 
 export interface Lesson {

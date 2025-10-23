@@ -108,7 +108,7 @@ export class ApplyCourseDialog implements OnInit {
 
     const formData = new FormData();
     formData.append('personId', this.data.personId);
-    formData.append('courseId', this.data.courseId);
+  // formData.append('courseId', this.data.courseId);
     formData.append('paymentMethod', this.form.value.metodo!);
     formData.append('payment', this.compressedFile);
 
@@ -133,6 +133,6 @@ export class ApplyCourseDialog implements OnInit {
 * It has been kept here to keep it as part of shared component.
 */
 export class ApplyDialogModel {
-  constructor(public personId: string, public courseId: string) {
+  constructor(public personId: string) {
   }
 }

@@ -95,7 +95,7 @@ export class ActiveCourse implements OnInit {
 
   getStudentCourseByPersonByAreaAndPractice(): void {
     this.ngxLoaderService.start();
-    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
+    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
         if (res.status == 'ACTIVATED') {

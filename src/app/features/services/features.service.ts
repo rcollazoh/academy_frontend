@@ -61,13 +61,13 @@ export class FeaturesService {
       );
   }
 
-  getStudentCourseByPersonByAreaAndPractice(personId: number, areaId: number, practiceId: number): Observable<any> {
+  getStudentCourseByPersonByAreaAndPractice(personId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
 
     return this._http
-      .get<any>(environment.serviceStudentCourse + `/by-person` + `/${personId}` + `/by-area` + `/${areaId}` + `/by-practice` + `/${practiceId}`, { headers })
+      .get<any>(environment.serviceStudentCourse + `/active-by-person/` + `${personId}` , { headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)

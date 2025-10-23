@@ -39,10 +39,10 @@ export class Home implements OnInit {
   course = signal<Course>({
     id: 0,
     personId: 0,
-    course: undefined,
     startDate: '',
     endDate: '',
-    status: ''
+    status: '',
+    configCourseName: ''
   });
 
   buttonLabel = computed(() => {
@@ -62,6 +62,23 @@ export class Home implements OnInit {
       default: return '';
     }
   });
+
+  get precioDelCursoMensaje(): string {
+    if (this.course()?.course){
+      return `${this.course().course?.price} CRC`;
+    } else {
+      return 'El precio del curso está en correspondencia al curso seleccionado.';
+    }
+  }
+
+  get duracionDelCursoMensaje(): string {
+    if (this.course()?.course){
+      return `Para la realización del curso cuenta con ${this.course().course?.durationDays} días naturales luego de que este
+          sea aprobado por el profesor.`;
+    } else {
+      return 'La cantidad de días para la realización del curso está en correspondencia al curso seleccionado.';
+    }
+  }
 
   estado = computed(() => {
     switch (this.course()?.status) {
@@ -85,7 +102,7 @@ export class Home implements OnInit {
 
   onAction() {
     if (this.buttonLabel() === 'Aplicar') {
-      const dialogData = new ApplyDialogModel(this.getUserData().id, this.course().course!.id.toString());
+      const dialogData = new ApplyDialogModel(this.getUserData().id);
       const dialogRef = this.dialog.open(ApplyCourseDialog, {
         width: '420px',
         disableClose: true,
@@ -114,7 +131,7 @@ export class Home implements OnInit {
 
   getStudentCourseByPersonByAreaAndPractice(): void {
     this.ngxLoaderService.start();
-    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
+    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id).subscribe({
       next: (res) => {
         this.course.update(() => res);
         this.ngxLoaderService.stop();
