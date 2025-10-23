@@ -1,0 +1,27 @@
+<h2 mat-dialog-title style="font-weight: 600;">Comparta su experiencia</h2>
+
+<p style="padding-left: 24px; padding-right: 20px; margin-bottom: 0; font-size: 14px;">¡Esperamos recibir sus comentarios! Su opinión es fundamental para seguir mejorando nuestro servicio.</p>
+
+<mat-dialog-content [formGroup]="form" style="padding-top: 10px;">
+    <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="personName" type="text" required/>
+        @if (form.get('personName')?.hasError('required')) {
+        <mat-error>Campo obligatorio</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Testimonio</mat-label>
+          <textarea matInput formControlName="message" selectOnFocus required placeholder="Escriba su comentario"></textarea>
+          @if (form.get('message')?.hasError('required')) {
+            <mat-error>Campo obligatorio</mat-error>
+          }
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
+        Enviar comentario
+    </button>
+</mat-dialog-actions>

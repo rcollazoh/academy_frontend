@@ -94,7 +94,8 @@ export class Login {
       
         const dialogRef = this.dialog.open(RecoverKey, {
           width: '420px',
-          disableClose: true
+          disableClose: true,
+          data: {email: this.loginForm.get('user')?.valid ? this.loginForm.get('user')?.value : undefined }
         });
   
         dialogRef.afterClosed().subscribe(result => {

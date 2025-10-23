@@ -212,4 +212,17 @@ export class AuthService {
       );
   }
 
+  sendFeedback(personName: string, message: string): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .post<any>(environment.serviceEmail + `/feedback?personName=${personName}&message=${message}`, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
 }
