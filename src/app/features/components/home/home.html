@@ -60,12 +60,13 @@
 
       <fieldset style="border-radius: 0.3em;">
         <legend>Precio</legend>
-        <p>{{ precioDelCursoMensaje }} </p>
+        <p>{{ course().price }} CRC </p>
       </fieldset>
 
       <fieldset style="border-radius: 0.3em">
         <legend>Duración</legend>
-        <p>{{ duracionDelCursoMensaje }}</p>
+        <p>Para la realización del curso cuenta con {{ course().durationDays }} días naturales luego de que este
+          sea aprobado por el profesor.</p>
       </fieldset>
 
       }
