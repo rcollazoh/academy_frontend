@@ -48,6 +48,19 @@ export class FeaturesService {
     return throwError(() => mensajeError);
   }
 
+  /** Obtener todos los cursos */
+  getAllCourses(): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+    return this._http
+      .get<any>(environment.serviceConfigCourse, { headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
   /** Obtener cursos por persona */
   getStudentCoursesByPerson(personId: number): Observable<any> {
     const headers = new HttpHeaders({
@@ -61,7 +74,7 @@ export class FeaturesService {
       );
   }
 
-  getStudentCourseByPersonByAreaAndPractice(personId: number): Observable<any> {
+  getStudentCourseByPerson(personId: number): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',
     });

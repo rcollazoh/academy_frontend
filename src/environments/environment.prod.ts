@@ -38,6 +38,8 @@ export const environment = {
 
   serviceEmail: BASE_URL + '/academy/email',
 
+  serviceConfigCourse: BASE_URL + '/academy/course',
+
 };
 
 

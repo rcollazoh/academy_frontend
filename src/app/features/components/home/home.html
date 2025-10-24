@@ -6,24 +6,52 @@
 
 <div class="container-fluid">
   <mat-card class="course-card" @fadeIn>
-    <!-- @if (course().course) {
 
-    } -->
     <mat-card-header>
       <div class="header-content">
-        @if(course()){
-        <span class="course-title">{{ course().configCourseName }}</span>
-        @if (buttonLabel()) {
-        <button class="sign-button" mat-flat-button (click)="onAction()"
-          matTooltip="Aplique para comenzar un nuevo curso">{{ buttonLabel() }}</button>
+        @if (courses() && courses().length) {
+        <span class="course-title" style="margin-bottom: 1.5rem;">Cursos disponibles</span>
+
+        <div class="card-grid">
+          @for (curso of courses(); track $index) {
+          <mat-card class="curso-card" appearance="outlined">
+
+            <mat-card-header>
+              <mat-card-title>{{ curso.name }}</mat-card-title>
+              <mat-card-subtitle class="lesson-meta">{{ curso.description }}</mat-card-subtitle>
+
+            </mat-card-header>
+            <mat-card-content style="margin-bottom: 1rem;">
+              <div class="account-info">
+                <p><strong>Precio</strong></p>
+                <p>{{ curso.price }} CRC</p>
+                <p><strong>Duración</strong></p>
+                <p>Para la realización del curso cuenta con {{ curso.durationDays }} días naturales luego de que este
+                  sea aprobado por el profesor.</p>
+              </div>
+            </mat-card-content>
+            <mat-card-footer style="display: flex; justify-content: flex-end;">
+
+              <button class="sign-button" mat-flat-button (click)="onAction(curso.id)"
+                matTooltip="Aplique para comenzar el curso">Aplicar</button>
+
+
+            </mat-card-footer>
+          </mat-card>
+          }
+        </div>
         }
+
+
+        @if(course() && course().status && course().status !== 'NEW'){
+        <span class="course-title">{{ course().configCourseName }}</span>
         }
       </div>
     </mat-card-header>
 
     <mat-card-content>
 
-      @if(course()){
+      @if(course() && course().status && course().status !== 'NEW'){
 
       <fieldset style="border-radius: 0.3em">
         <legend>Estado</legend>
@@ -32,7 +60,7 @@
 
       <fieldset style="border-radius: 0.3em;">
         <legend>Precio</legend>
-        <p>{{ precioDelCursoMensaje }} CRC </p>
+        <p>{{ precioDelCursoMensaje }} </p>
       </fieldset>
 
       <fieldset style="border-radius: 0.3em">
@@ -40,10 +68,7 @@
         <p>{{ duracionDelCursoMensaje }}</p>
       </fieldset>
 
-      <!--<fieldset style="border-radius: 0.3em">
-            <legend>Descripción</legend>
-            <p>{{ course().course?.description }}</p>
-        </fieldset>-->
+      }
 
       <fieldset style="border-radius: 0.3em;">
         <legend>Modos de pago</legend>
@@ -54,8 +79,8 @@
                 <mat-card-title>Sinpe móvil</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <div class="account-info">            
-                  <p><strong>Número</strong></p>                  
+                <div class="account-info">
+                  <p><strong>Número</strong></p>
                   <p>7219 5203</p>
                   <p><strong>A nombre de:</strong></p>
                   <p>dagoberto eloy gonzález lópez</p>
@@ -69,8 +94,8 @@
                 <mat-card-title>Transferencia o Depósito Bancario</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <div class="account-info">            
-                  <p><strong>A nombre de:</strong></p>                  
+                <div class="account-info">
+                  <p><strong>A nombre de:</strong></p>
                   <p>Dagoberto Eloy González López</p>
                   <p><strong>Cédula</strong></p>
                   <p>8-0148-0648</p>
@@ -87,7 +112,7 @@
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Corriente</strong></p>                 
+                  <p><strong>Cuenta Corriente</strong></p>
                   <p>9040493083</p>
                   <p><strong>Cuenta IBAN</strong></p>
                   <p>CR03010200009680980611</p>
@@ -102,7 +127,7 @@
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Corriente</strong></p>                 
+                  <p><strong>Cuenta Corriente</strong></p>
                   <p>001-1915618- 9</p>
                   <p><strong>Cuenta IBAN</strong></p>
                   <p>CR26015202001191561891</p>
@@ -117,7 +142,7 @@
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Cliente</strong></p>                 
+                  <p><strong>Cuenta Cliente</strong></p>
                   <p>15108020011139401</p>
                   <p><strong>Cuenta IBAN</strong></p>
                   <p>CR77015108020011139401</p>
@@ -125,10 +150,10 @@
               </mat-card-content>
             </mat-card>
           </div>
-        </div>         
+        </div>
       </fieldset>
 
-      }
+
 
     </mat-card-content>
   </mat-card>

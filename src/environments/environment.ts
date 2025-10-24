@@ -34,4 +34,6 @@ export const environment = {
   serviceConfigExamQuestion: '/academy/config_exam_question',
 
   serviceEmail: '/academy/email',
+
+  serviceConfigCourse: '/academy/course',
 };

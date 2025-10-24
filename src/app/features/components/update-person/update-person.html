@@ -20,7 +20,7 @@
                 <mat-card class="course-card">
                     <mat-card-content>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <mat-form-field class="field-full-width" appearance="outline">
                                         <mat-label>Nombres</mat-label>
@@ -33,7 +33,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <mat-form-field class="field-full-width" appearance="outline">
                                         <mat-label>Apellidos</mat-label>
@@ -46,6 +46,9 @@
                                     </mat-form-field>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="position-relative form-group">
                                     <mat-form-field class="field-full-width" appearance="outline">
@@ -60,9 +63,6 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field class="field-full-width" appearance="outline">
                                     <mat-label>Teléfono</mat-label>
@@ -86,25 +86,11 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="position-relative form-group">
-                                    <mat-form-field appearance="outline" class="w-100 mb-3">
-                                        <mat-label>Area</mat-label>
-                                        <mat-select formControlName="areaId" (valueChange)="onSelectArea($event)">
-                                            @for (area of listAreas; track $index) {
-                                            <mat-option [value]="area.id">{{ area.name }}</mat-option>
-                                            }
-                                        </mat-select>
-                                        @if (userForm.get('areaId')?.invalid) {
-                                        <mat-error>Campo obligatorio</mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <mat-form-field class="field-full-width" appearance="outline">
                                         <mat-label>Contraseña</mat-label>
@@ -125,7 +111,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="position-relative form-group">
                                     <mat-form-field class="field-full-width" appearance="outline">
                                         <mat-label>Confirmar contraseña</mat-label>
@@ -148,21 +134,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="position-relative form-group">
-                                    <mat-form-field appearance="outline" class="w-100 mb-3">
-                                        <mat-label>Práctica</mat-label>
-                                        <mat-select formControlName="practiceId">
-                                            @for (practice of listPractice; track $index) {
-                                            <mat-option [value]="practice.id">{{ practice.name }}</mat-option>
-                                            }
-                                        </mat-select>
-                                        @if (userForm.get('practiceId')?.invalid) {
-                                        <mat-error>Campo obligatorio</mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                            
                         </div>
 
                     </mat-card-content>
