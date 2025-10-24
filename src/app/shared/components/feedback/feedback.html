@@ -1,14 +1,24 @@
 <h2 mat-dialog-title style="font-weight: 600;">Comparta su experiencia</h2>
 
-<p style="padding-left: 24px; padding-right: 20px; margin-bottom: 0; font-size: 14px;">¡Esperamos recibir sus comentarios! Su opinión es fundamental para seguir mejorando nuestro servicio.</p>
+<p style="padding-left: 24px; padding-right: 20px; margin-bottom: 0; font-size: 14px;">¡Esperamos recibir sus comentarios! Su opinión es fundamental para seguir mejorando nuestra academia.</p>
 
 <mat-dialog-content [formGroup]="form" style="padding-top: 10px;">
-    <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
+    <!--<mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="personName" type="text" required/>
         @if (form.get('personName')?.hasError('required')) {
         <mat-error>Campo obligatorio</mat-error>
         }
+    </mat-form-field>-->
+    <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="personName" type="email" placeholder="mail@example.com" required>
+            @if (form.get('personName')?.hasError('required')) {
+                <mat-error>Campo obligatorio</mat-error>
+            }
+            @if (form.get('personName')?.hasError('email')) {
+                <mat-error>Correo inválido</mat-error>
+            }
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
           <mat-label>Testimonio</mat-label>

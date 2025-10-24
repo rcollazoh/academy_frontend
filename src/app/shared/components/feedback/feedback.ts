@@ -39,8 +39,9 @@ export class Feedback implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      personName: ['', [Validators.required]],
+      personName: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
+      //email: ['', [Validators.required, Validators.email]],
     });
   }
 
