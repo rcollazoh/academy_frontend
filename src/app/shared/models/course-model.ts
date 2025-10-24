@@ -11,6 +11,9 @@ export interface Course {
   personName?:string;
   personLastName?: string;
   personEmail?: string;
+  configCourseName?: string;
+  price?: number;
+  durationDays?: number;
 }
 
 export interface Lesson {
@@ -45,6 +48,13 @@ export interface QuestionOption {
   isCorrect: boolean;
 }
 
+export interface Reference {
+  id: number;
+  link: string;
+  orderNum: number;
+  title: string;
+}
+
 export interface Module {
   id: number;
   confingModuleId: number;
@@ -53,6 +63,7 @@ export interface Module {
   classes: Lesson[];
   exam: Exam;
   status: string;
+  references: Reference[];
 }
 
 export interface ClassImageNavigationDto {

@@ -36,21 +36,15 @@ export class Home implements OnInit {
 
   public user$: Observable<UserLogin>;
 
+  courses = signal<any[]>([]);
+
   course = signal<Course>({
     id: 0,
     personId: 0,
-    course: undefined,
     startDate: '',
     endDate: '',
-    status: ''
-  });
-
-  buttonLabel = computed(() => {
-    switch (this.course()?.status) {
-      case 'NEW': return 'Aplicar';
-      case 'REJECTED': return 'Aplicar';
-      default: return '';
-    }
+    status: '',
+    configCourseName: ''
   });
 
   estadoMensaje = computed(() => {
@@ -62,6 +56,23 @@ export class Home implements OnInit {
       default: return '';
     }
   });
+
+  get precioDelCursoMensaje(): string {
+    if (this.course() && this.course().status && this.course().status != 'NEW'){
+      return `${this.course().price} CRC`;
+    } else {
+      return 'El precio del curso está en correspondencia al curso seleccionado.';
+    }
+  }
+
+  get duracionDelCursoMensaje(): string {
+    if (this.course() && this.course().status && this.course().status != 'NEW'){
+      return `Para la realización del curso cuenta con ${this.course().durationDays} días naturales luego de que este
+          sea aprobado por el profesor.`;
+    } else {
+      return 'La cantidad de días para la realización del curso está en correspondencia al curso seleccionado.';
+    }
+  }
 
   estado = computed(() => {
     switch (this.course()?.status) {
@@ -80,12 +91,12 @@ export class Home implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getStudentCourseByPersonByAreaAndPractice();
+    this.getStudentCourseByPerson();
   }
 
-  onAction() {
-    if (this.buttonLabel() === 'Aplicar') {
-      const dialogData = new ApplyDialogModel(this.getUserData().id, this.course().course!.id.toString());
+  onAction(id: number) {
+    
+      const dialogData = new ApplyDialogModel(this.getUserData().id, id.toString());
       const dialogRef = this.dialog.open(ApplyCourseDialog, {
         width: '420px',
         disableClose: true,
@@ -94,10 +105,11 @@ export class Home implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result?.success) {
+          this.courses.set([]);
           this.course.update(c => ({ ...c, status: 'PENDING' }));
         }
       });
-    }
+    
   }
 
   /**
@@ -112,16 +124,38 @@ export class Home implements OnInit {
     return userData;
   }
 
-  getStudentCourseByPersonByAreaAndPractice(): void {
+  getStudentCourseByPerson(): void {
     this.ngxLoaderService.start();
-    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
+    this.featuresService.getStudentCourseByPerson(this.getUserData().id).subscribe({
       next: (res) => {
-        this.course.update(() => res);
+        if(res.id){
+         this.course.update(() => res);
+        } else      
+          this.getAllCourses();
         this.ngxLoaderService.stop();
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         let msg = 'Lo sentimos, ocurrió un error al obtener los datos del curso.';
+        const dialogData = new ErrorDialogModel('Error', msg);
+        this.dialog.open(ErrorDialog, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
+      },
+    });
+  }
+
+  getAllCourses(): void {
+    this.ngxLoaderService.start();
+    this.featuresService.getAllCourses().subscribe({
+      next: (res) => {
+        this.courses.set(res);
+        this.ngxLoaderService.stop();
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+        let msg = 'Lo sentimos, ocurrió un error al obtener los cursos.';
         const dialogData = new ErrorDialogModel('Error', msg);
         this.dialog.open(ErrorDialog, {
           maxWidth: '400px',

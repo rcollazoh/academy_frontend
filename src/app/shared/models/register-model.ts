@@ -6,6 +6,4 @@ export interface Register{
     isUser: boolean;
     password: String;
     id_number: String;
-    areaId: number;
-    practiceId: number;
 }

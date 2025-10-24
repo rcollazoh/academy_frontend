@@ -6,6 +6,7 @@
     <!-- Enlaces visibles solo en escritorio -->
     <div class="nav-links">
       <button mat-button (click)="actionHome()">Inicio</button>
+      <button mat-button (click)="actionFeedback()">Feedback</button>
       <button mat-stroked-button color="accent" (click)="actionLogin()" matTooltip="Iniciar sesión">
         <mat-icon>login</mat-icon> Login
       </button>
@@ -19,6 +20,9 @@
       
       <div class="example-button-row">
     <div class="example-flex-container">
+      <button matMiniFab (click)="actionFeedback()" matTooltip="Envienos su opinión">
+        <mat-icon style="margin-right: 0;">email</mat-icon>
+      </button>
       <button matMiniFab (click)="actionLogin()" matTooltip="Iniciar sesión">
         <mat-icon>login</mat-icon>
       </button>

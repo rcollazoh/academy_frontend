@@ -90,7 +90,23 @@
               Curso
             </mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="courseName">
-              {{ row.course.name | emptyField}}
+              {{ row.configCourseName | emptyField}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="area">
+            <mat-header-cell *matHeaderCellDef>
+              Área
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="area">
+              {{ row.area | emptyField}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="practice">
+            <mat-header-cell *matHeaderCellDef>
+              Práctica
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="practice">
+              {{ row.practice | emptyField}}
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="status">

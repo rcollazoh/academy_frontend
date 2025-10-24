@@ -116,8 +116,6 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
       password: new FormControl({ value: null, disabled: false}, Validators.required),
       confirm: new FormControl({ value: null, disabled: false}, Validators.required),
       idNumber: new FormControl({ value: '', disabled: false}, Validators.required),
-      areaId: new FormControl({ value: null, disabled: true}, Validators.required),
-      practiceId: new FormControl({ value: null, disabled: true}, Validators.required),
     });
 
     var paramId = Number(this.route.snapshot.paramMap.get('id'));
@@ -128,7 +126,6 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
       this.personEditId = paramId;
       this.loadPersonData();
     }
-    this.loadAreas();
   }
 
   ngOnDestroy(): void {
@@ -154,8 +151,6 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
 
         this.userForm.patchValue(res);
 
-        this.getPracticeByArea(res.areaId);
-
         this.userForm.markAllAsTouched();
 
         this.userForm.controls['password'].clearValidators();
@@ -173,62 +168,6 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
         );
       },
     });
-  }
-
-  loadAreas(): void {
-    if (localStorage.getItem('listAreas') != null) {
-      const areas = localStorage.getItem('listAreas');
-      if (areas) {
-        this.listAreas = JSON.parse(areas).listAreas;
-      }
-    } else {
-      this.ngxLoaderService.startBackground("do-background-things");
-      this.nomenclatorService.getAllAreas().subscribe({
-        next: (res) => {
-          this.listAreas = res;
-          localStorage.setItem(
-            'listAreas',
-            JSON.stringify({
-              listAreas: res,
-            })
-          );
-          this.ngxLoaderService.stopBackground("do-background-things");
-        },
-        error: (err) => {
-          this.ngxLoaderService.stopBackground("do-background-things");
-          this.notificacionService.notificationError(
-            'Lo sentimos, ocurrió un error al obtener las areas, recargue la página'
-          );
-        },
-      });
-    }
-  }
-
-  /**
-   * Metodo para obtener practicas por area
-   */
-  getPracticeByArea(areaId: number): void {
-    this.ngxLoaderService.startBackground("do-background-things");
-    this.nomenclatorService.getPracticeByArea(areaId).subscribe({
-      next: (res) => {
-        this.listPractice = res;
-        this.ngxLoaderService.stopBackground("do-background-things");
-      },
-      error: (err) => {
-        this.ngxLoaderService.stopBackground("do-background-things");
-        this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al obtener las practicas, recargue la pagina'
-        );
-      },
-    });
-  }
-
-  /**
-   * Evento al seleccionar el area
-   * @param event
-   */
-  onSelectArea(event: any) {
-    this.getPracticeByArea(event);
   }
 
   createUser(): void {

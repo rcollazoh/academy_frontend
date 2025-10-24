@@ -139,7 +139,7 @@ export class Courses implements OnInit {
     }
 
   getDataColumnsTable() {
-    return ['personName','personLastName','personEmail','courseName', 'status', 'certifyUrl' /*'paymentMethod'*/];
+    return ['personName','personLastName','personEmail','courseName','area','practice', 'status', 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getCourses(request: CourseRequest, pageNumber: number, pageSize: number): void {

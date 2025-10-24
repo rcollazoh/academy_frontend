@@ -7,12 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { AuthService } from '../../services/auth.service';
-import { NotificationService } from '@/app/shared/services/notification.service';
+import { NotificationService } from '../../services/notification.service';
+import { AuthService } from '@/app/core/services/auth.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { RecoverKey } from '@/app/core/components/recover-key/recover-key';
 
 @Component({
-  selector: 'app-recover-key',
+  selector: 'app-feedback',
   imports: [CommonModule,
     ReactiveFormsModule,
     MatDialogModule,
@@ -21,31 +22,25 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
     MatButtonModule,
     MatInputModule,
     MatIconModule],
-  templateUrl: './recover-key.html',
-  styleUrl: './recover-key.scss'
+  templateUrl: './feedback.html',
+  styleUrl: './feedback.scss'
 })
-export class RecoverKey implements OnInit {
+export class Feedback implements OnInit {
 
   form!: FormGroup;
-
-  email!: string;
-
+  
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<RecoverKey>, @Inject(MAT_DIALOG_DATA) public data: {email: string},
+    private dialogRef: MatDialogRef<RecoverKey>, @Inject(MAT_DIALOG_DATA) public data: any,
     private authService: AuthService,
     private notificacionService: NotificationService,
     protected ngxLoaderService: NgxUiLoaderService
-  ) { 
-    if(this.data.email){
-      this.email = this.data.email;
-    }
-  }
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [this.email, [Validators.required, Validators.email]],
-      idNumber: ['', Validators.required],
+      personName: ['', [Validators.required]],
+      message: ['', Validators.required],
     });
   }
 
@@ -56,20 +51,15 @@ export class RecoverKey implements OnInit {
 
   aceptar(): void {
     this.ngxLoaderService.start();
-    this.authService.recoverKey(this.form.get('email')?.value, this.form.get('idNumber')?.value).subscribe({
+    this.authService.sendFeedback(this.form.get('personName')?.value, this.form.get('message')?.value).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
-        if(res && res.result){
-          this.notificacionService.notificationError(
-          res.result
-        );
-        } else
-          this.dialogRef.close({ success: true });
+        this.dialogRef.close({ success: true });
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al recuperar la clave'
+          'Lo sentimos, ocurrió un error al enviar su feedback'
         );
       },
     });
