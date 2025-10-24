@@ -58,68 +58,10 @@ export class Register implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirm: ['', Validators.required],
       idNumber: ['', Validators.required],
-      areaId: [{ value: null, disabled: false }, Validators.required],
-      practiceId: [{ value: null, disabled: false }, Validators.required],
     },
       { validators: passwordMatchValidator });
-    this.loadAreas();
   }
 
-  loadAreas(): void {
-    if (localStorage.getItem('listAreas') != null) {
-      const areas = localStorage.getItem('listAreas');
-      if (areas) {
-        this.listAreas = JSON.parse(areas).listAreas;
-      }
-    } else {
-      this.ngxLoaderService.startBackground("do-background-things");
-      this.nomenclatorService.getAllAreas().subscribe({
-        next: (res) => {
-          this.listAreas = res;
-          localStorage.setItem(
-            'listAreas',
-            JSON.stringify({
-              listAreas: res,
-            })
-          );
-          this.ngxLoaderService.stopBackground("do-background-things");
-        },
-        error: (err) => {
-          this.ngxLoaderService.stopBackground("do-background-things");
-          this.notificacionService.notificationError(
-            'Lo sentimos, ocurrió un error al obtener las areas, recargue la página'
-          );
-        },
-      });
-    }
-  }
-
-  /**
-   * Metodo para obtener practicas por area
-   */
-  getPracticeByArea(areaId: number): void {
-    this.ngxLoaderService.startBackground("do-background-things");
-    this.nomenclatorService.getPracticeByArea(areaId).subscribe({
-      next: (res) => {
-        this.listPractice = res;
-        this.ngxLoaderService.stopBackground("do-background-things");
-      },
-      error: (err) => {
-        this.ngxLoaderService.stopBackground("do-background-things");
-        this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al obtener las practicas, recargue la pagina'
-        );
-      },
-    });
-  }
-
-  /**
-   * Evento al seleccionar el area
-   * @param event
-   */
-  onSelectArea(event: any) {
-    this.getPracticeByArea(event);
-  }
 
   onSubmit() {
     if (this.form.valid && this.form.value.password === this.form.value.confirm) {

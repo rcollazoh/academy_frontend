@@ -78,7 +78,7 @@ export class ActiveCourse implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getStudentCourseByPersonByAreaAndPractice();
+    this.getStudentCourseByPerson();
   }
 
   /**
@@ -93,9 +93,9 @@ export class ActiveCourse implements OnInit {
     return userData;
   }
 
-  getStudentCourseByPersonByAreaAndPractice(): void {
+  getStudentCourseByPerson(): void {
     this.ngxLoaderService.start();
-    this.featuresService.getStudentCourseByPersonByAreaAndPractice(this.getUserData().id, this.getUserData().areaId, this.getUserData().practiceId).subscribe({
+    this.featuresService.getStudentCourseByPerson(this.getUserData().id).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
         if (res.status == 'ACTIVATED') {
@@ -170,7 +170,7 @@ export class ActiveCourse implements OnInit {
     });
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
-        this.getStudentCourseByPersonByAreaAndPractice();
+        this.getStudentCourseByPerson();
       }
     });
   }

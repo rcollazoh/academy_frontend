@@ -99,3 +99,20 @@ p {
 .account-info p {
   margin: 0.2rem 0;
 }
+
+.card-grid {
+  display: flex;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 2rem;
+    justify-content: center;
+}
+
+.curso-card {
+  max-width: 550px;
+}
+
+.lesson-meta {
+  font-size: 0.85em;
+  color: gray;
+}
