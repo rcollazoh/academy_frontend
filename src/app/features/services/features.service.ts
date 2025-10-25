@@ -4,7 +4,7 @@ import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from '@/environments/environment';
 import { PersonEntity } from '@/app/shared/models/person-model';
-import { Course, ExamResult } from '@/app/shared/models/course-model';
+import { Course, ExamResult, StudentFeedback } from '@/app/shared/models/course-model';
 import { CourseRequest } from '@/app/shared/models/course-request-model';
 import { ApiCodeMessage } from '@/app/shared/consts/api-code-message.constant';
 
@@ -313,6 +313,19 @@ export class FeaturesService {
 
     return this._http
       .put<any>(environment.serviceStudentExam + `/${examId}`, answers, { headers: headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
+  submitFeedback(form: StudentFeedback): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    return this._http
+      .post<any>(environment.serviceStudentFeedback, form, { headers: headers })
       .pipe(
         map((data) => data),
         catchError(this.handleServiceError)

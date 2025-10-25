@@ -80,3 +80,19 @@ export interface ExamResult {
   optionId: number;
   isCorrect?: boolean;
 }
+
+export interface StudentFeedback {
+  StudentModuleId: number;
+  learningQuestion: string;
+  durationQuestion: string;
+  satisfactionQuestion: string;
+  errorObs: string;
+  considerationObs: string;
+  modules: StudentFeedbackModule[];
+}
+
+export interface StudentFeedbackModule {
+  configModuleId: number;
+  evaluation: string;
+  question: string;
+}

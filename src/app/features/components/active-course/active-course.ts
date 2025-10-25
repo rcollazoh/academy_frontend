@@ -21,6 +21,7 @@ import { ErrorDialog, ErrorDialogModel } from '@/app/shared/components/error-dia
 import { ExamViewer } from '@/app/shared/components/exam-viewer/exam-viewer';
 import { ClassViewer } from '@/app/shared/components/class-viewer/class-viewer';
 import { FeaturesService } from '@/app/features/services/features.service';
+import { FeedbackViewer } from '@/app/shared/components/feedback-viewer/feedback-viewer';
 
 
 @Component({
@@ -180,6 +181,23 @@ export class ActiveCourse implements OnInit {
     if(anyClassNotViewed)
       return true;
     return false;
+  }
+
+openFeedback(moduleId: number) {
+    const dialogRef = this.dialog.open(FeedbackViewer, {
+      data: { modules: this.modules(), moduleId: moduleId },
+      width: '90vw', 
+      height: '90vh', 
+      maxWidth: '100vw', 
+      panelClass: 'full-dialog',
+      autoFocus: false,
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        this.getStudentCourseByPerson();
+      }
+    });
   }
 
 }

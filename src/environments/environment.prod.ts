@@ -40,6 +40,8 @@ export const environment = {
 
   serviceConfigCourse: BASE_URL + '/academy/course',
 
+  serviceStudentFeedback: BASE_URL + '/academy/student_feedback',
+
 };
 
 
