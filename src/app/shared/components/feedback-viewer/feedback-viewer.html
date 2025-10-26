@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>Feedback</h2>
+
+<mat-dialog-content style="padding-top: 0;">
+
+<form [formGroup]="form">  
+
+    <p>
+        Tras completar los módulos y las evaluaciones del curso, le solicitamos que nos brinde su opinión sobre la experiencia de aprendizaje. Sus comentarios son muy valiosos y nos ayudarán a mejorar nuestra Academia en Protección Radiológica (PRAD Academy).
+    </p>
+
+    <p><strong>1. Califica el contenido de cada módulo:</strong></p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem;">
+      @for (module of modules; track $index) {
+      <mat-form-field appearance="outline" class="field-full-width">
+        <mat-label>Módulo {{ $index + 1 }}</mat-label>
+        <mat-select [formControlName]="'content-' + module.confingModuleId" required>
+          @for (item of ratings; track $index) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }          
+        </mat-select>
+      </mat-form-field>
+    }
+    </div>
+    
+
+    <p><strong>2. Califica la apariencia de cada módulo:</strong></p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem;">
+      @for (module of modules; track $index) {
+      <mat-form-field appearance="outline" class="field-full-width">
+        <mat-label>Módulo {{ $index + 1 }}</mat-label>
+        <mat-select [formControlName]="'appearance-' + module.confingModuleId" required>
+          @for (item of ratings; track $index) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }          
+        </mat-select>
+      </mat-form-field>
+    }
+    </div>
+
+    <p><strong>3. Evalúa los siguientes aspectos:</strong></p>
+    @for (aspect of aspects; track $index) {
+      <div style="display: flex; flex-direction: column;">
+      <label>{{ aspect.label }}</label>
+      <mat-radio-group [formControlName]="aspect.control" class="example-radio-group">
+        @for (r of ratings; track $index) {
+          <mat-radio-button class="example-radio-button" [value]="r">{{ r }}</mat-radio-button>
+        }        
+      </mat-radio-group>
+    </div>
+    }    
+
+    <p><strong>4. Si nota algún error o elemento (por ejemplo, botones, interacciones, etc.), escríbalo aquí:</strong></p>
+
+    <mat-form-field appearance="outline" class="field-full-width">
+      <mat-label>Errores o elementos a mejorar</mat-label>
+      <textarea matInput formControlName="errors" rows="2"></textarea>
+    </mat-form-field>
+
+    <p><strong>5. Comentarios adicionales:</strong></p>
+
+    <mat-form-field appearance="outline" class="field-full-width">
+      <mat-label>Comentarios adicionales</mat-label>
+      <textarea matInput formControlName="additionalComments" rows="3"></textarea>
+    </mat-form-field>
+
+</form>
+
+  </mat-dialog-content> 
+
+ <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="submitFeedback()">Enviar</button>
+  </mat-dialog-actions>

@@ -36,4 +36,6 @@ export const environment = {
   serviceEmail: '/academy/email',
 
   serviceConfigCourse: '/academy/course',
+
+  serviceStudentFeedback: '/academy/student_feedback',
 };

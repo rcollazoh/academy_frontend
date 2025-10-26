@@ -133,6 +133,25 @@
                     </mat-list>                            
                     }
 
+                    @if (section.moduleName == 'Feedback') {
+                    <mat-list>
+                        <mat-list-item disableRipple>
+                            <div class="lesson-row">
+                                <mat-icon matTooltip="Examen del módulo">ballot</mat-icon>
+                                
+                                <div class="lesson-title">Envienos su feedback del curso y los módulos</div>
+
+                                <button mat-icon-button color="primary" aria-label="Feedback"
+                                    matTooltip="Realizar feedback" (click)="openFeedback(section.id)"
+                                    [disabled]="section.status !== 'NEW'">
+                                    <mat-icon>edit_note</mat-icon>
+                                </button>
+                            </div>
+                        </mat-list-item>
+
+                    </mat-list>
+                    }
+
                 </mat-expansion-panel>
                 }
             </mat-accordion>

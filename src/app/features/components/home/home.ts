@@ -57,23 +57,6 @@ export class Home implements OnInit {
     }
   });
 
-  get precioDelCursoMensaje(): string {
-    if (this.course() && this.course().status && this.course().status != 'NEW'){
-      return `${this.course().price} CRC`;
-    } else {
-      return 'El precio del curso está en correspondencia al curso seleccionado.';
-    }
-  }
-
-  get duracionDelCursoMensaje(): string {
-    if (this.course() && this.course().status && this.course().status != 'NEW'){
-      return `Para la realización del curso cuenta con ${this.course().durationDays} días naturales luego de que este
-          sea aprobado por el profesor.`;
-    } else {
-      return 'La cantidad de días para la realización del curso está en correspondencia al curso seleccionado.';
-    }
-  }
-
   estado = computed(() => {
     switch (this.course()?.status) {
       case 'NEW': return EstadoCurso.NEW.toString();
@@ -106,7 +89,8 @@ export class Home implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result?.success) {
           this.courses.set([]);
-          this.course.update(c => ({ ...c, status: 'PENDING' }));
+          this.getStudentCourseByPerson();
+          //this.course.update(c => ({ ...c, status: 'PENDING' }));
         }
       });
     
