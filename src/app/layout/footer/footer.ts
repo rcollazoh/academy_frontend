@@ -35,6 +35,10 @@ export class Footer {
   }
 }
 
+goToPolicies() {
+  this.router.navigate(['/policies']);
+}
+
 actionFeedback() {
     const dialogRef = this.dialog.open(Feedback, {
       width: '420px',

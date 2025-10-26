@@ -6,9 +6,13 @@
         <small>Plataforma de aprendizaje en línea  para<br> el desarrollo profesional en Costa Rica.</small>
     </div>
     </div>
+    
     <nav class="footer-links">
-      <a (click)="goToHome()">Inicio</a>
-      <a (click)="actionFeedback()">Feedback</a>
+      <div style="display: flex; flex-direction: column;">
+        <a (click)="goToHome()">Inicio</a>
+        <a (click)="actionFeedback()">Feedback</a>
+        <a (click)="goToPolicies()">Políticas de seguridad</a>
+      </div>      
     </nav>
 
     <div class="footer-social" style="gap: 1px;">
