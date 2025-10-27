@@ -58,10 +58,10 @@
         <p>{{ estadoMensaje() }}</p>
       </fieldset>
 
-      <fieldset style="border-radius: 0.3em;">
+      <!--<fieldset style="border-radius: 0.3em;">
         <legend>Precio</legend>
         <p>{{ course().price }} CRC </p>
-      </fieldset>
+      </fieldset>-->
 
       <fieldset style="border-radius: 0.3em">
         <legend>Duración</legend>
@@ -71,7 +71,8 @@
 
       }
 
-      <fieldset style="border-radius: 0.3em;">
+      @if (courses() && courses().length) {
+        <fieldset style="border-radius: 0.3em;">
         <legend>Modos de pago</legend>
         <div class="row" style="margin-bottom: 10px;">
           <div class="col-md-6">
@@ -153,6 +154,7 @@
           </div>
         </div>
       </fieldset>
+      }
 
 
 
