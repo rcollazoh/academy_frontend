@@ -16,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslateModule],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
@@ -25,12 +25,7 @@ export class Navbar {
   public routes: typeof Routes = Routes;
 
   constructor(protected router: Router, protected ngxLoaderService: NgxUiLoaderService, 
-    private notificacionService: NotificationService, public dialog: MatDialog,private translate: TranslateService) { 
-    // Usa el idioma del navegador o uno específico
-    this.translate.use('es');
-    this.translate.get('LANDING.NAVBAR_TEXT_START').subscribe(value => {
-    console.log('Traducción:', value);
-  });
+    private notificacionService: NotificationService, public dialog: MatDialog) { 
 }
 
   actionLogin() {
