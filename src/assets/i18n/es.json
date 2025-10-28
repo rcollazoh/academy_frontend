@@ -1,0 +1,26 @@
+{
+"LANDING": {
+    "NAVBAR_TEXT_START": "Inicio",
+    "NAVBAR_TEXT_FEEDBACK": "Feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Envienos su opinión",
+    "NAVBAR_TEXT_LOGIN": "Login",
+    "NAVBAR_TEXT_REGISTER": "Registro"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "USERNAME": "Nombre de usuario",
+    "PASSWORD": "Contraseña",
+    "BUTTON": "Entrar"
+  },
+  "REGISTER": {
+    "TITLE": "Registro",
+    "TOOLTIP": "Registrarse en la plataforma",
+    "USERNAME": "Nombre de usuario",
+    "PASSWORD": "Contraseña",
+    "BUTTON": "Registrarse"
+  },
+  "COURSE": {
+    "TITLE": "Mis cursos",
+    "START": "Comenzar curso"
+  }
+}

@@ -5,13 +5,13 @@
 
     <!-- Enlaces visibles solo en escritorio -->
     <div class="nav-links">
-      <button mat-button (click)="actionHome()">Inicio</button>
-      <button mat-button (click)="actionFeedback()">Feedback</button>
-      <button mat-stroked-button color="accent" (click)="actionLogin()" matTooltip="Iniciar sesión">
-        <mat-icon>login</mat-icon> Login
+      <button mat-button (click)="actionHome()">{{ 'LANDING.NAVBAR_TEXT_START' | translate }}</button>
+      <button mat-button matTooltip="{{ 'LANDING.NAVBAR_TEXT_FEEDBACK_TOOLTIP' | translate }}" (click)="actionFeedback()">{{ 'LANDING.NAVBAR_TEXT_FEEDBACK' | translate }}</button>
+      <button mat-stroked-button color="accent" (click)="actionLogin()" matTooltip="{{ 'LANDING.NAVBAR_TEXT_LOGIN' | translate }}">
+        <mat-icon>login</mat-icon> {{ 'LANDING.NAVBAR_TEXT_LOGIN' | translate }}
       </button>
-      <button mat-raised-button color="accent" (click)="actionRegister()" matTooltip="Registrarse">
-        <mat-icon>person_add</mat-icon> Registro
+      <button mat-raised-button color="accent" (click)="actionRegister()" matTooltip="{{ 'REGISTER.TOOLTIP' | translate }}">
+        <mat-icon>person_add</mat-icon> {{ 'LANDING.NAVBAR_TEXT_REGISTER' | translate }}
       </button>
     </div>   
   
@@ -20,13 +20,13 @@
       
       <div class="example-button-row">
     <div class="example-flex-container">
-      <button matMiniFab (click)="actionFeedback()" matTooltip="Envienos su opinión">
+      <button matMiniFab (click)="actionFeedback()" matTooltip="{{ 'LANDING.NAVBAR_TEXT_FEEDBACK_TOOLTIP' | translate }}">
         <mat-icon style="margin-right: 0;">email</mat-icon>
       </button>
-      <button matMiniFab (click)="actionLogin()" matTooltip="Iniciar sesión">
+      <button matMiniFab (click)="actionLogin()" matTooltip="{{ 'LOGIN.TOOLTIP' | translate }}">
         <mat-icon>login</mat-icon>
       </button>
-      <button matMiniFab (click)="actionRegister()" matTooltip="Registrarse">
+      <button matMiniFab (click)="actionRegister()" matTooltip="{{ 'REGISTER.TOOLTIP' | translate }}">
         <mat-icon>person_add</mat-icon>
       </button>
     </div>

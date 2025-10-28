@@ -13,6 +13,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from './shared/material/spanish-paginator-intl';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader, TRANSLATE_HTTP_LOADER_CONFIG } from '@ngx-translate/http-loader';
 
 /** Configuraciones del spinner */
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -40,6 +43,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textPosition: POSITION.centerCenter,
 };
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -48,8 +52,22 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideHotToastConfig(),
     importProvidersFrom(
-      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+      TranslateModule.forRoot({
+        defaultLanguage: 'es',
+        loader: {
+          provide: TranslateLoader,
+          useClass: TranslateHttpLoader // ✅ sin factory, sin argumentos
+        }
+      })
     ),
+    {
+      provide: TRANSLATE_HTTP_LOADER_CONFIG,
+      useValue: {
+        prefix: './assets/i18n/',
+        suffix: '.json'
+      }
+      },
     {
       provide: "LOCAL_URL", useValue: environment.localUrl,
     },
