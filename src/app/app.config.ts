@@ -40,6 +40,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textPosition: POSITION.centerCenter,
 };
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -48,7 +49,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideHotToastConfig(),
     importProvidersFrom(
-      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ),
     {
       provide: "LOCAL_URL", useValue: environment.localUrl,

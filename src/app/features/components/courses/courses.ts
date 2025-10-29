@@ -161,6 +161,10 @@ export class Courses implements OnInit {
     });
   }
 
+loadCourseList(): void {
+    this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
+  }
+
   activeCourse() {
     this.ngxLoaderService.start();
     this.featuresService.activeCourse(this.courseSelected?.personId, this.courseSelected?.id).subscribe({

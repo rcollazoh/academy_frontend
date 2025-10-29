@@ -35,11 +35,15 @@
           <input type="file" #fileInput accept="application/pdf" style="display: none" (change)="onFileSelected($event)" />
           
           <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'APPROVED'" class="action-button"
-            matTooltip="Importar certifico del curso" (click)="fileInput.click()">
+            matTooltip="Importar certificado del curso" (click)="fileInput.click()">
             <mat-icon style="font-size: 24px; margin-right: 10px;">file_upload</mat-icon>
-            Importar certifico
+            Importar certificado
           </button>
         
+           <button mat-raised-button class="action-button"
+                  matTooltip="Refrescar la lista de cursos" (click)="loadCourseList()">
+            Refrescar
+          </button> 
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
           <mat-select [value]="status" (valueChange)="searchByStatus($event)" placeholder="Estado" [required]="false"
@@ -126,15 +130,15 @@
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="certifyUrl">
-						<mat-header-cell *matHeaderCellDef style="justify-content: center;">Certifico</mat-header-cell>
+						<mat-header-cell *matHeaderCellDef style="justify-content: center;">Certificado</mat-header-cell>
 						<mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
 							@if (row.certifyUrl) {
-                <mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)" matTooltip="Descargar certifico">
+                <mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)" matTooltip="Descargar certificado">
                   file_download
                 </mat-icon>
 							}
 							@if (!row.certifyUrl) {
-								<mat-icon style="color: gray; font-size: 25px;" matTooltip="Certifico no disponible">file_download</mat-icon>
+								<mat-icon style="color: gray; font-size: 25px;" matTooltip="Certificado no disponible">file_download</mat-icon>
 							}							
 						</mat-cell>
 					</ng-container>
