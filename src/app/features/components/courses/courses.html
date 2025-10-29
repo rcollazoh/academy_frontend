@@ -40,6 +40,10 @@
             Importar certificado
           </button>
         
+           <button mat-raised-button class="action-button"
+                  matTooltip="Refrescar la lista de cursos" (click)="loadCourseList()">
+            Refrescar
+          </button> 
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
           <mat-select [value]="status" (valueChange)="searchByStatus($event)" placeholder="Estado" [required]="false"
