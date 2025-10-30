@@ -1,0 +1,53 @@
+{
+  "LANDING": {
+    "NAVBAR_TEXT_START": "Home",
+    "NAVBAR_TEXT_FEEDBACK": "Feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Stuur ons uw feedback",
+    "NAVBAR_TEXT_LOGIN": "Inloggen",
+    "NAVBAR_TEXT_REGISTER": "Registreren"
+  },
+  "LOGIN": {
+    "TITLE": "Log in",
+    "EMAIL_LABEL": "E-mail",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
+    "EMAIL_REQUIRED_ERROR": "Verplicht veld",
+    "PASSWORD_LABEL": "Wachtwoord",
+    "PASSWORD_REQUIRED_ERROR": "Verplicht veld",
+    "FORGOT_PASSWORD": "Wachtwoord vergeten?",
+    "SUBMIT_BUTTON": "Inloggen"
+  },
+  "REGISTER": {
+    "TITLE": "Maak uw account aan",
+    "DESCRIPTION": "Om al onze diensten te gebruiken en verder te gaan met PRAD Academy.",
+    "NAME_LABEL": "Voornaam",
+    "LAST_NAME_LABEL": "Achternaam",
+    "EMAIL_LABEL": "E-mail",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
+    "PHONE_LABEL": "Telefoon",
+    "ID_NUMBER_LABEL": "ID-nummer",
+    "PASSWORD_LABEL": "Wachtwoord",
+    "PASSWORD_MIN_LENGTH_ERROR": "Minimaal 6 tekens",
+    "CONFIRM_PASSWORD_LABEL": "Bevestig wachtwoord",
+    "PASSWORD_MISMATCH_ERROR": "Wachtwoorden komen niet overeen.",
+    "SUBMIT_BUTTON": "Account aanmaken"
+  },
+  "COURSE": {
+    "TITLE": "Mijn cursussen",
+    "START": "Cursus starten"
+  },
+  "FEEDBACK": {
+    "TITLE": "Deel uw ervaring",
+    "DESCRIPTION": "We kijken ernaar uit om uw feedback te ontvangen! Uw mening is essentieel om onze Academie te blijven verbeteren.",
+    "EMAIL_LABEL": "E-mail",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_REQUIRED_ERROR": "Verplicht veld",
+    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
+    "COMMENT_LABEL": "Opmerking",
+    "COMMENT_PLACEHOLDER": "Schrijf uw opmerking",
+    "COMMENT_REQUIRED_ERROR": "Verplicht veld",
+    "CANCEL_BUTTON": "Annuleren",
+    "SUBMIT_BUTTON": "Opmerking verzenden"
+  }
+}

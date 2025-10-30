@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -11,6 +11,11 @@ import { NotificationService } from '../../services/notification.service';
 import { AuthService } from '@/app/core/services/auth.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { RecoverKey } from '@/app/core/components/recover-key/recover-key';
+import {
+  TranslateService,
+    TranslatePipe,
+    TranslateDirective
+} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-feedback',
@@ -21,12 +26,12 @@ import { RecoverKey } from '@/app/core/components/recover-key/recover-key';
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule],
+    MatIconModule, TranslatePipe],
   templateUrl: './feedback.html',
   styleUrl: './feedback.scss'
 })
 export class Feedback implements OnInit {
-
+  private translate = inject(TranslateService);
   form!: FormGroup;
   
   constructor(
@@ -35,7 +40,12 @@ export class Feedback implements OnInit {
     private authService: AuthService,
     private notificacionService: NotificationService,
     protected ngxLoaderService: NgxUiLoaderService
-  ) { }
+  ) {
+    
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setFallbackLang('en');
+    this.translate.use('en');
+   }
 
   ngOnInit(): void {
     this.form = this.fb.group({

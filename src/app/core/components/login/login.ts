@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +15,11 @@ import { NotificationService } from '@/app/shared/services/notification.service'
 import { AuthService } from '@/app/core/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RecoverKey } from '../recover-key/recover-key';
+import {
+  TranslateService,
+    TranslatePipe,
+    TranslateDirective
+} from "@ngx-translate/core";
 
 
 @Component({
@@ -27,19 +32,24 @@ import { RecoverKey } from '../recover-key/recover-key';
     MatButtonModule,
     MatIconModule,
     Navbar,
-    Footer
+    Footer, TranslatePipe
 ],
   standalone: true,
   templateUrl: './login.html',
   styleUrl: './login.scss'  
 })
 export class Login {
+  private translate = inject(TranslateService);
   mostrarPassword = false;
   public routes: typeof Routes = Routes;
   loginForm!: FormGroup;
 
   constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService, 
-    private authService: AuthService, private notificacionService: NotificationService, public dialog: MatDialog) { }
+    private authService: AuthService, private notificacionService: NotificationService, public dialog: MatDialog) {
+      this.translate.addLangs(['es', 'en']);
+      this.translate.setFallbackLang('en');
+      this.translate.use('en');
+     }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({

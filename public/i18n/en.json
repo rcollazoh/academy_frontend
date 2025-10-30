@@ -1,0 +1,54 @@
+{
+  "LANDING": {
+    "NAVBAR_TEXT_START": "Home",
+    "NAVBAR_TEXT_FEEDBACK": "Feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Send us your feedback",
+    "NAVBAR_TEXT_LOGIN": "Login",
+    "NAVBAR_TEXT_REGISTER": "Register"
+  },
+  "LOGIN": {
+    "TITLE": "Log in",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Invalid email",
+    "EMAIL_REQUIRED_ERROR": "Required field",
+    "PASSWORD_LABEL": "Password",
+    "PASSWORD_REQUIRED_ERROR": "Required field",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SUBMIT_BUTTON": "Enter",
+    "LOGIN_MESSAGE": "Access your PRAD Academy account."
+  },
+  "REGISTER": {
+    "TITLE": "Create your account",
+    "DESCRIPTION": "To use all our services and continue with PRAD Academy.",
+    "NAME_LABEL": "First name",
+    "LAST_NAME_LABEL": "Last name",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Invalid email",
+    "PHONE_LABEL": "Phone",
+    "ID_NUMBER_LABEL": "ID number",
+    "PASSWORD_LABEL": "Password",
+    "PASSWORD_MIN_LENGTH_ERROR": "Minimum 6 characters",
+    "CONFIRM_PASSWORD_LABEL": "Confirm password",
+    "PASSWORD_MISMATCH_ERROR": "Passwords do not match.",
+    "SUBMIT_BUTTON": "Create account"
+  },
+  "COURSE": {
+    "TITLE": "My courses",
+    "START": "Start course"
+  },
+  "FEEDBACK": {
+    "TITLE": "Share your experience",
+    "DESCRIPTION": "We look forward to receiving your feedback! Your opinion is essential to continue improving our Academy.",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_REQUIRED_ERROR": "Required field",
+    "EMAIL_INVALID_ERROR": "Invalid email",
+    "COMMENT_LABEL": "Comment",
+    "COMMENT_PLACEHOLDER": "Write your comment",
+    "COMMENT_REQUIRED_ERROR": "Required field",
+    "CANCEL_BUTTON": "Cancel",
+    "SUBMIT_BUTTON": "Submit comment"
+  }
+}

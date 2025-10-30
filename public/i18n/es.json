@@ -1,0 +1,54 @@
+{
+"LANDING": {
+    "NAVBAR_TEXT_START": "Inicio",
+    "NAVBAR_TEXT_FEEDBACK": "Feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Envienos su opinión",
+    "NAVBAR_TEXT_LOGIN": "Login",
+    "NAVBAR_TEXT_REGISTER": "Registro"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "EMAIL_LABEL": "Correo electrónico",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Correo inválido",
+    "EMAIL_REQUIRED_ERROR": "Campo obligatorio",
+    "PASSWORD_LABEL": "Contraseña",
+    "PASSWORD_REQUIRED_ERROR": "Campo obligatorio",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "SUBMIT_BUTTON": "Ingresar",
+    "LOGIN_MESSAGE": "Accede a tu cuenta de PRAD Academy."
+  },
+  "REGISTER": {
+    "TITLE": "Crea tu cuenta",
+    "DESCRIPTION": "Para usar todos nuestros servicios y continuar con PRAD Academy.",
+    "NAME_LABEL": "Nombre",
+    "LAST_NAME_LABEL": "Apellidos",
+    "EMAIL_LABEL": "Correo electrónico",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_INVALID_ERROR": "Correo inválido",
+    "PHONE_LABEL": "Teléfono",
+    "ID_NUMBER_LABEL": "Cédula",
+    "PASSWORD_LABEL": "Contraseña",
+    "PASSWORD_MIN_LENGTH_ERROR": "Mínimo 6 caracteres",
+    "CONFIRM_PASSWORD_LABEL": "Confirmar contraseña",
+    "PASSWORD_MISMATCH_ERROR": "Las contraseñas no coinciden.",
+    "SUBMIT_BUTTON": "Crear cuenta"
+  },
+  "COURSE": {
+    "TITLE": "Mis cursos",
+    "START": "Comenzar curso"
+  },
+  "FEEDBACK": {
+    "TITLE": "Comparta su experiencia",
+    "DESCRIPTION": "¡Esperamos recibir sus comentarios! Su opinión es fundamental para seguir mejorando nuestra Academia.",
+    "EMAIL_LABEL": "Correo electrónico",
+    "EMAIL_PLACEHOLDER": "mail@example.com",
+    "EMAIL_REQUIRED_ERROR": "Campo obligatorio",
+    "EMAIL_INVALID_ERROR": "Correo inválido",
+    "COMMENT_LABEL": "Comentario",
+    "COMMENT_PLACEHOLDER": "Escriba su comentario",
+    "COMMENT_REQUIRED_ERROR": "Campo obligatorio",
+    "CANCEL_BUTTON": "Cancelar",
+    "SUBMIT_BUTTON": "Enviar comentario"
+  }
+}
