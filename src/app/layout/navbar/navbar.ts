@@ -5,21 +5,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { Routes } from '../../shared/consts/routes';
-import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '@/app/core/services/auth.service';
 import { Feedback } from '@/app/shared/components/feedback/feedback';
 import {
   TranslateService,
     TranslatePipe,
     TranslateDirective
 } from "@ngx-translate/core";
+import { LanguageSwitcher } from "@/app/shared/components/language-switcher/language-switcher";
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe, LanguageSwitcher],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
@@ -29,10 +29,6 @@ export class Navbar {
 
   constructor(protected router: Router, protected ngxLoaderService: NgxUiLoaderService, 
     private notificacionService: NotificationService, public dialog: MatDialog) { 
-
-    this.translate.addLangs(['es', 'en']);
-    this.translate.setFallbackLang('en');
-    this.translate.use('en');
 }
 
   actionLogin() {
@@ -58,6 +54,10 @@ export class Navbar {
         this.notificacionService.notificationSuccess('Se ha enviado su comentario');
       }
     });
+  }
+
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
   }
 
 }

@@ -31,7 +31,6 @@ import {
   styleUrl: './feedback.scss'
 })
 export class Feedback implements OnInit {
-  private translate = inject(TranslateService);
   form!: FormGroup;
   
   constructor(
@@ -41,10 +40,6 @@ export class Feedback implements OnInit {
     private notificacionService: NotificationService,
     protected ngxLoaderService: NgxUiLoaderService
   ) {
-    
-    this.translate.addLangs(['es', 'en']);
-    this.translate.setFallbackLang('en');
-    this.translate.use('en');
    }
 
   ngOnInit(): void {

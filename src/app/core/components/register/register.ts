@@ -52,9 +52,6 @@ export class Register implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private nomenclatorService: Nomenclators,
     private notificacionService: NotificationService, protected ngxLoaderService: NgxUiLoaderService, protected router: Router
   ) { 
-    this.translate.addLangs(['es', 'en']);
-    this.translate.setFallbackLang('en');
-    this.translate.use('en');
   }
 
   ngOnInit(): void {

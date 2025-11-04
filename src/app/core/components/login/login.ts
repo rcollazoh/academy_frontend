@@ -17,8 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RecoverKey } from '../recover-key/recover-key';
 import {
   TranslateService,
-    TranslatePipe,
-    TranslateDirective
+    TranslatePipe
 } from "@ngx-translate/core";
 
 
@@ -46,9 +45,6 @@ export class Login {
 
   constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService, 
     private authService: AuthService, private notificacionService: NotificationService, public dialog: MatDialog) {
-      this.translate.addLangs(['es', 'en']);
-      this.translate.setFallbackLang('en');
-      this.translate.use('en');
      }
 
   ngOnInit(): void {
