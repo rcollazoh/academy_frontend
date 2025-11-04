@@ -49,7 +49,7 @@ export class ClassViewer implements OnInit {
         //this.ngxLoaderService.stop();
         this.imageData = res;
         if(!currentImageId)
-          this.updateStatusClass(this.classId, this.viewed ? true : false, 1);
+          this.updateStatusClass(this.classId, this.viewed ? true : false, 0);
         else
           this.updateStatusClass(this.classId, this.viewed ? true : false, currentImageId);
         this.loadPhoto(this.imageData!.recourseUrl);
