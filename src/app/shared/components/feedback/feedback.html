@@ -1,37 +1,30 @@
-<h2 mat-dialog-title style="font-weight: 600;">Comparta su experiencia</h2>
+<h2 mat-dialog-title style="font-weight: 600;">{{ 'FEEDBACK.TITLE' | translate }}</h2>
 
-<p style="padding-left: 24px; padding-right: 20px; margin-bottom: 0; font-size: 14px;">¡Esperamos recibir sus comentarios! Su opinión es fundamental para seguir mejorando nuestra academia.</p>
+<p style="padding-left: 24px; padding-right: 20px; margin-bottom: 0; font-size: 14px;">{{ 'FEEDBACK.DESCRIPTION' | translate }}</p>
 
 <mat-dialog-content [formGroup]="form" style="padding-top: 10px;">
-    <!--<mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="personName" type="text" required/>
-        @if (form.get('personName')?.hasError('required')) {
-        <mat-error>Campo obligatorio</mat-error>
-        }
-    </mat-form-field>-->
     <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
-          <mat-label>Correo electrónico</mat-label>
-          <input matInput formControlName="personName" type="email" placeholder="mail@example.com" required>
+          <mat-label>{{ 'FEEDBACK.EMAIL_LABEL' | translate }}</mat-label>
+          <input matInput formControlName="personName" type="email" placeholder="{{ 'FEEDBACK.EMAIL_PLACEHOLDER' | translate }}" required>
             @if (form.get('personName')?.hasError('required')) {
-                <mat-error>Campo obligatorio</mat-error>
+                <mat-error>{{ 'FEEDBACK.EMAIL_REQUIRED_ERROR' | translate }}</mat-error>
             }
             @if (form.get('personName')?.hasError('email')) {
-                <mat-error>Correo inválido</mat-error>
+                <mat-error>{{ 'FEEDBACK.EMAIL_INVALID_ERROR' | translate }}</mat-error>
             }
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Comentario</mat-label>
-          <textarea matInput formControlName="message" selectOnFocus required placeholder="Escriba su comentario"></textarea>
+          <mat-label>{{ 'FEEDBACK.COMMENT_LABEL' | translate }}</mat-label>
+          <textarea matInput formControlName="message" selectOnFocus required placeholder="{{ 'FEEDBACK.COMMENT_PLACEHOLDER' | translate }}"></textarea>
           @if (form.get('message')?.hasError('required')) {
-            <mat-error>Campo obligatorio</mat-error>
+            <mat-error>{{ 'FEEDBACK.COMMENT_REQUIRED_ERROR' | translate }}</mat-error>
           }
     </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button (click)="cancelar()">{{ 'FEEDBACK.CANCEL_BUTTON' | translate }}</button>
     <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
-        Enviar comentario
+        {{ 'FEEDBACK.SUBMIT_BUTTON' | translate }}
     </button>
 </mat-dialog-actions>

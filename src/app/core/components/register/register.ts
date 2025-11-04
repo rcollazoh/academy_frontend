@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +18,11 @@ import { Navbar } from '@/app/layout/navbar/navbar';
 import { Routes } from '@/app/shared/consts/routes';
 import { LoginRequest } from '@/app/shared/models/login-request';
 import { Nomenclators } from '@/app/shared/services/nomenclators.service';
+import {
+  TranslateService,
+    TranslatePipe,
+    TranslateDirective
+} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register',
@@ -28,12 +33,12 @@ import { Nomenclators } from '@/app/shared/services/nomenclators.service';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule, Navbar, Footer],
+    MatCheckboxModule, Navbar, Footer, TranslatePipe],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 export class Register implements OnInit {
-
+ private translate = inject(TranslateService);
   form!: FormGroup;
 
   mostrarPassword = false;
@@ -46,7 +51,11 @@ export class Register implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private nomenclatorService: Nomenclators,
     private notificacionService: NotificationService, protected ngxLoaderService: NgxUiLoaderService, protected router: Router
-  ) { }
+  ) { 
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setFallbackLang('en');
+    this.translate.use('en');
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

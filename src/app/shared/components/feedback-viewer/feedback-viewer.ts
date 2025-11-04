@@ -55,7 +55,7 @@ export class FeedbackViewer implements OnInit {
     protected ngxLoaderService: NgxUiLoaderService,
     private notificacionService: NotificationService,
   ) {
-    this.modules = data.modules.filter((value: { moduleName: any; "": any; }) => value.moduleName !== 'Módulo 0: Introducción' && value.moduleName !== 'Referencias' && value.moduleName !== 'Feedback');
+    this.modules = data.modules.filter((value: { moduleName: any; "": any; }) => value.moduleName !== 'Introducción' && value.moduleName !== 'Referencias' && value.moduleName !== 'Feedback');
   }
 
   ngOnInit(): void {

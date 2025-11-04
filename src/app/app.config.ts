@@ -13,6 +13,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from './shared/material/spanish-paginator-intl';
+import {provideTranslateService, provideTranslateLoader} from "@ngx-translate/core";
+import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 
 /** Configuraciones del spinner */
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -45,6 +47,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({prefix:'./i18n/', suffix:'.json'}),
+      fallbackLang: 'en'
+    }),
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),
     provideHotToastConfig(),

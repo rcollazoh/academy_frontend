@@ -6,60 +6,60 @@
     </div>
 
     <div class="col-md-6">
-      <h2 class="mb-3">Crea tu cuenta</h2>
-      <p class="mb-4 text-muted">Para usar todos nuestros servicios y continuar con PRAD Academy.</p>
+      <h2 class="mb-3">{{ 'REGISTER.TITLE' | translate }}</h2>
+      <p class="mb-4 text-muted">{{ 'REGISTER.DESCRIPTION' | translate }}</p>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
         <div class="row">
           <div class="col-md-6">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Nombre</mat-label>
+              <mat-label>{{ 'REGISTER.NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="name" required>
               @if (form.get('name')?.invalid) {
-              <mat-error>Campo obligatorio</mat-error>
+              <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Apellidos</mat-label>
+              <mat-label>{{ 'REGISTER.LAST_NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="lastName" required>
               @if (form.get('lastName')?.invalid) {
-              <mat-error>Campo obligatorio</mat-error>
+              <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
         </div>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Correo electrónico</mat-label>
-          <input matInput formControlName="email" type="email" placeholder="mail@example.com" required>
+          <mat-label>{{ 'REGISTER.EMAIL_LABEL' | translate }}</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="{{ 'REGISTER.EMAIL_PLACEHOLDER' | translate }}" required>
           @if (form.get('email')?.invalid) {
-          <mat-error>Correo inválido</mat-error>
+          <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Teléfono</mat-label>
+          <mat-label>{{ 'REGISTER.PHONE_LABEL' | translate }}</mat-label>
           <input matInput formControlName="phone">
           @if (form.get('phone')?.invalid) {
-          <mat-error>Campo obligatorio</mat-error>
+          <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Cédula</mat-label>
+          <mat-label>{{ 'REGISTER.ID_NUMBER_LABEL' | translate }}</mat-label>
           <input matInput formControlName="idNumber" required>
           @if (form.get('idNumber')?.invalid) {
-          <mat-error>Campo obligatorio</mat-error>
+          <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
           }
         </mat-form-field>
 
         <div class="row">
           <div class="col-md-6">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Contraseña</mat-label>
+              <mat-label>{{ 'REGISTER.PASSWORD_LABEL' | translate }}</mat-label>
               <input matInput formControlName="password" [type]="mostrarPassword ? 'text' : 'password'" required>
               @if (!mostrarPassword) {
               <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
@@ -68,13 +68,13 @@
               <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
               }
               @if (form.get('password')?.invalid) {
-              <mat-error>Mínimo 6 caracteres</mat-error>
+              <mat-error>{{ 'REGISTER.PASSWORD_MIN_LENGTH_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Confirmar contraseña</mat-label>
+              <mat-label>{{ 'REGISTER.CONFIRM_PASSWORD_LABEL' | translate }}</mat-label>
               <input matInput formControlName="confirm" [type]="mostrarConfirm ? 'text' : 'password'" required>
               @if (!mostrarConfirm) {
               <mat-icon matSuffix (click)="mostrarConfirm = !mostrarConfirm"> visibility_off </mat-icon>
@@ -83,7 +83,7 @@
               <mat-icon matSuffix (click)="mostrarConfirm = !mostrarConfirm"> visibility </mat-icon>
               }
               @if (form.get('confirm')?.invalid) {
-              <mat-error>Las contraseñas no coinciden</mat-error>
+              <mat-error>{{ 'REGISTER.PASSWORD_MISMATCH_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -91,12 +91,12 @@
 
         @if (form.hasError('passwordMismatch') && form.get('confirm')?.touched) {
         <div class="text-danger small mb-2">
-          Las contraseñas no coinciden.
+          {{ 'REGISTER.PASSWORD_MISMATCH_ERROR' | translate }}
         </div>
         }
 
         <button mat-raised-button color="accent" class="w-100 mt-3" type="submit" [disabled]="form.invalid">
-          Crear cuenta
+          {{ 'REGISTER.SUBMIT_BUTTON' | translate }}
         </button>
       </form>
     </div>

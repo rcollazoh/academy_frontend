@@ -114,10 +114,10 @@ export class ExamViewer implements OnInit, OnDestroy {
         this.ngxLoaderService.stop();
         this.radioButtonDisable = true;
 
-        if (res.courseStatus == 'APPROVED' || res.courseStatus == 'NOT_APPROVED') {
+        if (res.courseStatus == 'APPROVED') {
           Swal.fire({
             title: '¡Información!',
-            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'El curso ha concluido' + '</strong></div><div style="font-size: 1.4rem;text-align: center;"><strong>Resultado: ' + (res.courseStatus == 'APPROVED' ? 'APROBADO' : 'NO APROBADO') + '</strong><div>',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Felicidades, usted ha aprobado el curso satisfactoriamente. PRAD ACADEMY en el transcurso de las próximas 48 horas subirá su certificado, revisar el menú Mis Cursos.' + '</strong></div>',
             icon: 'info',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Aceptar',
@@ -128,6 +128,22 @@ export class ExamViewer implements OnInit, OnDestroy {
               return;
             }
           })
+        } else if (res.courseStatus == 'NOT_APPROVED'){
+
+          Swal.fire({
+            title: '¡Información!',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Lamentamos informarle que usted ha desaprobado el curso. Póngase en contacto con PRAD ACADEMY.' + '</strong></div>',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+            allowEscapeKey: false,
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              return;
+            }
+          })
+
         } else {
 
           Swal.fire({
@@ -151,7 +167,7 @@ export class ExamViewer implements OnInit, OnDestroy {
         this.examResult = [];
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al finalizar el examen, reintentelo'
+          'Lo sentimos, ocurrió un error al finalizar el exámen, reintentelo'
         );
       },
 
@@ -172,7 +188,7 @@ export class ExamViewer implements OnInit, OnDestroy {
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al obtener el examen'
+          'Lo sentimos, ocurrió un error al obtener el exámen'
         );
       },
     });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -11,21 +11,28 @@ import { NotificationService } from '@/app/shared/services/notification.service'
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@/app/core/services/auth.service';
 import { Feedback } from '@/app/shared/components/feedback/feedback';
-import { TranslateService } from '@ngx-translate/core';
-import { TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateService,
+    TranslatePipe,
+    TranslateDirective
+} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
 export class Navbar {
-
+ private translate = inject(TranslateService);
   public routes: typeof Routes = Routes;
 
   constructor(protected router: Router, protected ngxLoaderService: NgxUiLoaderService, 
     private notificacionService: NotificationService, public dialog: MatDialog) { 
+
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setFallbackLang('en');
+    this.translate.use('en');
 }
 
   actionLogin() {

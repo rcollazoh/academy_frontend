@@ -6,44 +6,44 @@
       <div class="col-lg-4">
         <div class="text-center text-primary">
           <img class="img-fluid" width="50%" src="assets/images/logo.png" alt="logo" />
-          <p class="mb-4 mt-4 text-muted">Accede a tu cuenta de PRAD Academy.</p>
+          <p class="mb-4 mt-4 text-muted">{{ 'LOGIN.LOGIN_MESSAGE' | translate }}</p>
         </div>
         <div class="card text-center">
           <div class="card-header px-lg-5">
-            <div class="card-heading text-center">Iniciar sesión</div>
+            <div class="card-heading text-center">{{ 'LOGIN.TITLE' | translate }}</div>
           </div>
           <div class="card-body p-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
             <form [formGroup]="loginForm">
               <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width">
-                <mat-label>Correo electrónico</mat-label>
-                <input matInput formControlName="user" type="email" placeholder="mail@example.com" />
+                <mat-label>{{ 'LOGIN.EMAIL_LABEL' | translate }}</mat-label>
+                <input matInput formControlName="user" type="email" placeholder="{{ 'LOGIN.EMAIL_PLACEHOLDER' | translate }}" />
                 @if (loginForm.get('user')?.hasError('email')) {
-                  <mat-error>Correo inválido</mat-error>
+                  <mat-error>{{ 'LOGIN.EMAIL_INVALID_ERROR' | translate }}</mat-error>
                 }
                 @if (loginForm.get('user')?.hasError('required')) {
-                  <mat-error>Campo obligatorio</mat-error>
+                  <mat-error>{{ 'LOGIN.EMAIL_REQUIRED_ERROR' | translate }}</mat-error>
                 }                
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width">
-                <mat-label>Contraseña</mat-label>
+                <mat-label>{{ 'LOGIN.PASSWORD_LABEL' | translate }}</mat-label>
                 <input matInput formControlName="password" [type]="mostrarPassword ? 'text' : 'password'" required>
                 @if (!mostrarPassword) {
-                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
+                  <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility_off </mat-icon>
                 }
                 @if (mostrarPassword) {
-                <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
+                  <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
                 }
                 @if (loginForm.get('password')?.invalid) {
-                <mat-error>Campo obligatorio</mat-error>
+                  <mat-error>{{ 'LOGIN.PASSWORD_REQUIRED_ERROR' | translate }}</mat-error>
                 }
               </mat-form-field>
               <div class="d-flex align-items-center mb-3" style="justify-content: end;">              
-                <mat-label class="text-primary small" style="text-decoration: underline; cursor: pointer;" (click)="onAction()">¿Olvidaste tu contraseña?</mat-label>
+                <mat-label class="text-primary small" style="text-decoration: underline; cursor: pointer;" (click)="onAction()">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</mat-label>
               </div>
               <button class="form-field-width" mat-flat-button color="primary" type="submit" (click)="login()"
                 [disabled]="!loginForm.valid">
-                Ingresar
+                {{ 'LOGIN.SUBMIT_BUTTON' | translate }}
               </button>
             </form>
           </div>
