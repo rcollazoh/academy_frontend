@@ -189,9 +189,6 @@ export class AuthService {
           localStorage.removeItem('currentUser');
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
-          /** esta comentado para que no se limpien los codificafdores  que se guardaron ahi */
-          // localStorage.clear();
-          //this.roleService.flushRolesAndPermissions();
           this.isLoginSource.set(false);
           return of(true);
         }),
