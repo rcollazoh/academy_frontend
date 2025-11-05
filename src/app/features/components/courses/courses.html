@@ -1,19 +1,19 @@
 <div class="modal-header">
-    <mat-card class="field-full-width">
-        <div class="row">
-            <div class="col-md-11">
-                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Listado de cursos</h2>
-            </div>
-            @if (getUserData().rol == 'STUDENT') {
-              <div class="col-md-1">
-                <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
-                    aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon style="color: blue">arrow_back</mat-icon>
-                </button>
-            </div>
-            }            
-        </div>
-    </mat-card>
+  <mat-card class="field-full-width">
+    <div class="row">
+      <div class="col-md-11">
+        <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Listado de cursos</h2>
+      </div>
+      @if (getUserData().rol == 'STUDENT') {
+      <div class="col-md-1">
+        <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
+          aria-label="Example icon button with a vertical three dot icon">
+          <mat-icon style="color: blue">arrow_back</mat-icon>
+        </button>
+      </div>
+      }
+    </div>
+  </mat-card>
 </div>
 
 <div class="container-fluid">
@@ -21,36 +21,37 @@
   <div class="row">
     <div class="col-sm-12" style="padding-top: 13px; padding-bottom: 23px">
       <div class="action-button-container">
-        
-          <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'PENDING'" (click)="activeCourse()" class="action-button"
-                  matTooltip="Aprobar el curso">
-            Activar
-          </button>
 
-           <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'PENDING'" (click)="rejectCourse()" class="action-button"
-                  matTooltip="Rechazar el curso">
-            Rechazar
-          </button> 
+        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'PENDING'"
+          (click)="activeCourse()" class="action-button" matTooltip="Aprobar el curso">
+          Activar
+        </button>
 
-          <input type="file" #fileInput accept="application/pdf" style="display: none" (change)="onFileSelected($event)" />
-          
-          <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'APPROVED'" class="action-button"
-            matTooltip="Importar certificado del curso" (click)="fileInput.click()">
-            <mat-icon style="font-size: 24px; margin-right: 10px;">file_upload</mat-icon>
-            Importar certificado
-          </button>
-        
-           <button mat-raised-button class="action-button"
-                  matTooltip="Refrescar la lista de cursos" (click)="loadCourseList()">
-            Refrescar
-          </button> 
+        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'PENDING'"
+          (click)="rejectCourse()" class="action-button" matTooltip="Rechazar el curso">
+          Rechazar
+        </button>
+
+        <input type="file" #fileInput accept="application/pdf" style="display: none"
+          (change)="onFileSelected($event)" />
+
+        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'APPROVED'"
+          class="action-button" matTooltip="Importar certificado del curso" (click)="fileInput.click()">
+          <mat-icon style="font-size: 24px; margin-right: 10px;">file_upload</mat-icon>
+          Importar certificado
+        </button>
+
+        <button mat-raised-button class="action-button" matTooltip="Refrescar la lista de cursos"
+          (click)="loadCourseList()">
+          Refrescar
+        </button>
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
           <mat-select [value]="status" (valueChange)="searchByStatus($event)" placeholder="Estado" [required]="false"
-                      [disabled]="false">
+            [disabled]="false">
             <mat-option></mat-option>
             @for (item of statusList; track $index) {
-              <mat-option [value]="item.name">
+            <mat-option [value]="item.name">
               {{ item.description }}
             </mat-option>
             }
@@ -63,108 +64,109 @@
   <!-- tabla -->
   <div class="row" style="margin-bottom: 15px">
     <div class="col-sm-12">
-      <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="courseList" multiTemplateDataRows class="curso-table">
-          <ng-container matColumnDef="personName">
-            <mat-header-cell *matHeaderCellDef>
-              Nombres
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="personName">
-              {{ row.personName | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="personLastName">
-            <mat-header-cell *matHeaderCellDef>
-              Apellidos
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="personLastName">
-              {{ row.personLastName | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="personEmail">
-            <mat-header-cell *matHeaderCellDef>
-              Email
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="personEmail">
-              {{ row.personEmail | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="courseName">
-            <mat-header-cell *matHeaderCellDef>
-              Curso
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="courseName">
-              {{ row.configCourseName | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="area">
-            <mat-header-cell *matHeaderCellDef>
-              Área
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="area">
-              {{ row.area | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="practice">
-            <mat-header-cell *matHeaderCellDef>
-              Práctica
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="practice">
-              {{ row.practice | emptyField}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef>
-              Estado
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="status">
-              {{ row.status | statePipe  }}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="paymentMethod">
-            <mat-header-cell *matHeaderCellDef>
-              Método de pago
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="paymentMethod">
-              {{ row.paymentMethod | paymentWay}}
-            </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="certifyUrl">
-						<mat-header-cell *matHeaderCellDef style="justify-content: center;">Certificado</mat-header-cell>
-						<mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
-							@if (row.certifyUrl) {
-                <mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)" matTooltip="Descargar certificado">
+
+      <div class="shadow-wrapper">
+        <div class="table-container">
+          <table mat-table [dataSource]="courseList" multiTemplateDataRows class="curso-table">
+            <ng-container matColumnDef="personName">
+              <mat-header-cell *matHeaderCellDef>
+                Nombres
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="personName">
+                {{ row.personName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="personLastName">
+              <mat-header-cell *matHeaderCellDef>
+                Apellidos
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="personLastName">
+                {{ row.personLastName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="personEmail">
+              <mat-header-cell *matHeaderCellDef>
+                Email
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="personEmail">
+                {{ row.personEmail | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="courseName">
+              <mat-header-cell *matHeaderCellDef>
+                Curso
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="courseName">
+                {{ row.configCourseName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="area">
+              <mat-header-cell *matHeaderCellDef>
+                Área
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="area">
+                {{ row.area | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="practice">
+              <mat-header-cell *matHeaderCellDef>
+                Práctica
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="practice">
+                {{ row.practice | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef>
+                Estado
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="status">
+                {{ row.status | statePipe }}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="paymentMethod">
+              <mat-header-cell *matHeaderCellDef>
+                Método de pago
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="paymentMethod">
+                {{ row.paymentMethod | paymentWay}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="certifyUrl">
+              <mat-header-cell *matHeaderCellDef style="justify-content: center;">Certificado</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
+                @if (row.certifyUrl) {
+                <mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)"
+                  matTooltip="Descargar certificado">
                   file_download
                 </mat-icon>
-							}
-							@if (!row.certifyUrl) {
-								<mat-icon style="color: gray; font-size: 25px;" matTooltip="Certificado no disponible">file_download</mat-icon>
-							}							
-						</mat-cell>
-					</ng-container>
+                }
+                @if (!row.certifyUrl) {
+                <mat-icon style="color: gray; font-size: 25px;"
+                  matTooltip="Certificado no disponible">file_download</mat-icon>
+                }
+              </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="noRecord">
-            <mat-footer-cell [attr.colspan]="displayedColumns.length" *matFooterCellDef>
-              No existen datos para mostrar.
-            </mat-footer-cell>
-          </ng-container>
+            <ng-container matColumnDef="noRecord">
+              <mat-footer-cell [attr.colspan]="displayedColumns.length" *matFooterCellDef>
+                No existen datos para mostrar.
+              </mat-footer-cell>
+            </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"
-                   class="example-element-row"
-                   [class.example-expanded-row]="courseSelected === row"
-                   (click)="setSelectedRow(row,$event)"
-                   [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-                   (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
-                   (keydown)="tableKeydown($event)"
-                   tabindex="999">
-          </mat-row>
-          <mat-footer-row mat-footer-row [hidden]="courseList.length > 0"
-                          *matFooterRowDef="['noRecord']">
-          </mat-footer-row>
-        </table>
-        <mat-paginator [pageSizeOptions]="[10, 15, 20, 30]" showFirstLastButtons [length]="length"
-                       [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="handlePageEvent($event)"></mat-paginator>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns" class="example-element-row"
+              [class.example-expanded-row]="courseSelected === row" (click)="setSelectedRow(row,$event)"
+              [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+              (mouseover)="row.hovered = true" (mouseout)="row.hovered = false" (keydown)="tableKeydown($event)"
+              tabindex="999">
+            </mat-row>
+            <mat-footer-row mat-footer-row [hidden]="courseList.length > 0" *matFooterRowDef="['noRecord']">
+            </mat-footer-row>
+          </table>
+          <mat-paginator [pageSizeOptions]="[10, 15, 20, 30]" showFirstLastButtons [length]="length"
+            [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="handlePageEvent($event)"></mat-paginator>
+        </div>
       </div>
     </div>
   </div>

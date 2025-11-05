@@ -1,17 +1,93 @@
 <div class="modal-header">
-    <mat-card class="field-full-width">
-        <div class="row">
-            <div class="col-md-11">
-                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Mis cursos</h2>
-            </div>
-        </div>
-    </mat-card>
+	<mat-card class="field-full-width">
+		<div class="row">
+			<div class="col-md-11">
+				<h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Mis cursos</h2>
+			</div>
+		</div>
+	</mat-card>
 </div>
 
 <div class="container-fluid">
 	<div class="row" style="margin-bottom: 15px">
 		<div class="col-sm-12">
-			<div class="mat-elevation-z8">
+			<div class="shadow-wrapper">
+				<div class="table-container">
+					<table mat-table [dataSource]="courses()" multiTemplateDataRows class="curso-table">
+						<ng-container matColumnDef="configCourseName">
+							<mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="configCourseName">{{ row.configCourseName
+								}}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="area">
+							<mat-header-cell *matHeaderCellDef>Área</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="area">{{ row.area }}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="practice">
+							<mat-header-cell *matHeaderCellDef>Práctica</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="practice">{{ row.practice }}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="startDate">
+							<mat-header-cell *matHeaderCellDef>Fecha inicio</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="startDate">{{ row.startDate }}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="endDate">
+							<mat-header-cell *matHeaderCellDef>Fecha vencimiento</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="endDate" class="red-text">{{ row.endDate
+								}}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="status">
+							<mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="status">{{ row.status | statePipe }}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="requiresInvoice">
+							<mat-header-cell *matHeaderCellDef>Factura enviada</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' :
+								'No' }}</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="receiptUrl">
+							<mat-header-cell *matHeaderCellDef style="justify-content: center;">Comprobante de
+								pago</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="receiptUrl" style="justify-content: center;">
+								<mat-icon (click)="openReceipt(row.receiptUrl)"
+									matTooltip="Ver comprobante">image_search</mat-icon>
+							</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="certifyUrl">
+							<mat-header-cell *matHeaderCellDef
+								style="justify-content: center;">Certificado</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
+								@if (row.certifyUrl) {
+								<mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)"
+									matTooltip="Descargar certificado">
+									file_download
+								</mat-icon>
+								}
+								@if (!row.certifyUrl) {
+								<mat-icon style="color: gray; font-size: 25px;"
+									matTooltip="Certificado no disponible">file_download</mat-icon>
+								}
+							</mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="paymentMethod">
+							<mat-header-cell *matHeaderCellDef>Método de pago</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="paymentMethod">{{ row.paymentMethod | paymentWay
+								}}</mat-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="noRecord">
+							<mat-footer-cell [attr.colspan]="7" *matFooterCellDef>No existen datos para
+								mostrar.</mat-footer-cell>
+						</ng-container>
+
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+						<mat-footer-row [hidden]="courses().length > 0"
+							*matFooterRowDef="['noRecord']"></mat-footer-row>
+					</table>
+				</div>
+			</div>
+			<!--<div class="mat-elevation-z8">
 				<table mat-table [dataSource]="courses()" multiTemplateDataRows class="curso-table">
 					<ng-container matColumnDef="configCourseName">
 						<mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
@@ -73,7 +149,7 @@
 					<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 					<mat-footer-row [hidden]="courses().length > 0" *matFooterRowDef="['noRecord']"></mat-footer-row>
 				</table>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </div>
