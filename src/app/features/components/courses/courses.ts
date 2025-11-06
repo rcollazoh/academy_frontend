@@ -203,6 +203,25 @@ loadCourseList(): void {
     });
   }
 
+  reactivateStudentCourse() {
+    this.ngxLoaderService.start();
+    this.featuresService.reactivateStudentCourse(this.courseSelected?.personId, this.courseSelected?.id).subscribe({
+      next: (res) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationSuccess(
+          'Se reactivó el curso correctamente.'
+        );
+        this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Ocurrió un error al reactivar el curso.'
+        );
+      },
+    });
+  }
+
   setSelectedRow(row: Course, event: MouseEvent): void {
     if (this.courseSelected != row) {
       this.selection.toggle(row);
