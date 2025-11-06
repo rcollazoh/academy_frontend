@@ -50,7 +50,7 @@ export const appConfig: ApplicationConfig = {
     
     provideTranslateService({
       loader: provideTranslateHttpLoader({prefix:'./i18n/', suffix:'.json'}),
-      fallbackLang: 'en'
+      fallbackLang: 'es'
     }),
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),

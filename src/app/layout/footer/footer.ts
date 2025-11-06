@@ -25,6 +25,7 @@ export class Footer {
     iconRegistry.addSvgIconLiteral('whatsapp', sanitizer.bypassSecurityTrustHtml(WHATSAPP_ICON));
     iconRegistry.addSvgIconLiteral('instragram', sanitizer.bypassSecurityTrustHtml(InstragramIcon));
   }
+  
  goToHome() {
   if (this.router.url === '/home') {
     // Ya estás en home → scroll al top

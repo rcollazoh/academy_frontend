@@ -32,7 +32,8 @@
     "PASSWORD_MIN_LENGTH_ERROR": "Mínimo 6 caracteres",
     "CONFIRM_PASSWORD_LABEL": "Confirmar contraseña",
     "PASSWORD_MISMATCH_ERROR": "Las contraseñas no coinciden.",
-    "SUBMIT_BUTTON": "Crear cuenta"
+    "SUBMIT_BUTTON": "Crear cuenta",
+    "TOOLTIP": "Registrarse"
   },
   "COURSE": {
     "TITLE": "Mis cursos",
