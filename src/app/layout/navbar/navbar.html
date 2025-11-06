@@ -1,6 +1,10 @@
 <!-- Barra superior -->
   <mat-toolbar color="primary" class="navbar">
-    <span class="logo">PRAD Academy</span>
+    <span class="logo">
+      <a (click)="goToHome()" style="cursor: pointer;">
+        PRAD Academy
+      </a>
+    </span>
     <span class="spacer"></span>
 
     <!-- Enlaces visibles solo en escritorio -->
@@ -34,7 +38,7 @@
 
     </div>
 
-    <app-language-switcher style="margin-left: 10px;"></app-language-switcher>
+    <!--<app-language-switcher style="margin-left: 10px;"></app-language-switcher>-->
 
   </mat-toolbar>
 

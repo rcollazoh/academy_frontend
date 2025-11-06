@@ -15,11 +15,11 @@ import {
     TranslatePipe,
     TranslateDirective
 } from "@ngx-translate/core";
-import { LanguageSwitcher } from "@/app/shared/components/language-switcher/language-switcher";
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe, LanguageSwitcher],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
@@ -28,7 +28,7 @@ export class Navbar {
   public routes: typeof Routes = Routes;
 
   constructor(protected router: Router, protected ngxLoaderService: NgxUiLoaderService, 
-    private notificacionService: NotificationService, public dialog: MatDialog) { 
+    private notificacionService: NotificationService, public dialog: MatDialog, private viewportScroller: ViewportScroller) { 
 }
 
   actionLogin() {
@@ -41,6 +41,14 @@ export class Navbar {
 
   actionHome() {
     this.router.navigate([this.routes.HOME]);
+  }
+
+  goToHome() {
+    if (this.router.url === '/home') {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    } else {
+      this.router.navigate([this.routes.HOME]);
+    }
   }
 
   actionFeedback() {
