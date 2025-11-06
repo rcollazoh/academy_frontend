@@ -32,6 +32,11 @@
           Rechazar
         </button>
 
+        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'NOT_APPROVED'"
+          (click)="reactivateStudentCourse()" class="action-button" matTooltip="Reactivar el curso">
+          Reactivar
+        </button>
+
         <input type="file" #fileInput accept="application/pdf" style="display: none"
           (change)="onFileSelected($event)" />
 

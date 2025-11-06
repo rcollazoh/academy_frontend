@@ -177,6 +177,29 @@ export class FeaturesService {
       );
   }
 
+  reactivateStudentCourse(personId?: number, courseId?: number): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    let queryParams = new HttpParams();
+
+    personId != null
+      ? (queryParams = queryParams.append('personId', personId))
+      : null;
+
+    courseId !=null
+    ? (queryParams = queryParams.append('courseId', courseId))
+    : null;
+
+    return this._http
+      .post<any>(environment.serviceStudentCourse + '/reactivate' + '?' + queryParams, { headers: headers })
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
   /** Editar perfil */
   editPerson(reqUser: PersonEntity, personId: number): Observable<any> {
     const headers = new HttpHeaders({
