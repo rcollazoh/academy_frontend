@@ -117,7 +117,7 @@ export class ExamViewer implements OnInit, OnDestroy {
         if (res.courseStatus == 'APPROVED') {
           Swal.fire({
             title: '¡Información!',
-            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Felicidades, usted ha aprobado el curso satisfactoriamente. PRAD ACADEMY en el transcurso de las próximas 48 horas subirá su certificado, revisar el menú Mis Cursos.' + '</strong></div>',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Felicidades! Usted ha aprobado el curso satisfactoriamente. PRAD ACADEMY en el transcurso de las próximas 48 horas subirá su certificado, revisar el menú Mis cursos.' + '</strong></div>',
             icon: 'info',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Aceptar',
