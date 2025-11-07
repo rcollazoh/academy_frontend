@@ -14,6 +14,7 @@ import { Module, StudentFeedback, StudentFeedbackModule } from '../../models/cou
 import { FeaturesService } from '@/app/features/services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-feedback-viewer',
@@ -75,18 +76,18 @@ export class FeedbackViewer implements OnInit {
     const formValues = this.form.value as Record<string, string>;
 
     const feedbackList: StudentFeedbackModule[] = Object.entries(formValues)
-    .filter(([key]) => key.startsWith('appearance-') || key.startsWith('content-'))
-    .map(([key, value]) => {
-      const [type, idStr] = key.split('-');
-      const configModuleId = parseInt(idStr, 10);
+      .filter(([key]) => key.startsWith('appearance-') || key.startsWith('content-'))
+      .map(([key, value]) => {
+        const [type, idStr] = key.split('-');
+        const configModuleId = parseInt(idStr, 10);
 
-      const questionObj = this.questions.find(q => q.type === type);
-      return {
-        configModuleId,
-        evaluation: value,
-        question: questionObj?.label ?? ''
-      };
-    });
+        const questionObj = this.questions.find(q => q.type === type);
+        return {
+          configModuleId,
+          evaluation: value,
+          question: questionObj?.label ?? ''
+        };
+      });
 
     let feedback: StudentFeedback = {
       StudentModuleId: this.data.moduleId,
@@ -104,7 +105,38 @@ export class FeedbackViewer implements OnInit {
         this.notificacionService.notificationSuccess(
           'Se ha enviado el feedback correctamente'
         );
-        this.dialogRef.close(true);
+        if (res.courseStatus && res.courseStatus == 'APPROVED') {
+          Swal.fire({
+            title: '¡Información!',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Felicidades! Usted ha aprobado el curso satisfactoriamente. PRAD ACADEMY en el transcurso de las próximas 48 horas subirá su certificado, revisar el menú Mis cursos.' + '</strong></div>',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+            allowEscapeKey: false,
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.dialogRef.close(true);
+              return;
+            }
+          })
+        } else if (res.courseStatus && res.courseStatus == 'NOT_APPROVED') {
+          Swal.fire({
+            title: '¡Información!',
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Lamentamos informarle que usted ha desaprobado el curso. Póngase en contacto con PRAD ACADEMY.' + '</strong></div>',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+            allowEscapeKey: false,
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.dialogRef.close(true);
+              return;
+            }
+          })
+        } else 
+          this.dialogRef.close(true);
       },
       error: (err) => {
         this.ngxLoaderService.stop();

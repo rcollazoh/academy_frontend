@@ -37,13 +37,12 @@
                             <div class="module-row">
                                 <div class="module-title">{{ section.moduleName }}</div>
 
-                                <div class="lesson-meta">
-                                    @if (section.status !== 'NEW') {
-                                    <span
-                                        [class]="section.status == 'APPROVED' ? 'preview_success' : 'preview_unsuccess'">{{
-                                        section.status | stateModulePipe }}</span>
-                                    }
+                                @if (section.status !== 'NEW' && section.exam) {
+                                <div class="lesson-meta">                                
+                                    <span [class]="section.status == 'APPROVED' ? 'preview_success' : 'preview_unsuccess'">{{
+                                        section.status | stateModulePipe }}</span>                                
                                 </div>
+                                }
 
                                 @if (section.classes.length) {
                                 <div class="lesson-meta">
@@ -137,7 +136,13 @@
                     <mat-list>
                         <mat-list-item disableRipple>
                             <div class="lesson-row">
+                                @if (section.status == 'APPROVED') {
+                                <mat-icon matTooltip="Feedback"
+                                    style="color: #4caf50;">ballot</mat-icon>
+                                }
+                                @if (section.status !== 'APPROVED') {
                                 <mat-icon matTooltip="Feedback">ballot</mat-icon>
+                                }
                                 
                                 <div class="lesson-title">Realice su feedback del curso y los módulos</div>
 
