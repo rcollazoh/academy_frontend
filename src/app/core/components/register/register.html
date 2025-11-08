@@ -17,7 +17,7 @@
               <mat-label>{{ 'REGISTER.NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="name" required>
               @if (form.get('name')?.invalid) {
-              <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
+              <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -26,7 +26,7 @@
               <mat-label>{{ 'REGISTER.LAST_NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="lastName" required>
               @if (form.get('lastName')?.invalid) {
-              <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
+              <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -44,7 +44,7 @@
           <mat-label>{{ 'REGISTER.PHONE_LABEL' | translate }}</mat-label>
           <input matInput formControlName="phone">
           @if (form.get('phone')?.invalid) {
-          <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
+          <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
           }
         </mat-form-field>
 
@@ -52,7 +52,7 @@
           <mat-label>{{ 'REGISTER.ID_NUMBER_LABEL' | translate }}</mat-label>
           <input matInput formControlName="idNumber" required>
           @if (form.get('idNumber')?.invalid) {
-          <mat-error>{{ 'REGISTER.EMAIL_INVALID_ERROR' | translate }}</mat-error>
+          <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
           }
         </mat-form-field>
 

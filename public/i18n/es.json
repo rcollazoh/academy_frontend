@@ -33,7 +33,8 @@
     "CONFIRM_PASSWORD_LABEL": "Confirmar contraseña",
     "PASSWORD_MISMATCH_ERROR": "Las contraseñas no coinciden.",
     "SUBMIT_BUTTON": "Crear cuenta",
-    "TOOLTIP": "Registrarse"
+    "TOOLTIP": "Registrarse",
+    "REQUIRED_ERROR": "Campo obligatorio"
   },
   "COURSE": {
     "TITLE": "Mis cursos",
