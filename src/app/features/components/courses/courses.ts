@@ -304,6 +304,7 @@ loadCourseList(): void {
       this.notificacionService.notificationError(
           'Solo se permiten archivos PDF.'
         );
+        input.value = '';
       return;
     }
 
@@ -313,6 +314,7 @@ loadCourseList(): void {
         this.notificacionService.notificationSuccess(
           'Certificado importado exitosamente.'
         );
+        input.value = '';
         this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
       },
       error: (err) => {
@@ -320,6 +322,7 @@ loadCourseList(): void {
         this.notificacionService.notificationError(
           'Error al importar el certificado.'
         );
+        input.value = '';
       },
     });
   }
