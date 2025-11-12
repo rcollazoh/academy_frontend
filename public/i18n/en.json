@@ -16,7 +16,9 @@
     "PASSWORD_REQUIRED_ERROR": "Required field",
     "FORGOT_PASSWORD": "Forgot your password?",
     "SUBMIT_BUTTON": "Enter",
-    "LOGIN_MESSAGE": "Access your PRAD Academy account."
+    "LOGIN_MESSAGE": "Access your PRAD Academy account.",
+    "NOT_ACCOUNT": "Don't have an account?",
+    "REGISTER": "Sign up"
   },
   "REGISTER": {
     "TITLE": "Create your account",

@@ -15,7 +15,9 @@
     "PASSWORD_LABEL": "Wachtwoord",
     "PASSWORD_REQUIRED_ERROR": "Verplicht veld",
     "FORGOT_PASSWORD": "Wachtwoord vergeten?",
-    "SUBMIT_BUTTON": "Inloggen"
+    "SUBMIT_BUTTON": "Inloggen",
+    "NOT_ACCOUNT": "Heb je geen account?",
+    "REGISTER": "Aanmelden"
   },
   "REGISTER": {
     "TITLE": "Maak uw account aan",

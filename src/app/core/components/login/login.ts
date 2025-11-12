@@ -112,6 +112,10 @@ export class Login {
       
     }
 
+    actionRegister() {
+      this.router.navigate([this.routes.REGISTER]);
+    }
+
   
 }
 

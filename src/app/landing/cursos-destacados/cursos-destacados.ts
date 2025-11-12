@@ -1,6 +1,8 @@
+import { Routes } from '@/app/shared/consts/routes';
 import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos-destacados',
@@ -9,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './cursos-destacados.scss'
 })
 export class CursosDestacadosComponent {
+  public routes: typeof Routes = Routes;
   cursos = signal([
     {
       titulo: 'Radiología',
@@ -47,4 +50,12 @@ export class CursosDestacadosComponent {
       link: ''
     }    
   ]);
+
+  constructor(private router: Router) {   
+    
+  }
+
+  goToLogin() {
+    this.router.navigate([this.routes.LOGIN]);
+  }
 }
