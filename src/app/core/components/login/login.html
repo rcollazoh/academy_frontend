@@ -41,6 +41,10 @@
               <div class="d-flex align-items-center mb-3" style="justify-content: end;">              
                 <mat-label class="text-primary small" style="text-decoration: underline; cursor: pointer;" (click)="onAction()">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</mat-label>
               </div>
+              <div class="d-flex align-items-center mb-3" style="justify-content: end;">              
+                <mat-label class="small">{{ 'LOGIN.NOT_ACCOUNT' | translate }} <a (click)="actionRegister()" class="text-primary" style="text-decoration: underline; cursor: pointer;">{{ 'LOGIN.REGISTER' | translate }}</a></mat-label>
+              </div>
+              
               <button class="form-field-width" mat-flat-button color="primary" type="submit" (click)="login()"
                 [disabled]="!loginForm.valid">
                 {{ 'LOGIN.SUBMIT_BUTTON' | translate }}
