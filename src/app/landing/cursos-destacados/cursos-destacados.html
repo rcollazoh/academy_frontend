@@ -7,13 +7,13 @@
             <mat-card-header>
                 <mat-card-title>{{ curso.titulo }}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]="curso.imagen"
+            <img mat-card-image [src]="curso.imagen" (click)="goToLogin()" style="cursor: pointer;"
                 [alt]="curso.titulo">
             <mat-card-content>
                 <p>{{ curso.descripcion }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button matButton (click)="goToLogin()">Ver más</button>
+                <button matButton (click)="goToLogin()">Matricular</button>
             </mat-card-actions>
         </mat-card>
         }
