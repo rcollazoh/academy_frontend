@@ -17,10 +17,10 @@ export class App {
     // Set included languages
     this.translate.addLangs(['en', 'es', 'nl']);
     this.translate.use('es');
-    this.translate.setFallbackLang('es');
+    this.translate.setFallbackLang('en');
 
-    //const storedLang = localStorage.getItem('language');
-    /*if (storedLang) {
+    const storedLang = localStorage.getItem('language');
+    if (storedLang) {
       this.translate.use(storedLang);
     } else {
       const browserLang = navigator.languages
@@ -35,7 +35,7 @@ export class App {
       this.translate.use(defaultLang);
       this.translate.setFallbackLang(defaultLang);
       localStorage.setItem('language', defaultLang);
-    }*/
+    }
   }
   
 }

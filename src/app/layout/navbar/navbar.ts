@@ -16,10 +16,11 @@ import {
     TranslateDirective
 } from "@ngx-translate/core";
 import { ViewportScroller } from '@angular/common';
+import { LanguageSwitcher } from "@/app/shared/components/language-switcher/language-switcher";
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTooltipModule, TranslatePipe, LanguageSwitcher],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })

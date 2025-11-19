@@ -14,13 +14,13 @@ export class LanguageSwitcher {
 
   languagesAll = [
     { code: 'en', label: 'English', flagUrl: 'assets/images/flags/en.png' },
-    { code: 'es', label: 'Español', flagUrl: 'assets/images/flags/cr.png' },
+    { code: 'es', label: 'Español', flagUrl: 'assets/images/flags/es.png' },
     { code: 'nl', label: 'Netherlands', flagUrl: 'assets/images/flags/nl.png' },
   ];
 
   languages = [
     { code: 'en', label: 'English', flagUrl: 'assets/images/flags/en.png' },
-    { code: 'es', label: 'Español', flagUrl: 'assets/images/flags/cr.png' },
+    { code: 'es', label: 'Español', flagUrl: 'assets/images/flags/es.png' },
     { code: 'nl', label: 'Netherlands', flagUrl: 'assets/images/flags/nl.png' },
   ];
 
