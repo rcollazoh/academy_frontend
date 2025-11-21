@@ -16,9 +16,9 @@
     }      
   </div>
   <div class="sign-button-wrapper">
-    <button class="edit-button" matButton="outlined" (click)="editPerson()">Editar perfil</button>
+    <button class="edit-button" matButton="outlined" (click)="editPerson()">{{ 'APP_USER.EDIT_PROFILE' | translate }}</button>
   </div>
   <div class="sign-button-wrapper">
-    <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>
+    <button class="sign-button" mat-flat-button (click)="signOutEmit()">{{ 'APP_USER.CLOSE_SESION' | translate }}</button>
   </div>
 </mat-menu>

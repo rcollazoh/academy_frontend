@@ -3,15 +3,15 @@
     <div class="footer-brand">
       <span class="logo">PRAD Academy</span>
       <div class="footer-bottom">
-        <small>Plataforma de aprendizaje en línea  para<br> el desarrollo profesional en Costa Rica.</small>
+        <small>{{ 'FOOTER.BRAND.DESCRIPTION_1' | translate }} <br> {{ 'FOOTER.BRAND.DESCRIPTION_2' | translate }}</small>
     </div>
     </div>
     
     <nav class="footer-links">
       <div style="display: flex; flex-direction: column;">
-        <a (click)="goToHome()">Inicio</a>
-        <a (click)="actionFeedback()">Feedback</a>
-        <a (click)="goToPolicies()">Políticas de seguridad</a>
+        <a (click)="goToHome()">{{ 'FOOTER.LINKS.HOME' | translate }}</a>
+        <a (click)="actionFeedback()">{{ 'FOOTER.LINKS.FEEDBACK' | translate }}</a>
+        <a (click)="goToPolicies()">{{ 'FOOTER.LINKS.POLICIES' | translate }}</a>
       </div>      
     </nav>
 
@@ -23,12 +23,12 @@
         <mat-icon svgIcon="whatsapp" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 3.5em;"></mat-icon>
       </a>
       <a href="https://www.instagram.com/pradacademy/?igsh=bW92Mmp1bmI4ZmE0" target="_blank">
-        <mat-icon svgIcon="instragram" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 1.5em;"></mat-icon>
+        <mat-icon svgIcon="instagram" aria-hidden="false" aria-label="Example thumbs up SVG icon" style="width: 1.5em;"></mat-icon>
       </a>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <small>&copy; 2025 PRAD Academy. Todos los derechos reservados.</small>
+    <small>&copy; 2025 PRAD Academy. {{ 'FOOTER.COPYRIGHT' | translate }}</small>
   </div>
 </footer>

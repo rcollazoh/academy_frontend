@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-payment-modes',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './payment-modes.html',
   styleUrl: './payment-modes.scss'
 })

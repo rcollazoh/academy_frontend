@@ -7,10 +7,11 @@ import { Routes } from '../../consts/routes';
 import { Observable, take } from 'rxjs';
 import { UserLogin } from '../../models/user-model';
 import { AuthService } from '../../../core/services/auth.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-app-user',
-  imports: [MatIconModule, MatButtonModule, MatMenuModule],
+  imports: [MatIconModule, MatButtonModule, MatMenuModule, TranslatePipe],
   templateUrl: './app-user.html',
   styleUrl: './app-user.scss'
 })

@@ -1,19 +1,19 @@
 <div class="cursos-container">
-    <h2 class="section-title">Cursos básicos de Protección Radiológica</h2>
+    <h2 class="section-title">{{ 'COURSES.TITLE' | translate }}</h2>
 
     <div class="card-grid">
         @for (curso of cursos(); track $index) {
         <mat-card class="curso-card" appearance="outlined">
             <mat-card-header>
-                <mat-card-title>{{ curso.titulo }}</mat-card-title>
+                <mat-card-title>{{ curso.titulo | translate}}</mat-card-title>
             </mat-card-header>
             <img mat-card-image [src]="curso.imagen" (click)="goToLogin()" style="cursor: pointer;"
                 [alt]="curso.titulo">
             <mat-card-content>
-                <p>{{ curso.descripcion }}</p>
+                <p>{{ curso.descripcion | translate }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button matButton (click)="goToLogin()">Matricular</button>
+                <button matButton (click)="goToLogin()">{{ 'COURSES.REGISTER' | translate }}</button>
             </mat-card-actions>
         </mat-card>
         }

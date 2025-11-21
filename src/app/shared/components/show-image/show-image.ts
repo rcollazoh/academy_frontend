@@ -6,13 +6,16 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { SafeUrl } from '@angular/platform-browser';
 import { FeaturesService } from '../../../features/services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-show-image',
   imports: [MatDialogModule,
     MatButtonModule,
     MatCardModule,
-    CommonModule],
+    CommonModule,
+    TranslatePipe
+  ],
   templateUrl: './show-image.html',
   styleUrl: './show-image.scss'
 })

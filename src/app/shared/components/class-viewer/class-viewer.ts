@@ -8,10 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { NotificationService } from '../../services/notification.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-class-viewer',
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule, TranslatePipe, MatTooltipModule],
   templateUrl: './class-viewer.html',
   styleUrl: './class-viewer.scss'
 })

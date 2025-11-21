@@ -12,12 +12,12 @@
 <ng-template #parentMenu let-menu="menu" class="sidebar-icons">
     @if (menu.routerLink) {
     <mat-list-item class="top-level-item" [routerLink]="menu.routerLink" [ngClass]="{ 'is-active': isActive(menu.routerLink) }" (click)="onMenuClick(menu.text)" style="cursor: pointer;">
-        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
+        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text | translate}}
     </mat-list-item>
     }
     @if (!menu.routerLink) {
     <mat-list-item [routerLink]="menu.routerLink" (click)="onMenuClick(menu.text)">
-        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
+        <mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text | translate }}
     </mat-list-item>
     }
 </ng-template>
@@ -25,13 +25,13 @@
 <ng-template #childMenu let-menu="menu" class="sidebar-icons">
     <mat-expansion-panel [class.mat-elevation-z0]="true">
         <mat-expansion-panel-header>
-            <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>{{ menu.text }}
+            <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>{{ menu.text | translate}}
         </mat-expansion-panel-header>
         <mat-nav-list>
             @for (submenu of menu.children; track $index) {
             <mat-list-item class="child-level-item" [routerLink]="submenu.routerLink" routerLinkActive="is-active"
                 [routerLinkActiveOptions]="{ exact: true }">
-                <mat-icon>{{ submenu.icon }}</mat-icon> {{ submenu.text }}
+                <mat-icon>{{ submenu.icon }}</mat-icon> {{ submenu.text | translate}}
             </mat-list-item>
             }
         </mat-nav-list>

@@ -2,7 +2,6 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-6 d-none d-md-block ilustracion">
-      <!-- Aquí puedes insertar una imagen SVG o componente visual -->
     </div>
 
     <div class="col-md-6">
@@ -17,7 +16,7 @@
               <mat-label>{{ 'REGISTER.NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="name" required>
               @if (form.get('name')?.invalid) {
-              <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
+              <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -26,7 +25,7 @@
               <mat-label>{{ 'REGISTER.LAST_NAME_LABEL' | translate }}</mat-label>
               <input matInput formControlName="lastName" required>
               @if (form.get('lastName')?.invalid) {
-              <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
+              <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -52,7 +51,7 @@
           <mat-label>{{ 'REGISTER.ID_NUMBER_LABEL' | translate }}</mat-label>
           <input matInput formControlName="idNumber" required>
           @if (form.get('idNumber')?.invalid) {
-          <mat-error>{{ 'REGISTER.REQUIRED_ERROR' | translate }}</mat-error>
+          <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
           }
         </mat-form-field>
 

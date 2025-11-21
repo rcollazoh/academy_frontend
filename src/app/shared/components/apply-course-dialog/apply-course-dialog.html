@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Aplicar al curso</h2>
+<h2 mat-dialog-title>{{'APPLY_COURSE.TITLE' | translate}}</h2>
 
 <mat-dialog-content [formGroup]="form">
     <mat-form-field appearance="outline" class="full-width" style="margin-top: 1rem;">
-        <mat-label>Forma de pago</mat-label>
+        <mat-label>{{'APPLY_COURSE.PAYMENT_MODE' | translate}}</mat-label>
         <mat-select formControlName="metodo">
             @for (item of metodos; track $index) {
             <mat-option [value]="item.value">
@@ -12,7 +12,7 @@
         </mat-select>
         @if (form.get('metodo')?.hasError('required')) {
         <mat-error>
-            Seleccione una forma de pago
+            {{'APPLY_COURSE.ERROR_PAYMENT_MODE' | translate}}
         </mat-error>
         }
 
@@ -21,7 +21,7 @@
     <div class="file-upload">
         <button mat-stroked-button color="accent" (click)="fileInput.click()">
             <mat-icon class="upload-icon">upload</mat-icon>
-            {{ selectedFileName ? 'Cambiar imagen' : 'Seleccionar imagen' }}
+            {{ selectedFileName ? ('APPLY_COURSE.CHANGE_IMAGE' | translate) : 'APPLY_COURSE.SELECT_IMAGE' | translate }}
         </button>
         <span class="file-name">{{ selectedFileName }}</span>
         <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
@@ -31,15 +31,15 @@
     <!-- Previsualización -->
     @if (previewUrl) {
     <div class="preview-container">
-        <img [src]="previewUrl" alt="Vista previa" class="preview-img">
+        <img [src]="previewUrl" alt="{{'APPLY_COURSE.ERROR_PAYMENT_MODE' | translate}}" class="preview-img">
     </div>
     }
 
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button (click)="cancelar()">{{'COMMON.BTN_CANCEL' | translate}}</button>
     <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
-        Aceptar
+        {{'COMMON.BTN_ACCEPT' | translate}}
     </button>
 </mat-dialog-actions>

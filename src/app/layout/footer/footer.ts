@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 const WHATSAPP_ICON =
   `
@@ -15,7 +16,7 @@ const InstragramIcon = `<svg height="200px" width="200px" version="1.1" id="Laye
 
 @Component({
   selector: 'app-footer',
-  imports: [MatIconModule, RouterModule],
+  imports: [MatIconModule, RouterModule, TranslatePipe],
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
@@ -23,7 +24,7 @@ export class Footer {
 
   constructor(private notificacionService: NotificationService, public dialog: MatDialog, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private viewportScroller: ViewportScroller) {   
     iconRegistry.addSvgIconLiteral('whatsapp', sanitizer.bypassSecurityTrustHtml(WHATSAPP_ICON));
-    iconRegistry.addSvgIconLiteral('instragram', sanitizer.bypassSecurityTrustHtml(InstragramIcon));
+    iconRegistry.addSvgIconLiteral('instagram', sanitizer.bypassSecurityTrustHtml(InstragramIcon));
   }
   
  goToHome() {

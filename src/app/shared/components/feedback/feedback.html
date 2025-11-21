@@ -7,7 +7,7 @@
           <mat-label>{{ 'FEEDBACK.EMAIL_LABEL' | translate }}</mat-label>
           <input matInput formControlName="personName" type="email" placeholder="{{ 'FEEDBACK.EMAIL_PLACEHOLDER' | translate }}" required>
             @if (form.get('personName')?.hasError('required')) {
-                <mat-error>{{ 'FEEDBACK.EMAIL_REQUIRED_ERROR' | translate }}</mat-error>
+                <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
             }
             @if (form.get('personName')?.hasError('email')) {
                 <mat-error>{{ 'FEEDBACK.EMAIL_INVALID_ERROR' | translate }}</mat-error>
@@ -17,7 +17,7 @@
           <mat-label>{{ 'FEEDBACK.COMMENT_LABEL' | translate }}</mat-label>
           <textarea matInput formControlName="message" selectOnFocus required placeholder="{{ 'FEEDBACK.COMMENT_PLACEHOLDER' | translate }}"></textarea>
           @if (form.get('message')?.hasError('required')) {
-            <mat-error>{{ 'FEEDBACK.COMMENT_REQUIRED_ERROR' | translate }}</mat-error>
+            <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
           }
     </mat-form-field>
 </mat-dialog-content>

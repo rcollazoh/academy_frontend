@@ -12,6 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { FeaturesService } from '../../../features/services/features.service';
 import { NotificationService } from '../../services/notification.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
@@ -24,7 +25,8 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    TranslatePipe
 ],
   templateUrl: './apply-course-dialog.html',
   styleUrl: './apply-course-dialog.scss'

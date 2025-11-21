@@ -1,28 +1,28 @@
-<h2 mat-dialog-title>Recuperar clave</h2>
+<h2 mat-dialog-title>{{ 'RECOVER_KEY.TITLE' | translate }}</h2>
 
 <mat-dialog-content [formGroup]="form">
     <mat-form-field appearance="outline" class="w-100 mb-3 form-field-width" style="margin-top: 1rem;">
-        <mat-label>Correo electrónico</mat-label>
+        <mat-label>{{ 'RECOVER_KEY.EMAIL' | translate }}</mat-label>
         <input matInput formControlName="email" type="email" required/>
         @if (form.get('email')?.hasError('email')) {
-        <mat-error>Correo inválido</mat-error>
+        <mat-error> {{ 'RECOVER_KEY.INVALID_EMAIL' | translate }}</mat-error>
         }
         @if (form.get('email')?.hasError('required')) {
-        <mat-error>Campo obligatorio</mat-error>
+        <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
         }
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Cédula</mat-label>
+          <mat-label>{{ 'RECOVER_KEY.IDENTITY' | translate }}</mat-label>
           <input matInput formControlName="idNumber" required>
           @if (form.get('idNumber')?.hasError('required')) {
-            <mat-error>Campo obligatorio</mat-error>
+            <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
           }
     </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button (click)="cancelar()">{{ 'COMMON.BTN_CANCEL' | translate }}</button>
     <button mat-flat-button color="primary" (click)="aceptar()" [disabled]="form.invalid">
-        Aceptar
+        {{ 'COMMON.BTN_ACCEPT' | translate }}
     </button>
 </mat-dialog-actions>

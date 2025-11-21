@@ -1,24 +1,31 @@
 {
+  "COMMON": {
+    "FIELD_REQUIRED": "Required field",
+    "BTN_ACCEPT": "Accept",
+    "BTN_CANCEL": "Cancel",
+    "TEXT_CLOSE": "Close",
+    "TEXT_NEXT": "Next",
+    "TEXT_BACK": "Previous",
+    "TEXT_EXAM": "Exam"
+  },
   "LANDING": {
     "NAVBAR_TEXT_START": "Home",
     "NAVBAR_TEXT_FEEDBACK": "Feedback",
-    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Send us your feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Send us your opinion",
     "NAVBAR_TEXT_LOGIN": "Login",
     "NAVBAR_TEXT_REGISTER": "Register"
   },
   "LOGIN": {
-    "TITLE": "Log in",
+    "TITLE": "Login",
     "EMAIL_LABEL": "Email",
     "EMAIL_PLACEHOLDER": "mail@example.com",
     "EMAIL_INVALID_ERROR": "Invalid email",
-    "EMAIL_REQUIRED_ERROR": "Required field",
     "PASSWORD_LABEL": "Password",
-    "PASSWORD_REQUIRED_ERROR": "Required field",
     "FORGOT_PASSWORD": "Forgot your password?",
-    "SUBMIT_BUTTON": "Enter",
+    "SUBMIT_BUTTON": "Sign in",
     "LOGIN_MESSAGE": "Access your PRAD Academy account.",
     "NOT_ACCOUNT": "Don't have an account?",
-    "REGISTER": "Sign up"
+    "REGISTER": "Register"
   },
   "REGISTER": {
     "TITLE": "Create your account",
@@ -34,7 +41,8 @@
     "PASSWORD_MIN_LENGTH_ERROR": "Minimum 6 characters",
     "CONFIRM_PASSWORD_LABEL": "Confirm password",
     "PASSWORD_MISMATCH_ERROR": "Passwords do not match.",
-    "SUBMIT_BUTTON": "Create account"
+    "SUBMIT_BUTTON": "Create account",
+    "TOOLTIP": "Register"
   },
   "COURSE": {
     "TITLE": "My courses",
@@ -42,15 +50,332 @@
   },
   "FEEDBACK": {
     "TITLE": "Share your experience",
-    "DESCRIPTION": "We look forward to receiving your feedback! Your opinion is essential to continue improving our Academy.",
+    "DESCRIPTION": "We look forward to receiving your comments! Your opinion is essential to keep improving our Academy.",
     "EMAIL_LABEL": "Email",
     "EMAIL_PLACEHOLDER": "mail@example.com",
-    "EMAIL_REQUIRED_ERROR": "Required field",
     "EMAIL_INVALID_ERROR": "Invalid email",
     "COMMENT_LABEL": "Comment",
     "COMMENT_PLACEHOLDER": "Write your comment",
-    "COMMENT_REQUIRED_ERROR": "Required field",
     "CANCEL_BUTTON": "Cancel",
-    "SUBMIT_BUTTON": "Submit comment"
+    "SUBMIT_BUTTON": "Send comment"
+  },
+  "RECOVER_KEY": {
+    "TITLE": "Recover password",
+    "EMAIL": "Email",
+    "INVALID_EMAIL": "Invalid email",
+    "IDENTITY": "ID number"
+  },
+  "BENEFITS": {
+    "FLEXIBILITY": {
+      "TITLE": "Flexible schedule",
+      "TEXT": "You can access the content whenever it suits you best, without fixed schedules."
+    },
+    "PACE": {
+      "TITLE": "Personalized pace",
+      "TEXT": "Advance at your own pace, repeating or pausing content whenever needed."
+    },
+    "ACCESS": {
+      "TITLE": "Access from anywhere",
+      "TEXT": "You only need an internet connection and a device (computer, tablet, phone)."
+    },
+    "SUPPORT": {
+      "TITLE": "Academic support available 24/7",
+      "TEXT": "Personalized guidance throughout the course."
+    },
+    "TIME": {
+      "TITLE": "Time optimization",
+      "TEXT": "You can use even small free moments to progress during the access days."
+    },
+    "COMPATIBILITY": {
+      "TITLE": "Compatibility with work and personal life",
+      "TEXT": "Easily adapts to your routine, allowing you to better balance learning, work, and social life."
+    },
+    "LEADERSHIP": {
+      "TITLE": "Encourages leadership and autonomy",
+      "TEXT": "Helps you organize your time, improve discipline, and be more responsible with your learning."
+    },
+    "PROFESSIONAL": {
+      "TITLE": "Professional focus",
+      "TEXT": "Comprehensive and updated training. Direct application of radiological protection principles in everyday scenarios is prioritized."
+    },
+    "SMART": {
+      "TITLE": "Smart learning",
+      "TEXT": "Designed with AI, reviewed and updated by a professional with years of experience."
+    },
+    "CERTIFICATION": {
+      "TITLE": "Certification",
+      "TEXT": "Ideal for professional CV, recertification, and/or regulatory compliance."
+    }
+  },
+  "CERTIFICATIONS": {
+    "TITLE": "Certification with professional validity",
+    "TEXT_1": "The issued certification meets the formal requirements established by the Ministry of Health under the code",
+    "TEXT_2": "for Eng. MSc. Dagoberto Eloy González López, ID number 801480648.",
+    "HELP": "Need help?"
+  },
+  "COURSES": {
+    "TITLE": "Basic Radiation Protection Courses",
+    "RADIOLOGY": {
+      "TITLE": "Radiology",
+      "DESCRIPTION": "Apply fundamental safety principles to minimize exposure to ionizing radiation for patients, operators, and the general public."
+    },
+    "VETERINARY": {
+      "TITLE": "Veterinary",
+      "DESCRIPTION": "Apply safety principles to reduce staff exposure and optimize the safe use of ionizing radiation in pets."
+    },
+    "DENTISTRY": {
+      "TITLE": "Dentistry",
+      "DESCRIPTION": "Limit radiation exposure for patients and staff through the safe and justified use of radiological procedures."
+    },
+    "RADIOTHERAPY": {
+      "TITLE": "Radiotherapy",
+      "DESCRIPTION": "Ensure patient, staff, and public safety by minimizing unnecessary exposure during therapeutic use of ionizing radiation."
+    },
+    "NUCLEAR_MEDICINE": {
+      "TITLE": "Nuclear Medicine",
+      "DESCRIPTION": "Control exposure to radionuclides through specific safety measures in diagnostic and therapeutic procedures."
+    },
+    "INDUSTRIAL_RESEARCH": {
+      "TITLE": "Industrial-Research",
+      "DESCRIPTION": "Apply safety measures to control exposure to ionizing radiation during the use of radioactive sources and emitting equipment."
+    },
+    "REGISTER": "Enroll"
+  },
+  "COURSE_PAGE": {
+    "TITLE": "Basic Radiation Protection Courses",
+    "INTRO": {
+      "PARAGRAPH1": "Ionizing radiation is present in various areas such as medicine, veterinary, industry, and research. Radiation protection is essential to ensure safety against its harmful effects.",
+      "PARAGRAPH2": "This course is part of the Ministry of Health requirements according to Executive Decree No. 44653-S, and is aimed at promoting a culture of radiation safety in medical, industrial, and veterinary practices."
+    },
+    "OBJECTIVES": {
+      "TITLE": "Learning objectives",
+      "ITEM1": "Understand dosimetric magnitudes and their units.",
+      "ITEM2": "Become familiar with radiation detectors and their principles.",
+      "ITEM3": "Understand biological effects of radiation exposure.",
+      "ITEM4": "Know general radiation protection measures.",
+      "ITEM5": "Master regulatory infrastructure and safe use of sources."
+    },
+    "TEACHER": {
+      "TITLE": "Responsible teacher",
+      "NAME": "M.Sc. Dagoberto Eloy González López"
+    },
+    "EDUCATION": {
+      "TITLE": "Academic background",
+      "ITEM1": "Nuclear Engineering - Higher Institute of Technologies and Applied Sciences, Cuba (2013)",
+      "ITEM2": "Master’s in Medical Physics - University of Costa Rica (2020)"
+    },
+    "EXPERIENCE": {
+      "TITLE": "Work experience",
+      "ITEM1": "Medical physicist - Hospital México, CCSS (2021 - present)",
+      "ITEM2": "Medical physicist - Quality Control and Radiation Protection Area - CCSS (2018 - 2021)",
+      "ITEM3": "Medical physicist - Radiotherapy and Nuclear Medicine - Hospital Lenin, Cuba (2013 - 2016)"
+    },
+    "PROFESSIONAL_ASSOCIATIONS": {
+      "TITLE": "Professional associations",
+      "ITEM1": "CIEMI - CFIA (Code: IN-33322)",
+      "ITEM2": "College of Physicists (Code: 245-17)"
+    },
+    "AUTHORIZATION": "Authorized by the Ministry of Health under code DPRSA-UPR-0168-2023-S, ID number 801480648.",
+    "RESULTS": {
+      "TITLE": "Expected results",
+      "ITEM1": "Improve understanding of radiation protection according to the area of interest.",
+      "ITEM2": "Understand the interaction of ionizing radiation with matter.",
+      "ITEM3": "Recognize the benefits and biological effects of ionizing radiation.",
+      "ITEM4": "Apply national standards and international recommendations.",
+      "ITEM5": "Implement quality assurance programs."
+    }
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Leading Education in Radiation Protection",
+      "SUBTITLE": "Your Operator License just one click away.",
+      "BUTTON": "See More",
+      "IMAGE_ALT": "Medical illustration"
+    }
+  },
+  "PAYMENT": {
+    "TITLE": "Payment Methods",
+    "DESCRIPTION": "We accept different payment options at the following banks:",
+    "SINPE": {
+      "NAME": "Sinpe Mobile",
+      "ALT": "Sinpe Mobile"
+    },
+    "BAC": {
+      "NAME": "BAC Credomatic",
+      "ALT": "BAC Credomatic"
+    },
+    "BCR": {
+      "NAME": "BCR Bank",
+      "ALT": "BCR Bank"
+    },
+    "NATIONAL": {
+      "NAME": "National Bank",
+      "ALT": "National Bank"
+    }
+  },
+  "PRIVACY_POLICY": {
+    "TITLE": "Privacy Policy - PRAD Academy",
+    "INTRO": {
+      "PARAGRAPH1": "At PRAD Academy, we value your trust and protect your personal information in accordance with the highest standards of privacy and security.",
+      "PARAGRAPH2": "Your data is processed as follows: the information you provide is used exclusively to manage your registration, course participation, certificate issuance, and academic or informational communications.",
+      "PARAGRAPH3": "Data is treated confidentially, stored on secure servers, and never shared with third parties without your express consent, unless legally required.",
+      "PARAGRAPH4": "For more details, we want you to understand how we process your data and to be aware of your rights and options."
+    },
+    "SECTION1": {
+      "TITLE": "1. Identity of the Data Controller",
+      "DESCRIPTION": "PRAD Academy (hereinafter, “the Platform”) is responsible for the processing and protection of personal data provided by users through the website, registration forms, and any other electronic means related to its online training services.",
+      "CONTACT_LABEL": "Contact email:",
+      "CONTACT_VALUE": "pradacademy.cr@gmail.com",
+      "WEBSITE_LABEL": "Official website:",
+      "WEBSITE_VALUE": "https://pradacademy.com"
+    },
+    "SECTION2": {
+      "TITLE": "2. Processing of Personal Data",
+      "A": {
+        "TITLE": "A. Personal data collected will be processed for the following purposes:",
+        "ITEM1": "Manage the user’s registration, access, and participation in the courses offered by the Platform.",
+        "ITEM2": "Issue certificates of completion corresponding to the course taken.",
+        "ITEM3": "Facilitate communication between the user and the Platform for notifications, technical support, and updates of academic information.",
+        "ITEM4": "Administer billing and receipts for completed transactions.",
+        "ITEM5": "Comply with legal, contractual, and administrative obligations arising from the relationship with the user."
+      },
+      "B": {
+        "TITLE": "B. Personal data collected will NOT be processed for the following purposes:",
+        "ITEM1": "Conduct satisfaction surveys and statistical analyses to improve services.",
+        "ITEM2": "Send informational or promotional communications about new courses, programs, or academic activities."
+      }
+    },
+    "SECTION3": {
+      "TITLE": "3. Personal Data Collected",
+      "DESCRIPTION": "To issue certificates of completion, provide technical support, or send academic communications, PRAD Academy will request the following data:",
+      "ITEM1": "Identification data: full name, identity document.",
+      "ITEM2": "Contact data: email address, phone number (optional).",
+      "ITEM3": "Academic data: course history, grades, issued certificates.",
+      "ITEM4": "Payment data: billing information and payment receipts."
+    },
+    "SECTION4": {
+      "TITLE": "4. Legal Basis and Consent",
+      "DESCRIPTION": "The processing of personal data is carried out in accordance with the free, express, and informed consent of the data subject, granted upon registering and using the Platform’s courses."
+    },
+    "SECTION5": {
+      "TITLE": "5. Security Measures",
+      "PARAGRAPH1": "PRAD Academy implements appropriate technical, administrative, and organizational measures to ensure the confidentiality, integrity, and availability of personal data.",
+      "PARAGRAPH2": "Data is handled confidentially, stored on secure servers, and never shared with third parties without your express consent, unless legally required.",
+      "PARAGRAPH3": "Sensitive data (such as payment data) is NOT processed through the Platform; each user makes payments individually according to the chosen method. PRAD Academy only records the payment receipt provided by the user."
+    },
+    "SECTION6": {
+      "TITLE": "6. Data Retention",
+      "PARAGRAPH1": "PRAD Academy will retain users’ personal data for the time necessary to maintain the academic record, the validity of issued certificates, and compliance with course renewal requirements, which must be every 2 years in accordance with national regulations and continuous training standards in radiation protection.",
+      "PARAGRAPH2": "This information will remain active and safeguarded in our systems while the user maintains an academic or administrative relationship with the Platform, or as necessary for legal, audit, or verification purposes of issued certifications.",
+      "PARAGRAPH3": "However, the user may request the deletion or cancellation of their personal data, in accordance with the procedure established in section 7 (Data Subjects’ Rights), in which case PRAD Academy will proceed with secure deletion, except when there is a legal or administrative obligation requiring retention for an additional period."
+    },
+    "SECTION7": {
+      "TITLE": "7. Data Subjects’ Rights",
+      "DESCRIPTION": "The data subject has the right to:",
+      "RIGHT_ACCESS_1": "Access",
+      "RIGHT_ACCESS": "the information held by the Platform about them.",
+      "RIGHT_RECTIFY_1": "Rectify",
+      "RIGHT_RECTIFY": "their data when it is inaccurate or incomplete.",
+      "RIGHT_DELETE_1": "Cancel",
+      "RIGHT_DELETE": "or delete their data when the course has ended or when it is no longer necessary for the declared purposes.",
+      "CONTACT_PREFIX": "These rights may be exercised by sending a written request to:",
+      "CONTACT_EMAIL": "pradacademy.cr@gmail.com",
+      "CONTACT_SUFFIX": ", indicating full name, contact method, and the right you wish to exercise.",
+      "RESPONSE": "PRAD Academy will respond within a maximum of 5 calendar days."
+    },
+    "SECTION8": {
+      "TITLE": "8. Transfer and Communication of Data to Third Parties",
+      "DESCRIPTION": "PRAD Academy will NOT share personal data with third parties, except in the following cases:",
+      "ITEM1": "When there is a legal, administrative, or judicial obligation requiring it.",
+      "ITEM2": "When the user has given explicit consent.",
+      "PARAGRAPH": "In such cases, it will be ensured that recipient third parties have policies and adequate levels of personal data protection."
+    },
+    "SECTION9": {
+      "TITLE": "9. Changes to the Privacy Policy",
+      "PARAGRAPH1": "PRAD Academy reserves the right to modify this Privacy Policy to adapt it to legislative, technological, or operational changes of the Platform.",
+      "PARAGRAPH2": "Any changes will be published on the website with the date of the last update and will take effect upon publication.",
+      "LAST_UPDATE_LABEL": "Last update:",
+      "LAST_UPDATE_VALUE": "October 25, 2025"
+    },
+    "SECTION10": {
+      "TITLE": "10. Contact",
+      "EMAIL_LABEL": "Email:",
+      "EMAIL_VALUE": "pradacademy.cr@gmail.com",
+      "WEBSITE_LABEL": "Website:",
+      "WEBSITE_VALUE": "https://pradacademy.com",
+      "ENTITY_LABEL": "Responsible entity:",
+      "ENTITY_VALUE": "PRAD Academy"
+    }
+  },
+  "FOOTER": {
+    "BRAND": {
+      "DESCRIPTION_1": "Online learning platform for",
+      "DESCRIPTION_2": "professional development in Costa Rica."
+    },
+    "LINKS": {
+      "HOME": "Home",
+      "FEEDBACK": "Feedback",
+      "POLICIES": "Security policies"
+    },
+    "COPYRIGHT": "All rights reserved."
+  },
+  "APP_USER": {
+    "EDIT_PROFILE": "Edit profile",
+    "CLOSE_SESION": "Logout"
+  },
+  "APPLY_COURSE": {
+    "TITLE": "Apply to course",
+    "PREVIEW": "Preview",
+    "PAYMENT_MODE": "Payment method",
+    "ERROR_PAYMENT_MODE": "Select a payment method",
+    "CHANGE_IMAGE": "Change image",
+    "SELECT_IMAGE": "Select image"
+  },
+  "FEEDBACKS": {
+    "TITLE": "Feedback",
+    "INTRO": "After completing the modules and course evaluations, we ask you to share your opinion about the learning experience. Your comments are very valuable and will help us improve our Radiation Protection Academy (PRAD Academy).",
+    "QUESTION1": "1. Rate the content of each module:",
+    "QUESTION2": "2. Rate the appearance of each module:",
+    "QUESTION3": "3. Evaluate the following aspects:",
+    "QUESTION4": "4. If you notice any error or element (for example, buttons, interactions, etc.), write it here:",
+    "QUESTION5": "5. Additional comments:",
+    "MODULE": "Module",
+    "ERRORS_LABEL": "Errors or elements to improve",
+    "COMMENTS_LABEL": "Additional comments",
+    "CANCEL": "Cancel",
+    "SEND": "Send",
+    "RATINGS": {
+      "POOR": "Poor",
+      "FAIR": "Fair",
+      "GOOD": "Good",
+      "VERY_GOOD": "Very good",
+      "EXCELLENT": "Excellent"
+    },
+    "ASPECTS": {
+      "PRESENTATION_STYLE": "The presentation style contributed to my learning",
+      "COURSE_DURATION": "The duration of the e-course seemed appropriate",
+      "OVERALL_SATISFACTION": "Overall, the e-course was satisfactory"
+    },
+    "MESSAGES": {
+      "SUCCESS": "Feedback has been sent successfully",
+      "ERROR": "Sorry, an error occurred while sending the feedback, please try again",
+      "APPROVED": "Congratulations! You have successfully passed the course. PRAD ACADEMY will upload your certificate within the next 48 hours. Check the My Courses menu.",
+      "NOT_APPROVED": "We regret to inform you that you did not pass the course. Please contact PRAD ACADEMY.",
+      "INFO_TITLE": "Information!",
+      "CONFIRM": "Accept"
+    }
+  },
+  "SHOW-IMAGE": {
+    "TITLE": "Payment receipt",
+    "ALT": "Receipt"
+  },
+  "SIDEBAR": {
+    "INFORMATION": "Information",
+    "ACTIVE_COURSE": "Current course",
+    "MY_COURSES": "My courses",
+    "COURSES": "Courses",
+    "HELP": "Help",
+    "CLOSE_SESSION": "Logout",
+    "ASK_CLOSE_SESSION": "Are you sure you want to close the session?"
   }
 }

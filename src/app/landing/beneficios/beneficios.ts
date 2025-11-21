@@ -3,67 +3,29 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { register } from 'swiper/element/bundle';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { TranslatePipe } from '@ngx-translate/core';
 
 register(); // Registra los Web Components de Swiper
 
 @Component({
   selector: 'app-beneficios',
-  imports: [MatCardModule, MatIconModule],
+  imports: [MatCardModule, MatIconModule, TranslatePipe],
   templateUrl: './beneficios.html',
   styleUrl: './beneficios.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Beneficios {
   beneficios = signal([
-    {
-      icono: 'query_builder',
-      titulo: 'Flexibilidad de horario',
-      texto: 'Puedes acceder al contenido en el momento que te resulte más conveniente, sin depender de horarios fijos.'
-    },
-    {
-      icono: 'track_changes',
-      titulo: 'Ritmo personalizado',
-      texto: 'Avanzas a tu propio ritmo, repitiendo o pausando los contenidos cuando lo necesites.'
-    },
-    {
-      icono: 'stay_current_portrait',
-      titulo: 'Acceso desde cualquier lugar',
-      texto: 'Solo necesitas conexión a internet y un dispositivo (computadora, tableta, celular).'
-    },
-    {
-      icono: 'support_agent',
-      titulo: 'Soporte académico disponible 24/7',
-      texto: 'Acompañamiento personalizado durante todo el curso.'
-    },
-    {
-      icono: 'calendar_month',
-      titulo: 'Optimización del tiempo',
-      texto: 'Puedes usar incluso pequeños momentos libres para avanzar durante los días de acceso.'
-    },
-    {
-      icono: 'follow_the_signs',
-      titulo: 'Compatibilidad con el trabajo y la vida personal',
-      texto: 'Se adapta fácilmente a su rutina, permitiendo equilibrar mejor su aprendizaje, trabajo y vida social.'
-    },
-    {
-      icono: 'class',
-      titulo: 'Fomenta su liderazgo y autonomía',
-      texto: 'Te ayuda a organizar su tiempo, mejorar su disciplina y ser más responsable con su aprendizaje.'
-    },
-    {
-      icono: 'work',
-      titulo: 'Enfoque profesional',
-      texto: 'Formación integral y actualizada. Se prioriza la aplicación directa de los principios de protección radiológica en escenarios cotidianos.'
-    },
-    {
-      icono: 'model_training',
-      titulo: 'Aprendizaje inteligente',
-      texto: 'Diseñado mediante IA, revisado y actualizado por un profesional con años de experiencia.'
-    },
-    {
-      icono: 'verified',
-      titulo: 'Certificación',
-      texto: 'Ideal para CV profesional, recertificación y/o cumplimiento normativo.'
-    }
+    { icono: 'query_builder', titulo: 'BENEFITS.FLEXIBILITY.TITLE', texto: 'BENEFITS.FLEXIBILITY.TEXT' },
+    { icono: 'track_changes', titulo: 'BENEFITS.PACE.TITLE', texto: 'BENEFITS.PACE.TEXT' },
+    { icono: 'stay_current_portrait', titulo: 'BENEFITS.ACCESS.TITLE', texto: 'BENEFITS.ACCESS.TEXT' },
+    { icono: 'support_agent', titulo: 'BENEFITS.SUPPORT.TITLE', texto: 'BENEFITS.SUPPORT.TEXT' },
+    { icono: 'calendar_month', titulo: 'BENEFITS.TIME.TITLE', texto: 'BENEFITS.TIME.TEXT' },
+    { icono: 'follow_the_signs', titulo: 'BENEFITS.COMPATIBILITY.TITLE', texto: 'BENEFITS.COMPATIBILITY.TEXT' },
+    { icono: 'class', titulo: 'BENEFITS.LEADERSHIP.TITLE', texto: 'BENEFITS.LEADERSHIP.TEXT' },
+    { icono: 'work', titulo: 'BENEFITS.PROFESSIONAL.TITLE', texto: 'BENEFITS.PROFESSIONAL.TEXT' },
+    { icono: 'model_training', titulo: 'BENEFITS.SMART.TITLE', texto: 'BENEFITS.SMART.TEXT' },
+    { icono: 'verified', titulo: 'BENEFITS.CERTIFICATION.TITLE', texto: 'BENEFITS.CERTIFICATION.TEXT' }
   ]);
+
 }

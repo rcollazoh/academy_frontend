@@ -12,10 +12,11 @@ import { LogoutRequest } from '../../shared/models/login-request';
 import { NotificationService } from '../../shared/services/notification.service';
 import { Routes } from '../../shared/consts/routes';
 import { Router } from '@angular/router';
+import { LanguageSwitcher } from "@/app/shared/components/language-switcher/language-switcher";
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, AppUser, CommonModule],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, AppUser, CommonModule, LanguageSwitcher],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })

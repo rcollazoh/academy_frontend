@@ -11,10 +11,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-exam-viewer',
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatTooltipModule, MatRadioModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatTooltipModule, MatRadioModule, TranslatePipe],
   templateUrl: './exam-viewer.html',
   styleUrl: './exam-viewer.scss'
 })

@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recover-key',
@@ -20,7 +21,9 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule],
+    MatIconModule,
+    TranslatePipe
+  ],
   templateUrl: './recover-key.html',
   styleUrl: './recover-key.scss'
 })

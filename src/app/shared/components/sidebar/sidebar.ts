@@ -17,10 +17,11 @@ import { NotificationService } from '../../services/notification.service';
 import { Routes } from '../../consts/routes';
 import { ErrorDialog, ErrorDialogModel } from '../error-dialog/error-dialog';
 import { ConfirmDialog, ConfirmDialogModel } from '../confirm-dialog/confirm-dialog';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MatIconModule, MatNavList, MatListItem, MatExpansionModule, CommonModule, RouterLink],
+  imports: [MatIconModule, MatNavList, MatListItem, MatExpansionModule, CommonModule, RouterLink, TranslatePipe],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
   providers: [provideNativeDateAdapter()],
@@ -35,7 +36,7 @@ export class Sidebar implements OnInit {
   public routes: typeof Routes = Routes;
 
   constructor(private authService: AuthService, private dialog: MatDialog, protected ngxLoaderService: NgxUiLoaderService,
-              private notificacionService: NotificationService,
+              private notificacionService: NotificationService, private translate: TranslateService,
               private router: Router) {
     this.user$ = this.authService.getUser();
   }
@@ -54,36 +55,36 @@ export class Sidebar implements OnInit {
 
     menuList = [
         {
-          text: 'Información',
+          text: 'SIDEBAR.INFORMATION',
           icon: 'dashboard',
           routerLink: '/app/inicio',
           role: ['STUDENT']
         },
         {
-          text: 'Curso actual',
+          text: 'SIDEBAR.ACTIVE_COURSE',
           icon: 'school',
           routerLink: '/app/course-active',
           role: ['STUDENT']
         },
         {
-          text: 'Mis cursos',
+          text: 'SIDEBAR.MY_COURSES',
           icon: 'book',
           routerLink: '/app/student-courses',
           role: ['STUDENT']
         },
         {
-          text: 'Cursos',
+          text: 'SIDEBAR.COURSES',
           icon: 'book',
           routerLink: '/app/courses',
           role: ['TEACHER', 'ADMIN']
         },
         {
-          text: 'Ayuda',
+          text: 'SIDEBAR.HELP',
           icon: 'help',
           role: ['STUDENT']
         },
         {
-          text: 'Cerrar sesión',
+          text: 'SIDEBAR.CLOSE_SESSION',
           icon: 'exit_to_app',
           role: ['STUDENT', 'TEACHER', 'ADMIN']
         },
@@ -97,15 +98,15 @@ export class Sidebar implements OnInit {
   }
 
   onMenuClick(menu: string): void {
-    if (menu === 'Cerrar sesión') {
+    if (menu === 'SIDEBAR.CLOSE_SESSION') {
       this.openDialog();
-    } else if (menu === 'Ayuda'){
+    } else if (menu === 'SIDEBAR.HELP'){
       this.abrirWhatsApp('50672195203', 'Prad Academy, necesito ayuda');
     }
   }
 
   openDialog(): void {
-    let msg = 'Seguro desea cerrar la sesión';
+    let msg = this.translate.instant('SIDEBAR.ASK_CLOSE_SESSION');
     const dialogData = new ConfirmDialogModel('Advertencia', msg, true, 'Aceptar', true, 'Cancelar');
     const dialogRef = this.dialog.open(ConfirmDialog, {
       maxWidth: '400px',

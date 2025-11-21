@@ -15,6 +15,7 @@ import { FeaturesService } from '@/app/features/services/features.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '../../services/notification.service';
 import Swal from 'sweetalert2';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-feedback-viewer',
@@ -26,7 +27,7 @@ import Swal from 'sweetalert2';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    CommonModule, MatDialogModule, MatRadioModule, MatSelectModule
+    CommonModule, MatDialogModule, MatRadioModule, MatSelectModule, TranslatePipe
   ],
   templateUrl: './feedback-viewer.html',
   styleUrl: './feedback-viewer.scss'
@@ -36,16 +37,27 @@ export class FeedbackViewer implements OnInit {
   form!: FormGroup;
   group: any = {};
   modules: Module[];
-  ratings = ['Pobre', 'Aceptable', 'Bien', 'Muy bien', 'Excelente'];
-  aspects = [
-    { label: 'El estilo de presentación contribuyó a mi aprendizaje', control: 'presentationStyle' },
-    { label: 'Me pareció adecuada la duración del curso electrónico', control: 'courseDuration' },
-    { label: 'En general, el curso electrónico me pareció satisfactorio', control: 'overallSatisfaction' }
+
+  // Ratings traducibles
+  ratings: string[] = [
+    'FEEDBACKS.RATINGS.POOR',
+    'FEEDBACKS.RATINGS.FAIR',
+    'FEEDBACKS.RATINGS.GOOD',
+    'FEEDBACKS.RATINGS.VERY_GOOD',
+    'FEEDBACKS.RATINGS.EXCELLENT'
   ];
 
+  // Aspectos traducibles
+  aspects = [
+    { label: 'FEEDBACKS.ASPECTS.PRESENTATION_STYLE', control: 'presentationStyle' },
+    { label: 'FEEDBACKS.ASPECTS.COURSE_DURATION', control: 'courseDuration' },
+    { label: 'FEEDBACKS.ASPECTS.OVERALL_SATISFACTION', control: 'overallSatisfaction' }
+  ];
+
+  // Preguntas traducibles
   questions = [
-    { label: 'Califica el contenido de cada módulo', type: 'content' },
-    { label: 'Califica la apariencia de cada módulo', type: 'appearance' }
+    { label: 'FEEDBACKS.QUESTION1', type: 'content' },
+    { label: 'FEEDBACKS.QUESTION2', type: 'appearance' }
   ];
 
   constructor(
@@ -55,12 +67,17 @@ export class FeedbackViewer implements OnInit {
     private featuresService: FeaturesService,
     protected ngxLoaderService: NgxUiLoaderService,
     private notificacionService: NotificationService,
+    private translate: TranslateService
   ) {
-    this.modules = data.modules.filter((value: { moduleName: any; "": any; }) => value.moduleName !== 'Introducción' && value.moduleName !== 'Referencias' && value.moduleName !== 'Feedback');
+    this.modules = data.modules.filter((value: Module) =>
+      value.moduleName !== 'Introducción' &&
+      value.moduleName !== 'Referencias' &&
+      value.moduleName !== 'Feedback'
+    );
   }
 
   ngOnInit(): void {
-    this.modules.forEach((element: { confingModuleId: number; }) => {
+    this.modules.forEach((element: Module) => {
       this.group['content-' + element.confingModuleId] = [null, Validators.required];
       this.group['appearance-' + element.confingModuleId] = [null, Validators.required];
     });
@@ -72,7 +89,6 @@ export class FeedbackViewer implements OnInit {
   }
 
   submitFeedback(): void {
-
     const formValues = this.form.value as Record<string, string>;
 
     const feedbackList: StudentFeedbackModule[] = Object.entries(formValues)
@@ -103,15 +119,18 @@ export class FeedbackViewer implements OnInit {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationSuccess(
-          'Se ha enviado el feedback correctamente'
+          this.translate.instant('FEEDBACKS.MESSAGES.SUCCESS')
         );
-        if (res.courseStatus && res.courseStatus == 'APPROVED') {
+
+        if (res.courseStatus && res.courseStatus === 'APPROVED') {
           Swal.fire({
-            title: '¡Información!',
-            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Felicidades! Usted ha aprobado el curso satisfactoriamente. PRAD ACADEMY en el transcurso de las próximas 48 horas subirá su certificado, revisar el menú Mis cursos.' + '</strong></div>',
+            title: this.translate.instant('FEEDBACKS.MESSAGES.INFO_TITLE'),
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' +
+              this.translate.instant('FEEDBACKS.MESSAGES.APPROVED') +
+              '</strong></div>',
             icon: 'info',
             confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Aceptar',
+            confirmButtonText: this.translate.instant('FEEDBACKS.MESSAGES.CONFIRM'),
             allowEscapeKey: false,
             allowOutsideClick: false
           }).then((result) => {
@@ -119,14 +138,16 @@ export class FeedbackViewer implements OnInit {
               this.dialogRef.close(true);
               return;
             }
-          })
-        } else if (res.courseStatus && res.courseStatus == 'NOT_APPROVED') {
+          });
+        } else if (res.courseStatus && res.courseStatus === 'NOT_APPROVED') {
           Swal.fire({
-            title: '¡Información!',
-            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' + 'Lamentamos informarle que usted ha desaprobado el curso. Póngase en contacto con PRAD ACADEMY.' + '</strong></div>',
+            title: this.translate.instant('FEEDBACKS.MESSAGES.INFO_TITLE'),
+            html: '<div style="font-size: 1.4rem;text-align: center;"><strong>' +
+              this.translate.instant('FEEDBACKS.MESSAGES.NOT_APPROVED') +
+              '</strong></div>',
             icon: 'info',
             confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Aceptar',
+            confirmButtonText: this.translate.instant('FEEDBACKS.MESSAGES.CONFIRM'),
             allowEscapeKey: false,
             allowOutsideClick: false
           }).then((result) => {
@@ -134,17 +155,17 @@ export class FeedbackViewer implements OnInit {
               this.dialogRef.close(true);
               return;
             }
-          })
-        } else 
+          });
+        } else {
           this.dialogRef.close(true);
+        }
       },
-      error: (err) => {
+      error: () => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al enviar el feedback, reintentelo'
+          this.translate.instant('FEEDBACKS.MESSAGES.ERROR')
         );
-      },
-
+      }
     });
   }
 

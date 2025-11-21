@@ -19,9 +19,9 @@
       <swiper-slide>
         <mat-card class="beneficio-card" appearance="outlined">
           <mat-icon class="beneficio-icon">{{ benef.icono }}</mat-icon>
-          <mat-card-title>{{ benef.titulo }}</mat-card-title>
+          <mat-card-title>{{ benef.titulo | translate }}</mat-card-title>
           <mat-card-content>
-            <p>{{ benef.texto }}</p>
+            <p>{{ benef.texto | translate }}</p>
           </mat-card-content>
         </mat-card>
       </swiper-slide>

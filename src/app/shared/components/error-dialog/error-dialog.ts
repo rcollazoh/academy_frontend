@@ -3,10 +3,11 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/materia
 import { Subscription } from 'rxjs';
 import { RouteService } from '../../services/route.service';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-error-dialog',
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule, MatButtonModule, TranslatePipe],
   templateUrl: './error-dialog.html',
   styleUrl: './error-dialog.scss'
 })

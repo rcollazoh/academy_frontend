@@ -1,7 +1,7 @@
 <div class="dialog-container" (contextmenu)="$event.preventDefault()">
   <div class="dialog-header">
     <span class="title">{{ imageData?.title }}</span>
-    <button mat-icon-button (click)="close()" matTooltip="Cerrar">
+    <button mat-icon-button (click)="close()" matTooltip="{{'COMMON.TEXT_CLOSE' | translate}}">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -18,10 +18,10 @@
   @if (!loading) {
   <div class="dialog-footer">
     <button mat-button (click)="previous()" [disabled]="!imageData?.previousId">
-      <mat-icon>navigate_before</mat-icon> Anterior
+      <mat-icon>navigate_before</mat-icon> {{'COMMON.TEXT_BACK' | translate}}
     </button>
     <button mat-button (click)="next()" [disabled]="!imageData?.nextId">
-      Siguiente <mat-icon>navigate_next</mat-icon>
+      {{'COMMON.TEXT_NEXT' | translate}} <mat-icon>navigate_next</mat-icon>
     </button>
   </div>
   }

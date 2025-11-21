@@ -21,7 +21,7 @@
                   <mat-error>{{ 'LOGIN.EMAIL_INVALID_ERROR' | translate }}</mat-error>
                 }
                 @if (loginForm.get('user')?.hasError('required')) {
-                  <mat-error>{{ 'LOGIN.EMAIL_REQUIRED_ERROR' | translate }}</mat-error>
+                  <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
                 }                
               </mat-form-field>
 
@@ -35,7 +35,7 @@
                   <mat-icon matSuffix (click)="mostrarPassword = !mostrarPassword"> visibility </mat-icon>
                 }
                 @if (loginForm.get('password')?.invalid) {
-                  <mat-error>{{ 'LOGIN.PASSWORD_REQUIRED_ERROR' | translate }}</mat-error>
+                  <mat-error>{{'COMMON.FIELD_REQUIRED' | translate}}</mat-error>
                 }
               </mat-form-field>
               <div class="d-flex align-items-center mb-3" style="justify-content: end;">              

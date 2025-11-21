@@ -1,39 +1,48 @@
 {
+  "COMMON": {
+    "FIELD_REQUIRED": "Verplicht veld",
+    "BTN_ACCEPT": "Accepteren",
+    "BTN_CANCEL": "Annuleren",
+    "TEXT_CLOSE": "Sluiten",
+    "TEXT_NEXT": "Volgende",
+    "TEXT_BACK": "Vorige",
+    "TEXT_EXAM": "Examen"
+  },
   "LANDING": {
-    "NAVBAR_TEXT_START": "Home",
+    "NAVBAR_TEXT_START": "Start",
     "NAVBAR_TEXT_FEEDBACK": "Feedback",
-    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Stuur ons uw feedback",
+    "NAVBAR_TEXT_FEEDBACK_TOOLTIP": "Stuur ons uw mening",
     "NAVBAR_TEXT_LOGIN": "Inloggen",
     "NAVBAR_TEXT_REGISTER": "Registreren"
   },
   "LOGIN": {
-    "TITLE": "Log in",
+    "TITLE": "Inloggen",
     "EMAIL_LABEL": "E-mail",
     "EMAIL_PLACEHOLDER": "mail@example.com",
-    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
-    "EMAIL_REQUIRED_ERROR": "Verplicht veld",
+    "EMAIL_INVALID_ERROR": "Ongeldig e-mailadres",
     "PASSWORD_LABEL": "Wachtwoord",
-    "PASSWORD_REQUIRED_ERROR": "Verplicht veld",
     "FORGOT_PASSWORD": "Wachtwoord vergeten?",
     "SUBMIT_BUTTON": "Inloggen",
-    "NOT_ACCOUNT": "Heb je geen account?",
-    "REGISTER": "Aanmelden"
+    "LOGIN_MESSAGE": "Toegang tot uw PRAD Academy-account.",
+    "NOT_ACCOUNT": "Heeft u geen account?",
+    "REGISTER": "Registreren"
   },
   "REGISTER": {
     "TITLE": "Maak uw account aan",
-    "DESCRIPTION": "Om al onze diensten te gebruiken en verder te gaan met PRAD Academy.",
+    "DESCRIPTION": "Om al onze diensten te gebruiken en door te gaan met PRAD Academy.",
     "NAME_LABEL": "Voornaam",
     "LAST_NAME_LABEL": "Achternaam",
     "EMAIL_LABEL": "E-mail",
     "EMAIL_PLACEHOLDER": "mail@example.com",
-    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
+    "EMAIL_INVALID_ERROR": "Ongeldig e-mailadres",
     "PHONE_LABEL": "Telefoon",
-    "ID_NUMBER_LABEL": "ID-nummer",
+    "ID_NUMBER_LABEL": "Identiteitsnummer",
     "PASSWORD_LABEL": "Wachtwoord",
     "PASSWORD_MIN_LENGTH_ERROR": "Minimaal 6 tekens",
     "CONFIRM_PASSWORD_LABEL": "Bevestig wachtwoord",
     "PASSWORD_MISMATCH_ERROR": "Wachtwoorden komen niet overeen.",
-    "SUBMIT_BUTTON": "Account aanmaken"
+    "SUBMIT_BUTTON": "Account aanmaken",
+    "TOOLTIP": "Registreren"
   },
   "COURSE": {
     "TITLE": "Mijn cursussen",
@@ -41,15 +50,332 @@
   },
   "FEEDBACK": {
     "TITLE": "Deel uw ervaring",
-    "DESCRIPTION": "We kijken ernaar uit om uw feedback te ontvangen! Uw mening is essentieel om onze Academie te blijven verbeteren.",
+    "DESCRIPTION": "We kijken uit naar uw opmerkingen! Uw mening is essentieel om onze Academie te blijven verbeteren.",
     "EMAIL_LABEL": "E-mail",
     "EMAIL_PLACEHOLDER": "mail@example.com",
-    "EMAIL_REQUIRED_ERROR": "Verplicht veld",
-    "EMAIL_INVALID_ERROR": "Ongeldige e-mail",
+    "EMAIL_INVALID_ERROR": "Ongeldig e-mailadres",
     "COMMENT_LABEL": "Opmerking",
     "COMMENT_PLACEHOLDER": "Schrijf uw opmerking",
-    "COMMENT_REQUIRED_ERROR": "Verplicht veld",
     "CANCEL_BUTTON": "Annuleren",
     "SUBMIT_BUTTON": "Opmerking verzenden"
+  },
+  "RECOVER_KEY": {
+    "TITLE": "Wachtwoord herstellen",
+    "EMAIL": "E-mail",
+    "INVALID_EMAIL": "Ongeldig e-mailadres",
+    "IDENTITY": "Identiteitsnummer"
+  },
+  "BENEFITS": {
+    "FLEXIBILITY": {
+      "TITLE": "Flexibel rooster",
+      "TEXT": "U kunt de inhoud bekijken wanneer het u het beste uitkomt, zonder vaste tijden."
+    },
+    "PACE": {
+      "TITLE": "Persoonlijk tempo",
+      "TEXT": "Ga in uw eigen tempo vooruit, herhaal of pauzeer de inhoud wanneer nodig."
+    },
+    "ACCESS": {
+      "TITLE": "Toegang vanaf elke locatie",
+      "TEXT": "U heeft alleen een internetverbinding en een apparaat nodig (computer, tablet, telefoon)."
+    },
+    "SUPPORT": {
+      "TITLE": "Academische ondersteuning 24/7 beschikbaar",
+      "TEXT": "Persoonlijke begeleiding gedurende de hele cursus."
+    },
+    "TIME": {
+      "TITLE": "Tijdoptimalisatie",
+      "TEXT": "U kunt zelfs kleine vrije momenten gebruiken om vooruitgang te boeken tijdens de toegangsdagen."
+    },
+    "COMPATIBILITY": {
+      "TITLE": "Compatibiliteit met werk en privéleven",
+      "TEXT": "Past zich gemakkelijk aan uw routine aan, waardoor u leren, werk en sociaal leven beter kunt balanceren."
+    },
+    "LEADERSHIP": {
+      "TITLE": "Bevordert leiderschap en autonomie",
+      "TEXT": "Helpt u uw tijd te organiseren, discipline te verbeteren en verantwoordelijker te zijn voor uw leerproces."
+    },
+    "PROFESSIONAL": {
+      "TITLE": "Professionele focus",
+      "TEXT": "Uitgebreide en actuele opleiding. Directe toepassing van principes van stralingsbescherming in dagelijkse situaties."
+    },
+    "SMART": {
+      "TITLE": "Slim leren",
+      "TEXT": "Ontworpen met AI, beoordeeld en bijgewerkt door een professional met jarenlange ervaring."
+    },
+    "CERTIFICATION": {
+      "TITLE": "Certificering",
+      "TEXT": "Ideaal voor professioneel cv, hercertificering en/of naleving van regelgeving."
+    }
+  },
+  "CERTIFICATIONS": {
+    "TITLE": "Certificering met professionele geldigheid",
+    "TEXT_1": "De afgegeven certificering voldoet aan de formele vereisten vastgesteld door het Ministerie van Volksgezondheid onder code",
+    "TEXT_2": "voor Ing. MSc. Dagoberto Eloy González López, identiteitsnummer 801480648.",
+    "HELP": "Hulp nodig?"
+  },
+  "COURSES": {
+    "TITLE": "Basiscursussen Stralingsbescherming",
+    "RADIOLOGY": {
+      "TITLE": "Radiologie",
+      "DESCRIPTION": "Pas fundamentele veiligheidsprincipes toe om blootstelling aan ioniserende straling voor patiënten, operators en het publiek te minimaliseren."
+    },
+    "VETERINARY": {
+      "TITLE": "Diergeneeskunde",
+      "DESCRIPTION": "Pas veiligheidsprincipes toe om de blootstelling van personeel te verminderen en het veilige gebruik van ioniserende straling bij huisdieren te optimaliseren."
+    },
+    "DENTISTRY": {
+      "TITLE": "Tandheelkunde",
+      "DESCRIPTION": "Beperk de blootstelling aan straling voor patiënten en personeel door het veilige en gerechtvaardigde gebruik van radiologische procedures."
+    },
+    "RADIOTHERAPY": {
+      "TITLE": "Radiotherapie",
+      "DESCRIPTION": "Zorg voor de veiligheid van patiënt, personeel en publiek door onnodige blootstelling tijdens therapeutisch gebruik van ioniserende straling te minimaliseren."
+    },
+    "NUCLEAR_MEDICINE": {
+      "TITLE": "Nucleaire geneeskunde",
+      "DESCRIPTION": "Beheer blootstelling aan radionucliden door specifieke veiligheidsmaatregelen in diagnostische en therapeutische procedures."
+    },
+    "INDUSTRIAL_RESEARCH": {
+      "TITLE": "Industrieel-onderzoek",
+      "DESCRIPTION": "Pas veiligheidsmaatregelen toe om blootstelling aan ioniserende straling tijdens het gebruik van radioactieve bronnen en emitterende apparatuur te beheersen."
+    },
+    "REGISTER": "Inschrijven"
+  },
+  "COURSE_PAGE": {
+    "TITLE": "Basiscursussen Stralingsbescherming",
+    "INTRO": {
+      "PARAGRAPH1": "Ioniserende straling is aanwezig in diverse domeinen zoals de geneeskunde, diergeneeskunde, industrie en onderzoek. Stralingsbescherming is essentieel om veiligheid te waarborgen tegen de schadelijke effecten.",
+      "PARAGRAPH2": "Deze cursus maakt deel uit van de vereisten van het Ministerie van Volksgezondheid volgens Uitvoeringsbesluit nr. 44653-S, en is gericht op het bevorderen van een cultuur van stralingsveiligheid in medische, industriële en veterinaire praktijken."
+    },
+    "OBJECTIVES": {
+      "TITLE": "Leerdoelen",
+      "ITEM1": "Begrijp dosimetrische grootheden en hun eenheden.",
+      "ITEM2": "Maak uzelf vertrouwd met stralingsdetectoren en hun principes.",
+      "ITEM3": "Begrijp de biologische effecten van blootstelling aan straling.",
+      "ITEM4": "Ken algemene maatregelen voor stralingsbescherming.",
+      "ITEM5": "Beheers de regulerende infrastructuur en het veilige gebruik van bronnen."
+    },
+    "TEACHER": {
+      "TITLE": "Verantwoordelijke docent",
+      "NAME": "M.Sc. Dagoberto Eloy González López"
+    },
+    "EDUCATION": {
+      "TITLE": "Academische achtergrond",
+      "ITEM1": "Nucleaire engineering - Hoger Instituut voor Technologieën en Toegepaste Wetenschappen, Cuba (2013)",
+      "ITEM2": "Master in Medische Fysica - Universiteit van Costa Rica (2020)"
+    },
+    "EXPERIENCE": {
+      "TITLE": "Werkervaring",
+      "ITEM1": "Medisch fysicus - Hospital México, CCSS (2021 - heden)",
+      "ITEM2": "Medisch fysicus - Afdeling Kwaliteitscontrole en Stralingsbescherming - CCSS (2018 - 2021)",
+      "ITEM3": "Medisch fysicus - Radiotherapie en Nucleaire Geneeskunde - Hospital Lenin, Cuba (2013 - 2016)"
+    },
+    "PROFESSIONAL_ASSOCIATIONS": {
+      "TITLE": "Beroepsverenigingen",
+      "ITEM1": "CIEMI - CFIA (Code: IN-33322)",
+      "ITEM2": "College van Natuurkundigen (Code: 245-17)"
+    },
+    "AUTHORIZATION": "Goedgekeurd door het Ministerie van Volksgezondheid onder code DPRSA-UPR-0168-2023-S, identiteitsnummer 801480648.",
+    "RESULTS": {
+      "TITLE": "Verwachte resultaten",
+      "ITEM1": "Verbeter het begrip van stralingsbescherming volgens het interessegebied.",
+      "ITEM2": "Begrijp de interactie van ioniserende straling met materie.",
+      "ITEM3": "Erken de voordelen en biologische effecten van ioniserende straling.",
+      "ITEM4": "Pas nationale normen en internationale aanbevelingen toe.",
+      "ITEM5": "Implementeer kwaliteitsborgingsprogramma's."
+    }
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Leidende opleiding in stralingsbescherming",
+      "SUBTITLE": "Uw operatorlicentie binnen één klik.",
+      "BUTTON": "Meer zien",
+      "IMAGE_ALT": "Medische illustratie"
+    }
+  },
+  "PAYMENT": {
+    "TITLE": "Betaalmethoden",
+    "DESCRIPTION": "Wij accepteren verschillende betaalopties bij de volgende banken:",
+    "SINPE": {
+      "NAME": "Sinpe Mobiel",
+      "ALT": "Sinpe Mobiel"
+    },
+    "BAC": {
+      "NAME": "BAC Credomatic",
+      "ALT": "BAC Credomatic"
+    },
+    "BCR": {
+      "NAME": "BCR Bank",
+      "ALT": "BCR Bank"
+    },
+    "NATIONAL": {
+      "NAME": "Nationale Bank",
+      "ALT": "Nationale Bank"
+    }
+  },
+  "PRIVACY_POLICY": {
+    "TITLE": "Privacybeleid - PRAD Academy",
+    "INTRO": {
+      "PARAGRAPH1": "Bij PRAD Academy waarderen we uw vertrouwen en beschermen we uw persoonlijke informatie volgens de hoogste normen van privacy en veiligheid.",
+      "PARAGRAPH2": "Uw gegevens worden als volgt verwerkt: de informatie die u verstrekt wordt uitsluitend gebruikt om uw registratie, deelname aan cursussen, uitgifte van certificaten en academische of informatieve communicatie te beheren.",
+      "PARAGRAPH3": "Gegevens worden vertrouwelijk behandeld, opgeslagen op beveiligde servers en nooit gedeeld met derden zonder uw uitdrukkelijke toestemming, tenzij wettelijk vereist.",
+      "PARAGRAPH4": "Voor meer details willen we dat u begrijpt hoe we uw gegevens verwerken en dat u uw rechten en opties kent."
+    },
+    "SECTION1": {
+      "TITLE": "1. Identiteit van de verwerkingsverantwoordelijke",
+      "DESCRIPTION": "PRAD Academy (hierna ‘het Platform’) is verantwoordelijk voor de verwerking en bescherming van persoonlijke gegevens die door gebruikers worden verstrekt via de website, registratieformulieren en andere elektronische middelen met betrekking tot de online opleidingsdiensten.",
+      "CONTACT_LABEL": "Contact e-mail:",
+      "CONTACT_VALUE": "pradacademy.cr@gmail.com",
+      "WEBSITE_LABEL": "Officiële website:",
+      "WEBSITE_VALUE": "https://pradacademy.com"
+    },
+    "SECTION2": {
+      "TITLE": "2. Verwerking van persoonsgegevens",
+      "A": {
+        "TITLE": "A. De verzamelde persoonsgegevens worden verwerkt voor de volgende doeleinden:",
+        "ITEM1": "Beheer van registratie, toegang en deelname van de gebruiker aan de door het Platform aangeboden cursussen.",
+        "ITEM2": "Uitgifte van certificaten die overeenkomen met de gevolgde cursus.",
+        "ITEM3": "Communicatie tussen gebruiker en Platform voor meldingen, technische ondersteuning en updates van academische informatie faciliteren.",
+        "ITEM4": "Beheer van facturatie en betalingsbewijzen van uitgevoerde transacties.",
+        "ITEM5": "Voldoen aan wettelijke, contractuele en administratieve verplichtingen voortvloeiend uit de relatie met de gebruiker."
+      },
+      "B": {
+        "TITLE": "B. De verzamelde persoonsgegevens worden NIET verwerkt voor de volgende doeleinden:",
+        "ITEM1": "Uitvoeren van tevredenheidsenquêtes en statistische analyses om diensten te verbeteren.",
+        "ITEM2": "Verzenden van informatieve of promotionele communicatie over nieuwe cursussen, programma’s of academische activiteiten."
+      }
+    },
+    "SECTION3": {
+      "TITLE": "3. Verzamelde persoonsgegevens",
+      "DESCRIPTION": "Voor het uitgeven van certificaten, technische ondersteuning of academische communicatie vraagt PRAD Academy de volgende gegevens:",
+      "ITEM1": "Identificatiegegevens: volledige naam, identiteitsdocument.",
+      "ITEM2": "Contactgegevens: e-mailadres, telefoonnummer (optioneel).",
+      "ITEM3": "Academische gegevens: cursusgeschiedenis, cijfers, uitgegeven certificaten.",
+      "ITEM4": "Betalingsgegevens: facturatie-informatie en betalingsbewijzen."
+    },
+    "SECTION4": {
+      "TITLE": "4. Rechtsgrond en toestemming",
+      "DESCRIPTION": "De verwerking van persoonsgegevens gebeurt op basis van de vrije, uitdrukkelijke en geïnformeerde toestemming van de betrokkene, verleend bij registratie en gebruik van de cursussen van het Platform."
+    },
+    "SECTION5": {
+      "TITLE": "5. Beveiligingsmaatregelen",
+      "PARAGRAPH1": "PRAD Academy implementeert passende technische, administratieve en organisatorische maatregelen om de vertrouwelijkheid, integriteit en beschikbaarheid van persoonsgegevens te waarborgen.",
+      "PARAGRAPH2": "Gegevens worden vertrouwelijk behandeld, opgeslagen op beveiligde servers en nooit gedeeld met derden zonder uitdrukkelijke toestemming, tenzij wettelijk vereist.",
+      "PARAGRAPH3": "Gevoelige gegevens (zoals betalingsgegevens) worden NIET via het Platform verwerkt; elke gebruiker verricht betalingen individueel volgens de gekozen methode. PRAD Academy registreert alleen het door de gebruiker aangeleverde betalingsbewijs."
+    },
+    "SECTION6": {
+      "TITLE": "6. Bewaring van gegevens",
+      "PARAGRAPH1": "PRAD Academy bewaart persoonsgegevens zolang als nodig om het academische dossier te onderhouden, de geldigheid van uitgegeven certificaten te waarborgen en te voldoen aan de vereisten voor cursusvernieuwing, die elke 2 jaar moeten plaatsvinden volgens nationale regelgeving en standaarden voor voortdurende opleiding in stralingsbescherming.",
+      "PARAGRAPH2": "Deze informatie blijft actief en beveiligd in onze systemen zolang de gebruiker een academische of administratieve relatie met het Platform onderhoudt, of zolang dit nodig is voor juridische, audit- of verificatiedoeleinden van uitgegeven certificeringen.",
+      "PARAGRAPH3": "De gebruiker kan echter verzoeken om verwijdering of annulering van zijn persoonsgegevens, volgens de procedure vermeld in punt 7 (Rechten van betrokkenen). In dat geval zal PRAD Academy overgaan tot veilige verwijdering, tenzij er een wettelijke of administratieve verplichting bestaat die bewaring voor een extra periode vereist."
+    },
+    "SECTION7": {
+      "TITLE": "7. Rechten van betrokkenen",
+      "DESCRIPTION": "De betrokkene heeft het recht om:",
+      "RIGHT_ACCESS_1": "Toegang",
+      "RIGHT_ACCESS": "tot de informatie die het Platform over hem/haar heeft.",
+      "RIGHT_RECTIFY_1": "Rectificatie",
+      "RIGHT_RECTIFY": "van zijn/haar gegevens wanneer deze onjuist of onvolledig zijn.",
+      "RIGHT_DELETE_1": "Annulering",
+      "RIGHT_DELETE": "of verwijdering van zijn/haar gegevens wanneer de cursus is afgerond of wanneer deze niet langer noodzakelijk zijn voor de aangegeven doeleinden.",
+      "CONTACT_PREFIX": "Deze rechten kunnen worden uitgeoefend door een schriftelijk verzoek te sturen naar:",
+      "CONTACT_EMAIL": "pradacademy.cr@gmail.com",
+      "CONTACT_SUFFIX": ", met vermelding van volledige naam, contactmethode en het recht dat u wilt uitoefenen.",
+      "RESPONSE": "PRAD Academy zal binnen maximaal 5 kalenderdagen reageren."
+    },
+    "SECTION8": {
+      "TITLE": "8. Overdracht en communicatie van gegevens aan derden",
+      "DESCRIPTION": "PRAD Academy zal GEEN persoonsgegevens delen met derden, behalve in de volgende gevallen:",
+      "ITEM1": "Wanneer er een wettelijke, administratieve of gerechtelijke verplichting bestaat.",
+      "ITEM2": "Wanneer de gebruiker uitdrukkelijke toestemming heeft gegeven.",
+      "PARAGRAPH": "In dergelijke gevallen wordt gewaarborgd dat de ontvangende derden beschikken over beleid en adequate niveaus van bescherming van persoonsgegevens."
+    },
+    "SECTION9": {
+      "TITLE": "9. Wijzigingen in het privacybeleid",
+      "PARAGRAPH1": "PRAD Academy behoudt zich het recht voor om dit privacybeleid te wijzigen om het aan te passen aan wetswijzigingen, technologische of operationele veranderingen van het Platform.",
+      "PARAGRAPH2": "Elke wijziging wordt op de website gepubliceerd met de datum van de laatste update en treedt in werking vanaf publicatie.",
+      "LAST_UPDATE_LABEL": "Laatste update:",
+      "LAST_UPDATE_VALUE": "25 oktober 2025"
+    },
+    "SECTION10": {
+      "TITLE": "10. Contact",
+      "EMAIL_LABEL": "E-mail:",
+      "EMAIL_VALUE": "pradacademy.cr@gmail.com",
+      "WEBSITE_LABEL": "Website:",
+      "WEBSITE_VALUE": "https://pradacademy.com",
+      "ENTITY_LABEL": "Verantwoordelijke entiteit:",
+      "ENTITY_VALUE": "PRAD Academy"
+    }
+  },
+  "FOOTER": {
+    "BRAND": {
+      "DESCRIPTION_1": "Online leerplatform voor",
+      "DESCRIPTION_2": "professionele ontwikkeling in Costa Rica."
+    },
+    "LINKS": {
+      "HOME": "Start",
+      "FEEDBACK": "Feedback",
+      "POLICIES": "Beveiligingsbeleid"
+    },
+    "COPYRIGHT": "Alle rechten voorbehouden."
+  },
+  "APP_USER": {
+    "EDIT_PROFILE": "Profiel bewerken",
+    "CLOSE_SESION": "Sessies beëindigen"
+  },
+  "APPLY_COURSE": {
+    "TITLE": "Aanmelden voor cursus",
+    "PREVIEW": "Voorbeeld",
+    "PAYMENT_MODE": "Betaalmethode",
+    "ERROR_PAYMENT_MODE": "Selecteer een betaalmethode",
+    "CHANGE_IMAGE": "Afbeelding wijzigen",
+    "SELECT_IMAGE": "Afbeelding selecteren"
+  },
+  "FEEDBACKS": {
+    "TITLE": "Feedback",
+    "INTRO": "Na het voltooien van de modules en evaluaties van de cursus vragen wij u uw mening te delen over de leerervaring. Uw opmerkingen zijn zeer waardevol en helpen ons om onze Academie voor Stralingsbescherming (PRAD Academy) te verbeteren.",
+    "QUESTION1": "1. Beoordeel de inhoud van elke module:",
+    "QUESTION2": "2. Beoordeel de vormgeving van elke module:",
+    "QUESTION3": "3. Evalueer de volgende aspecten:",
+    "QUESTION4": "4. Als u een fout of element opmerkt (bijvoorbeeld knoppen, interacties, enz.), schrijf het hier op:",
+    "QUESTION5": "5. Aanvullende opmerkingen:",
+    "MODULE": "Module",
+    "ERRORS_LABEL": "Fouten of te verbeteren elementen",
+    "COMMENTS_LABEL": "Aanvullende opmerkingen",
+    "CANCEL": "Annuleren",
+    "SEND": "Verzenden",
+    "RATINGS": {
+      "POOR": "Slecht",
+      "FAIR": "Voldoende",
+      "GOOD": "Goed",
+      "VERY_GOOD": "Zeer goed",
+      "EXCELLENT": "Uitstekend"
+    },
+    "ASPECTS": {
+      "PRESENTATION_STYLE": "De presentatiestijl droeg bij aan mijn leren",
+      "COURSE_DURATION": "De duur van de e-cursus was passend",
+      "OVERALL_SATISFACTION": "Over het algemeen was de e-cursus bevredigend"
+    },
+    "MESSAGES": {
+      "SUCCESS": "Feedback is succesvol verzonden",
+      "ERROR": "Er is een fout opgetreden bij het verzenden van de feedback, probeer het opnieuw",
+      "APPROVED": "Gefeliciteerd! U hebt de cursus met succes afgerond. PRAD ACADEMY zal uw certificaat binnen 48 uur uploaden. Controleer het menu Mijn cursussen.",
+      "NOT_APPROVED": "Het spijt ons u te moeten meedelen dat u de cursus niet hebt gehaald. Neem contact op met PRAD ACADEMY.",
+      "INFO_TITLE": "Informatie!",
+      "CONFIRM": "Accepteren"
+    }
+  },
+  "SHOW-IMAGE": {
+    "TITLE": "Betalingsbewijs",
+    "ALT": "Ontvangst"
+  },
+  "SIDEBAR": {
+    "INFORMATION": "Informatie",
+    "ACTIVE_COURSE": "Actieve cursus",
+    "MY_COURSES": "Mijn cursussen",
+    "COURSES": "Cursussen",
+    "HELP": "Hulp",
+    "CLOSE_SESSION": "Sessie sluiten",
+    "ASK_CLOSE_SESSION": "Wilt u de sessie echt sluiten?"
   }
 }
