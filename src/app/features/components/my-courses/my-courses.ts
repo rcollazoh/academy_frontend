@@ -12,11 +12,11 @@ import { ShowImage } from '../../../shared/components/show-image/show-image';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NotificationService } from '@/app/shared/services/notification.service';
-
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-my-courses',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe, StatePipe, MatTooltipModule],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule, RouterModule, PaymentWayPipe, StatePipe, MatTooltipModule, TranslatePipe],
   templateUrl: './my-courses.html',
   styleUrl: './my-courses.scss'
 })

@@ -42,8 +42,9 @@ export class ApplyCourseDialog implements OnInit {
   selectedFileName: string = '';
 
   metodos = [
-    { value: 'TRANSF', label: 'Transferencia electrónica' },
-    { value: 'SINPE', label: 'Sinpe Móvil' }
+    { value: 'TRANSF', label: 'Electronic Transfer' }
+    // ,
+    // { value: 'SINPE', label: 'Sinpe Móvil' }
   ];
 
   constructor(

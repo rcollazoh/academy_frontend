@@ -47,7 +47,21 @@
   },
   "COURSE": {
     "TITLE": "Mis cursos",
-    "START": "Comenzar curso"
+    "START": "Comenzar curso",
+    "AREA": "Área",
+    "PRACTICE": "Práctica",
+    "START_DATE": "Fecha inicio",
+    "END_DATE": "Fecha vencimiento",
+    "STATE": "Estado",
+    "INVOICE_SENT": "Factura enviada",
+    "PROOF_OF_INVOICE": "Comprobante de pago",
+    "CERTIFICATE": "Certificado",
+    "NO_EXIT":"No existen datos para mostrar.",
+    "CURRENT_COURSE": "Curso actual",
+    "CURRENT_COURSE_DETAIL": "No tiene un curso activo en estos momentos.",
+    "NAME": "Curso",
+    "EVALUATION_METHOD": "Método de evaluación",
+    "EVALUATION_METHOD_DETAIL": "Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas."
   },
   "FEEDBACK": {
     "TITLE": "Comparta su experiencia",
@@ -196,7 +210,12 @@
     "INFORMATION_OF_THE_COURSE": "Información del curso",
     "AVAILABLE_COURSES": "Cursos disponibles",
     "PRICE": "Precio",
-    "DURATION": "Duración"
+    "DURATION": "Duración",
+    "DURATION_DETAIL": "Para la realización del curso cuenta con 15 días naturales luego de que este sea aprobado por el profesor.",
+    "SATUS_MESMESSAGES_NEW": "Debe seleccionar la opción aplicar para iniciar un nuevo curso.",
+     "SATUS_MESMESSAGES_PENDING": "Pendiente a confirmar por el profesor.",
+     "SATUS_MESMESSAGES_ACTIVATED": "El curso fue activado, puede comenzar las clases.",
+     "SATUS_MESMESSAGES_REJECTED": "El curso fue rechazado por el profesor, debe aplicar al curso nuevamente."
   },
   "PAYMENT": {
     "TITLE": "Métodos de Pago",

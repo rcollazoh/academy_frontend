@@ -2,7 +2,7 @@
 	<mat-card class="field-full-width">
 		<div class="row">
 			<div class="col-md-11">
-				<h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Mis cursos</h2>
+				<h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">{{ 'COURSE.TITLE' | translate}}</h2>
 			</div>
 		</div>
 	</mat-card>
@@ -15,39 +15,38 @@
 				<div class="table-container">
 					<table mat-table [dataSource]="courses()" multiTemplateDataRows class="curso-table">
 						<ng-container matColumnDef="configCourseName">
-							<mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.NAME" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="configCourseName">{{ row.configCourseName
 								}}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="area">
-							<mat-header-cell *matHeaderCellDef>Área</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.AREA" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="area">{{ row.area }}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="practice">
-							<mat-header-cell *matHeaderCellDef>Práctica</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.PRACTICE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="practice">{{ row.practice }}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="startDate">
-							<mat-header-cell *matHeaderCellDef>Fecha inicio</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.START_DATE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="startDate">{{ row.startDate }}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="endDate">
-							<mat-header-cell *matHeaderCellDef>Fecha vencimiento</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.END_DATE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="endDate" class="red-text">{{ row.endDate
 								}}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="status">
-							<mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.STATE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="status">{{ row.status | statePipe }}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="requiresInvoice">
-							<mat-header-cell *matHeaderCellDef>Factura enviada</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{"COURSE.INVOICE_SENT" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' :
 								'No' }}</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="receiptUrl">
-							<mat-header-cell *matHeaderCellDef style="justify-content: center;">Comprobante de
-								pago</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef style="justify-content: center;">{{"COURSE.PROOF_OF_INVOICE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="receiptUrl" style="justify-content: center;">
 								<mat-icon (click)="openReceipt(row.receiptUrl)"
 									matTooltip="Ver comprobante">image_search</mat-icon>
@@ -55,7 +54,7 @@
 						</ng-container>
 						<ng-container matColumnDef="certifyUrl">
 							<mat-header-cell *matHeaderCellDef
-								style="justify-content: center;">Certificado</mat-header-cell>
+								style="justify-content: center;">{{"COURSE.CERTIFICATE" | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
 								@if (row.certifyUrl) {
 								<mat-icon style="font-size: 25px;" (click)="downloadCertify(row.certifyUrl)"
@@ -70,14 +69,13 @@
 							</mat-cell>
 						</ng-container>
 						<ng-container matColumnDef="paymentMethod">
-							<mat-header-cell *matHeaderCellDef>Método de pago</mat-header-cell>
+							<mat-header-cell *matHeaderCellDef>{{'PAYMENT.TITLE' | translate}}</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="paymentMethod">{{ row.paymentMethod | paymentWay
 								}}</mat-cell>
 						</ng-container>
 
 						<ng-container matColumnDef="noRecord">
-							<mat-footer-cell [attr.colspan]="7" *matFooterCellDef>No existen datos para
-								mostrar.</mat-footer-cell>
+							<mat-footer-cell [attr.colspan]="7" *matFooterCellDef>{{"COURSE.NO_EXIT" | translate}}</mat-footer-cell>
 						</ng-container>
 
 						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

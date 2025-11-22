@@ -26,8 +26,9 @@
                 <p><strong>{{ 'HOME.PRICE' | translate}}</strong></p>
                 <p>{{ curso.price }} CRC</p>
                 <p><strong>{{ 'HOME.DURATION' | translate}}</strong></p>
-                <p>Para la realización del curso cuenta con {{ curso.durationDays }} días naturales luego de que este
-                  sea aprobado por el profesor.</p>
+                <p>{{"HOME.DURATION_DETAIL" | translate}}</p>
+                <!-- <p>Para la realización del curso cuenta con {{ curso.durationDays }} días naturales luego de que este
+                  sea aprobado por el profesor.</p> -->
               </div>
             </mat-card-content>
             <mat-card-footer style="display: flex; justify-content: flex-end;">
@@ -54,7 +55,7 @@
       @if(course() && course().status && course().status !== 'NEW'){
 
       <fieldset style="border-radius: 0.3em">
-        <legend>Estado</legend>
+        <legend>{{"COURSE.STATE" | translate}}</legend>
         <p>{{ estadoMensaje() }}</p>
       </fieldset>
 
@@ -64,14 +65,16 @@
       </fieldset>-->
 
       <fieldset style="border-radius: 0.3em">
-        <legend>Duración</legend>
-        <p>Para la realización del curso cuenta con {{ course().durationDays }} días naturales luego de que este
-          sea aprobado por el profesor.</p>
+        <legend>{{"HOME.DURATION" | translate}}</legend>
+        <p>{{"HOME.DURATION_DETAIL" | translate}}</p>
+           <!-- <p>Para la realización del curso cuenta con {{ course().durationDays }} días naturales luego de que este
+          sea aprobado por el profesor.</p> -->
       </fieldset>
 
       <fieldset style="border-radius: 0.3em">
-        <legend>Método de evaluación</legend>
-        <p>Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas.</p>
+        <legend>{{"COURSE.EVALUATION_METHOD" | translate}}</legend>
+        <p>{{"COURSE.EVALUATION_METHOD_DETAIL" | translate}}</p>
+        <!-- <p>Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas.</p> -->
       </fieldset>
 
       }

@@ -15,7 +15,7 @@ import { Course } from '../../../shared/models/course-model';
 import { EstadoCurso } from '../../../shared/consts/estado-curso';
 import { ApplyCourseDialog, ApplyDialogModel } from '../../../shared/components/apply-course-dialog/apply-course-dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe,TranslateService  } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -50,10 +50,10 @@ export class Home implements OnInit {
 
   estadoMensaje = computed(() => {
     switch (this.course()?.status) {
-      case 'NEW': return 'Debe seleccionar la opción aplicar para iniciar un nuevo curso.';
-      case 'PENDING': return 'Pendiente a confirmar por el profesor.';
-      case 'ACTIVATED': return 'El curso fue activado, puede comenzar las clases.';
-      case 'REJECTED': return 'El curso fue rechazado por el profesor, debe aplicar al curso nuevamente.';
+      case 'NEW': return this.translate.instant('HOME.SATUS_MESMESSAGES_NEW');
+      case 'PENDING': return this.translate.instant('HOME.SATUS_MESMESSAGES_PENDING');
+      case 'ACTIVATED': return this.translate.instant('HOME.SATUS_MESMESSAGES_ACTIVATED');
+      case 'REJECTED': return this.translate.instant('HOME.SATUS_MESMESSAGES_REJECTED');
       default: return '';
     }
   });
@@ -70,7 +70,7 @@ export class Home implements OnInit {
 
   constructor(private featuresService: FeaturesService, protected router: Router,
     protected ngxLoaderService: NgxUiLoaderService, private authService: AuthService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog, private translate: TranslateService) {
     this.user$ = this.authService.getUser();
   }
 

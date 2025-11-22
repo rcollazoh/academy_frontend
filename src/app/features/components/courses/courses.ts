@@ -28,10 +28,12 @@ import { StatePipe } from "../../../shared/pipes/state-pipe";
 import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
 import { UserLogin } from '../../../shared/models/user-model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses',
-  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule, EmptyFieldPipe, CommonModule, MatButtonModule, RouterLink, MatIconModule, MatTooltipModule, PaymentWayPipe, StatePipe],
+  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule, EmptyFieldPipe, CommonModule, MatButtonModule,
+     RouterLink, MatIconModule, MatTooltipModule, PaymentWayPipe, StatePipe, TranslatePipe],
   templateUrl: './courses.html',
   styleUrl: './courses.scss'
 })
