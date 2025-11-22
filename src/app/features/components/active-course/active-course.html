@@ -2,7 +2,7 @@
     <mat-card class="field-full-width">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Curso actual</h2>
+                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">{{"COURSE.CURRENT_COURSE" | translate }}</h2>
             </div>
             <!--<div class="col-md-1">
                 <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
@@ -23,7 +23,7 @@
                 <span class="course-title">{{ course().configCourseName }}</span>
                 }
                 @if (showNoActive) {
-                <span class="course-title" style="margin-top: 20px;">No tiene un curso activo en estos momentos.</span>
+                <span class="course-title" style="margin-top: 20px;">{{"COURSE.CURRENT_COURSE_DETAIL" | translate }}</span>
                 }
             </div>
         </mat-card-header>

@@ -22,13 +22,13 @@ import { ExamViewer } from '@/app/shared/components/exam-viewer/exam-viewer';
 import { ClassViewer } from '@/app/shared/components/class-viewer/class-viewer';
 import { FeaturesService } from '@/app/features/services/features.service';
 import { FeedbackViewer } from '@/app/shared/components/feedback-viewer/feedback-viewer';
-
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-active-course',
   imports: [MatCardModule, MatIconModule, MatButtonModule,
     MatExpansionModule,
-    MatListModule, MatTooltip, StateModulePipe],
+    MatListModule, MatTooltip, StateModulePipe, TranslatePipe],
   templateUrl: './active-course.html',
   styleUrl: './active-course.scss',
   animations: [

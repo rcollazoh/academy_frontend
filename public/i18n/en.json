@@ -51,7 +51,21 @@
   },
   "COURSE": {
     "TITLE": "My courses",
-    "START": "Start course"
+    "START": "Start course",
+    "AREA": "Area",
+    "PRACTICE": "Practice",
+    "START_DATE": "Start date",
+    "END_DATE": "Expiration date",
+    "STATE": "State",
+    "INVOICE_SENT": "Invoice sent",
+    "PROOF_OF_INVOICE": "Proof of invoice",
+    "CERTIFICATE": "Certificate",
+    "NO_EXIT":"There is no data to show.",
+    "CURRENT_COURSE": "Current course",
+    "CURRENT_COURSE_DETAIL": "It does not have an active course at the moment.",
+    "NAME": "Course",
+    "EVALUATION_METHOD": "Evaluation method",
+    "EVALUATION_METHOD_DETAIL": "To pass the course, you must pass each chapter. Each chapter includes a multiple-choice exam, which you pass by answering at least 60% of the questions correctly."
   },
   "FEEDBACK": {
     "TITLE": "Share your experience",
@@ -200,7 +214,12 @@
     "INFORMATION_OF_THE_COURSE": "Information of the course",
     "AVAILABLE_COURSES": "Available courses",
     "PRICE": "Price",
-    "DURATION": "Duration"
+    "DURATION": "Duration",
+    "DURATION_DETAIL": "You have 15 calendar days to complete the course after it has been approved by the teacher.",
+    "SATUS_MESMESSAGES_NEW": "You must select the 'Apply' option to start a new course.",
+     "SATUS_MESMESSAGES_PENDING": "Pending confirmation by the teacher.",
+     "SATUS_MESMESSAGES_ACTIVATED": "The course has been activated; you can begin classes.",
+     "SATUS_MESMESSAGES_REJECTED": "The course was rejected by the instructor; you must reapply."
   },
   "PAYMENT": {
     "TITLE": "Payment Methods",
