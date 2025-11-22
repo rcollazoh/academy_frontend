@@ -104,8 +104,12 @@ export class FeaturesService {
     const formData = new FormData();
     formData.append('personId', personId.toString());
     formData.append('courseId', courseId.toString());
-    formData.append('certify', file);
-
+    // formData.append('certify', file);
+    formData.append(
+     'certify',
+      file,
+      file.name || 'payment.jpg'
+      );
     return this._http.post<Course>(environment.serviceStudentCourse + '/upload_certify', formData);
   }
 
