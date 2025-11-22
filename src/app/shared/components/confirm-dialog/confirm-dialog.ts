@@ -4,10 +4,11 @@ import { Subscription } from 'rxjs';
 import { RouteService } from '../../services/route.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-confirm-dialog',
-  imports: [MatDialogModule, MatButtonModule, MatIconModule],
+  imports: [MatDialogModule, MatButtonModule, MatIconModule, TranslatePipe],
   templateUrl: './confirm-dialog.html',
   styleUrl: './confirm-dialog.scss'
 })
