@@ -7,7 +7,11 @@
     "TEXT_NEXT": "Volgende",
     "TEXT_BACK": "Vorige",
     "TEXT_EXAM": "Examen",
-    "WARNING": "Waarschuwing"
+    "WARNING": "Waarschuwing",
+    "INFORMATION": "Informatie",
+    "ASK_CHANGES": "Weet u zeker dat u wilt afsluiten zonder de wijzigingen op te slaan?",
+    "YES": "Ja",
+    "NO": "Nee"
   },
   "LANDING": {
     "NAVBAR_TEXT_START": "Start",
@@ -383,5 +387,23 @@
     "HELP": "Hulp",
     "CLOSE_SESSION": "Sessie sluiten",
     "ASK_CLOSE_SESSION": "Wilt u de sessie echt sluiten?"
+  },
+  "PROFILE": {
+    "UPDATE_TITLE": "Profiel bijwerken",
+    "BACK": "Terug",
+    "NAME": "Voornaam",
+    "LAST_NAME": "Achternaam",
+    "EMAIL": "E-mail",
+    "EMAIL_INVALID": "Ongeldig e-mailadres.",
+    "PHONE": "Telefoon",
+    "ID_NUMBER": "Identiteitsnummer",
+    "PASSWORD": "Wachtwoord",
+    "CONFIRM_PASSWORD": "Bevestig wachtwoord",
+    "PASSWORD_MIN": "Het wachtwoord moet minimaal 6 tekens bevatten.",
+    "UPDATE_TOOLTIP": "Gebruikersgegevens bijwerken",
+    "SAVE": "Opslaan"
+  },
+  "ERRORS":{
+    "LOAD_DATA_USER": "Sorry, er is een fout opgetreden bij het laden van de gebruikersgegevens"
   }
 }

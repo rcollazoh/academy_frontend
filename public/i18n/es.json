@@ -7,7 +7,11 @@
     "TEXT_NEXT": "Siguiente",
     "TEXT_BACK": "Anterior",
     "TEXT_EXAM": "Exámen",
-    "WARNING": "Advertencia"
+    "WARNING": "Advertencia",
+    "INFORMATION": "Información",
+    "ASK_CHANGES": "¿Seguro desea salir sin guardar los cambios?",
+    "YES": "Sí",
+    "NO": "No"
   },
   "LANDING": {
     "NAVBAR_TEXT_START": "Inicio",
@@ -383,5 +387,23 @@
     "HELP": "Ayuda",
     "CLOSE_SESSION": "Cerrar sesión",
     "ASK_CLOSE_SESSION": "Seguro desea cerrar la sesión"
+  },
+  "PROFILE": {
+    "UPDATE_TITLE": "Actualizar perfil",
+    "BACK": "Atrás",
+    "NAME": "Nombres",
+    "LAST_NAME": "Apellidos",
+    "EMAIL": "Correo",
+    "EMAIL_INVALID": "Correo inválido.",
+    "PHONE": "Teléfono",
+    "ID_NUMBER": "Cédula",
+    "PASSWORD": "Contraseña",
+    "CONFIRM_PASSWORD": "Confirmar contraseña",
+    "PASSWORD_MIN": "La contraseña debe tener al menos 6 dígitos.",
+    "UPDATE_TOOLTIP": "Actualizar datos del usuario",
+    "SAVE": "Guardar"
+  },
+  "ERRORS":{
+    "LOAD_DATA_USER": "Lo sentimos, ocurrió un error al cargar los datos del usuario"
   }
 }

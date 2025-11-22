@@ -1,151 +1,120 @@
 <div class="modal-header">
-    <mat-card class="field-full-width">
-        <div class="row">
-            <div class="col-md-11">
-                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Actualizar perfil</h2>
-            </div>
-            <div class="col-md-1">
-                <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
-                    aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon style="color: blue">arrow_back</mat-icon>
-                </button>
-            </div>
-        </div>
-    </mat-card>
-</div> 
+  <mat-card class="field-full-width">
+    <div class="row">
+      <div class="col-md-11">
+        <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">
+          {{ 'PROFILE.UPDATE_TITLE' | translate }}
+        </h2>
+      </div>
+      <div class="col-md-1">
+        <button matTooltip="{{ 'PROFILE.BACK' | translate }}"
+                [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]"
+                mat-icon-button
+                aria-label="{{ 'PROFILE.BACK' | translate }}">
+          <mat-icon style="color: blue">arrow_back</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
 <div class="container-fluid">
-    <form [formGroup]="userForm" (ngSubmit)="createUser()">
-        <div class="row">
-            <div class="col-sm-12">
-                <mat-card class="course-card">
-                    <mat-card-content>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Nombres</mat-label>
-                                        <input matInput type="text" formControlName="name" [required]="true"
-                                            selectOnFocus />
-                                        @if (userForm.get('name')?.hasError('required')) {
-                                        <mat-error>Campo obligatorio.
-                                        </mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Apellidos</mat-label>
-                                        <input matInput type="text" formControlName="lastName" [required]="false"
-                                            selectOnFocus />
-                                        @if (userForm.get('lastname')?.hasError('required')) {
-                                        <mat-error>Campo obligatorio.
-                                        </mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                        </div>
+  <form [formGroup]="userForm" (ngSubmit)="createUser()">
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card class="course-card">
+          <mat-card-content>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Correo</mat-label>
-                                        <input matInput type="email" formControlName="email" [required]="true"/>
-                                        @if (userForm.get('email')?.hasError('email')) {
-                                        <mat-error>Correo inválido.</mat-error>
-                                        }
-                                        @if (userForm.get('email')?.hasError('required')) {
-                                        <mat-error>Campo obligatorio.</mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <mat-form-field class="field-full-width" appearance="outline">
-                                    <mat-label>Teléfono</mat-label>
-                                    <input matInput type="text" formControlName="phone" [required]="false"
-                                        (input)="onInputChange($event)" selectOnFocus />
-                                    @if (userForm.get('phone')?.hasError('required')) {
-                                    <mat-error>
-                                        Campo obligatorio.</mat-error>
-                                    }
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Cédula</mat-label>
-                                        <input matInput type="text" formControlName="idNumber" selectOnFocus />
-                                        @if (userForm.get('idNumber')?.hasError('required')) {
-                                        <mat-error>
-                                            Campo obligatorio.</mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Contraseña</mat-label>
-                                        <input matInput [type]="hidePass ? 'password' : 'text'" [required]="false"
-                                            formControlName="password" (change)="validatePassword()" selectOnFocus />
-                                        @if (!hidePass) {
-                                        <mat-icon matSuffix (click)="hidePass = !hidePass"> visibility
-                                        </mat-icon>
-                                        }
-                                        @if (hidePass) {
-                                        <mat-icon matSuffix (click)="hidePass = !hidePass">
-                                            visibility_off </mat-icon>
-                                        }
-                                        @if (userForm.get('password')?.hasError('minlength')) {
-                                        <mat-error>
-                                            La clave debe tener al menos 6 dígitos.</mat-error>
-                                        }
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="position-relative form-group">
-                                    <mat-form-field class="field-full-width" appearance="outline">
-                                        <mat-label>Confirmar contraseña</mat-label>
-                                        <input matInput [type]="hideConfPass ? 'password' : 'text'" [required]="false"
-                                            formControlName="confirm" (change)="validatePassword()" selectOnFocus />
-                                        @if (!hideConfPass) {
-                                        <mat-icon matSuffix (click)="hideConfPass = !hideConfPass"> visibility
-                                        </mat-icon>
-                                        }
-                                        @if (hideConfPass) {
-                                        <mat-icon matSuffix (click)="hideConfPass = !hideConfPass">
-                                            visibility_off
-                                        </mat-icon>
-                                        }
-                                        @if (userForm.get('confirm')?.hasError('minlength')) {
-                                        <mat-error>
-                                            La contraseña debe tener al menos 6 dígitos.</mat-error>
-                                        }
-
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                    </mat-card-content>
-                </mat-card>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.NAME' | translate }}</mat-label>
+                  <input matInput type="text" formControlName="name" [required]="true" selectOnFocus />
+                  @if (userForm.get('name')?.hasError('required')) {
+                    <mat-error>{{ 'COMMON.FIELD_REQUIRED' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.LAST_NAME' | translate }}</mat-label>
+                  <input matInput type="text" formControlName="lastName" selectOnFocus />
+                  @if (userForm.get('lastName')?.hasError('required')) {
+                    <mat-error>{{ 'COMMON.FIELD_REQUIRED' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
             </div>
-        </div>
 
-        <div mat-dialog-actions align="end" style="margin-top: 15px;">
-            <button mat-raised-button color="primary" type="submit" class="mx-2" [disabled]="!userForm.valid" matTooltip="Actualizar datos del usuario">
-                Guardar
-            </button>
-        </div>
-    </form>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.EMAIL' | translate }}</mat-label>
+                  <input matInput type="email" formControlName="email" [required]="true" />
+                  @if (userForm.get('email')?.hasError('email')) {
+                    <mat-error>{{ 'PROFILE.EMAIL_INVALID' | translate }}</mat-error>
+                  }
+                  @if (userForm.get('email')?.hasError('required')) {
+                    <mat-error>{{ 'COMMON.FIELD_REQUIRED' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.PHONE' | translate }}</mat-label>
+                  <input matInput type="text" formControlName="phone" (input)="onInputChange($event)" selectOnFocus />
+                  @if (userForm.get('phone')?.hasError('required')) {
+                    <mat-error>{{ 'COMMON.FIELD_REQUIRED' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.ID_NUMBER' | translate }}</mat-label>
+                  <input matInput type="text" formControlName="idNumber" selectOnFocus />
+                  @if (userForm.get('idNumber')?.hasError('required')) {
+                    <mat-error>{{ 'COMMON.FIELD_REQUIRED' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.PASSWORD' | translate }}</mat-label>
+                  <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password" (change)="validatePassword()" selectOnFocus />
+                  <mat-icon matSuffix (click)="hidePass = !hidePass">
+                    {{ hidePass ? 'visibility_off' : 'visibility' }}
+                  </mat-icon>
+                  @if (userForm.get('password')?.hasError('minlength')) {
+                    <mat-error>{{ 'PROFILE.PASSWORD_MIN' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="field-full-width" appearance="outline">
+                  <mat-label>{{ 'PROFILE.CONFIRM_PASSWORD' | translate }}</mat-label>
+                  <input matInput [type]="hideConfPass ? 'password' : 'text'" formControlName="confirm" (change)="validatePassword()" selectOnFocus />
+                  <mat-icon matSuffix (click)="hideConfPass = !hideConfPass">
+                    {{ hideConfPass ? 'visibility_off' : 'visibility' }}
+                  </mat-icon>
+                  @if (userForm.get('confirm')?.hasError('minlength')) {
+                    <mat-error>{{ 'PROFILE.PASSWORD_MIN' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div mat-dialog-actions align="end" style="margin-top: 15px;">
+      <button mat-raised-button color="primary" type="submit" class="mx-2" [disabled]="!userForm.valid" matTooltip="{{ 'PROFILE.UPDATE_TOOLTIP' | translate }}">
+        {{ 'PROFILE.SAVE' | translate }}
+      </button>
+    </div>
+  </form>
 </div>

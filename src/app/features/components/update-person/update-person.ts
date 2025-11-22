@@ -24,6 +24,7 @@ import { ErrorDialog, ErrorDialogModel } from '../../../shared/components/error-
 import { Nomenclators } from '../../../shared/services/nomenclators.service';
 import { NomAreaDto, NomPracticeDto } from '../../../shared/models/nomenclator-model';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update-person',
@@ -34,7 +35,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule, RouterLink, MatTooltipModule],
+    MatCheckboxModule, RouterLink, MatTooltipModule, TranslatePipe],
   templateUrl: './update-person.html',
   styleUrl: './update-person.scss'
 })
@@ -75,7 +76,7 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
     public dialog: MatDialog,
     private authService: AuthService,
     private featuresService: FeaturesService,
-    private nomenclatorService: Nomenclators
+    private translate: TranslateService
   ) {
 
     this.user$ = this.authService.getUser();
@@ -92,8 +93,8 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
   onExit() {
 
     if (this.userForm.dirty && this.ignoreCanDeactivate === false) {
-      const dialogData = new ConfirmDialogModel('Información', '¿Seguro desea salir sin guardar los cambios?',
-        true, 'Sí', true, 'No');
+      const dialogData = new ConfirmDialogModel('COMMON.INFORMATION', 'COMMON.ASK_CHANGES',
+        true, 'COMMON.YES', true, 'COMMON.NO');
 
       const dialogRef = this.dialog.open(ConfirmDialog, {
         maxWidth: '400px',
@@ -164,7 +165,7 @@ export class UpdatePerson implements OnInit, OnDestroy, OnExit {
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al cargar los datos del usuario'
+          this.translate.instant('ERRORS.LOAD_DATA_USER')
         );
       },
     });

@@ -7,7 +7,11 @@
     "TEXT_NEXT": "Next",
     "TEXT_BACK": "Previous",
     "TEXT_EXAM": "Exam",
-    "WARNING": "Warning"
+    "WARNING": "Warning",
+    "INFORMATION": "Information",
+    "ASK_CHANGES": "Are you sure you want to exit without saving the changes?",
+    "YES": "Yes",
+    "NO": "No"
   },
   "LANDING": {
     "NAVBAR_TEXT_START": "Home",
@@ -383,5 +387,23 @@
     "HELP": "Help",
     "CLOSE_SESSION": "Logout",
     "ASK_CLOSE_SESSION": "Are you sure you want to close the session?"
+  },
+  "PROFILE": {
+    "UPDATE_TITLE": "Update profile",
+    "BACK": "Back",
+    "NAME": "First name",
+    "LAST_NAME": "Last name",
+    "EMAIL": "Email",
+    "EMAIL_INVALID": "Invalid email.",
+    "PHONE": "Phone",
+    "ID_NUMBER": "ID number",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "PASSWORD_MIN": "Password must be at least 6 characters.",
+    "UPDATE_TOOLTIP": "Update user data",
+    "SAVE": "Save"
+  },
+  "ERRORS":{
+    "LOAD_DATA_USER": "Sorry, an error occurred while loading the user data"
   }
 }
