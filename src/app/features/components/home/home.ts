@@ -15,11 +15,12 @@ import { Course } from '../../../shared/models/course-model';
 import { EstadoCurso } from '../../../shared/consts/estado-curso';
 import { ApplyCourseDialog, ApplyDialogModel } from '../../../shared/components/apply-course-dialog/apply-course-dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatDialogModule, MatTooltipModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatDialogModule, MatTooltipModule, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   animations: [

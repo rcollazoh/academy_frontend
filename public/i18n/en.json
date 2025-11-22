@@ -191,7 +191,11 @@
       "SUBTITLE": "Your Operator License just one click away.",
       "BUTTON": "See More",
       "IMAGE_ALT": "Medical illustration"
-    }
+    },
+    "INFORMATION_OF_THE_COURSE": "Information of the course",
+    "AVAILABLE_COURSES": "Available courses",
+    "PRICE": "Price",
+    "DURATION": "Duration"
   },
   "PAYMENT": {
     "TITLE": "Payment Methods",
@@ -325,6 +329,7 @@
   },
   "APPLY_COURSE": {
     "TITLE": "Apply to course",
+    "APPLY": "Apply",
     "PREVIEW": "Preview",
     "PAYMENT_MODE": "Payment method",
     "ERROR_PAYMENT_MODE": "Select a payment method",

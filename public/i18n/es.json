@@ -191,7 +191,11 @@
       "SUBTITLE": "Su Licencia de Operador al alcance de un clic.",
       "BUTTON": "Ver Más",
       "IMAGE_ALT": "Ilustración médica"
-    }
+    },
+    "INFORMATION_OF_THE_COURSE": "Información del curso",
+    "AVAILABLE_COURSES": "Cursos disponibles",
+    "PRICE": "Precio",
+    "DURATION": "Duración"
   },
   "PAYMENT": {
     "TITLE": "Métodos de Pago",
@@ -325,6 +329,7 @@
   },
   "APPLY_COURSE": {
     "TITLE": "Aplicar al curso",
+    "APPLY": "Aplicar",
     "PREVIEW": "Vista previa",
     "PAYMENT_MODE": "Forma de pago",
     "ERROR_PAYMENT_MODE": "Seleccione una forma de pago",

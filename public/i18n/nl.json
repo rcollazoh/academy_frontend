@@ -191,7 +191,11 @@
       "SUBTITLE": "Uw operatorlicentie binnen één klik.",
       "BUTTON": "Meer zien",
       "IMAGE_ALT": "Medische illustratie"
-    }
+    },
+    "INFORMATION_OF_THE_COURSE": "Course-informatie", 
+    "AVAILABLE_COURSES": "Beschikbare cursisten", 
+    "PRICE": "Prijs", 
+    "DURATION": "Duur"
   },
   "PAYMENT": {
     "TITLE": "Betaalmethoden",
@@ -325,6 +329,7 @@
   },
   "APPLY_COURSE": {
     "TITLE": "Aanmelden voor cursus",
+    "APPLY": "Aanmelden",
     "PREVIEW": "Voorbeeld",
     "PAYMENT_MODE": "Betaalmethode",
     "ERROR_PAYMENT_MODE": "Selecteer een betaalmethode",

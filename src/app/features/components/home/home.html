@@ -1,6 +1,6 @@
 <div class="modal-header">
   <mat-card class="field-full-width">
-    <h2 class="modal-title cursor-arrow">Información del curso</h2>
+    <h2 class="modal-title cursor-arrow">{{ 'HOME.INFORMATION_OF_THE_COURSE' | translate }} </h2> 
   </mat-card>
 </div>
 
@@ -10,7 +10,7 @@
     <mat-card-header>
       <div class="header-content">
         @if (courses() && courses().length) {
-        <span class="course-title" style="margin-bottom: 1.5rem;">Cursos disponibles</span>
+        <span class="course-title" style="margin-bottom: 1.5rem;">{{ 'HOME.AVAILABLE_COURSES' | translate }}</span>
 
         <div class="card-grid">
           @for (curso of courses(); track $index) {
@@ -23,9 +23,9 @@
             </mat-card-header>
             <mat-card-content style="margin-bottom: 1rem;">
               <div class="account-info">
-                <p><strong>Precio</strong></p>
+                <p><strong>{{ 'HOME.PRICE' | translate}}</strong></p>
                 <p>{{ curso.price }} CRC</p>
-                <p><strong>Duración</strong></p>
+                <p><strong>{{ 'HOME.DURATION' | translate}}</strong></p>
                 <p>Para la realización del curso cuenta con {{ curso.durationDays }} días naturales luego de que este
                   sea aprobado por el profesor.</p>
               </div>
@@ -33,7 +33,7 @@
             <mat-card-footer style="display: flex; justify-content: flex-end;">
 
               <button class="sign-button" mat-flat-button (click)="onAction(curso.id)"
-                matTooltip="Aplique para comenzar el curso">Aplicar</button>
+                matTooltip="{{ 'APPLY_COURSE.TITLE' | translate }}"> {{ 'APPLY_COURSE.APPLY' | translate }} </button>
 
 
             </mat-card-footer>
@@ -78,7 +78,7 @@
 
       @if (courses() && courses().length) {
         <fieldset style="border-radius: 0.3em;">
-        <legend>Modos de pago</legend>
+        <legend>{{'APPLY_COURSE.PAYMENT_MODE' | translate}}</legend>
         <div class="row" style="margin-bottom: 10px;">
           <div class="col-md-6">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
