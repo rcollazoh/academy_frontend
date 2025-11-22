@@ -80,9 +80,6 @@ export class Register implements OnInit {
           next: (res) => {
             this.ngxLoaderService.stop();
             this.login();
-            this.notificacionService.notificationSuccess(
-              'Registro exitoso'
-            );
           },
           error: (err) => {
             this.ngxLoaderService.stop();

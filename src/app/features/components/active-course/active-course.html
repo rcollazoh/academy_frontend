@@ -1,166 +1,156 @@
 <div class="modal-header">
-    <mat-card class="field-full-width">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">{{"COURSE.CURRENT_COURSE" | translate }}</h2>
-            </div>
-            <!--<div class="col-md-1">
-                <button matTooltip="Atras" [routerLink]="[lastRoute !== '' ? lastRoute : routes.INICIO]" mat-icon-button
-                    aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon style="color: blue">arrow_back</mat-icon>
-                </button>
-            </div>-->
-        </div>
-    </mat-card>
+  <mat-card class="field-full-width">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">
+          {{ "COURSE.CURRENT_COURSE" | translate }}
+        </h2>
+      </div>
+    </div>
+  </mat-card>
 </div>
 
 <div class="container-fluid">
-    <mat-card class="course-card" @fadeIn
-        [style]="!course().status ? 'display: flex !important; flex-direction: column; justify-content: center; align-items: center;' : ''">
-        <mat-card-header>
-            <div class="header-content">
-                @if (!showNoActive) {
-                <span class="course-title">{{ course().configCourseName }}</span>
+  <mat-card class="course-card" @fadeIn
+    [style]="!course().status ? 'display: flex !important; flex-direction: column; justify-content: center; align-items: center;' : ''">
+    <mat-card-header>
+      <div class="header-content">
+        @if (!showNoActive) {
+          <span class="course-title">{{ course().configCourseName }}</span>
+        }
+        @if (showNoActive) {
+          <span class="course-title" style="margin-top: 20px;">
+            {{ "COURSE.CURRENT_COURSE_DETAIL" | translate }}
+          </span>
+        }
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-accordion multi>
+        @for (section of modules(); track $index) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="module-row">
+                <div class="module-title">{{ section.moduleName }}</div>
+
+                @if (section.status !== 'NEW' && section.exam) {
+                  <div class="lesson-meta">
+                    <span [class]="section.status == 'APPROVED' ? 'preview_success' : 'preview_unsuccess'">
+                      {{ section.status | stateModulePipe }}
+                    </span>
+                  </div>
                 }
-                @if (showNoActive) {
-                <span class="course-title" style="margin-top: 20px;">{{"COURSE.CURRENT_COURSE_DETAIL" | translate }}</span>
+
+                @if (section.classes.length) {
+                  <div class="lesson-meta">
+                    {{ section.classes.length }} {{ "COURSE.CLASSES" | translate }}
+                  </div>
                 }
-            </div>
-        </mat-card-header>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
-        <mat-card-content>
-            <mat-accordion multi>
-                @for (section of modules(); track $index) {
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            <div class="module-row">
-                                <div class="module-title">{{ section.moduleName }}</div>
-
-                                @if (section.status !== 'NEW' && section.exam) {
-                                <div class="lesson-meta">                                
-                                    <span [class]="section.status == 'APPROVED' ? 'preview_success' : 'preview_unsuccess'">{{
-                                        section.status | stateModulePipe }}</span>                                
-                                </div>
-                                }
-
-                                @if (section.classes.length) {
-                                <div class="lesson-meta">
-                                    {{ section.classes.length }} clases
-                                </div>
-                                }
-
-                            </div>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    @if (section.classes.length) {
-                    <mat-list>
-                        @for (lesson of section.classes; track $index) {
-                        <mat-list-item disableRipple>
-                            <div class="lesson-row">
-                                @if (!lesson.viewed && lesson.currentImageId == 0) {
-                                <mat-icon matTooltip="Clase no vista">visibility_off</mat-icon>
-                                }
-                                @if (lesson.viewed) {
-                                <mat-icon style="color: #4caf50;" matTooltip="Clase vista">visibility</mat-icon>
-                                }
-                                @if (!lesson.viewed && lesson.currentImageId !== 0) {
-                                <mat-icon style="color: #be0808;" matTooltip="Clase en proceso">visibility</mat-icon>
-                                }
-                                <div class="lesson-title">{{ lesson.title }}</div>
-
-                                <!--<div class="lesson-meta">
-                                    @if (lesson.viewed) {
-                                    <span class="preview">View</span>
-                                    }                                    
-                                </div>-->
-
-                                <button mat-icon-button color="primary" aria-label="Reproducir clase"
-                                    matTooltip="Ver clase"
-                                    (click)="actionPlayClass(lesson.id, lesson.configClassId, lesson.currentImageId, lesson.viewed)">
-                                    <mat-icon>play_circle</mat-icon>
-                                </button>
-                            </div>
-                        </mat-list-item>
-                        }
-                    </mat-list>
-                    }
-
-                    @if (section.exam) {
-                    <mat-list>
-                        <mat-list-item disableRipple>
-                            <div class="lesson-row">
-                                @if (section.exam.status == 'NEW') {
-                                <mat-icon matTooltip="Examen del módulo">description</mat-icon>
-                                }
-                                @if (section.exam.status == 'APPROVED') {
-                                <mat-icon matTooltip="Examen del módulo aprobado"
-                                    style="color: #4caf50;">task</mat-icon>
-                                }
-                                @if (section.exam.status == 'NOT_APPROVED') {
-                                <mat-icon matTooltip="Examen del módulo no aprobado"
-                                    style="color: #be0808;">task</mat-icon>
-                                }
-                                <div class="lesson-title">{{ section.exam.title }}</div>
-
-                                <button mat-icon-button color="primary" aria-label="Realizar examen"
-                                    matTooltip="Realizar examen" (click)="actionViewExam(section.exam)"
-                                    [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED' || isAnyClassNotViewed(section.classes)">
-                                    <mat-icon>preview</mat-icon>
-                                </button>
-                            </div>
-                        </mat-list-item>
-
-                    </mat-list>
-                    }
-
-                    @if (section.references && section.moduleName == 'Referencias') {
-                        <mat-list>
-                        @for (reference of section.references; track $index) {
-                        <mat-list-item disableRipple style="margin-bottom: 1.5rem; height: auto;">
-                            <div class="reference-row">
-                                <mat-icon>language</mat-icon>
-                                <div class="lesson-title" style="text-wrap: auto;">
-                                    <a [href]="reference.link" target="_blank" style="cursor: pointer; text-wrap: auto;">
-                                        {{ reference.title }}                                    
-                                    </a>
-                                </div>
-                            </div>
-                        </mat-list-item>
-                        }
-                    </mat-list>                            
-                    }
-
-                    @if (section.moduleName == 'Feedback') {
-                    <mat-list>
-                        <mat-list-item disableRipple>
-                            <div class="lesson-row">
-                                @if (section.status == 'APPROVED') {
-                                <mat-icon matTooltip="Feedback"
-                                    style="color: #4caf50;">ballot</mat-icon>
-                                }
-                                @if (section.status !== 'APPROVED') {
-                                <mat-icon matTooltip="Feedback">ballot</mat-icon>
-                                }
-                                
-                                <div class="lesson-title">Realice su feedback del curso y los módulos</div>
-
-                                <button mat-icon-button color="primary" aria-label="Feedback"
-                                    matTooltip="Realizar feedback" (click)="openFeedback(section.id)"
-                                    [disabled]="section.status !== 'NEW'">
-                                    <mat-icon>edit_note</mat-icon>
-                                </button>
-                            </div>
-                        </mat-list-item>
-
-                    </mat-list>
-                    }
-
-                </mat-expansion-panel>
+          @if (section.classes.length) {
+          <mat-list>
+            @for (lesson of section.classes; track $index) {
+            <mat-list-item disableRipple>
+              <div class="lesson-row">
+                @if (!lesson.viewed && lesson.currentImageId == 0) {
+                  <mat-icon matTooltip="{{ 'COURSE.CLASS_NOT_VIEWED' | translate }}">visibility_off</mat-icon>
                 }
-            </mat-accordion>
+                @if (lesson.viewed) {
+                  <mat-icon style="color: #4caf50;" matTooltip="{{ 'COURSE.CLASS_VIEWED' | translate }}">visibility</mat-icon>
+                }
+                @if (!lesson.viewed && lesson.currentImageId !== 0) {
+                  <mat-icon style="color: #be0808;" matTooltip="{{ 'COURSE.CLASS_IN_PROGRESS' | translate }}">visibility</mat-icon>
+                }
 
-        </mat-card-content>
-    </mat-card>
-</div>
+                <div class="lesson-title">{{ lesson.title }}</div>
+
+                <button mat-icon-button color="primary"
+                        aria-label="{{ 'COURSE.VIEW_CLASS' | translate }}"
+                        matTooltip="{{ 'COURSE.VIEW_CLASS' | translate }}"
+                        (click)="actionPlayClass(lesson.id, lesson.configClassId, lesson.currentImageId, lesson.viewed)">
+                  <mat-icon>play_circle</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+            }
+          </mat-list>
+          }
+
+          @if (section.exam) {
+          <mat-list>
+            <mat-list-item disableRipple>
+              <div class="lesson-row">
+                @if (section.exam.status == 'NEW') {
+                  <mat-icon matTooltip="{{ 'COURSE.EXAM' | translate }}">description</mat-icon>
+                }
+                @if (section.exam.status == 'APPROVED') {
+                  <mat-icon matTooltip="{{ 'COURSE.EXAM_APPROVED' | translate }}" style="color: #4caf50;">task</mat-icon>
+                }
+                @if (section.exam.status == 'NOT_APPROVED') {
+                  <mat-icon matTooltip="{{ 'COURSE.EXAM_NOT_APPROVED' | translate }}" style="color: #be0808;">task</mat-icon>
+                }
+
+                <div class="lesson-title">{{ section.exam.title }}</div>
+
+                <button mat-icon-button color="primary"
+                        aria-label="{{ 'COURSE.TAKE_EXAM' | translate }}"
+                        matTooltip="{{ 'COURSE.TAKE_EXAM' | translate }}"
+                        (click)="actionViewExam(section.exam)"
+                        [disabled]="section.exam.status !== 'NEW' || section.status=='APPROVED' || isAnyClassNotViewed(section.classes)">
+                  <mat-icon>preview</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          }
+
+          @if (section.references && section.moduleName == 'Referencias') {
+          <mat-list>
+            @for (reference of section.references; track $index) {
+            <mat-list-item disableRipple style="margin-bottom: 1.5rem; height: auto;">
+              <div class="reference-row">
+                <mat-icon>language</mat-icon>
+                <div class="lesson-title" style="text-wrap: auto;">
+                  <a [href]="reference.link" target="_blank" style="cursor: pointer; text-wrap: auto;">
+                    {{ reference.title }}
+                  </a>
+                </div>
+              </div>
+            </mat-list-item>
+            }
+          </mat-list>
+          }
+
+          @if (section.moduleName == 'Feedback') {
+          <mat-list>
+            <mat-list-item disableRipple>
+              <div class="lesson-row">
+                @if (section.status == 'APPROVED') {
+                  <mat-icon matTooltip="{{ 'COURSE.FEEDBACK' | translate }}" style="color: #4caf50;">ballot</mat-icon>
+                }
+                @if (section.status !== 'APPROVED') {
+                  <mat-icon matTooltip="{{ 'COURSE.FEEDBACK' | translate }}">ballot</mat-icon>
+                }
+
+                <div class="lesson-title">{{ 'COURSE.FEEDBACK_DETAIL' | translate }}</div>
+
+                <button mat-icon-button color="primary"
+                        aria-label="{{ 'COURSE.TAKE_FEEDBACK' | translate }}"
+                        matTooltip="{{ 'COURSE.TAKE_FEEDBACK' | translate }}"
+                        (click)="openFeedback(section.id)"
+                        [disabled]="section.status !== 'NEW'">
+                  <mat-icon>edit_note</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          }
+
+        </mat-expansion-panel>
+        }
+      </mat-accordion>

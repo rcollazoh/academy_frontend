@@ -30,7 +30,10 @@
     "SUBMIT_BUTTON": "Sign in",
     "LOGIN_MESSAGE": "Access your PRAD Academy account.",
     "NOT_ACCOUNT": "Don't have an account?",
-    "REGISTER": "Register"
+    "REGISTER": "Register",
+    "ERROR_CONNECTION": "Please check your connection",
+    "ERROR_LOGIN": "Error logging in",
+    "RECOVER_SUCCESS": "A new key has been sent to your email"
   },
   "REGISTER": {
     "TITLE": "Create your account",
@@ -65,7 +68,23 @@
     "CURRENT_COURSE_DETAIL": "It does not have an active course at the moment.",
     "NAME": "Course",
     "EVALUATION_METHOD": "Evaluation method",
-    "EVALUATION_METHOD_DETAIL": "To pass the course, you must pass each chapter. Each chapter includes a multiple-choice exam, which you pass by answering at least 60% of the questions correctly."
+    "EVALUATION_METHOD_DETAIL": "To pass the course, you must pass each chapter. Each chapter includes a multiple-choice exam, which you pass by answering at least 60% of the questions correctly.",
+    "VIEW_TICKET": "See receipt",
+    "CERTIFICATE_DOWNLOAD": "Download certificate",
+    "CERTIFICATE_UNAVAILABLE": "Certificate unavailable",
+    "CLASSES": "classes",
+    "CLASS_NOT_VIEWED": "Class not viewed",
+    "CLASS_VIEWED": "Class viewed",
+    "CLASS_IN_PROGRESS": "Class in progress",
+    "VIEW_CLASS": "View class",
+    "EXAM": "Module exam",
+    "EXAM_APPROVED": "Module exam approved",
+    "EXAM_NOT_APPROVED": "Module exam not approved",
+    "TAKE_EXAM": "Take exam",
+    "REFERENCES": "References",
+    "FEEDBACK": "Feedback",
+    "FEEDBACK_DETAIL": "Provide your feedback on the course and modules",
+    "TAKE_FEEDBACK": "Submit feedback"
   },
   "FEEDBACK": {
     "TITLE": "Share your experience",
@@ -82,7 +101,8 @@
     "TITLE": "Recover password",
     "EMAIL": "Email",
     "INVALID_EMAIL": "Invalid email",
-    "IDENTITY": "ID number"
+    "IDENTITY": "ID number",
+    "ERROR_RECOVER": "Sorry, an error occurred while recovering the key"
   },
   "BENEFITS": {
     "FLEXIBILITY": {
@@ -358,7 +378,13 @@
     "PAYMENT_MODE": "Payment method",
     "ERROR_PAYMENT_MODE": "Select a payment method",
     "CHANGE_IMAGE": "Change image",
-    "SELECT_IMAGE": "Select image"
+    "SELECT_IMAGE": "Select image",
+    "TRANSFER": "Electronic transfer",
+    "SINPE": "Sinpe Mobile",
+    "ERROR_IMAGE_SIZE": "The image must not exceed 2MB",
+    "ERROR_IMAGE_COMPRESSION": "Error compressing the image",
+    "SUCCESS_APPLY": "You have successfully applied to the course, please wait for teacher confirmation",
+    "ERROR_APPLY": "Error applying to the course"
   },
   "FEEDBACKS": {
     "TITLE": "Feedback",
@@ -424,5 +450,63 @@
   },
   "ERRORS":{
     "LOAD_DATA_USER": "Sorry, an error occurred while loading the user data"
+  },
+  "COURSE_LIST": {
+    "TITLE": "Course list",
+    "BACK": "Back",
+    "ACTIVATE": "Activate",
+    "APPROVE_TOOLTIP": "Approve the course",
+    "REJECT": "Reject",
+    "REJECT_TOOLTIP": "Reject the course",
+    "REACTIVATE": "Reactivate",
+    "REACTIVATE_TOOLTIP": "Reactivate the course",
+    "IMPORT_CERTIFICATE": "Import certificate",
+    "IMPORT_CERTIFICATE_TOOLTIP": "Import course certificate",
+    "REFRESH": "Refresh",
+    "REFRESH_TOOLTIP": "Refresh the course list",
+    "STATUS": "Status",
+    "STATUS_PLACEHOLDER": "Status",
+    "NAME": "First name",
+    "LAST_NAME": "Last name",
+    "EMAIL": "Email",
+    "COURSE": "Course",
+    "AREA": "Area",
+    "PRACTICE": "Practice",
+    "PAYMENT_METHOD": "Payment method",
+    "CERTIFICATE": "Certificate",
+    "DOWNLOAD_CERTIFICATE": "Download certificate",
+    "CERTIFICATE_UNAVAILABLE": "Certificate unavailable",
+    "NO_DATA": "No data available to display.",    
+    "STATUS_NEW": "New",
+    "STATUS_PENDING": "Pending",
+    "STATUS_ACTIVATED": "Activated",
+    "STATUS_REJECTED": "Rejected",
+    "STATUS_APPROVED": "Approved",
+    "STATUS_NOT_APPROVED": "Not approved",
+    "ERROR_LOAD": "Sorry, an error occurred while retrieving the course list",
+    "ACTIVATE_SUCCESS": "The course was successfully activated.",
+    "ACTIVATE_ERROR": "An error occurred while activating the course.",
+    "REJECT_SUCCESS": "The course was successfully rejected.",
+    "REJECT_ERROR": "An error occurred while rejecting the course.",
+    "REACTIVATE_SUCCESS": "The course was successfully reactivated.",
+    "REACTIVATE_ERROR": "An error occurred while reactivating the course.",
+    "DOWNLOAD_ERROR": "Error downloading the certificate",
+    "PDF_ONLY": "Only PDF files are allowed.",
+    "IMPORT_SUCCESS": "Certificate successfully imported.",
+    "IMPORT_ERROR": "Error importing the certificate."
+  },
+  "PAYMENTS": {
+    "SINPE": "Sinpe Mobile",
+    "TRANSFER": "Bank Transfer or Deposit",
+    "BAC": "BAC Credomatic",
+    "BCR": "BCR Bank",
+    "NATIONAL": "National Bank",
+
+    "NUMBER": "Number",
+    "ACCOUNT_NAME": "Account holder",
+    "ID_NUMBER": "ID number",
+    "CHECKING_ACCOUNT": "Checking account",
+    "CLIENT_ACCOUNT": "Client account",
+    "IBAN": "IBAN account"
   }
 }

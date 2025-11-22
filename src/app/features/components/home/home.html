@@ -1,6 +1,6 @@
 <div class="modal-header">
   <mat-card class="field-full-width">
-    <h2 class="modal-title cursor-arrow">{{ 'HOME.INFORMATION_OF_THE_COURSE' | translate }} </h2> 
+    <h2 class="modal-title cursor-arrow">{{ 'HOME.INFORMATION_OF_THE_COURSE' | translate }}</h2>
   </mat-card>
 </div>
 
@@ -19,30 +19,27 @@
             <mat-card-header>
               <mat-card-title>{{ curso.name }}</mat-card-title>
               <mat-card-subtitle class="lesson-meta">{{ curso.description }}</mat-card-subtitle>
-
             </mat-card-header>
+
             <mat-card-content style="margin-bottom: 1rem;">
               <div class="account-info">
-                <p><strong>{{ 'HOME.PRICE' | translate}}</strong></p>
+                <p><strong>{{ 'HOME.PRICE' | translate }}</strong></p>
                 <p>{{ curso.price }} CRC</p>
-                <p><strong>{{ 'HOME.DURATION' | translate}}</strong></p>
-                <p>{{"HOME.DURATION_DETAIL" | translate}}</p>
-                <!-- <p>Para la realización del curso cuenta con {{ curso.durationDays }} días naturales luego de que este
-                  sea aprobado por el profesor.</p> -->
+                <p><strong>{{ 'HOME.DURATION' | translate }}</strong></p>
+                <p>{{ 'HOME.DURATION_DETAIL' | translate }}</p>
               </div>
             </mat-card-content>
+
             <mat-card-footer style="display: flex; justify-content: flex-end;">
-
               <button class="sign-button" mat-flat-button (click)="onAction(curso.id)"
-                matTooltip="{{ 'APPLY_COURSE.TITLE' | translate }}"> {{ 'APPLY_COURSE.APPLY' | translate }} </button>
-
-
+                matTooltip="{{ 'APPLY_COURSE.TITLE' | translate }}">
+                {{ 'APPLY_COURSE.APPLY' | translate }}
+              </button>
             </mat-card-footer>
           </mat-card>
           }
         </div>
         }
-
 
         @if(course() && course().status && course().status !== 'NEW'){
         <span class="course-title">{{ course().configCourseName }}</span>
@@ -55,106 +52,103 @@
       @if(course() && course().status && course().status !== 'NEW'){
 
       <fieldset style="border-radius: 0.3em">
-        <legend>{{"COURSE.STATE" | translate}}</legend>
+        <legend>{{ 'COURSE.STATE' | translate }}</legend>
         <p>{{ estadoMensaje() }}</p>
       </fieldset>
 
-      <!--<fieldset style="border-radius: 0.3em;">
-        <legend>Precio</legend>
-        <p>{{ course().price }} CRC </p>
-      </fieldset>-->
-
       <fieldset style="border-radius: 0.3em">
-        <legend>{{"HOME.DURATION" | translate}}</legend>
-        <p>{{"HOME.DURATION_DETAIL" | translate}}</p>
-           <!-- <p>Para la realización del curso cuenta con {{ course().durationDays }} días naturales luego de que este
-          sea aprobado por el profesor.</p> -->
+        <legend>{{ 'HOME.DURATION' | translate }}</legend>
+        <p>{{ 'HOME.DURATION_DETAIL' | translate }}</p>
       </fieldset>
 
       <fieldset style="border-radius: 0.3em">
-        <legend>{{"COURSE.EVALUATION_METHOD" | translate}}</legend>
-        <p>{{"COURSE.EVALUATION_METHOD_DETAIL" | translate}}</p>
-        <!-- <p>Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas.</p> -->
+        <legend>{{ 'COURSE.EVALUATION_METHOD' | translate }}</legend>
+        <p>{{ 'COURSE.EVALUATION_METHOD_DETAIL' | translate }}</p>
       </fieldset>
 
       }
 
       @if (courses() && courses().length) {
-        <fieldset style="border-radius: 0.3em;">
-        <legend>{{'APPLY_COURSE.PAYMENT_MODE' | translate}}</legend>
+      <fieldset style="border-radius: 0.3em;">
+        <legend>{{ 'APPLY_COURSE.PAYMENT_MODE' | translate }}</legend>
+
         <div class="row" style="margin-bottom: 10px;">
           <div class="col-md-6">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
               <mat-card-header>
-                <mat-card-title>Sinpe móvil</mat-card-title>
+                <mat-card-title>{{ 'PAYMENTS.SINPE' | translate }}</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Número</strong></p>
+                  <p><strong>{{ 'PAYMENTS.NUMBER' | translate }}</strong></p>
                   <p>7219 5203</p>
-                  <p><strong>A nombre de:</strong></p>
-                  <p>dagoberto eloy gonzález lópez</p>
+                  <p><strong>{{ 'PAYMENTS.ACCOUNT_NAME' | translate }}</strong></p>
+                  <p>Dagoberto Eloy González López</p>
                 </div>
               </mat-card-content>
             </mat-card>
           </div>
+
           <div class="col-md-6">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
               <mat-card-header>
-                <mat-card-title>Transferencia o Depósito Bancario</mat-card-title>
+                <mat-card-title>{{ 'PAYMENTS.TRANSFER' | translate }}</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>A nombre de:</strong></p>
+                  <p><strong>{{ 'PAYMENTS.ACCOUNT_NAME' | translate }}</strong></p>
                   <p>Dagoberto Eloy González López</p>
-                  <p><strong>Cédula</strong></p>
+                  <p><strong>{{ 'PAYMENTS.ID_NUMBER' | translate }}</strong></p>
                   <p>8-0148-0648</p>
                 </div>
               </mat-card-content>
             </mat-card>
           </div>
         </div>
+
         <div class="row" style="margin-bottom: 10px;">
           <div class="col-md-4">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
               <mat-card-header>
-                <mat-card-title>BAC Credomatic</mat-card-title>
+                <mat-card-title>{{ 'PAYMENTS.BAC' | translate }}</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Corriente</strong></p>
+                  <p><strong>{{ 'PAYMENTS.CHECKING_ACCOUNT' | translate }}</strong></p>
                   <p>9040493083</p>
-                  <p><strong>Cuenta IBAN</strong></p>
+                  <p><strong>{{ 'PAYMENTS.IBAN' | translate }}</strong></p>
                   <p>CR03010200009680980611</p>
                 </div>
               </mat-card-content>
             </mat-card>
           </div>
+
           <div class="col-md-4">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
               <mat-card-header>
-                <mat-card-title>Banco BCR</mat-card-title>
+                <mat-card-title>{{ 'PAYMENTS.BCR' | translate }}</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Corriente</strong></p>
-                  <p>001-1915618- 9</p>
-                  <p><strong>Cuenta IBAN</strong></p>
+                  <p><strong>{{ 'PAYMENTS.CHECKING_ACCOUNT' | translate }}</strong></p>
+                  <p>001-1915618-9</p>
+                  <p><strong>{{ 'PAYMENTS.IBAN' | translate }}</strong></p>
                   <p>CR26015202001191561891</p>
                 </div>
               </mat-card-content>
             </mat-card>
           </div>
+
           <div class="col-md-4">
             <mat-card class="bank-card" appearance="outlined" style="margin-bottom: 10px;">
               <mat-card-header>
-                <mat-card-title>Banco Nacional</mat-card-title>
+                <mat-card-title>{{ 'PAYMENTS.NATIONAL' | translate }}</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="account-info">
-                  <p><strong>Cuenta Cliente</strong></p>
+                  <p><strong>{{ 'PAYMENTS.CLIENT_ACCOUNT' | translate }}</strong></p>
                   <p>15108020011139401</p>
-                  <p><strong>Cuenta IBAN</strong></p>
+                  <p><strong>{{ 'PAYMENTS.IBAN' | translate }}</strong></p>
                   <p>CR77015108020011139401</p>
                 </div>
               </mat-card-content>
@@ -163,8 +157,6 @@
         </div>
       </fieldset>
       }
-
-
 
     </mat-card-content>
   </mat-card>

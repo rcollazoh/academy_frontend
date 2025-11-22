@@ -12,7 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { FeaturesService } from '../../../features/services/features.service';
 import { NotificationService } from '../../services/notification.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatInputModule,
     MatIconModule,
     TranslatePipe
-],
+  ],
   templateUrl: './apply-course-dialog.html',
   styleUrl: './apply-course-dialog.scss'
 })
@@ -42,9 +42,8 @@ export class ApplyCourseDialog implements OnInit {
   selectedFileName: string = '';
 
   metodos = [
-    { value: 'TRANSF', label: 'Electronic Transfer' }
-    // ,
-    // { value: 'SINPE', label: 'Sinpe Móvil' }
+    { value: 'TRANSF', label: 'APPLY_COURSE.TRANSFER' },
+    { value: 'SINPE', label: 'APPLY_COURSE.SINPE' }
   ];
 
   constructor(
@@ -52,7 +51,8 @@ export class ApplyCourseDialog implements OnInit {
     private dialogRef: MatDialogRef<ApplyCourseDialog>, @Inject(MAT_DIALOG_DATA) public data: ApplyDialogModel,
     private featuresService: FeaturesService,
     private notificacionService: NotificationService,
-    protected ngxLoaderService: NgxUiLoaderService
+    protected ngxLoaderService: NgxUiLoaderService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +74,7 @@ export class ApplyCourseDialog implements OnInit {
 
     if (file.size > 2 * 1024 * 1024) {
       this.ngxLoaderService.stop();
-      this.fileError = 'La imagen no debe superar los 2MB';
+      this.fileError = this.translate.instant('APPLY_COURSE.ERROR_IMAGE_SIZE');
       return;
     }
 
@@ -95,7 +95,7 @@ export class ApplyCourseDialog implements OnInit {
 
     } catch {
       this.ngxLoaderService.stop();
-      this.fileError = 'Error al comprimir la imagen';
+      this.fileError = this.translate.instant('APPLY_COURSE.ERROR_IMAGE_COMPRESSION');
     }
   }
 
@@ -119,11 +119,15 @@ export class ApplyCourseDialog implements OnInit {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.dialogRef.close({ success: true });
-        this.notificacionService.notificationSuccess('Ha aplicado al curso correctamente, espere por la confirmación del profesor');
+        this.notificacionService.notificationSuccess(
+          this.translate.instant('APPLY_COURSE.SUCCESS_APPLY')
+        );
       },
       error: (err) => {
         this.ngxLoaderService.stop();
-        this.notificacionService.notificationError('Error al aplicar al curso');   
+        this.notificacionService.notificationError(
+          this.translate.instant('APPLY_COURSE.ERROR_APPLY')
+        );
       },
     });
   }

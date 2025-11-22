@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,7 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RecoverKey } from '../recover-key/recover-key';
 import {
   TranslateService,
-    TranslatePipe
+  TranslatePipe
 } from "@ngx-translate/core";
 
 
@@ -32,10 +32,10 @@ import {
     MatIconModule,
     Navbar,
     Footer, TranslatePipe
-],
+  ],
   standalone: true,
   templateUrl: './login.html',
-  styleUrl: './login.scss'  
+  styleUrl: './login.scss'
 })
 export class Login {
   private translate = inject(TranslateService);
@@ -43,9 +43,9 @@ export class Login {
   public routes: typeof Routes = Routes;
   loginForm!: FormGroup;
 
-  constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService, 
+  constructor(protected router: Router, private formBuilder: FormBuilder, protected ngxLoaderService: NgxUiLoaderService,
     private authService: AuthService, private notificacionService: NotificationService, public dialog: MatDialog) {
-     }
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -55,7 +55,7 @@ export class Login {
   }
 
   ngOnDestroy() {
-    
+
   }
 
   get f() {
@@ -63,7 +63,7 @@ export class Login {
   }
 
   login() {
-    
+
     const loginRequest: LoginRequest = {
       username: this.f['user'].value,
       password: this.f['password'].value
@@ -74,48 +74,53 @@ export class Login {
       next: (res) => {
         setTimeout(() => {
           this.ngxLoaderService.stop();
-          if(this.authService.user && this.authService.user.rol == 'STUDENT')
+          if (this.authService.user && this.authService.user.rol == 'STUDENT')
             this.router.navigate([this.routes.INICIO]);
           else
             this.router.navigate([this.routes.COURSES]);
-          
+
         }, 1000);
       },
       error: (err) => {
         this.ngxLoaderService.stop();
-         
-          if(err && err.name=='HttpErrorResponse'){
-            this.notificacionService.notificationError('Por favor, revise su conexión');
-          } else if (err && err.error)
-            this.notificacionService.notificationError(err.error);
-          else {
-            this.notificacionService.notificationError('Error al iniciar sesión');
-          }
-        
+
+        if (err && err.name == 'HttpErrorResponse') {
+          this.notificacionService.notificationError(
+            this.translate.instant('LOGIN.ERROR_CONNECTION')
+          );
+        } else if (err && err.error) {
+          this.notificacionService.notificationError(err.error);
+        } else {
+          this.notificacionService.notificationError(
+            this.translate.instant('LOGIN.ERROR_LOGIN')
+          );
+        }
       },
     });
   }
 
   onAction() {
-      
-        const dialogRef = this.dialog.open(RecoverKey, {
-          width: '420px',
-          disableClose: true,
-          data: {email: this.loginForm.get('user')?.valid ? this.loginForm.get('user')?.value : undefined }
-        });
-  
-        dialogRef.afterClosed().subscribe(result => {
-          if (result?.success) {
-            this.notificacionService.notificationSuccess('Se ha enviado una nueva clave a su correo electrónico');
-          }
-        });
-      
-    }
 
-    actionRegister() {
-      this.router.navigate([this.routes.REGISTER]);
-    }
+    const dialogRef = this.dialog.open(RecoverKey, {
+      width: '420px',
+      disableClose: true,
+      data: { email: this.loginForm.get('user')?.valid ? this.loginForm.get('user')?.value : undefined }
+    });
 
-  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.success) {
+        this.notificacionService.notificationSuccess(
+          this.translate.instant('LOGIN.RECOVER_SUCCESS')
+        );
+      }
+    });
+
+  }
+
+  actionRegister() {
+    this.router.navigate([this.routes.REGISTER]);
+  }
+
+
 }
 

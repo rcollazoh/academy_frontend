@@ -16,9 +16,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from "@angular/material/card";
-import { MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import { MatSortModule} from '@angular/material/sort';
-import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { EmptyFieldPipe } from "../../../shared/pipes/empty-field-pipe";
 import { StatusDto } from '../../../shared/models/nomenclator-model';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,13 +27,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { StatePipe } from "../../../shared/pipes/state-pipe";
 import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
 import { UserLogin } from '../../../shared/models/user-model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses',
   imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule, EmptyFieldPipe, CommonModule, MatButtonModule,
-     RouterLink, MatIconModule, MatTooltipModule, PaymentWayPipe, StatePipe, TranslatePipe],
+    RouterLink, MatIconModule, MatTooltipModule, PaymentWayPipe, StatePipe, TranslatePipe],
   templateUrl: './courses.html',
   styleUrl: './courses.scss'
 })
@@ -72,15 +71,16 @@ export class Courses implements OnInit {
 
   selectedFileName: string = '';
 
-  constructor( private featuresService: FeaturesService,
-               protected ngxLoaderService: NgxUiLoaderService,
-               private notificacionService: NotificationService,
-               protected router: Router,
-               public datepipe: DatePipe,
-               public dialog: MatDialog,
-               private routeService: RouteService,
-               private authService: AuthService) {
-                this.user$ = this.authService.getUser();
+  constructor(private featuresService: FeaturesService,
+    protected ngxLoaderService: NgxUiLoaderService,
+    private notificacionService: NotificationService,
+    protected router: Router,
+    public datepipe: DatePipe,
+    public dialog: MatDialog,
+    private routeService: RouteService,
+    private authService: AuthService,
+    private translate: TranslateService) {
+    this.user$ = this.authService.getUser();
     this.lastRouteSubscription = this.routeService.lastRoute$.subscribe(lastRoute => {
       if (lastRoute) {
         this.lastRoute = lastRoute;
@@ -93,37 +93,15 @@ export class Courses implements OnInit {
   ngOnInit(): void {
     this.displayedColumns = this.getDataColumnsTable();
     this.statusList = [
-      {
-        id: 0,
-        name: 'NEW',
-        description: 'Nuevo'
-      },
-      {
-        id: 1,
-        name: 'PENDING',
-        description: 'Pendiente'
-      },
-      {
-        id: 2,
-        name: 'ACTIVATED',
-        description: 'Activado'
-      },
-      {
-        id: 3,
-        name: 'REJECTED',
-        description: 'Rechazado'
-      },
-      {
-        id: 4,
-        name: 'APPROVED',
-        description: 'Aprobado'
-      },
-      {
-        id: 5,
-        name: 'NOT_APPROVED',
-        description: 'No aprobado'
-      }
+      { id: 0, name: 'NEW', description: 'COURSE_LIST.STATUS_NEW' },
+      { id: 1, name: 'PENDING', description: 'COURSE_LIST.STATUS_PENDING' },
+      { id: 2, name: 'ACTIVATED', description: 'COURSE_LIST.STATUS_ACTIVATED' },
+      { id: 3, name: 'REJECTED', description: 'COURSE_LIST.STATUS_REJECTED' },
+      { id: 4, name: 'APPROVED', description: 'COURSE_LIST.STATUS_APPROVED' },
+      { id: 5, name: 'NOT_APPROVED', description: 'COURSE_LIST.STATUS_NOT_APPROVED' }
     ];
+
+
 
     this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
   }
@@ -131,17 +109,17 @@ export class Courses implements OnInit {
   /**
      * Metodo para obtener los datos del usuario logueado y pasarlo en el formulario de creacion
      */
-    getUserData(): any {
-      let userData: any = undefined;
-      const sub = this.user$
-        .pipe(take(1))
-        .subscribe((user: UserLogin) => (userData = user));
-      sub.unsubscribe();
-      return userData;
-    }
+  getUserData(): any {
+    let userData: any = undefined;
+    const sub = this.user$
+      .pipe(take(1))
+      .subscribe((user: UserLogin) => (userData = user));
+    sub.unsubscribe();
+    return userData;
+  }
 
   getDataColumnsTable() {
-    return ['personName','personLastName','personEmail','courseName','area','practice', 'status', 'certifyUrl' /*'paymentMethod'*/];
+    return ['personName', 'personLastName', 'personEmail', 'courseName', 'area', 'practice', 'status', 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getCourses(request: CourseRequest, pageNumber: number, pageSize: number): void {
@@ -157,13 +135,13 @@ export class Courses implements OnInit {
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al obtener el listado de cursos'
+          this.translate.instant('COURSE_LIST.ERROR_LOAD')
         );
       },
     });
   }
 
-loadCourseList(): void {
+  loadCourseList(): void {
     this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
   }
 
@@ -173,14 +151,14 @@ loadCourseList(): void {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationSuccess(
-          'Se activo el curso correctamente.'
+          this.translate.instant('COURSE_LIST.ACTIVATE_SUCCESS')
         );
         this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Ocurrió un error al activar el curso.'
+          this.translate.instant('COURSE_LIST.ACTIVATE_ERROR')
         );
       },
     });
@@ -192,14 +170,14 @@ loadCourseList(): void {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationSuccess(
-          'Se rechazó el curso correctamente.'
+          this.translate.instant('COURSE_LIST.REJECT_SUCCESS')
         );
         this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Ocurrió un error al rechazar el curso.'
+          this.translate.instant('COURSE_LIST.REJECT_ERROR')
         );
       },
     });
@@ -211,14 +189,14 @@ loadCourseList(): void {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationSuccess(
-          'Se reactivó el curso correctamente.'
+          this.translate.instant('COURSE_LIST.REACTIVATE_SUCCESS')
         );
         this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Ocurrió un error al reactivar el curso.'
+          this.translate.instant('COURSE_LIST.REACTIVATE_ERROR')
         );
       },
     });
@@ -284,7 +262,7 @@ loadCourseList(): void {
       error: () => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Error al descargar el certificado'
+          this.translate.instant('COURSE_LIST.DOWNLOAD_ERROR')
         );
       }
     });
@@ -294,19 +272,19 @@ loadCourseList(): void {
   onFileSelected(event: Event): void {
     this.ngxLoaderService.start();
     const input = event.target as HTMLInputElement;
-    
+
     if (!input.files?.length) {
       this.ngxLoaderService.stop();
       return;
-    }      
+    }
 
     const file = input.files[0];
     if (file.type !== 'application/pdf') {
       this.ngxLoaderService.stop();
       this.notificacionService.notificationError(
-          'Solo se permiten archivos PDF.'
-        );
-        input.value = '';
+        this.translate.instant('COURSE_LIST.PDF_ONLY')
+      );
+      input.value = '';
       return;
     }
 
@@ -314,7 +292,7 @@ loadCourseList(): void {
       next: (res) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationSuccess(
-          'Certificado importado exitosamente.'
+          this.translate.instant('COURSE_LIST.IMPORT_SUCCESS')
         );
         input.value = '';
         this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
@@ -322,7 +300,7 @@ loadCourseList(): void {
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Error al importar el certificado.'
+          this.translate.instant('COURSE_LIST.IMPORT_ERROR')
         );
         input.value = '';
       },

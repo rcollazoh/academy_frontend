@@ -6,7 +6,7 @@
         <mat-select formControlName="metodo">
             @for (item of metodos; track $index) {
             <mat-option [value]="item.value">
-                {{ item.label }}
+                {{ item.label | translate}}
             </mat-option>
             }
         </mat-select>

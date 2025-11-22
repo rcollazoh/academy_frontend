@@ -30,7 +30,10 @@
     "SUBMIT_BUTTON": "Ingresar",
     "LOGIN_MESSAGE": "Accede a tu cuenta de PRAD Academy.",
     "NOT_ACCOUNT": "¿No tienes una cuenta?",
-    "REGISTER": "Regístrate"
+    "REGISTER": "Regístrate",
+    "ERROR_CONNECTION": "Por favor, revise su conexión",
+    "ERROR_LOGIN": "Error al iniciar sesión",
+    "RECOVER_SUCCESS": "Se ha enviado una nueva clave a su correo electrónico"
   },
   "REGISTER": {
     "TITLE": "Crea tu cuenta",
@@ -65,7 +68,23 @@
     "CURRENT_COURSE_DETAIL": "No tiene un curso activo en estos momentos.",
     "NAME": "Curso",
     "EVALUATION_METHOD": "Método de evaluación",
-    "EVALUATION_METHOD_DETAIL": "Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas."
+    "EVALUATION_METHOD_DETAIL": "Para aprobar el curso, es necesario superar cada uno de sus capítulos. Cada capítulo incluye un exámen con preguntas de selección única, el cual se aprueba al responder correctamente al menos el 60% de las preguntas.",
+    "VIEW_TICKET": "Ver comprobante",
+    "CERTIFICATE_DOWNLOAD": "Descargar certificado",
+    "CERTIFICATE_UNAVAILABLE": "Certificado no disponible",
+    "CLASSES": "clases",
+    "CLASS_NOT_VIEWED": "Clase no vista",
+    "CLASS_VIEWED": "Clase vista",
+    "CLASS_IN_PROGRESS": "Clase en proceso",
+    "VIEW_CLASS": "Ver clase",
+    "EXAM": "Examen del módulo",
+    "EXAM_APPROVED": "Examen del módulo aprobado",
+    "EXAM_NOT_APPROVED": "Examen del módulo no aprobado",
+    "TAKE_EXAM": "Realizar examen",
+    "REFERENCES": "Referencias",
+    "FEEDBACK": "Feedback",
+    "FEEDBACK_DETAIL": "Realice su feedback del curso y los módulos",
+    "TAKE_FEEDBACK": "Realizar feedback"
   },
   "FEEDBACK": {
     "TITLE": "Comparta su experiencia",
@@ -82,7 +101,8 @@
     "TITLE": "Recuperar clave",
     "EMAIL": "Correo electrónico",
     "INVALID_EMAIL": "Correo inválido",
-    "IDENTITY": "Cédula"
+    "IDENTITY": "Cédula",
+    "ERROR_RECOVER": "Lo sentimos, ocurrió un error al recuperar la clave"
   },
   "BENEFITS": {
     "FLEXIBILITY": {
@@ -358,7 +378,13 @@
     "PAYMENT_MODE": "Forma de pago",
     "ERROR_PAYMENT_MODE": "Seleccione una forma de pago",
     "CHANGE_IMAGE": "Cambiar imagen",
-    "SELECT_IMAGE": "Seleccionar imagen"
+    "SELECT_IMAGE": "Seleccionar imagen",
+    "TRANSFER": "Transferencia electrónica",
+    "SINPE": "Sinpe Móvil",
+    "ERROR_IMAGE_SIZE": "La imagen no debe superar los 2MB",
+    "ERROR_IMAGE_COMPRESSION": "Error al comprimir la imagen",
+    "SUCCESS_APPLY": "Ha aplicado al curso correctamente, espere por la confirmación del profesor",
+    "ERROR_APPLY": "Error al aplicar al curso"
   },
   "FEEDBACKS": {
     "TITLE": "Feedback",
@@ -424,5 +450,63 @@
   },
   "ERRORS":{
     "LOAD_DATA_USER": "Lo sentimos, ocurrió un error al cargar los datos del usuario"
+  },
+  "COURSE_LIST": {
+    "TITLE": "Listado de cursos",
+    "BACK": "Atrás",
+    "ACTIVATE": "Activar",
+    "APPROVE_TOOLTIP": "Aprobar el curso",
+    "REJECT": "Rechazar",
+    "REJECT_TOOLTIP": "Rechazar el curso",
+    "REACTIVATE": "Reactivar",
+    "REACTIVATE_TOOLTIP": "Reactivar el curso",
+    "IMPORT_CERTIFICATE": "Importar certificado",
+    "IMPORT_CERTIFICATE_TOOLTIP": "Importar certificado del curso",
+    "REFRESH": "Refrescar",
+    "REFRESH_TOOLTIP": "Refrescar la lista de cursos",
+    "STATUS": "Estado",
+    "STATUS_PLACEHOLDER": "Estado",
+    "NAME": "Nombres",
+    "LAST_NAME": "Apellidos",
+    "EMAIL": "Correo electrónico",
+    "COURSE": "Curso",
+    "AREA": "Área",
+    "PRACTICE": "Práctica",
+    "PAYMENT_METHOD": "Método de pago",
+    "CERTIFICATE": "Certificado",
+    "DOWNLOAD_CERTIFICATE": "Descargar certificado",
+    "CERTIFICATE_UNAVAILABLE": "Certificado no disponible",
+    "NO_DATA": "No existen datos para mostrar.",    
+    "STATUS_NEW": "Nuevo",
+    "STATUS_PENDING": "Pendiente",
+    "STATUS_ACTIVATED": "Activado",
+    "STATUS_REJECTED": "Rechazado",
+    "STATUS_APPROVED": "Aprobado",
+    "STATUS_NOT_APPROVED": "No aprobado",
+    "ERROR_LOAD": "Lo sentimos, ocurrió un error al obtener el listado de cursos",
+    "ACTIVATE_SUCCESS": "Se activó el curso correctamente.",
+    "ACTIVATE_ERROR": "Ocurrió un error al activar el curso.",
+    "REJECT_SUCCESS": "Se rechazó el curso correctamente.",
+    "REJECT_ERROR": "Ocurrió un error al rechazar el curso.",
+    "REACTIVATE_SUCCESS": "Se reactivó el curso correctamente.",
+    "REACTIVATE_ERROR": "Ocurrió un error al reactivar el curso.",
+    "DOWNLOAD_ERROR": "Error al descargar el certificado",
+    "PDF_ONLY": "Solo se permiten archivos PDF.",
+    "IMPORT_SUCCESS": "Certificado importado exitosamente.",
+    "IMPORT_ERROR": "Error al importar el certificado."
+  },
+  "PAYMENTS": {
+    "SINPE": "Sinpe móvil",
+    "TRANSFER": "Transferencia o Depósito Bancario",
+    "BAC": "BAC Credomatic",
+    "BCR": "Banco BCR",
+    "NATIONAL": "Banco Nacional",
+
+    "NUMBER": "Número",
+    "ACCOUNT_NAME": "A nombre de",
+    "ID_NUMBER": "Cédula",
+    "CHECKING_ACCOUNT": "Cuenta Corriente",
+    "CLIENT_ACCOUNT": "Cuenta Cliente",
+    "IBAN": "Cuenta IBAN"
   }
 }

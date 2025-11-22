@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '@/app/shared/services/notification.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recover-key',
@@ -35,12 +35,13 @@ export class RecoverKey implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<RecoverKey>, @Inject(MAT_DIALOG_DATA) public data: {email: string},
+    private dialogRef: MatDialogRef<RecoverKey>, @Inject(MAT_DIALOG_DATA) public data: { email: string },
     private authService: AuthService,
     private notificacionService: NotificationService,
-    protected ngxLoaderService: NgxUiLoaderService
-  ) { 
-    if(this.data.email){
+    protected ngxLoaderService: NgxUiLoaderService,
+    private translate: TranslateService
+  ) {
+    if (this.data.email) {
       this.email = this.data.email;
     }
   }
@@ -62,17 +63,17 @@ export class RecoverKey implements OnInit {
     this.authService.recoverKey(this.form.get('email')?.value, this.form.get('idNumber')?.value).subscribe({
       next: (res) => {
         this.ngxLoaderService.stop();
-        if(res && res.result){
+        if (res && res.result) {
           this.notificacionService.notificationError(
-          res.result
-        );
+            res.result
+          );
         } else
           this.dialogRef.close({ success: true });
       },
       error: (err) => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Lo sentimos, ocurrió un error al recuperar la clave'
+          this.translate.instant('RECOVER_KEY.ERROR_RECOVER')
         );
       },
     });

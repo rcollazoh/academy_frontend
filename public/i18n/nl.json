@@ -30,7 +30,10 @@
     "SUBMIT_BUTTON": "Inloggen",
     "LOGIN_MESSAGE": "Toegang tot uw PRAD Academy-account.",
     "NOT_ACCOUNT": "Heeft u geen account?",
-    "REGISTER": "Registreren"
+    "REGISTER": "Registreren",
+    "ERROR_CONNECTION": "Controleer uw verbinding",
+    "ERROR_LOGIN": "Fout bij het inloggen",
+    "RECOVER_SUCCESS": "Er is een nieuwe sleutel naar uw e-mail verzonden"
   },
   "REGISTER": {
     "TITLE": "Maak uw account aan",
@@ -51,7 +54,37 @@
   },
   "COURSE": {
     "TITLE": "Mijn cursussen",
-    "START": "Cursus starten"
+    "START": "Cursus starten",
+    "AREA": "Gebied",
+    "PRACTICE": "Praktijk",
+    "START_DATE": "Startdatum",
+    "END_DATE": "Vervaldatum",
+    "STATE": "Status",
+    "INVOICE_SENT": "Factuur verzonden",
+    "PROOF_OF_INVOICE": "Betalingsbewijs",
+    "CERTIFICATE": "Certificaat",
+    "NO_EXIT": "Er zijn geen gegevens om te tonen.",
+    "CURRENT_COURSE": "Huidige cursus",
+    "CURRENT_COURSE_DETAIL": "U heeft momenteel geen actieve cursus.",
+    "NAME": "Cursus",
+    "EVALUATION_METHOD": "Evaluatiemethode",
+    "EVALUATION_METHOD_DETAIL": "Om de cursus te behalen, moet u elk hoofdstuk afronden. Elk hoofdstuk bevat een examen met meerkeuzevragen, dat wordt goedgekeurd wanneer u minstens 60% van de vragen correct beantwoordt.",
+    "VIEW_TICKET": "Zie ontvangstbewijs",
+    "CERTIFICATE_DOWNLOAD": "Certificaat downloaden",
+    "CERTIFICATE_UNAVAILABLE": "Certificaat niet beschikbaar",
+    "CLASSES": "lessen",
+    "CLASS_NOT_VIEWED": "Les niet bekeken",
+    "CLASS_VIEWED": "Les bekeken",
+    "CLASS_IN_PROGRESS": "Les in uitvoering",
+    "VIEW_CLASS": "Les bekijken",
+    "EXAM": "Module-examen",
+    "EXAM_APPROVED": "Module-examen goedgekeurd",
+    "EXAM_NOT_APPROVED": "Module-examen niet goedgekeurd",
+    "TAKE_EXAM": "Examen afleggen",
+    "REFERENCES": "Referenties",
+    "FEEDBACK": "Feedback",
+    "FEEDBACK_DETAIL": "Geef uw feedback over de cursus en modules",
+    "TAKE_FEEDBACK": "Feedback indienen"
   },
   "FEEDBACK": {
     "TITLE": "Deel uw ervaring",
@@ -68,7 +101,8 @@
     "TITLE": "Wachtwoord herstellen",
     "EMAIL": "E-mail",
     "INVALID_EMAIL": "Ongeldig e-mailadres",
-    "IDENTITY": "Identiteitsnummer"
+    "IDENTITY": "Identiteitsnummer",
+    "ERROR_RECOVER": "Sorry, er is een fout opgetreden bij het herstellen van de sleutel"
   },
   "BENEFITS": {
     "FLEXIBILITY": {
@@ -200,7 +234,12 @@
     "INFORMATION_OF_THE_COURSE": "Course-informatie", 
     "AVAILABLE_COURSES": "Beschikbare cursisten", 
     "PRICE": "Prijs", 
-    "DURATION": "Duur"
+    "DURATION": "Duur",
+    "DURATION_DETAIL": "U heeft 15 kalenderdagen om de cursus te voltooien nadat deze door de docent is goedgekeurd.",
+    "SATUS_MESMESSAGES_NEW": "U moet de optie toepassen selecteren om een nieuwe cursus te starten.",
+    "SATUS_MESMESSAGES_PENDING": "In afwachting van bevestiging door de docent.",
+    "SATUS_MESMESSAGES_ACTIVATED": "De cursus is geactiveerd, u kunt met de lessen beginnen.",
+    "SATUS_MESMESSAGES_REJECTED": "De cursus is afgewezen door de docent, u moet opnieuw voor de cursus aanmelden."
   },
   "PAYMENT": {
     "TITLE": "Betaalmethoden",
@@ -339,7 +378,13 @@
     "PAYMENT_MODE": "Betaalmethode",
     "ERROR_PAYMENT_MODE": "Selecteer een betaalmethode",
     "CHANGE_IMAGE": "Afbeelding wijzigen",
-    "SELECT_IMAGE": "Afbeelding selecteren"
+    "SELECT_IMAGE": "Afbeelding selecteren",
+    "TRANSFER": "Elektronische overschrijving",
+    "SINPE": "Sinpe Mobiel",
+    "ERROR_IMAGE_SIZE": "De afbeelding mag niet groter zijn dan 2MB",
+    "ERROR_IMAGE_COMPRESSION": "Fout bij het comprimeren van de afbeelding",
+    "SUCCESS_APPLY": "U heeft zich succesvol ingeschreven voor de cursus, wacht op bevestiging van de docent",
+    "ERROR_APPLY": "Fout bij het inschrijven voor de cursus"
   },
   "FEEDBACKS": {
     "TITLE": "Feedback",
@@ -405,5 +450,63 @@
   },
   "ERRORS":{
     "LOAD_DATA_USER": "Sorry, er is een fout opgetreden bij het laden van de gebruikersgegevens"
+  },
+  "COURSE_LIST": {
+    "TITLE": "Cursuslijst",
+    "BACK": "Terug",
+    "ACTIVATE": "Activeren",
+    "APPROVE_TOOLTIP": "Cursus goedkeuren",
+    "REJECT": "Afwijzen",
+    "REJECT_TOOLTIP": "Cursus afwijzen",
+    "REACTIVATE": "Heractiveren",
+    "REACTIVATE_TOOLTIP": "Cursus heractiveren",
+    "IMPORT_CERTIFICATE": "Certificaat importeren",
+    "IMPORT_CERTIFICATE_TOOLTIP": "Cursuscertificaat importeren",
+    "REFRESH": "Vernieuwen",
+    "REFRESH_TOOLTIP": "Cursuslijst vernieuwen",
+    "STATUS": "Status",
+    "STATUS_PLACEHOLDER": "Status",
+    "NAME": "Voornaam",
+    "LAST_NAME": "Achternaam",
+    "EMAIL": "E-mail",
+    "COURSE": "Cursus",
+    "AREA": "Gebied",
+    "PRACTICE": "Praktijk",
+    "PAYMENT_METHOD": "Betaalmethode",
+    "CERTIFICATE": "Certificaat",
+    "DOWNLOAD_CERTIFICATE": "Certificaat downloaden",
+    "CERTIFICATE_UNAVAILABLE": "Certificaat niet beschikbaar",
+    "NO_DATA": "Geen gegevens om weer te geven.",
+    "STATUS_NEW": "Nieuw",
+    "STATUS_PENDING": "In afwachting",
+    "STATUS_ACTIVATED": "Geactiveerd",
+    "STATUS_REJECTED": "Afgewezen",
+    "STATUS_APPROVED": "Goedgekeurd",
+    "STATUS_NOT_APPROVED": "Niet goedgekeurd",
+    "ERROR_LOAD": "Sorry, er is een fout opgetreden bij het ophalen van de cursuslijst",
+    "ACTIVATE_SUCCESS": "De cursus is succesvol geactiveerd.",
+    "ACTIVATE_ERROR": "Er is een fout opgetreden bij het activeren van de cursus.",
+    "REJECT_SUCCESS": "De cursus is succesvol afgewezen.",
+    "REJECT_ERROR": "Er is een fout opgetreden bij het afwijzen van de cursus.",
+    "REACTIVATE_SUCCESS": "De cursus is succesvol hergeactiveerd.",
+    "REACTIVATE_ERROR": "Er is een fout opgetreden bij het heractiveren van de cursus.",
+    "DOWNLOAD_ERROR": "Fout bij het downloaden van het certificaat",
+    "PDF_ONLY": "Alleen PDF-bestanden zijn toegestaan.",
+    "IMPORT_SUCCESS": "Certificaat succesvol geïmporteerd.",
+    "IMPORT_ERROR": "Fout bij het importeren van het certificaat."
+  },
+  "PAYMENTS": {
+    "SINPE": "Sinpe Mobiel",
+    "TRANSFER": "Bankoverschrijving of storting",
+    "BAC": "BAC Credomatic",
+    "BCR": "BCR Bank",
+    "NATIONAL": "Nationale Bank",
+
+    "NUMBER": "Nummer",
+    "ACCOUNT_NAME": "Op naam van",
+    "ID_NUMBER": "Identiteitsnummer",
+    "CHECKING_ACCOUNT": "Rekening courant",
+    "CLIENT_ACCOUNT": "Klantrekening",
+    "IBAN": "IBAN-rekening"
   }
 }

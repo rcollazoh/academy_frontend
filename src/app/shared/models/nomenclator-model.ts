@@ -1,15 +1,15 @@
 export interface NomPracticeDto {
     id: number,
-    name: String,
+    name: string,
 }
 
 export interface NomAreaDto {
     id: number,
-    name: String,
+    name: string,
 }
 
 export interface StatusDto {
     id: number,
-    name: String,
-    description: String
+    name: string,
+    description: string
 }
