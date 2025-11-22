@@ -6,7 +6,8 @@
     "TEXT_CLOSE": "Sluiten",
     "TEXT_NEXT": "Volgende",
     "TEXT_BACK": "Vorige",
-    "TEXT_EXAM": "Examen"
+    "TEXT_EXAM": "Examen",
+    "WARNING": "Waarschuwing"
   },
   "LANDING": {
     "NAVBAR_TEXT_START": "Start",

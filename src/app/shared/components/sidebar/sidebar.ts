@@ -107,7 +107,7 @@ export class Sidebar implements OnInit {
 
   openDialog(): void {
     let msg = this.translate.instant('SIDEBAR.ASK_CLOSE_SESSION');
-    const dialogData = new ConfirmDialogModel('Advertencia', msg, true, 'Aceptar', true, 'Cancelar');
+    const dialogData = new ConfirmDialogModel('COMMON.WARNING', msg, true, 'COMMON.BTN_ACCEPT', true, 'COMMON.BTN_CANCEL');
     const dialogRef = this.dialog.open(ConfirmDialog, {
       maxWidth: '400px',
       data: dialogData,
