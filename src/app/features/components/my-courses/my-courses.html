@@ -45,14 +45,31 @@
 							<mat-cell *matCellDef="let row" data-label="requiresInvoice">{{ row.requiresInvoice ? 'Sí' :
 								'No' }}</mat-cell>
 						</ng-container>
-						<ng-container matColumnDef="receiptUrl">
+
+						<ng-container matColumnDef="invoiceUrl">
+							<mat-header-cell *matHeaderCellDef style="justify-content: center;">Factura</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="invoiceUrl" style="justify-content: center;">
+								@if (row.invoiceUrl) {
+								<mat-icon style="font-size: 25px;" (click)="downloadCertify(row.invoiceUrl)"
+									matTooltip="Descargar factura">
+									article
+								</mat-icon>
+								}
+								@if (!row.invoiceUrl) {
+								<mat-icon style="color: gray; font-size: 25px;"
+									matTooltip="Factura no disponible">article</mat-icon>
+								}
+							</mat-cell>
+						</ng-container>
+
+						<!--<ng-container matColumnDef="receiptUrl">
 							<mat-header-cell *matHeaderCellDef style="justify-content: center;">Comprobante de
 								pago</mat-header-cell>
 							<mat-cell *matCellDef="let row" data-label="receiptUrl" style="justify-content: center;">
 								<mat-icon (click)="openReceipt(row.receiptUrl)"
 									matTooltip="Ver comprobante">image_search</mat-icon>
 							</mat-cell>
-						</ng-container>
+						</ng-container>-->
 						<ng-container matColumnDef="certifyUrl">
 							<mat-header-cell *matHeaderCellDef
 								style="justify-content: center;">Certificado</mat-header-cell>

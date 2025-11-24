@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
             ));
 
-        } else if (req.url.includes('/academy/student_course/apply') || req.url.includes('/academy/image') || req.url.includes('/academy/student_course/upload_certify')) {//Servicios que no llevan 'Content-Type': 'application/json',
+        } else if (req.url.includes('/academy/student_course/apply') || req.url.includes('/academy/image') || req.url.includes('/academy/student_course/upload_certify') || req.url.includes('/academy/student_course/upload_invoice')) {//Servicios que no llevan 'Content-Type': 'application/json',
 
             const accessToken = localStorage.getItem('accessToken');
 
