@@ -100,6 +100,18 @@ export class FeaturesService {
       );
   }
 
+  uploadInvoice(personId: number, courseId: number, file: File): Observable<Course> {
+    const formData = new FormData();
+    formData.append('personId', personId.toString());
+    formData.append('courseId', courseId.toString());
+    formData.append(
+     'invoice',
+      file,
+      file.name || 'invoice.pdf'
+      );
+    return this._http.post<Course>(environment.serviceStudentCourse + '/upload_invoice', formData);
+  }
+
   uploadCertify(personId: number, courseId: number, file: File): Observable<Course> {
     const formData = new FormData();
     formData.append('personId', personId.toString());

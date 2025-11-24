@@ -46,6 +46,15 @@
           Importar certificado
         </button>
 
+        <input type="file" #fileInputFactura accept="application/pdf" style="display: none"
+          (change)="onFileSelectedFactura($event)" />
+
+        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'APPROVED'"
+          class="action-button" matTooltip="Importar factura" (click)="fileInputFactura.click()">
+          <mat-icon style="font-size: 22px; margin-right: 10px;">upload_file</mat-icon>
+          Importar factura
+        </button>
+
         <button mat-raised-button class="action-button" matTooltip="Refrescar la lista de cursos"
           (click)="loadCourseList()">
           Refrescar

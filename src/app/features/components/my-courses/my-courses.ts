@@ -41,7 +41,7 @@ export class MyCourses implements OnInit {
   }
 
   getDataColumnsTable() {
-    return ['configCourseName', 'area','practice','startDate', 'endDate', 'status', 'receiptUrl', 'certifyUrl' /*'paymentMethod'*/];
+    return ['configCourseName', 'area','practice','startDate', 'endDate', 'status', 'invoiceUrl' /*'receiptUrl'*/, 'certifyUrl' /*'paymentMethod'*/];
   }
 
   getStudentCoursesByPerson(personId: number): void {
@@ -78,7 +78,7 @@ export class MyCourses implements OnInit {
       error: () => {
         this.ngxLoaderService.stop();
         this.notificacionService.notificationError(
-          'Error al descargar el certificado'
+          'Error al descargar'
         );
       }
     });

@@ -327,4 +327,42 @@ loadCourseList(): void {
     });
   }
 
+  onFileSelectedFactura(event: Event): void {
+    this.ngxLoaderService.start();
+    const input = event.target as HTMLInputElement;
+    
+    if (!input.files?.length) {
+      this.ngxLoaderService.stop();
+      return;
+    }      
+
+    const file = input.files[0];
+    if (file.type !== 'application/pdf') {
+      this.ngxLoaderService.stop();
+      this.notificacionService.notificationError(
+          'Solo se permiten archivos PDF.'
+        );
+        input.value = '';
+      return;
+    }
+
+    this.featuresService.uploadInvoice(this.courseSelected?.personId!, this.courseSelected?.id!, file).subscribe({
+      next: (res) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationSuccess(
+          'Factura importada exitosamente.'
+        );
+        input.value = '';
+        this.getCourses(this.courseRequest, this.pageIndex, this.pageSize);
+      },
+      error: (err) => {
+        this.ngxLoaderService.stop();
+        this.notificacionService.notificationError(
+          'Error al importar la factura.'
+        );
+        input.value = '';
+      },
+    });
+  }
+
 }
