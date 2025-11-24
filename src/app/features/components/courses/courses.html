@@ -49,7 +49,7 @@
         <input type="file" #fileInputFactura accept="application/pdf" style="display: none"
           (change)="onFileSelectedFactura($event)" />
 
-        <button mat-raised-button [disabled]="!courseSelected || courseSelected.status !== 'APPROVED'"
+        <button mat-raised-button [disabled]="!courseSelected"
           class="action-button" matTooltip="Importar factura" (click)="fileInputFactura.click()">
           <mat-icon style="font-size: 22px; margin-right: 10px;">upload_file</mat-icon>
           Importar factura
@@ -146,6 +146,22 @@
                 {{ row.paymentMethod | paymentWay}}
               </mat-cell>
             </ng-container>
+						<ng-container matColumnDef="invoiceUrl">
+							<mat-header-cell *matHeaderCellDef style="justify-content: center;">Factura</mat-header-cell>
+							<mat-cell *matCellDef="let row" data-label="invoiceUrl" style="justify-content: center;">
+								@if (row.invoiceUrl) {
+								<mat-icon style="font-size: 25px;" (click)="downloadCertify(row.invoiceUrl)"
+									matTooltip="Descargar factura">
+									article
+								</mat-icon>
+								}
+								@if (!row.invoiceUrl) {
+								<mat-icon style="color: gray; font-size: 25px;"
+									matTooltip="Factura no disponible">article</mat-icon>
+								}
+							</mat-cell>
+						</ng-container>
+
             <ng-container matColumnDef="certifyUrl">
               <mat-header-cell *matHeaderCellDef style="justify-content: center;">Certificado</mat-header-cell>
               <mat-cell *matCellDef="let row" data-label="certifyUrl" style="justify-content: center;">
