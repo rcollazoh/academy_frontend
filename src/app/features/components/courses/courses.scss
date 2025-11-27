@@ -124,3 +124,13 @@ mat-row.mat-mdc-row, mat-header-row.mat-mdc-header-row, mat-footer-row.mat-mdc-f
 .table-container {
   min-width: 100%;
 }
+
+/* aplica a la columna específica */
+.mat-column-personEmail .person-email-cell,
+.person-email-cell {
+  white-space: normal;          /* permite saltos de línea */
+  word-break: break-word;       /* rompe palabras largas si es necesario */
+  overflow-wrap: anywhere;      /* asegura que no desborde */
+  line-height: 1.2;
+  padding: 8px 12px;
+}
