@@ -110,7 +110,7 @@ export class ApplyCourseDialog implements OnInit {
     formData.append('personId', this.data.personId);
     formData.append('courseId', this.data.courseId);
     formData.append('paymentMethod', this.form.value.metodo!);
-    formData.append('payment', this.compressedFile);
+    // formData.append('payment', this.compressedFile);
     formData.append(
      'payment',
       this.compressedFile,

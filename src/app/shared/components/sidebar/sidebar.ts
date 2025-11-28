@@ -78,6 +78,12 @@ export class Sidebar implements OnInit {
           role: ['TEACHER', 'ADMIN']
         },
         {
+          text: 'Personas',
+          icon: 'person',
+          routerLink: '/app/person-filter',
+          role: ['TEACHER', 'ADMIN']
+        },
+        {
           text: 'Ayuda',
           icon: 'help',
           role: ['STUDENT']
