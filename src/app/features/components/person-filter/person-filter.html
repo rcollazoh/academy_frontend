@@ -1,0 +1,126 @@
+<div class="modal-header">
+  <mat-card class="field-full-width">
+    <div class="row">
+      <div class="col-md-11">
+        <h2 class="modal-title cursor-arrow" style="margin: 5px 0 0 0px;">Listado de personas</h2>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div class="container-fluid">
+  <!-- botones de acciones -->
+  <div class="row">
+    <div class="col-sm-12" style="padding-top: 13px; padding-bottom: 23px">
+      <div class="action-button-container">
+
+        <button mat-raised-button class="action-button" matTooltip="Refrescar la lista de personas"
+          (click)="loadPersonList()">
+          Refrescar
+        </button>
+
+        <div class="person-filter">
+         <mat-form-field appearance="outline" class="filter-field">
+            <input matInput
+              type="text"
+              placeholder="Buscar persona..."
+              [(ngModel)]="searchParam"
+              (keyup.enter)="loadPersonList()"
+              [matTooltip]="'Parámetros esperados: Identificador del viaje, datos alternativos y paradas del viaje.'" selectOnFocus
+            />
+            
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- tabla -->
+  <div class="row" style="margin-bottom: 15px">
+    <div class="col-sm-12">
+
+      <div class="shadow-wrapper">
+        <div class="table-container">
+          <table mat-table [dataSource]="personList" multiTemplateDataRows class="curso-table">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>
+                Nombres
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="name">
+                {{ row.name | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lastName">
+              <mat-header-cell *matHeaderCellDef>
+                Apellidos
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="lastName">
+                {{ row.lastName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef>
+                Email
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="email" class="person-email-cell">
+                {{ row.email | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+              <mat-header-cell *matHeaderCellDef>
+                Telef.
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="phone">
+                {{ row.phone | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="areaName">
+              <mat-header-cell *matHeaderCellDef>
+                Área
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="areaName">
+                {{ row.areaName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="practiceName">
+              <mat-header-cell *matHeaderCellDef>
+                Práctica
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="practiceName">
+                {{ row.practiceName | emptyField}}
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="idNumber">
+              <mat-header-cell *matHeaderCellDef>
+                Cedula
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="idNumber">
+                {{ row.idNumber | emptyField}}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="noRecord">
+              <mat-footer-cell [attr.colspan]="displayedColumns.length" *matFooterCellDef>
+                No existen datos para mostrar.
+              </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns" class="example-element-row"
+              [class.example-expanded-row]="personSelected === row" (click)="setSelectedRow(row,$event)"
+              [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+              (mouseover)="row.hovered = true" (mouseout)="row.hovered = false" (keydown)="tableKeydown($event)"
+              tabindex="999">
+            </mat-row>
+            <mat-footer-row mat-footer-row [hidden]="personList.length > 0" *matFooterRowDef="['noRecord']">
+            </mat-footer-row>
+          </table>
+          <mat-paginator [pageSizeOptions]="[10, 15, 20, 30]" showFirstLastButtons [length]="length"
+            [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="handlePageEvent($event)"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

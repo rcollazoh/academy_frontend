@@ -8,6 +8,7 @@ import { ExitGuard } from '../core/guards/exit-guard';
 import { Courses } from './components/courses/courses';
 import { ActiveCourse } from './components/active-course/active-course';
 import { RoleGuard } from '../core/guards/role.guard';
+import { PersonFilter } from './components/person-filter/person-filter';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,16 @@ export const routes: Routes = [
         path: 'courses',
         canActivate: [RoleGuard],
         component: Courses,
+        data: {
+          permissions: {
+            only: ['TEACHER', 'ADMIN'],
+          }
+        },
+      },
+      {
+        path: 'person-filter',
+        canActivate: [RoleGuard],
+        component: PersonFilter,
         data: {
           permissions: {
             only: ['TEACHER', 'ADMIN'],

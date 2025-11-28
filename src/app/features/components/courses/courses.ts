@@ -27,7 +27,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { StatePipe } from "../../../shared/pipes/state-pipe";
 import { PaymentWayPipe } from "../../../shared/pipes/payment-way-pipe";
 import { UserLogin } from '../../../shared/models/user-model';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-courses',

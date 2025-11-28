@@ -268,6 +268,40 @@ export class FeaturesService {
       );
   }
 
+ getPersons(request: string, pageNumber: number, pageSize: number, sort: string): Observable<any> {
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+    });
+
+    let queryParams = new HttpParams();
+
+    request !== undefined
+      ? (queryParams = queryParams.append('searchParam', request))
+      : null;
+
+    pageNumber !== undefined
+      ? (queryParams = queryParams.append('pageNumber', pageNumber))
+      : null;
+    pageSize !== undefined
+      ? (queryParams = queryParams.append('pageSize', pageSize))
+      : null;
+    sort !== undefined
+      ? (queryParams = queryParams.append('sort', sort))
+      : null;
+
+    const options = {
+      headers: headers,
+      params: queryParams,
+    };
+
+    return this._http
+      .get<any>(environment.servicePerson, options)
+      .pipe(
+        map((data) => data),
+        catchError(this.handleServiceError)
+      );
+  }
+
   /** Obtener modulos de un curso */
   getCourseModulesByCourseId(courseId: number): Observable<any> {
     const headers = new HttpHeaders({
